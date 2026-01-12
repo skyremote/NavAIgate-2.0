@@ -42,12 +42,12 @@ const ContactSection: React.FC = () => {
               Best for detailed inquiries and project discussions
             </p>
             <a
-              href={`mailto:hello@navaigate.dev?subject=${emailSubject}&body=${emailBody}`}
+              href={`mailto:dw@navaigate.dev?subject=${emailSubject}&body=${emailBody}`}
               className="inline-block"
             >
               <Button variant="outline">
                 <Mail className="w-4 h-4 mr-2" />
-                hello@navaigate.dev
+                dw@navaigate.dev
               </Button>
             </a>
           </Card>

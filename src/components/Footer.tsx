@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
           {/* Contact CTA */}
           <div className="max-w-md mx-auto mb-8">
             <a
-              href={`mailto:hello@navaigate.dev?subject=${emailSubject}&body=${emailBody}`}
+              href={`mailto:dw@navaigate.dev?subject=${emailSubject}&body=${emailBody}`}
               className="flex items-center justify-center gap-3 p-4 rounded-xl bg-gray-800 hover:bg-gray-700 transition-all duration-300 hover:scale-105"
             >
               <Mail className="w-5 h-5 text-cyan-400" />
