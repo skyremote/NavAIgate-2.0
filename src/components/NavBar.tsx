@@ -5,12 +5,13 @@ import Button from './Button';
 interface NavLink {
   label: string;
   href: string;
+  external?: boolean;
 }
 
 const navLinks: NavLink[] = [
   { label: 'About', href: '#about' },
   { label: 'Apps', href: '#apps' },
-  { label: 'Ente-prise', href: '#enteprise' },
+  { label: 'Ente-prise', href: 'https://www.ente-prise.com', external: true },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -32,6 +33,7 @@ const NavBar: React.FC = () => {
             <a
               key={link.href}
               href={link.href}
+              {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               className="text-gray-300 hover:text-cyan-400 transition-colors text-sm font-medium"
             >
               {link.label}
@@ -73,6 +75,7 @@ const NavBar: React.FC = () => {
               <a
                 key={link.href}
                 href={link.href}
+                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className="block text-xl text-gray-200 hover:text-cyan-400 transition-colors"
                 onClick={() => setMenuOpen(false)}
               >

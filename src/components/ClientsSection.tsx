@@ -66,7 +66,7 @@ const ClientsSection: React.FC = () => {
             <div className="flex-1">
               <h3 className="text-2xl font-bold text-white mb-2">Autodesk</h3>
               <p className="text-gray-300">
-                Partnering with Autodesk to build Ente-prise — an AI chatbot that helps
+                Partnering with Autodesk to build <a href="https://www.ente-prise.com" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:underline">Ente-prise</a> — an AI chatbot that helps
                 sales teams navigate CTV, technical proposals, and account workflows.
                 Reducing prep time by 25-40% and capturing decisions for consistency.
               </p>

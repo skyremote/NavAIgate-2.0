@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
           <GradientText gradient="default">transform their workflows</GradientText>.
         </p>
         <p className="text-base md:text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-          Introducing <GradientText gradient="purple-teal">Ente-prise</GradientText> —
+          Introducing <a href="https://www.ente-prise.com" target="_blank" rel="noopener noreferrer" className="hover:underline"><GradientText gradient="purple-teal">Ente-prise</GradientText></a> —
           an enterprise AI that navigates decisions, not just generates text.
           <span className="block mt-2 text-yellow-400/80 text-sm font-medium">
             Limited to 500 early adopters

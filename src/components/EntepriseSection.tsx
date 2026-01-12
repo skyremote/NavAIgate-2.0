@@ -47,7 +47,9 @@ const EntepriseSection: React.FC = () => {
           </Badge>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
-            <GradientText gradient="purple-teal">Ente-prise</GradientText>
+            <a href="https://www.ente-prise.com" target="_blank" rel="noopener noreferrer" className="hover:underline">
+              <GradientText gradient="purple-teal">Ente-prise</GradientText>
+            </a>
           </h2>
 
           <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-2">
