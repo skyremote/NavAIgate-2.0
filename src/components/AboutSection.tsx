@@ -65,15 +65,14 @@ const AboutSection: React.FC = () => {
 
           {/* Image & Stats */}
           <div className="order-1 lg:order-2 space-y-6">
-            {/* Image Placeholder */}
-            <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500/20 to-purple-600/20 border border-white/10 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-white text-4xl font-bold">D</span>
-                </div>
-                <p className="text-gray-400 text-sm">Daniel</p>
-                <p className="text-gray-500 text-xs">Founder, NavAIgate</p>
-              </div>
+            {/* Daniel's Photo */}
+            <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 relative group">
+              <div className="absolute -inset-2 rounded-2xl bg-gradient-to-br from-cyan-400/20 to-purple-500/20 blur-xl opacity-60 group-hover:opacity-80 transition-opacity" />
+              <img
+                src="/images/daniel.png"
+                alt="Daniel - Founder of NavAIgate"
+                className="w-full h-full object-cover relative z-10"
+              />
             </div>
 
             {/* Stats Grid */}

@@ -2,8 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NavBar from '../components/NavBar';
 import Hero from '../components/Hero';
+import ClientLogos from '../components/ClientLogos';
 import AboutSection from '../components/AboutSection';
-import ClientsSection from '../components/ClientsSection';
+import AppsSection from '../components/AppsSection';
 import EntepriseSection from '../components/EntepriseSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
@@ -16,11 +17,14 @@ import Footer from '../components/Footer';
   <!-- Hero Section -->
   <Hero client:load />
 
+  <!-- Client Logos Marquee -->
+  <ClientLogos client:load />
+
   <!-- About Section -->
   <AboutSection client:load />
 
-  <!-- Clients Section -->
-  <ClientsSection client:load />
+  <!-- Free Apps Section -->
+  <AppsSection client:load />
 
   <!-- Ente-prise Product Section -->
   <EntepriseSection client:load />

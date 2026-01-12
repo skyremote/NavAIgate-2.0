@@ -9,7 +9,7 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { label: 'About', href: '#about' },
-  { label: 'Clients', href: '#clients' },
+  { label: 'Apps', href: '#apps' },
   { label: 'Ente-prise', href: '#enteprise' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -22,9 +22,7 @@ const NavBar: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-            <span className="text-white font-bold text-sm">N</span>
-          </div>
+          <img src="/logos/NavAIgate.svg" alt="NavAIgate" className="h-8 w-auto" />
           <span className="text-white font-semibold text-xl">NavAIgate</span>
         </a>
 
@@ -59,9 +57,7 @@ const NavBar: React.FC = () => {
         <div className="md:hidden fixed inset-0 z-50 bg-gray-900/95 backdrop-blur">
           <div className="flex items-center justify-between p-4 border-b border-white/5">
             <a href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">N</span>
-              </div>
+              <img src="/logos/NavAIgate.svg" alt="NavAIgate" className="h-8 w-auto" />
               <span className="text-white font-semibold text-xl">NavAIgate</span>
             </a>
             <button

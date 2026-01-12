@@ -18,5 +18,13 @@ export { default as Hero } from './Hero';
 export { default as Footer } from './Footer';
 export { default as AboutSection } from './AboutSection';
 export { default as ClientsSection } from './ClientsSection';
+export { default as ClientLogos } from './ClientLogos';
 export { default as EntepriseSection } from './EntepriseSection';
+export { default as AppsSection } from './AppsSection';
 export { default as ContactSection } from './ContactSection';
+
+// UI Components
+export { default as LogoLoop } from './LogoLoop';
+
+// Forms
+export { default as WaitlistForm } from './WaitlistForm';

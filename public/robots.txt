@@ -1,0 +1,5 @@
+# Robots.txt for navaigate.dev
+User-agent: *
+Allow: /
+
+Sitemap: https://navaigate.dev/sitemap-index.xml

@@ -1,10 +1,10 @@
-import { Sparkles, CheckCircle, ArrowRight, Clock, Target, Workflow } from 'lucide-react';
+import { Sparkles, CheckCircle, Clock, Target, Workflow } from 'lucide-react';
 import Section from './Section';
 import FloatingElements from './FloatingElements';
 import Badge from './Badge';
 import Card from './Card';
 import GradientText from './GradientText';
-import Button from './Button';
+import WaitlistForm from './WaitlistForm';
 
 const features = [
   {
@@ -25,7 +25,7 @@ const features = [
 ];
 
 const capabilities = [
-  'CTV & Technical Proposals',
+  'Email Proposals',
   'Account Workflows',
   'Consumption Patterns',
   'Decision Capture',
@@ -85,20 +85,18 @@ const EntepriseSection: React.FC = () => {
         </Card>
 
         {/* CTA */}
-        <div className="text-center">
-          <div className="inline-block p-1 rounded-2xl bg-gradient-to-r from-purple-500 to-teal-500">
+        <div className="max-w-xl mx-auto">
+          <div className="p-1 rounded-2xl bg-gradient-to-r from-purple-500 to-teal-500">
             <div className="bg-gray-900 rounded-xl p-8">
-              <p className="text-yellow-400 font-medium mb-2">Limited to 500 early adopters</p>
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              <p className="text-yellow-400 font-medium mb-2 text-center">Limited to 500 early adopters</p>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
                 Join the Ente-prise Waitlist
               </h3>
-              <p className="text-gray-400 mb-6 max-w-md mx-auto">
+              <p className="text-gray-400 mb-6 max-w-md mx-auto text-center">
                 Be among the first to transform your organization's AI workflows.
                 Early access includes dedicated onboarding and priority support.
               </p>
-              <Button variant="primary" size="lg" shimmer icon={<ArrowRight className="w-5 h-5" />}>
-                Join Waitlist
-              </Button>
+              <WaitlistForm />
             </div>
           </div>
         </div>

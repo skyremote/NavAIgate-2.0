@@ -50,6 +50,39 @@ const imageURL = new URL(image, Astro.site).href;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "NavAIgate",
+        "url": "https://navaigate.dev",
+        "logo": "https://navaigate.dev/favicon.svg",
+        "description": "AI Consultancy helping enterprises navigate the AI landscape. From strategy to implementation, we build solutions that transform businesses.",
+        "founder": {
+          "@type": "Person",
+          "name": "Daniel",
+          "jobTitle": "Founder"
+        },
+        "sameAs": [
+          "https://bluplai.com"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "daniel@navaigate.dev",
+          "contactType": "sales"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "NavAIgate",
+        "url": "https://navaigate.dev"
+      }
+    </script>
   </head>
   <body class="min-h-screen bg-gray-900 text-white overflow-x-hidden font-poppins">
     <slot />

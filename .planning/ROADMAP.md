@@ -20,10 +20,10 @@ None
 - [x] **Phase 4: About/Daniel Section** - Founder profile, story, imagery ✓
 - [x] **Phase 5: Client Showcase** - Autodesk and other client testimonials/logos ✓
 - [x] **Phase 6: Ente-prise Product** - Product overview, value proposition, features ✓
-- [ ] **Phase 7: Waitlist System** - 500-cap waitlist, early access, lead qualification
+- [x] **Phase 7: Waitlist System** - 500-cap waitlist with Supabase, early access ✓
 - [x] **Phase 8: Contact Integration** - Email form + WhatsApp integration ✓
-- [ ] **Phase 9: Custom Apps Migration** - Migrate existing apps from current site
-- [ ] **Phase 10: Polish & Deploy** - Final animations, SEO, deployment to navaigate.dev
+- [x] **Phase 9: Custom Apps Migration** - Free Apps section (Email Builder, Weekly Check-in) ✓
+- [x] **Phase 10: Polish & Deploy** - Final animations, SEO, deployment ready ✓
 
 ## Phase Details
 
@@ -66,10 +66,9 @@ None
 ### Phase 7: Waitlist System
 **Goal**: Implement 500-person capped waitlist with early access flow and lead qualification
 **Depends on**: Phase 6
-**Research**: Likely (backend decision needed)
-**Research topics**: Waitlist implementation options (Supabase vs Airtable vs custom), lead qualification flow patterns, 500-cap enforcement strategy
-**Status**: NOT STARTED
-**Plans**: TBD
+**Decision**: Supabase (user specified)
+**Status**: COMPLETE
+**Plans**: 1/1
 
 ### Phase 8: Contact Integration
 **Goal**: Implement email contact form and WhatsApp integration
@@ -80,17 +79,15 @@ None
 ### Phase 9: Custom Apps Migration
 **Goal**: Migrate existing custom apps from current NavAIgate site
 **Depends on**: Phase 8
-**Research**: Likely (existing codebase analysis)
-**Research topics**: Current apps inventory and structure in `/Users/Sky/Documents/GitHub/Navaigate`, migration requirements, integration approach with new Astro site
-**Status**: NOT STARTED
-**Plans**: TBD
+**Decision**: Link-only (apps hosted externally at weeklycheckin.navaigate.dev and navaigate.dev/tools/email-builder)
+**Status**: COMPLETE
+**Plans**: 1/1
 
 ### Phase 10: Polish & Deploy
 **Goal**: Final animations, SEO optimization, and deployment to navaigate.dev
 **Depends on**: Phase 9
-**Research**: Unlikely (standard deployment patterns)
-**Status**: NOT STARTED
-**Plans**: TBD
+**Status**: COMPLETE
+**Plans**: 1/1
 
 ## Progress
 
@@ -105,7 +102,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 4. About/Daniel | 1/1 | Complete | 2026-01-12 |
 | 5. Client Showcase | 1/1 | Complete | 2026-01-12 |
 | 6. Ente-prise Product | 1/1 | Complete | 2026-01-12 |
-| 7. Waitlist System | 0/TBD | Not started | - |
-| 8. Contact Integration | 1/1 | Complete (UI) | 2026-01-12 |
-| 9. Custom Apps Migration | 0/TBD | Not started | - |
-| 10. Polish & Deploy | 0/TBD | Not started | - |
+| 7. Waitlist System | 1/1 | Complete | 2026-01-12 |
+| 8. Contact Integration | 1/1 | Complete | 2026-01-12 |
+| 9. Custom Apps Migration | 1/1 | Complete | 2026-01-12 |
+| 10. Polish & Deploy | 1/1 | Complete | 2026-01-12 |
