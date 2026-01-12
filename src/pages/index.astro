@@ -1,163 +1,45 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Sparkles, ChevronRight, Zap, Shield, Users } from 'lucide-react';
-
-// Import React components
-import Button from '../components/Button';
-import Badge from '../components/Badge';
-import Card from '../components/Card';
-import ShinyText from '../components/ShinyText';
-import RotatingText from '../components/RotatingText';
-import GradientText from '../components/GradientText';
-import Section from '../components/Section';
-import FloatingElements from '../components/FloatingElements';
+import NavBar from '../components/NavBar';
+import Hero from '../components/Hero';
+import Footer from '../components/Footer';
 ---
 
-<BaseLayout title="NavAIgate - Design System Demo">
+<BaseLayout title="NavAIgate - AI Consultancy | Custom AI Tools & Ente-prise">
+  <!-- Navigation -->
+  <NavBar client:load />
+
   <!-- Hero Section -->
-  <Section background="gradient" fullHeight centered client:load>
-    <FloatingElements variant="hero" client:load />
+  <Hero client:load />
 
-    <div class="max-w-6xl mx-auto text-center relative z-20">
-      <!-- Badge with ShinyText -->
-      <div class="flex justify-center mb-6">
-        <Badge variant="glass" client:load>
-          <Sparkles className="w-4 h-4 text-yellow-400" client:load />
-          <ShinyText text="AI Industry Leaders" speed={6} className="text-sm text-gray-300" client:load />
-        </Badge>
-      </div>
-
-      <!-- Main Headline with RotatingText -->
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
-        Navigate Your AI <RotatingText
-          texts={['Future', 'Strategy', 'Success', 'Growth']}
-          mainClassName="inline-block text-white"
-          staggerFrom="last"
-          staggerDuration={0.025}
-          splitLevelClassName="overflow-hidden"
-          rotationInterval={2500}
-          client:load
-        />
-      </h1>
-
-      <!-- Subheadline with GradientText -->
-      <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-        Custom AI tools and consulting for organizations ready to
-        <GradientText gradient="default" client:load>transform their workflows</GradientText>.
-        Powered by <GradientText gradient="purple-teal" client:load>Ente-prise</GradientText>.
-      </p>
-
-      <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-        <Button
-          variant="primary"
-          size="lg"
-          shimmer={true}
-          client:load
-        >
-          Join Waitlist
-        </Button>
-        <Button variant="secondary" size="lg" client:load>
-          Learn More
-        </Button>
-      </div>
+  <!-- About Section (Phase 4) -->
+  <section id="about" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+      <p class="text-gray-500">About section coming in Phase 4</p>
     </div>
+  </section>
 
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-        <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
-      </div>
+  <!-- Clients Section (Phase 5) -->
+  <section id="clients" class="py-20 px-6 bg-gray-900/50">
+    <div class="max-w-6xl mx-auto text-center">
+      <p class="text-gray-500">Client showcase coming in Phase 5</p>
     </div>
-  </Section>
+  </section>
 
-  <!-- Component Showcase Section -->
-  <Section id="components" className="bg-gray-900/50" client:load>
-    <FloatingElements variant="section" client:load />
-
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <div class="flex justify-center mb-4">
-          <Badge variant="solid" client:load>
-            <Zap className="w-4 h-4 text-blue-400" client:load />
-            <span class="text-gray-300">Design System</span>
-          </Badge>
-        </div>
-        <h2 class="text-3xl md:text-5xl font-bold mb-4">
-          <GradientText gradient="blue-purple" client:load>Component Library</GradientText>
-        </h2>
-        <p class="text-gray-400 max-w-2xl mx-auto">
-          A complete design system matching the bluplai aesthetic with glass morphism,
-          gradient effects, and smooth animations.
-        </p>
-      </div>
-
-      <!-- Card Grid -->
-      <div class="grid md:grid-cols-3 gap-6">
-        <Card variant="glass" hover={true} padding="lg" client:load>
-          <div class="mb-4">
-            <Shield className="w-10 h-10 text-blue-400" client:load />
-          </div>
-          <h3 class="text-xl font-semibold mb-2 text-white">Glass Morphism</h3>
-          <p class="text-gray-400">
-            Frosted glass effect with backdrop blur and subtle borders.
-          </p>
-        </Card>
-
-        <Card variant="solid" hover={true} padding="lg" client:load>
-          <div class="mb-4">
-            <Sparkles className="w-10 h-10 text-purple-400" client:load />
-          </div>
-          <h3 class="text-xl font-semibold mb-2 text-white">Animated Text</h3>
-          <p class="text-gray-400">
-            ShinyText and RotatingText for dynamic headlines.
-          </p>
-        </Card>
-
-        <Card variant="outline" hover={true} padding="lg" client:load>
-          <div class="mb-4">
-            <Users className="w-10 h-10 text-teal-400" client:load />
-          </div>
-          <h3 class="text-xl font-semibold mb-2 text-white">Interactive</h3>
-          <p class="text-gray-400">
-            Hover effects, transitions, and smooth animations.
-          </p>
-        </Card>
-      </div>
-
-      <!-- Button Variants -->
-      <div class="mt-16 text-center">
-        <h3 class="text-xl font-semibold mb-6 text-white">Button Variants</h3>
-        <div class="flex flex-wrap items-center justify-center gap-4">
-          <Button variant="primary" shimmer={true} client:load>Primary</Button>
-          <Button variant="secondary" client:load>Secondary</Button>
-          <Button variant="outline" client:load>Outline</Button>
-          <Button variant="primary" size="sm" client:load>Small</Button>
-          <Button variant="primary" size="lg" client:load>Large</Button>
-        </div>
-      </div>
-
-      <!-- Badge Variants -->
-      <div class="mt-12 text-center">
-        <h3 class="text-xl font-semibold mb-6 text-white">Badge Variants</h3>
-        <div class="flex flex-wrap items-center justify-center gap-4">
-          <Badge variant="glass" client:load>
-            <Sparkles className="w-3 h-3 text-yellow-400" client:load />
-            <span>Glass</span>
-          </Badge>
-          <Badge variant="solid" client:load>
-            <span>Solid</span>
-          </Badge>
-          <Badge variant="gradient" client:load>
-            <span class="text-white">Gradient</span>
-          </Badge>
-        </div>
-      </div>
+  <!-- Ente-prise Section (Phase 6) -->
+  <section id="enteprise" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+      <p class="text-gray-500">Ente-prise product section coming in Phase 6</p>
     </div>
-  </Section>
+  </section>
+
+  <!-- Contact Section (Phase 8) -->
+  <section id="contact" class="py-20 px-6 bg-gray-900/50">
+    <div class="max-w-6xl mx-auto text-center">
+      <p class="text-gray-500">Contact form coming in Phase 8</p>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="py-8 text-center text-gray-500 border-t border-gray-800">
-    <p>NavAIgate Design System Demo - Phase 2 Complete</p>
-  </footer>
+  <Footer client:load />
 </BaseLayout>

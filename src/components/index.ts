@@ -11,3 +11,8 @@ export { default as GradientText } from './GradientText';
 // Layout Components
 export { default as Section } from './Section';
 export { default as FloatingElements } from './FloatingElements';
+
+// Page Components
+export { default as NavBar } from './NavBar';
+export { default as Hero } from './Hero';
+export { default as Footer } from './Footer';
