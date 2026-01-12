@@ -17,3 +17,6 @@ export { default as NavBar } from './NavBar';
 export { default as Hero } from './Hero';
 export { default as Footer } from './Footer';
 export { default as AboutSection } from './AboutSection';
+export { default as ClientsSection } from './ClientsSection';
+export { default as EntepriseSection } from './EntepriseSection';
+export { default as ContactSection } from './ContactSection';
