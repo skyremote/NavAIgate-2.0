@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
 
         {/* Main Headline */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white">
-          Navigate Your AI{' '}
+          NavAIgate Your AI{' '}
           <RotatingText
             texts={['Future', 'Strategy', 'Success', 'Growth']}
             mainClassName="inline-block"
