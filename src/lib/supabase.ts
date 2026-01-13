@@ -1,18 +1,19 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+import type { Database } from './database.types';
 
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
 // Only create client if env vars are available
-let supabase: SupabaseClient | null = null;
+export const supabase: SupabaseClient<Database> | null =
+  supabaseUrl && supabaseAnonKey
+    ? createClient<Database>(supabaseUrl, supabaseAnonKey)
+    : null;
 
-if (supabaseUrl && supabaseAnonKey) {
-  supabase = createClient(supabaseUrl, supabaseAnonKey);
-}
+// Re-export types for convenience
+export type { WaitlistEntry, Profile, AppSource } from './database.types';
 
-export { supabase };
-
-export interface WaitlistEntry {
+export interface NavAIgateWaitlistEntry {
   id?: string;
   email: string;
   name: string;
@@ -21,7 +22,7 @@ export interface WaitlistEntry {
   created_at?: string;
 }
 
-export async function joinWaitlist(entry: Omit<WaitlistEntry, 'id' | 'created_at'>) {
+export async function joinWaitlist(entry: Omit<NavAIgateWaitlistEntry, 'id' | 'created_at'>) {
   if (!supabase) {
     return { error: { message: 'Waitlist is not configured. Please try again later.' }, data: null };
   }

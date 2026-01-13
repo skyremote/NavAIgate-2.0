@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Button from './Button';
+import UserMenu from './auth/UserMenu';
+import { getUser } from '../lib/auth';
+import type { User } from '@supabase/supabase-js';
 
 interface NavLink {
   label: string;
@@ -15,8 +18,23 @@ const navLinks: NavLink[] = [
   { label: 'Contact', href: '#contact' },
 ];
 
-const NavBar: React.FC = () => {
+interface NavBarProps {
+  showAuth?: boolean;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ showAuth = true }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(showAuth);
+
+  useEffect(() => {
+    if (showAuth) {
+      getUser().then(({ user }) => {
+        setUser(user);
+        setIsLoading(false);
+      });
+    }
+  }, [showAuth]);
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur bg-gray-900/70 border-b border-white/5">
@@ -39,9 +57,26 @@ const NavBar: React.FC = () => {
               {link.label}
             </a>
           ))}
-          <Button variant="primary" size="sm" shimmer>
-            Join Waitlist
-          </Button>
+          {showAuth ? (
+            isLoading ? (
+              <div className="w-24 h-9 bg-gray-800 rounded-full animate-pulse" />
+            ) : user ? (
+              <UserMenu initialUser={user} />
+            ) : (
+              <div className="flex items-center gap-3">
+                <a href="/auth/login" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">
+                  Sign in
+                </a>
+                <Button variant="primary" size="sm" shimmer onClick={() => window.location.href = '/auth/signup'}>
+                  Sign up
+                </Button>
+              </div>
+            )
+          ) : (
+            <Button variant="primary" size="sm" shimmer>
+              Join Waitlist
+            </Button>
+          )}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -82,10 +117,44 @@ const NavBar: React.FC = () => {
                 {link.label}
               </a>
             ))}
-            <div className="pt-4">
-              <Button variant="primary" shimmer className="w-full">
-                Join Waitlist
-              </Button>
+            <div className="pt-4 space-y-3">
+              {showAuth ? (
+                user ? (
+                  <>
+                    <a
+                      href="/dashboard"
+                      className="block text-xl text-gray-200 hover:text-cyan-400 transition-colors"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      Dashboard
+                    </a>
+                    <Button variant="outline" className="w-full" onClick={() => {
+                      import('../lib/auth').then(({ signOut }) => {
+                        signOut().then(() => window.location.href = '/');
+                      });
+                    }}>
+                      Sign out
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <a
+                      href="/auth/login"
+                      className="block text-xl text-gray-200 hover:text-cyan-400 transition-colors"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      Sign in
+                    </a>
+                    <Button variant="primary" shimmer className="w-full" onClick={() => window.location.href = '/auth/signup'}>
+                      Sign up
+                    </Button>
+                  </>
+                )
+              ) : (
+                <Button variant="primary" shimmer className="w-full">
+                  Join Waitlist
+                </Button>
+              )}
             </div>
           </nav>
         </div>
