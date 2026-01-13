@@ -1,0 +1,39 @@
+/* empty css                                    */
+import { f as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead, l as renderScript } from '../chunks/astro/server_FErFH_S7.mjs';
+import 'piccolore';
+import { $ as $$BaseLayout } from '../chunks/BaseLayout_CQpFxgi7.mjs';
+import { U as UserMenu } from '../chunks/UserMenu_J-egkVC9.mjs';
+import { Home, FileText, BarChart3, Settings, Bell } from 'lucide-react';
+export { renderers } from '../renderers.mjs';
+
+const prerender = false;
+const $$Dashboard = createComponent(async ($$result, $$props, $$slots) => {
+  return renderTemplate`${renderComponent($$result, "BaseLayout", $$BaseLayout, { "title": "Dashboard", "description": "Your NavAIgate dashboard" }, { "default": async ($$result2) => renderTemplate` ${maybeRenderHead()}<div class="min-h-screen flex"> <!-- Sidebar --> <aside class="w-64 bg-gray-800/50 border-r border-gray-700 hidden md:flex flex-col"> <div class="p-6"> <a href="/" class="flex items-center gap-2"> <img src="/navaigate-logo.svg" alt="NavAIgate" class="h-8" onerror="this.style.display='none'"> <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+NavAIgate
+</span> </a> </div> <nav class="flex-1 px-4"> <ul class="space-y-1"> <li> <a href="/dashboard" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-gray-700/50 text-white"> ${renderComponent($$result2, "Home", Home, { "className": "w-5 h-5" })}
+Dashboard
+</a> </li> <li> <a href="/dashboard/projects" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-700/30 hover:text-white transition-colors"> ${renderComponent($$result2, "FileText", FileText, { "className": "w-5 h-5" })}
+Projects
+</a> </li> <li> <a href="/dashboard/analytics" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-700/30 hover:text-white transition-colors"> ${renderComponent($$result2, "BarChart3", BarChart3, { "className": "w-5 h-5" })}
+Analytics
+</a> </li> <li> <a href="/dashboard/settings" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-700/30 hover:text-white transition-colors"> ${renderComponent($$result2, "Settings", Settings, { "className": "w-5 h-5" })}
+Settings
+</a> </li> </ul> </nav> <div class="p-4 border-t border-gray-700"> <a href="/" class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-400 hover:bg-gray-700/30 hover:text-white transition-colors"> ${renderComponent($$result2, "Home", Home, { "className": "w-5 h-5" })}
+Back to Site
+</a> </div> </aside> <!-- Main Content --> <div class="flex-1 flex flex-col"> <!-- Top Bar --> <header class="h-16 border-b border-gray-700 flex items-center justify-between px-6"> <div class="flex items-center gap-4"> <!-- Mobile menu button --> <button class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors"> <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <line x1="4" x2="20" y1="12" y2="12"></line> <line x1="4" x2="20" y1="6" y2="6"></line> <line x1="4" x2="20" y1="18" y2="18"></line> </svg> </button> <h1 class="text-xl font-semibold text-white">Dashboard</h1> </div> <div class="flex items-center gap-4"> <button class="p-2 rounded-lg hover:bg-gray-800 transition-colors text-gray-400 hover:text-white"> ${renderComponent($$result2, "Bell", Bell, { "className": "w-5 h-5" })} </button> ${renderComponent($$result2, "UserMenu", UserMenu, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/Users/Sky/Documents/GitHub/NavAIgate 2.0/src/components/auth/UserMenu", "client:component-export": "default" })} </div> </header> <!-- Page Content --> <main class="flex-1 p-6"> <!-- Welcome Section --> <div id="welcome-section" class="mb-8"> <h2 class="text-2xl font-bold text-white mb-2">Welcome back!</h2> <p class="text-gray-400">Here's what's happening with your account today.</p> </div> <!-- Stats Grid --> <div class="grid md:grid-cols-3 gap-6 mb-8"> <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6"> <div class="flex items-center justify-between mb-4"> <span class="text-gray-400 text-sm">Projects</span> ${renderComponent($$result2, "FileText", FileText, { "className": "w-5 h-5 text-blue-400" })} </div> <p class="text-3xl font-bold text-white">0</p> <p class="text-sm text-gray-500 mt-1">Active projects</p> </div> <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6"> <div class="flex items-center justify-between mb-4"> <span class="text-gray-400 text-sm">API Calls</span> ${renderComponent($$result2, "BarChart3", BarChart3, { "className": "w-5 h-5 text-purple-400" })} </div> <p class="text-3xl font-bold text-white">0</p> <p class="text-sm text-gray-500 mt-1">This month</p> </div> <div class="bg-gray-800/50 border border-gray-700 rounded-xl p-6"> <div class="flex items-center justify-between mb-4"> <span class="text-gray-400 text-sm">Credits</span> <svg class="w-5 h-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="10"></circle> <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path> <path d="M12 18V6"></path> </svg> </div> <p class="text-3xl font-bold text-white" id="credits-display">-</p> <p class="text-sm text-gray-500 mt-1">Available credits</p> </div> </div> <!-- Getting Started --> <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-gray-700 rounded-xl p-6"> <h3 class="text-lg font-semibold text-white mb-4">Getting Started</h3> <div class="grid md:grid-cols-2 gap-4"> <div class="flex items-start gap-4 p-4 bg-gray-800/50 rounded-lg"> <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0"> <span class="text-blue-400 font-semibold">1</span> </div> <div> <h4 class="font-medium text-white">Complete your profile</h4> <p class="text-sm text-gray-400">Add your details and preferences</p> </div> </div> <div class="flex items-start gap-4 p-4 bg-gray-800/50 rounded-lg"> <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0"> <span class="text-purple-400 font-semibold">2</span> </div> <div> <h4 class="font-medium text-white">Explore features</h4> <p class="text-sm text-gray-400">Discover what NavAIgate can do</p> </div> </div> </div> </div> </main> </div> </div> ${renderScript($$result2, "/Users/Sky/Documents/GitHub/NavAIgate 2.0/src/pages/dashboard.astro?astro&type=script&index=0&lang.ts")} ` })}`;
+}, "/Users/Sky/Documents/GitHub/NavAIgate 2.0/src/pages/dashboard.astro", void 0);
+
+const $$file = "/Users/Sky/Documents/GitHub/NavAIgate 2.0/src/pages/dashboard.astro";
+const $$url = "/dashboard";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$Dashboard,
+  file: $$file,
+  prerender,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };
