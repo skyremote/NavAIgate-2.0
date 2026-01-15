@@ -6,6 +6,7 @@ import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   site: 'https://navaigate.dev',
+  output: 'server',
   adapter: vercel(),
   integrations: [
     react(),

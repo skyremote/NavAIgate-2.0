@@ -1,5 +1,8 @@
 import type { APIRoute } from 'astro';
 
+// Ensure this route is server-rendered, not prerendered
+export const prerender = false;
+
 interface GenerateEmailRequest {
   emailType: string;
   tone: string;
