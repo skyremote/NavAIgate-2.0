@@ -24,6 +24,7 @@ None
 - [x] **Phase 8: Contact Integration** - Email form + WhatsApp integration ✓
 - [x] **Phase 9: Custom Apps Migration** - Free Apps section (Email Builder, Weekly Check-in) ✓
 - [x] **Phase 10: Polish & Deploy** - Final animations, SEO, deployment ready ✓
+- [ ] **Phase 11: Email Builder V2** - AI-powered email generation + drag-drop HTML builder
 
 ## Phase Details
 
@@ -89,10 +90,17 @@ None
 **Status**: COMPLETE
 **Plans**: 1/1
 
+### Phase 11: Email Builder V2
+**Goal**: Rebuild email builder with AI generation (OpenRouter) and drag-and-drop HTML module builder
+**Depends on**: Phase 10
+**Research**: No (using known patterns from reference HTML files)
+**Status**: IN PROGRESS
+**Plans**: 0/1
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9 → 10 → 11
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -106,3 +114,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 →
 | 8. Contact Integration | 1/1 | Complete | 2026-01-12 |
 | 9. Custom Apps Migration | 1/1 | Complete | 2026-01-12 |
 | 10. Polish & Deploy | 1/1 | Complete | 2026-01-12 |
+| 11. Email Builder V2 | 0/1 | In Progress | - |
