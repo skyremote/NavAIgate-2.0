@@ -11,6 +11,7 @@ interface App {
   color: string;
   href: string;
   tag: string;
+  internal?: boolean;
 }
 
 const apps: App[] = [
@@ -27,8 +28,9 @@ const apps: App[] = [
     description: 'Generate professional emails in seconds. Perfect for sales outreach, follow-ups, and client communication.',
     icon: Mail,
     color: '#8B5CF6',
-    href: 'https://navaigate.dev/tools/email-builder',
+    href: '/tools/email-builder',
     tag: 'Productivity',
+    internal: true,
   },
 ];
 
@@ -61,8 +63,7 @@ const AppsSection: React.FC = () => {
               <a
                 key={app.title}
                 href={app.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(!app.internal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className="block group"
               >
                 <Card variant="glass" hover padding="lg" className="h-full">
@@ -83,7 +84,9 @@ const AppsSection: React.FC = () => {
 
                   <h3 className="text-xl font-semibold mb-3 text-white flex items-center gap-2 group-hover:text-cyan-400 transition-colors">
                     {app.title}
-                    <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {!app.internal && (
+                      <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                    )}
                   </h3>
 
                   <p className="text-gray-400 mb-4">{app.description}</p>
