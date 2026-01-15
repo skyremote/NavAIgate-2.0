@@ -1,15 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import NavBar from '../../components/NavBar';
-import EmailBuilder from '../../components/EmailBuilder';
+import { EmailBuilderV2 } from '../../components/email-builder/EmailBuilderV2';
 import Footer from '../../components/Footer';
 ---
 
 <BaseLayout
   title="Email Builder - Free AI Email Generator"
-  description="Generate professional emails in seconds. Perfect for sales outreach, follow-ups, and client communication. Free tool by NavAIgate."
+  description="Build professional HTML emails with drag-and-drop modules or AI assistance. Export to Outlook-compatible HTML. Free tool by NavAIgate."
 >
   <NavBar client:load />
-  <EmailBuilder client:load />
+  <EmailBuilderV2 client:load />
   <Footer client:load />
 </BaseLayout>
