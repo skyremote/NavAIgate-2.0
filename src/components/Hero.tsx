@@ -54,10 +54,11 @@ const Hero: React.FC = () => {
             size="lg"
             shimmer
             icon={<ChevronRight className="w-5 h-5" />}
+            onClick={() => (window as any).openWaitlist?.()}
           >
             Join Ente-prise Waitlist
           </Button>
-          <Button variant="secondary" size="lg">
+          <Button variant="secondary" size="lg" onClick={() => document.getElementById('enteprise')?.scrollIntoView({ behavior: 'smooth' })}>
             Learn More
           </Button>
         </div>

@@ -73,7 +73,7 @@ const NavBar: React.FC<NavBarProps> = ({ showAuth = true }) => {
               </div>
             )
           ) : (
-            <Button variant="primary" size="sm" shimmer>
+            <Button variant="primary" size="sm" shimmer onClick={() => (window as any).openWaitlist?.()}>
               Join Waitlist
             </Button>
           )}
@@ -151,7 +151,10 @@ const NavBar: React.FC<NavBarProps> = ({ showAuth = true }) => {
                   </>
                 )
               ) : (
-                <Button variant="primary" shimmer className="w-full">
+                <Button variant="primary" shimmer className="w-full" onClick={() => {
+                  setMenuOpen(false);
+                  (window as any).openWaitlist?.();
+                }}>
                   Join Waitlist
                 </Button>
               )}

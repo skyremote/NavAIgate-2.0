@@ -8,9 +8,13 @@ import AppsSection from '../components/AppsSection';
 import EntepriseSection from '../components/EntepriseSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
+import WaitlistModal from '../components/WaitlistModal';
 ---
 
 <BaseLayout title="NavAIgate - AI Consultancy | Custom AI Tools & Ente-prise">
+  <!-- Waitlist Modal -->
+  <WaitlistModal client:load />
+
   <!-- Navigation -->
   <NavBar client:load />
 
