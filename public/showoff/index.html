@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NavAIgate - How It Works</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0a0a0f;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+        }
+
+        /* Animated Background */
+        .bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Floating Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            top: -200px;
+            left: -200px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #8B5CF6, #06B6D4);
+            bottom: -150px;
+            right: -150px;
+            animation-delay: -7s;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #14B8A6, #3B82F6);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -50px) scale(1.1); }
+            50% { transform: translate(-30px, 30px) scale(0.95); }
+            75% { transform: translate(40px, 40px) scale(1.05); }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #60A5FA;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6, #06B6D4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #9CA3AF;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Flowchart Container */
+        .flowchart {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        /* SVG Lines Container */
+        .connections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .connection-line {
+            stroke: url(#lineGradient);
+            stroke-width: 3;
+            fill: none;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawLine 2s ease-out forwards;
+        }
+
+        .connection-line:nth-child(1) { animation-delay: 0.5s; }
+        .connection-line:nth-child(2) { animation-delay: 1s; }
+        .connection-line:nth-child(3) { animation-delay: 1.5s; }
+        .connection-line:nth-child(4) { animation-delay: 2s; }
+        .connection-line:nth-child(5) { animation-delay: 2.5s; }
+
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Flow particle animation */
+        .flow-particle {
+            fill: #06B6D4;
+            opacity: 0;
+            animation: flowPulse 3s ease-in-out infinite;
+        }
+
+        .flow-particle:nth-child(1) { animation-delay: 1.5s; }
+        .flow-particle:nth-child(2) { animation-delay: 2s; }
+        .flow-particle:nth-child(3) { animation-delay: 2.5s; }
+        .flow-particle:nth-child(4) { animation-delay: 3s; }
+        .flow-particle:nth-child(5) { animation-delay: 3.5s; }
+
+        @keyframes flowPulse {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Node Row */
+        .node-row {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 100px;
+            flex-wrap: wrap;
+        }
+
+        .node-row.single {
+            gap: 0;
+        }
+
+        /* Nodes */
+        .node {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(40px) scale(0.8);
+            animation: nodeAppear 0.8s ease-out forwards;
+        }
+
+        .node:nth-child(1) { animation-delay: 0.2s; }
+        .node:nth-child(2) { animation-delay: 0.4s; }
+        .node:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes nodeAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .node-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(30, 30, 40, 0.9), rgba(20, 20, 30, 0.9));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 32px;
+            min-width: 280px;
+            max-width: 320px;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .node-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6, #06B6D4);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .node-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .node-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow:
+                0 25px 50px -12px rgba(139, 92, 246, 0.25),
+                0 0 0 1px rgba(139, 92, 246, 0.1),
+                inset 0 0 60px rgba(139, 92, 246, 0.05);
+        }
+
+        /* Pulse ring effect */
+        .node-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 24px;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .node-card:hover::after {
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 1;
+        }
+
+        .node-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .node-icon.blue {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .node-icon.purple {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .node-icon.teal {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(20, 184, 166, 0.1));
+            border: 1px solid rgba(20, 184, 166, 0.3);
+        }
+
+        .node-icon.yellow {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.1));
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .node-icon.pink {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(236, 72, 153, 0.3);
+        }
+
+        /* Icon shimmer effect */
+        .node-icon::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 40%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 60%
+            );
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .node-card:hover .node-icon::after {
+            transform: translateX(100%);
+        }
+
+        .node-step {
+            font-size: 12px;
+            font-weight: 600;
+            color: #8B5CF6;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .node-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .node-description {
+            font-size: 0.9rem;
+            color: #9CA3AF;
+            line-height: 1.6;
+        }
+
+        /* Connector arrows */
+        .connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: -40px 0;
+            z-index: 0;
+        }
+
+        .connector-line {
+            width: 3px;
+            height: 80px;
+            background: linear-gradient(180deg, #3B82F6, #8B5CF6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .connector-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(180deg, transparent, white, transparent);
+            animation: flowDown 2s linear infinite;
+        }
+
+        @keyframes flowDown {
+            0% { top: -100%; }
+            100% { top: 200%; }
+        }
+
+        .connector-arrow {
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 16px solid #8B5CF6;
+            filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
+        }
+
+        /* Split connector */
+        .split-connector {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 800px;
+            height: 100px;
+            margin: -40px 0;
+            position: relative;
+        }
+
+        .split-line {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6, #06B6D4);
+            top: 50px;
+        }
+
+        .split-line.horizontal {
+            width: 60%;
+            left: 20%;
+        }
+
+        .split-line.vertical-left {
+            width: 3px;
+            height: 50px;
+            left: 20%;
+            top: 50px;
+        }
+
+        .split-line.vertical-right {
+            width: 3px;
+            height: 50px;
+            right: 20%;
+            top: 50px;
+        }
+
+        .split-line.vertical-center {
+            width: 3px;
+            height: 50px;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        /* Central Hub Node */
+        .hub-node {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hub-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
+            border: 2px solid rgba(139, 92, 246, 0.4);
+            min-width: 360px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .hub-card .node-icon {
+            margin: 0 auto 20px;
+            width: 80px;
+            height: 80px;
+            font-size: 36px;
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            border: none;
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
+            animation: hubPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes hubPulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.4); }
+            50% { box-shadow: 0 0 60px rgba(139, 92, 246, 0.6), 0 0 100px rgba(59, 130, 246, 0.3); }
+        }
+
+        /* Feature chips */
+        .feature-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: center;
+        }
+
+        .chip {
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            font-size: 12px;
+            color: #D1D5DB;
+            transition: all 0.3s ease;
+        }
+
+        .chip:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.4);
+            color: white;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 80px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(30, 30, 40, 0.6), rgba(20, 20, 30, 0.6));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            animation: fadeInUp 1s ease-out 2s backwards;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #9CA3AF;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Animated counter */
+        .stat-value span {
+            display: inline-block;
+            animation: countUp 2s ease-out forwards;
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 80px;
+            animation: fadeInUp 1s ease-out 2.5s backwards;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.5);
+        }
+
+        /* Particle Canvas */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .node-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .split-connector {
+                display: none;
+            }
+        }
+
+        /* Logo */
+        .logo {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 100;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        /* Back button */
+        .back-button {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Mouse trail effect */
+        .trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.8), transparent);
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: screen;
+            transition: transform 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particles"></canvas>
+
+    <!-- Logo -->
+    <a href="/" class="logo">
+        <img src="/logos/NavAIgate.svg" alt="NavAIgate">
+        <span class="logo-text">NavAIgate</span>
+    </a>
+
+    <!-- Back Button -->
+    <a href="/" class="back-button">← Back to Home</a>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="badge">✨ How It Works</div>
+            <h1 class="title">
+                The <span class="gradient-text">NavAIgate</span> Flow
+            </h1>
+            <p class="subtitle">
+                From chaos to clarity — watch how we transform your enterprise AI journey
+            </p>
+        </header>
+
+        <!-- Flowchart -->
+        <div class="flowchart">
+            <!-- Row 1: Starting Point -->
+            <div class="node-row single">
+                <div class="node hub-node" style="animation-delay: 0.3s;">
+                    <div class="node-card hub-card">
+                        <div class="node-icon">🎯</div>
+                        <div class="node-step">Start Here</div>
+                        <div class="node-title">Your AI Challenge</div>
+                        <div class="node-description">
+                            Enterprise problems requiring intelligent navigation, not just generic AI responses
+                        </div>
+                        <div class="feature-chips">
+                            <span class="chip">Decisions</span>
+                            <span class="chip">Workflows</span>
+                            <span class="chip">Strategy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connector 1 -->
+            <div class="connector">
+                <div class="connector-line"></div>
+                <div class="connector-arrow"></div>
+            </div>
+
+            <!-- Row 2: Three Pillars -->
+            <div class="node-row">
+                <div class="node" style="animation-delay: 0.6s;">
+                    <div class="node-card">
+                        <div class="node-icon blue">🔍</div>
+                        <div class="node-step">Step 1</div>
+                        <div class="node-title">Discovery</div>
+                        <div class="node-description">
+                            We analyze your current processes, pain points, and goals to map the perfect AI solution
+                        </div>
+                    </div>
+                </div>
+                <div class="node" style="animation-delay: 0.8s;">
+                    <div class="node-card">
+                        <div class="node-icon purple">⚡</div>
+                        <div class="node-step">Step 2</div>
+                        <div class="node-title">Design</div>
+                        <div class="node-description">
+                            Custom frameworks built specifically for your enterprise context and requirements
+                        </div>
+                    </div>
+                </div>
+                <div class="node" style="animation-delay: 1s;">
+                    <div class="node-card">
+                        <div class="node-icon teal">🚀</div>
+                        <div class="node-step">Step 3</div>
+                        <div class="node-title">Deploy</div>
+                        <div class="node-description">
+                            Seamless integration with your existing workflows and tools for immediate impact
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connector 2 -->
+            <div class="connector">
+                <div class="connector-line"></div>
+                <div class="connector-arrow"></div>
+            </div>
+
+            <!-- Row 3: Ente-prise Hub -->
+            <div class="node-row single">
+                <div class="node hub-node" style="animation-delay: 1.2s;">
+                    <div class="node-card hub-card">
+                        <div class="node-icon">🦆</div>
+                        <div class="node-step">The Platform</div>
+                        <div class="node-title">Ente-prise</div>
+                        <div class="node-description">
+                            Enterprise AI that navigates decisions, not just generates text. Named after Ente (German for duck) — representing migration and intelligent navigation.
+                        </div>
+                        <div class="feature-chips">
+                            <span class="chip">Decision Navigation</span>
+                            <span class="chip">Workflow Integration</span>
+                            <span class="chip">Framework Enforcement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connector 3 -->
+            <div class="connector">
+                <div class="connector-line"></div>
+                <div class="connector-arrow"></div>
+            </div>
+
+            <!-- Row 4: Outcomes -->
+            <div class="node-row">
+                <div class="node" style="animation-delay: 1.4s;">
+                    <div class="node-card">
+                        <div class="node-icon yellow">📧</div>
+                        <div class="node-step">Output</div>
+                        <div class="node-title">Email Proposals</div>
+                        <div class="node-description">
+                            AI-crafted professional communications that match your brand voice
+                        </div>
+                    </div>
+                </div>
+                <div class="node" style="animation-delay: 1.6s;">
+                    <div class="node-card">
+                        <div class="node-icon pink">📊</div>
+                        <div class="node-step">Output</div>
+                        <div class="node-title">Smart Workflows</div>
+                        <div class="node-description">
+                            Automated account management and consumption pattern analysis
+                        </div>
+                    </div>
+                </div>
+                <div class="node" style="animation-delay: 1.8s;">
+                    <div class="node-card">
+                        <div class="node-icon teal">🎯</div>
+                        <div class="node-step">Output</div>
+                        <div class="node-title">Decision Capture</div>
+                        <div class="node-description">
+                            Reusable templates that enforce your business frameworks
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-value"><span>25-40%</span></div>
+                <div class="stat-label">Prep Time Reduced</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value"><span>2-3hrs</span></div>
+                <div class="stat-label">Saved Weekly</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value"><span>50+</span></div>
+                <div class="stat-label">AI Implementations</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value"><span>500</span></div>
+                <div class="stat-label">Early Adopter Spots</div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <a href="/#enteprise" class="cta-button">
+                <span>Join the Waitlist</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Particle Animation Script -->
+    <script>
+        // Particle System
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 80;
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.hue = Math.random() * 60 + 220; // Blue to purple range
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${this.hue}, 70%, 60%, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        // Create particles
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        // Connect nearby particles
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        const opacity = (1 - distance / 150) * 0.2;
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(139, 92, 246, ${opacity})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            connectParticles();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Mouse trail effect
+        const trail = document.createElement('div');
+        trail.className = 'trail';
+        document.body.appendChild(trail);
+
+        let mouseX = 0, mouseY = 0;
+        let trailX = 0, trailY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateTrail() {
+            trailX += (mouseX - trailX) * 0.1;
+            trailY += (mouseY - trailY) * 0.1;
+
+            trail.style.left = trailX - 10 + 'px';
+            trail.style.top = trailY - 10 + 'px';
+
+            requestAnimationFrame(animateTrail);
+        }
+
+        animateTrail();
+
+        // Node hover sound effect (visual feedback)
+        document.querySelectorAll('.node-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.node, .stats-bar, .cta-section').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
