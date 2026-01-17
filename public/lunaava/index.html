@@ -1293,9 +1293,18 @@
                 schoolTypesTitle: "Secondary School Types Explained",
                 schoolTypesDesc: "What happens after Grundschule (Grade 4)",
                 gymnasiumTitle: "🎓 Gymnasium (Grade 5-13) → Abitur",
+                gymnasiumIntro: "<strong>The academic high school track.</strong> Leads to Abitur (university entrance qualification).",
+                gymnasiumList: ["Highest academic track - \"all doors open\"", "9 years after Grundschule (Grade 5-13)", "Required GPA: 2.33 average in German, Maths, HSU (or 3.33 for international families)", "Can go to: University, Fachhochschule, Apprenticeship - any path", "SIS offers Science Gymnasium (physics, chemistry, biology focus)", "Also offers IB (International Baccalaureate) as optional add-on"],
+                gymnasiumQuote: "\"If a child wants to be an astronaut or engineer, they must go to Gymnasium.\"",
                 realschuleTitle: "📘 Realschule (Grade 5-10) → MSA",
+                realschuleIntro: "<strong>Secondary school track.</strong> Leads to Mittlerer Schulabschluss (MSA).",
+                realschuleList: ["6 years after Grundschule (Grade 5-10)", "Required GPA: 2.66 average", "Can transition to FOS after, then to Fachhochschule", "\"Some doors closed\" - harder path to university but not impossible", "More practical orientation than Gymnasium"],
                 mittelschuleTitle: "📗 Mittelschule/Hauptschule (Grade 5-9)",
+                mittelschuleIntro: "<strong>Basic secondary school.</strong> Leads to Hauptschulabschluss or Quali.",
+                mittelschuleList: ["No specific GPA requirement to enter", "Grade 5-9, can extend to Grade 10 (M-Zweig)", "Prepares for apprenticeships (bakery, store, trade work)", "\"More doors closed\" - path to university is very long and difficult", "Covers fewer topics (e.g., 40 topics vs Gymnasium's 100)"],
                 fosbosTitle: "🔧 FOS/BOS (Grade 11-13)",
+                fosbosIntro: "<strong>Specialized secondary school.</strong> Path to Fachhochschule or even Abitur.",
+                fosbosList: ["FOS = Fachoberschule (after Realschule)", "BOS = Berufsoberschule (after apprenticeship)", "Can lead to Fachhochschulreife (Grade 12) or Abitur (Grade 13)", "Allows university study in certain subject areas"],
 
                 // Section 6: Grade Requirements
                 gradeReqTitle: "Grade Requirements for Transition",
@@ -1401,10 +1410,20 @@
                 montessoriTitle: "Montessori vs SIS Comparison",
                 montessoriDesc: "Comparing education approaches",
                 aspectCol: "Aspect",
+                sisCol: "SIS Ingolstadt",
+                montCol: "Montessori",
                 gradingRow: "Grading",
+                sisCellGrading: "No grades Grade 1, half of Grade 2. Then grades start.",
+                montCellGrading: "Comments only, no grades throughout",
                 structureRow: "Structure",
+                sisCellStructure: "Structured curriculum, timetable, lessons",
+                montCellStructure: "Self-directed learning, child-led",
                 englishRow: "English",
+                sisCellEnglish: "50/50 bilingual from day 1",
+                montCellEnglish: "Introduced Grade 3-4, minimal, non-native teachers",
                 uniPrepRow: "University prep",
+                sisCellUniPrep: "Direct path to Abitur with grades",
+                montCellUniPrep: "Comments don't translate to university requirements",
                 montessoriQuote: "\"I really like Montessori school, but in my understanding, it's not realistic. When you go to university, you need to learn how to have grades also. In Montessori, you always get comments, comments, comments. When you sit for actual exams and need good grades, there comes a problem.\"",
                 counterPointTitle: "🤔 Your Counter-Point to Consider",
                 counterPointText: "You asked: \"Do you think you need university in 20 years from now?\" - a valid question. The education landscape is changing with AI and technology. However, Asan's point: we have to plan based on today's system, not hypothetical futures.",
@@ -1414,6 +1433,7 @@
                 // Section 14: Bilingual
                 bilingualTitle: "Why Bilingual Education Matters",
                 bilingualDesc: "Principal's perspective on English",
+                bilingualList: ["<strong>Mobility:</strong> \"You plan to stay 10-20 years, but maybe after 2 years you need to move. A child must be prepared in English.\"", "<strong>Transition:</strong> If you move to US, UK, China, or anywhere - English school transition is smooth", "<strong>Subject vocabulary:</strong> \"Cycle\" is \"Kreis\" in German - kids need to understand both", "<strong>Even staying in Germany:</strong> English is increasingly important for careers"],
                 stateCompareTitle: "📊 State School English Comparison",
                 stateCompareText: "In Bavarian state schools, English is only taught in <strong>Grade 3-4 with 1-2 lessons per week</strong> - and often by non-native speakers. SIS has English immersion from kindergarten with native speakers in every class.",
                 bradleyQuote: "\"Our students in Grade 4 are already speaking very good English. When they go to Gymnasium - state or ours - they blow other kids away because they already have sound-based knowledge of grammar, speaking, and listening.\"",
@@ -1422,16 +1442,32 @@
                 principalTitle: "Key Insights from Principal Asan",
                 principalDesc: "Important points from your conversation",
                 parentTeacher: "👨‍👩‍👧 On Parent-Teacher Partnership",
+                parentTeacherQuote: "\"Teachers play a very important role, as do the parents. Both must be on the same page. If I have a problem with my car, I go to a mechanic - I don't tell him how to fix it, but I tell him what the problem is. Parents are welcome to share observations, but not tell teachers how to teach.\"",
+                parentTeacherNote: "He's changed the culture from \"helicopter parenting\" to collaborative partnership. Weekly summaries help parents stay informed without micromanaging.",
                 onLuna: "🌟 On Luna Specifically",
+                onLunaIntro: "He asked key questions:",
+                onLunaList: ["\"How good is she in German?\" → She only speaks German to you, excellent", "\"How does she feel in Vorschule?\" → Finishes first, bored"],
+                onLunaQuote: "\"If a child is not curious or having a tough time solving things, it kills curiosity. If things are too easy, they get bored. Challenge is very important. I think it's time for Grade 1.\"",
+                onLunaNote: "<strong>He remembers Luna</strong> from when she was previously at SIS kindergarten (short hair, penguin group). This personal knowledge helps.",
                 onChanges: "🔄 On Changes Since 2019",
+                onChangesIntro: "Principal Asan started in 2019. The previous principal was fired after 4 months. He's made significant changes:",
+                onChangesList: ["Restructured entire staff", "Native speakers in every class (German + English)", "Weekly summary system for parents", "Probeunterricht prep from Grade 3", "Added AI club, Duke of Edinburgh, cyberbullying prevention", "New playground equipment", "Better parent communication via Teams", "Increased enrollment despite economic challenges"],
+                onChangesNote: "<strong>Ms. Bradley confirmed:</strong> \"Parents who were here before said the kindergarten is 10 times better than it's ever been.\"",
                 onTech: "💻 On Technology & Future-Readiness",
+                onTechConcern: "Your concern: Schools are 20 years behind technology trends.",
+                onTechResponse: "His response:",
+                onTechList: ["\"We have 15 different nationalities teaching upstairs - diverse pedagogical backgrounds\"", "\"If we don't adjust, we're not gonna be here in 20 years\"", "\"AI is a big thing - we ran a whole year club on artificial intelligence\"", "\"We are flexible with how we run lessons, how we teach\"", "Students have tablets but usage is controlled - \"they need to learn boundaries\""],
+                onTechQuote: "\"Use of IT is very important, but students also need to learn boundaries. When we give tablets, it doesn't mean every lesson they use it.\"",
 
                 // Section 16: Action Items
                 actionTitle: "Action Items & Next Steps",
                 actionDesc: "What you need to do",
                 immediateActions: "📋 Immediate Actions",
+                immediateList: ["<strong>Visit Montessori school</strong> - compare your experience", "<strong>Review options:</strong> Use this document to go through options", "<strong>Return to SIS</strong> to see the primary school (you only saw kindergarten)", "<strong>Submit applications</strong> in February for both Luna (Grundschule) and Ava (Kindergarten)"],
                 questionsTitle: "❓ Questions to Consider",
+                questionsList: ["Is Luna ready now, or should we wait another year?", "How important is bilingual education vs. Montessori philosophy?", "Are we comfortable with private school fees long-term?", "How do we feel about the structured vs. self-directed approach?", "What's our backup if things don't work out?", "Should both kids go to the same school system?"],
                 contactTitle: "📧 Contact Information",
+                contactText: "<strong>SIS Ingolstadt:</strong> <a href=\"https://www.swissinternationalschool.de/unsere-schulen/sis-ingolstadt/\" target=\"_blank\">Website</a><br><strong>Principal:</strong> Mr. Asan (asked you to email for the presentation slides)<br><strong>Kindergarten Coordinator:</strong> Ms. Bradley",
                 finalThoughtTitle: "💪 Final Thought",
                 finalThoughtText: "Principal Asan's closing message: \"For me, it's important that you have all the information. Whatever I told you is actually happening. We have changed things. It's not about us - it's about her.\"",
 
@@ -1524,9 +1560,18 @@
                 schoolTypesTitle: "Weiterführende Schularten erklärt",
                 schoolTypesDesc: "Was nach der Grundschule (Klasse 4) passiert",
                 gymnasiumTitle: "🎓 Gymnasium (Klasse 5-13) → Abitur",
+                gymnasiumIntro: "<strong>Der akademische Bildungsweg.</strong> Führt zum Abitur (Hochschulzugangsberechtigung).",
+                gymnasiumList: ["Höchster akademischer Bildungsweg - \"alle Türen offen\"", "9 Jahre nach der Grundschule (Klasse 5-13)", "Notenschnitt: 2,33 in Deutsch, Mathe, HSU (oder 3,33 für internationale Familien)", "Führt zu: Universität, Fachhochschule, Ausbildung - alle Wege möglich", "SIS bietet Naturwissenschaftliches Gymnasium (Physik, Chemie, Biologie)", "Bietet auch IB (International Baccalaureate) als optionale Ergänzung"],
+                gymnasiumQuote: "\"Wenn ein Kind Astronaut oder Ingenieur werden will, muss es aufs Gymnasium.\"",
                 realschuleTitle: "📘 Realschule (Klasse 5-10) → MSA",
+                realschuleIntro: "<strong>Weiterführende Schule.</strong> Führt zum Mittleren Schulabschluss (MSA).",
+                realschuleList: ["6 Jahre nach der Grundschule (Klasse 5-10)", "Notenschnitt: 2,66", "Kann danach zur FOS wechseln, dann zur Fachhochschule", "\"Einige Türen geschlossen\" - schwieriger Weg zur Uni, aber nicht unmöglich", "Praktischere Orientierung als Gymnasium"],
                 mittelschuleTitle: "📗 Mittelschule/Hauptschule (Klasse 5-9)",
+                mittelschuleIntro: "<strong>Grundlegende weiterführende Schule.</strong> Führt zum Hauptschulabschluss oder Quali.",
+                mittelschuleList: ["Keine bestimmte Notenanforderung zum Eintritt", "Klasse 5-9, Verlängerung bis Klasse 10 möglich (M-Zweig)", "Bereitet auf Ausbildungen vor (Bäckerei, Einzelhandel, Handwerk)", "\"Mehr Türen geschlossen\" - Weg zur Uni sehr lang und schwierig", "Behandelt weniger Themen (z.B. 40 Themen vs. 100 am Gymnasium)"],
                 fosbosTitle: "🔧 FOS/BOS (Klasse 11-13)",
+                fosbosIntro: "<strong>Spezialisierte weiterführende Schule.</strong> Weg zur Fachhochschule oder sogar Abitur.",
+                fosbosList: ["FOS = Fachoberschule (nach Realschule)", "BOS = Berufsoberschule (nach Ausbildung)", "Kann zur Fachhochschulreife (Klasse 12) oder Abitur (Klasse 13) führen", "Ermöglicht Studium in bestimmten Fachbereichen"],
 
                 // Section 6: Grade Requirements
                 gradeReqTitle: "Notenanforderungen für den Übertritt",
@@ -1632,10 +1677,20 @@
                 montessoriTitle: "Montessori vs SIS Vergleich",
                 montessoriDesc: "Bildungsansätze im Vergleich",
                 aspectCol: "Aspekt",
+                sisCol: "SIS Ingolstadt",
+                montCol: "Montessori",
                 gradingRow: "Benotung",
+                sisCellGrading: "Keine Noten in Klasse 1, halbe Klasse 2. Dann beginnen Noten.",
+                montCellGrading: "Nur Kommentare, keine Noten durchgehend",
                 structureRow: "Struktur",
+                sisCellStructure: "Strukturierter Lehrplan, Stundenplan, Unterricht",
+                montCellStructure: "Selbstgesteuertes Lernen, kindgeführt",
                 englishRow: "Englisch",
+                sisCellEnglish: "50/50 zweisprachig von Tag 1",
+                montCellEnglish: "Einführung Klasse 3-4, minimal, nicht-muttersprachliche Lehrer",
                 uniPrepRow: "Uni-Vorbereitung",
+                sisCellUniPrep: "Direkter Weg zum Abitur mit Noten",
+                montCellUniPrep: "Kommentare entsprechen nicht den Uni-Anforderungen",
                 montessoriQuote: "\"Ich mag Montessori-Schulen sehr, aber meiner Meinung nach ist es nicht realistisch. An der Universität muss man lernen, mit Noten umzugehen. Bei Montessori gibt es immer nur Kommentare. Wenn man dann echte Prüfungen ablegen und gute Noten brauchen muss, gibt es ein Problem.\"",
                 counterPointTitle: "🤔 Ihr Gegenargument",
                 counterPointText: "Sie fragten: \"Glauben Sie, dass man in 20 Jahren noch eine Universität braucht?\" - eine berechtigte Frage. Die Bildungslandschaft verändert sich mit KI und Technologie. Aber Asans Punkt: Wir müssen nach dem heutigen System planen, nicht nach hypothetischen Zukünften.",
@@ -1645,6 +1700,7 @@
                 // Section 14: Bilingual
                 bilingualTitle: "Warum zweisprachige Bildung wichtig ist",
                 bilingualDesc: "Die Perspektive des Schulleiters zu Englisch",
+                bilingualList: ["<strong>Mobilität:</strong> \"Sie planen 10-20 Jahre zu bleiben, aber vielleicht müssen Sie nach 2 Jahren umziehen. Ein Kind muss auf Englisch vorbereitet sein.\"", "<strong>Übergang:</strong> Bei Umzug in die USA, UK, China oder anderswo - Englischer Schulübergang ist reibungslos", "<strong>Fachvokabular:</strong> \"Cycle\" ist \"Kreis\" auf Deutsch - Kinder müssen beides verstehen", "<strong>Auch beim Verbleib in Deutschland:</strong> Englisch wird immer wichtiger für Karrieren"],
                 stateCompareTitle: "📊 Vergleich mit staatlichen Schulen",
                 stateCompareText: "An bayerischen staatlichen Schulen wird Englisch nur in <strong>Klasse 3-4 mit 1-2 Stunden pro Woche</strong> unterrichtet - oft von Nicht-Muttersprachlern. SIS bietet Englisch-Immersion ab dem Kindergarten mit Muttersprachlern in jeder Klasse.",
                 bradleyQuote: "\"Unsere Schüler in Klasse 4 sprechen bereits sehr gutes Englisch. Wenn sie zum Gymnasium gehen - staatlich oder bei uns - übertreffen sie andere Kinder, weil sie bereits fundierte Kenntnisse in Grammatik, Sprechen und Hören haben.\"",
@@ -1653,16 +1709,32 @@
                 principalTitle: "Wichtige Erkenntnisse von Schulleiter Asan",
                 principalDesc: "Wichtige Punkte aus Ihrem Gespräch",
                 parentTeacher: "👨‍👩‍👧 Zur Eltern-Lehrer-Partnerschaft",
+                parentTeacherQuote: "\"Lehrer spielen eine sehr wichtige Rolle, ebenso wie die Eltern. Beide müssen an einem Strang ziehen. Wenn ich ein Problem mit meinem Auto habe, gehe ich zum Mechaniker - ich sage ihm nicht, wie er es reparieren soll, aber ich sage ihm, was das Problem ist. Eltern sind willkommen, Beobachtungen zu teilen, aber nicht den Lehrern zu sagen, wie sie unterrichten sollen.\"",
+                parentTeacherNote: "Er hat die Kultur von \"Helikopter-Elternschaft\" zu kooperativer Partnerschaft verändert. Wöchentliche Zusammenfassungen helfen Eltern, informiert zu bleiben, ohne zu mikromanagen.",
                 onLuna: "🌟 Speziell zu Luna",
+                onLunaIntro: "Er stellte Schlüsselfragen:",
+                onLunaList: ["\"Wie gut ist sie in Deutsch?\" → Sie spricht nur Deutsch mit Ihnen, ausgezeichnet", "\"Wie fühlt sie sich in der Vorschule?\" → Ist immer Erste fertig, langweilt sich"],
+                onLunaQuote: "\"Wenn ein Kind nicht neugierig ist oder Schwierigkeiten beim Lösen von Dingen hat, tötet das die Neugier. Wenn Dinge zu einfach sind, langweilen sie sich. Herausforderung ist sehr wichtig. Ich denke, es ist Zeit für Klasse 1.\"",
+                onLunaNote: "<strong>Er erinnert sich an Luna</strong> von als sie früher im SIS-Kindergarten war (kurze Haare, Pinguingruppe). Dieses persönliche Wissen hilft.",
                 onChanges: "🔄 Zu den Änderungen seit 2019",
+                onChangesIntro: "Schulleiter Asan begann 2019. Der vorherige Schulleiter wurde nach 4 Monaten entlassen. Er hat bedeutende Änderungen vorgenommen:",
+                onChangesList: ["Gesamtes Personal umstrukturiert", "Muttersprachler in jeder Klasse (Deutsch + Englisch)", "Wöchentliches Zusammenfassungssystem für Eltern", "Probeunterricht-Vorbereitung ab Klasse 3", "KI-AG, Duke of Edinburgh, Cybermobbing-Prävention hinzugefügt", "Neue Spielplatzgeräte", "Bessere Elternkommunikation via Teams", "Anmeldungen trotz wirtschaftlicher Herausforderungen gesteigert"],
+                onChangesNote: "<strong>Frau Bradley bestätigte:</strong> \"Eltern, die vorher hier waren, sagten, der Kindergarten ist 10-mal besser als je zuvor.\"",
                 onTech: "💻 Zu Technologie & Zukunftsfähigkeit",
+                onTechConcern: "Ihre Sorge: Schulen sind 20 Jahre hinter Technologie-Trends.",
+                onTechResponse: "Seine Antwort:",
+                onTechList: ["\"Wir haben 15 verschiedene Nationalitäten, die oben unterrichten - vielfältige pädagogische Hintergründe\"", "\"Wenn wir uns nicht anpassen, werden wir in 20 Jahren nicht mehr hier sein\"", "\"KI ist eine große Sache - wir haben ein ganzes Jahr eine AG zu künstlicher Intelligenz angeboten\"", "\"Wir sind flexibel, wie wir Unterricht gestalten, wie wir lehren\"", "Schüler haben Tablets, aber die Nutzung ist kontrolliert - \"sie müssen Grenzen lernen\""],
+                onTechQuote: "\"IT-Nutzung ist sehr wichtig, aber Schüler müssen auch Grenzen lernen. Wenn wir Tablets geben, heißt das nicht, dass sie jede Stunde benutzt werden.\"",
 
                 // Section 16: Action Items
                 actionTitle: "Handlungspunkte & Nächste Schritte",
                 actionDesc: "Was zu tun ist",
                 immediateActions: "📋 Sofortige Maßnahmen",
+                immediateList: ["<strong>Montessori-Schule besuchen</strong> - Ihre Erfahrungen vergleichen", "<strong>Optionen durchgehen:</strong> Dieses Dokument zur Durchsicht der Optionen nutzen", "<strong>Zu SIS zurückkehren</strong> um die Grundschule zu sehen (Sie haben nur den Kindergarten gesehen)", "<strong>Anmeldungen einreichen</strong> im Februar für Luna (Grundschule) und Ava (Kindergarten)"],
                 questionsTitle: "❓ Fragen zum Überlegen",
+                questionsList: ["Ist Luna jetzt bereit, oder sollten wir noch ein Jahr warten?", "Wie wichtig ist zweisprachige Bildung vs. Montessori-Philosophie?", "Sind wir langfristig mit Privatschulgebühren einverstanden?", "Wie stehen wir zum strukturierten vs. selbstgesteuerten Ansatz?", "Was ist unser Backup, wenn es nicht klappt?", "Sollten beide Kinder ins gleiche Schulsystem?"],
                 contactTitle: "📧 Kontaktinformationen",
+                contactText: "<strong>SIS Ingolstadt:</strong> <a href=\"https://www.swissinternationalschool.de/unsere-schulen/sis-ingolstadt/\" target=\"_blank\">Webseite</a><br><strong>Schulleiter:</strong> Herr Asan (bat Sie, per E-Mail nach den Präsentationsfolien zu fragen)<br><strong>Kindergarten-Koordinatorin:</strong> Frau Bradley",
                 finalThoughtTitle: "💪 Abschließender Gedanke",
                 finalThoughtText: "Schulleiter Asans Schlussbotschaft: \"Für mich ist wichtig, dass Sie alle Informationen haben. Was ich Ihnen erzählt habe, passiert tatsächlich. Wir haben Dinge verändert. Es geht nicht um uns - es geht um sie.\"",
 
@@ -1794,6 +1866,24 @@
             schoolAccordions[1].textContent = t.realschuleTitle;
             schoolAccordions[2].textContent = t.mittelschuleTitle;
             schoolAccordions[3].textContent = t.fosbosTitle;
+            const schoolAccordionContents = sections[4].querySelectorAll('.accordion-content');
+            // Gymnasium
+            schoolAccordionContents[0].querySelector('p').innerHTML = t.gymnasiumIntro;
+            const gymItems = schoolAccordionContents[0].querySelectorAll('.key-points li');
+            t.gymnasiumList.forEach((item, i) => { if (gymItems[i]) gymItems[i].textContent = item; });
+            schoolAccordionContents[0].querySelector('.quote').childNodes[0].textContent = t.gymnasiumQuote;
+            // Realschule
+            schoolAccordionContents[1].querySelector('p').innerHTML = t.realschuleIntro;
+            const realItems = schoolAccordionContents[1].querySelectorAll('.key-points li');
+            t.realschuleList.forEach((item, i) => { if (realItems[i]) realItems[i].textContent = item; });
+            // Mittelschule
+            schoolAccordionContents[2].querySelector('p').innerHTML = t.mittelschuleIntro;
+            const mittelItems = schoolAccordionContents[2].querySelectorAll('.key-points li');
+            t.mittelschuleList.forEach((item, i) => { if (mittelItems[i]) mittelItems[i].textContent = item; });
+            // FOS/BOS
+            schoolAccordionContents[3].querySelector('p').innerHTML = t.fosbosIntro;
+            const fosbosItems = schoolAccordionContents[3].querySelectorAll('.key-points li');
+            t.fosbosList.forEach((item, i) => { if (fosbosItems[i]) fosbosItems[i].textContent = item; });
 
             // Section 6: Grade Requirements (sections[5])
             sections[5].querySelector('h2').textContent = t.gradeReqTitle;
@@ -1936,11 +2026,26 @@
             sections[12].querySelector('.section-desc').textContent = t.montessoriDesc;
             const montTableHeaders = sections[12].querySelectorAll('.grade-table th');
             montTableHeaders[0].textContent = t.aspectCol;
-            const montRows = sections[12].querySelectorAll('.grade-table tbody td strong');
-            montRows[0].textContent = t.gradingRow;
-            montRows[1].textContent = t.structureRow;
-            montRows[2].textContent = t.englishRow;
-            montRows[3].textContent = t.uniPrepRow;
+            montTableHeaders[1].textContent = t.sisCol;
+            montTableHeaders[2].textContent = t.montCol;
+            const montTableRows = sections[12].querySelectorAll('.grade-table tbody tr');
+            // Row 1: Grading
+            montTableRows[0].querySelectorAll('td')[0].innerHTML = '<strong>' + t.gradingRow + '</strong>';
+            montTableRows[0].querySelectorAll('td')[1].textContent = t.sisCellGrading;
+            montTableRows[0].querySelectorAll('td')[2].textContent = t.montCellGrading;
+            // Row 2: Structure
+            montTableRows[1].querySelectorAll('td')[0].innerHTML = '<strong>' + t.structureRow + '</strong>';
+            montTableRows[1].querySelectorAll('td')[1].textContent = t.sisCellStructure;
+            montTableRows[1].querySelectorAll('td')[2].textContent = t.montCellStructure;
+            // Row 3: English
+            montTableRows[2].querySelectorAll('td')[0].innerHTML = '<strong>' + t.englishRow + '</strong>';
+            montTableRows[2].querySelectorAll('td')[1].textContent = t.sisCellEnglish;
+            montTableRows[2].querySelectorAll('td')[2].textContent = t.montCellEnglish;
+            // Row 4: University prep
+            montTableRows[3].querySelectorAll('td')[0].innerHTML = '<strong>' + t.uniPrepRow + '</strong>';
+            montTableRows[3].querySelectorAll('td')[1].textContent = t.sisCellUniPrep;
+            montTableRows[3].querySelectorAll('td')[2].textContent = t.montCellUniPrep;
+            sections[12].querySelector('.quote').childNodes[0].textContent = t.montessoriQuote;
             const montInfoBoxes = sections[12].querySelectorAll('.info-box');
             montInfoBoxes[0].querySelector('.info-box-title').innerHTML = t.counterPointTitle;
             montInfoBoxes[0].querySelector('p').innerHTML = t.counterPointText;
@@ -1950,9 +2055,12 @@
             // Section 14: Bilingual (sections[13])
             sections[13].querySelector('h2').textContent = t.bilingualTitle;
             sections[13].querySelector('.section-desc').textContent = t.bilingualDesc;
+            const bilingualListItems = sections[13].querySelector('.card .key-points').querySelectorAll('li');
+            t.bilingualList.forEach((item, i) => { if (bilingualListItems[i]) bilingualListItems[i].innerHTML = item; });
             const bilingualInfoBox = sections[13].querySelector('.info-box');
             bilingualInfoBox.querySelector('.info-box-title').innerHTML = t.stateCompareTitle;
             bilingualInfoBox.querySelector('p').innerHTML = t.stateCompareText;
+            sections[13].querySelector('.quote').childNodes[0].textContent = t.bradleyQuote;
 
             // Section 15: Principal Notes (sections[14])
             sections[14].querySelector('h2').textContent = t.principalTitle;
@@ -1962,6 +2070,28 @@
             principalAccordions[1].textContent = t.onLuna;
             principalAccordions[2].textContent = t.onChanges;
             principalAccordions[3].textContent = t.onTech;
+            const principalAccordionContents = sections[14].querySelectorAll('.accordion-content');
+            // Parent-Teacher
+            principalAccordionContents[0].querySelector('.quote').childNodes[0].textContent = t.parentTeacherQuote;
+            principalAccordionContents[0].querySelector('p').textContent = t.parentTeacherNote;
+            // On Luna
+            principalAccordionContents[1].querySelector('p').textContent = t.onLunaIntro;
+            const onLunaItems = principalAccordionContents[1].querySelectorAll('.key-points li');
+            t.onLunaList.forEach((item, i) => { if (onLunaItems[i]) onLunaItems[i].textContent = item; });
+            principalAccordionContents[1].querySelector('.quote').childNodes[0].textContent = t.onLunaQuote;
+            principalAccordionContents[1].querySelectorAll('p')[2].innerHTML = t.onLunaNote;
+            // On Changes
+            principalAccordionContents[2].querySelector('p').textContent = t.onChangesIntro;
+            const onChangesItems = principalAccordionContents[2].querySelectorAll('.key-points li');
+            t.onChangesList.forEach((item, i) => { if (onChangesItems[i]) onChangesItems[i].textContent = item; });
+            principalAccordionContents[2].querySelectorAll('p')[1].innerHTML = t.onChangesNote;
+            // On Tech
+            const onTechPs = principalAccordionContents[3].querySelectorAll('p');
+            onTechPs[0].textContent = t.onTechConcern;
+            onTechPs[1].textContent = t.onTechResponse;
+            const onTechItems = principalAccordionContents[3].querySelectorAll('.key-points li');
+            t.onTechList.forEach((item, i) => { if (onTechItems[i]) onTechItems[i].textContent = item; });
+            principalAccordionContents[3].querySelector('.quote').childNodes[0].textContent = t.onTechQuote;
 
             // Section 16: Action Items (sections[15])
             sections[15].querySelector('h2').textContent = t.actionTitle;
@@ -1969,8 +2099,14 @@
             const actionCards = sections[15].querySelectorAll('.card-title');
             actionCards[0].innerHTML = t.immediateActions;
             actionCards[1].innerHTML = t.questionsTitle;
-            const actionDecisionBox = sections[15].querySelector('.decision-box h4');
-            actionDecisionBox.innerHTML = t.contactTitle;
+            const actionCardContents = sections[15].querySelectorAll('.card');
+            const immediateItems = actionCardContents[0].querySelectorAll('.key-points li');
+            t.immediateList.forEach((item, i) => { if (immediateItems[i]) immediateItems[i].innerHTML = item; });
+            const questionItems = actionCardContents[1].querySelectorAll('.key-points li');
+            t.questionsList.forEach((item, i) => { if (questionItems[i]) questionItems[i].textContent = item; });
+            const actionDecisionBox = sections[15].querySelector('.decision-box');
+            actionDecisionBox.querySelector('h4').innerHTML = t.contactTitle;
+            actionDecisionBox.querySelector('p').innerHTML = t.contactText;
             const actionInfoBox = sections[15].querySelector('.info-box');
             actionInfoBox.querySelector('.info-box-title').innerHTML = t.finalThoughtTitle;
             actionInfoBox.querySelector('p').innerHTML = t.finalThoughtText;
