@@ -318,8 +318,11 @@
     <div class="container">
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <h1>🎓 Education Planning</h1>
-                <p class="subtitle">Luna & Ava · January 2026</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <h1 data-i18n="title">🎓 Education Planning</h1>
+                    <button id="lang-toggle" onclick="toggleLanguage()" style="background: var(--accent-blue); color: white; border: none; padding: 6px 12px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.8rem;">DE</button>
+                </div>
+                <p class="subtitle">Luna & Ava · Januar 2026</p>
             </div>
 
             <div class="nav-section">
@@ -1192,6 +1195,315 @@
     </div>
 
     <script>
+        // Translation system
+        let currentLang = 'en';
+
+        const translations = {
+            en: {
+                title: "🎓 Education Planning",
+                navOverview: "Overview",
+                navKids: "The Kids",
+                navDecisions: "Key Decisions",
+                navTimeline: "Timeline",
+                navBavarianSystem: "Bavarian System",
+                navSystemOverview: "System Overview",
+                navSchoolTypes: "School Types",
+                navGradeReq: "Grade Requirements",
+                navPathways: "Education Pathways",
+                navSIS: "SIS Ingolstadt",
+                navSISOverview: "School Overview",
+                navKindergarten: "Kindergarten",
+                navPrimary: "Primary School",
+                navGymnasium: "Gymnasium",
+                navDaily: "Daily Schedule",
+                navComparison: "Comparison",
+                navMontessori: "Montessori vs SIS",
+                navBilingual: "Bilingual Education",
+                navInsights: "Key Insights",
+                navPrincipal: "Principal's Insights",
+                navActions: "Action Items",
+
+                // Section: The Kids
+                sectionKids: "The Kids",
+                sectionKidsDesc: "Current situation and what we're planning",
+                lunaMeta: "Born 14 October 2020 · Age 5 · \"Corridor child\" (Kann-Kind)",
+                lunaTag1: "Currently in Kindergarten (Vorschule)",
+                lunaTag2: "German fluent",
+                lunaTag3: "English exposure",
+                lunaTag4: "Ready for more challenge",
+                lunaBoxTitle: "🔮 Luna's Situation",
+                lunaBoxText: "As a Kann-Kind (birthday after 30 Sept), Luna <strong>doesn't have to start school this year</strong> - it would be your choice. She's finishing first at Vorschule and getting bored. Principal Asan noted she may be ready for Grade 1 based on her performance and curiosity level.",
+                avaMeta: "Turning 3 in February 2026",
+                avaTag1: "Ready for Kindergarten",
+                avaTag2: "Nappy-free already",
+                avaTag3: "Can start Sept 2026",
+                avaBoxTitle: "📋 Ava's Situation",
+                avaBoxText: "Ava can start kindergarten in September 2026 once she turns 3. If Luna enrolls at SIS for Grundschule, <strong>Ava gets sibling priority</strong> for kindergarten placement. SIS has 75 kindergarten places - currently full but spots open up.",
+
+                // Section: Key Decisions
+                sectionDecisions: "Key Decisions",
+                sectionDecisionsDesc: "The main choices you need to make",
+                decision1Title: "🎯 Decision 1: Luna's School Start",
+                decision1Text: "<strong>Option A:</strong> Start Luna in Grade 1 at SIS Ingolstadt this September (2026)<br><strong>Option B:</strong> Wait another year, keep in Vorschule until September 2027<br><strong>Option C:</strong> Start at Montessori instead",
+                decision1Note: "<em>Principal Asan's view: If she's bored and finishing first, the curiosity may be killed by waiting. Challenge is important for development.</em>",
+                decision2Title: "🎯 Decision 2: School Type Philosophy",
+                decision2Text: "<strong>SIS (Bilingual Private):</strong> Structured curriculum, German + English immersion, small classes, prepares for Probeunterricht, full-day school<br><strong>Montessori:</strong> Self-directed learning, no grades until later, comment-based feedback, more freedom",
+                decision3Title: "🎯 Decision 3: Ava's Kindergarten",
+                decision3Text: "If Luna joins SIS → Ava gets sibling priority for September 2026 kindergarten start<br>Current kindergarten: Only 1-2 hours Vorschule per week vs SIS: Full-day dedicated Vorschule class",
+
+                // Section: Timeline
+                sectionTimeline: "Important Timeline",
+                sectionTimelineDesc: "Key dates and deadlines",
+                timeline1Title: "Ava turns 3",
+                timeline1Desc: "Eligible for kindergarten enrollment",
+                timeline2Title: "Application deadline",
+                timeline2Desc: "Submit applications for both Luna (Grundschule) and Ava (Kindergarten) to SIS",
+                timeline3Title: "Probeunterricht exams begin",
+                timeline3Desc: "If going to state Gymnasium/Realschule, 3 days of testing",
+                timeline4Title: "School year starts",
+                timeline4Desc: "Luna Grade 1 (if decided), Ava Kindergarten start",
+
+                // Section: System Overview
+                sectionSystem: "Bavarian Education System Overview",
+                sectionSystemDesc: "The key things you need to know",
+                criticalPointTitle: "🔑 Critical Point",
+                criticalPointText: "In Bavaria, you make a <strong>major decision at the end of Grade 4</strong> about which secondary school path. However, paths can be changed later - it's not a dead end, just requires more effort.",
+                stat1Label: "Gymnasium is now 9 years<br>(Changed from G8 in 2019)",
+                stat2Label: "German grading scale<br>(1 = best, 6 = worst)",
+                stat3Label: "GPA needed for Gymnasium<br>(3.33 for international families)",
+                whyBavaria: "📚 Why Bavaria is different",
+                whyBavariaText: "The Bavarian school system is recognized as one of the most rigorous in Germany. Key differences:",
+                whyBavaria1: "More challenging curriculum than other German states",
+                whyBavaria2: "Changed from G8 (12 years) to G9 (13 years) because students couldn't cover all material",
+                whyBavaria3: "If you move TO Bavaria from another state, might need entrance tests",
+                whyBavaria4: "If you move FROM Bavaria to another state, generally no problem",
+                whyBavaria5: "Each German state has different education rules - what applies in Berlin doesn't apply here",
+
+                // Footer
+                footerCompiled: "Compiled from school visit recordings · January 2026",
+                footerFor: "For Daniel · Luna & Ava's Education Planning",
+
+                // More sections...
+                langButton: "DE"
+            },
+            de: {
+                title: "🎓 Bildungsplanung",
+                navOverview: "Überblick",
+                navKids: "Die Kinder",
+                navDecisions: "Entscheidungen",
+                navTimeline: "Zeitplan",
+                navBavarianSystem: "Bayerisches System",
+                navSystemOverview: "Systemüberblick",
+                navSchoolTypes: "Schularten",
+                navGradeReq: "Notenanforderungen",
+                navPathways: "Bildungswege",
+                navSIS: "SIS Ingolstadt",
+                navSISOverview: "Schulüberblick",
+                navKindergarten: "Kindergarten",
+                navPrimary: "Grundschule",
+                navGymnasium: "Gymnasium",
+                navDaily: "Tagesablauf",
+                navComparison: "Vergleich",
+                navMontessori: "Montessori vs SIS",
+                navBilingual: "Zweisprachige Bildung",
+                navInsights: "Wichtige Erkenntnisse",
+                navPrincipal: "Einblicke des Schulleiters",
+                navActions: "Nächste Schritte",
+
+                // Section: The Kids
+                sectionKids: "Die Kinder",
+                sectionKidsDesc: "Aktuelle Situation und unsere Planung",
+                lunaMeta: "Geboren 14. Oktober 2020 · 5 Jahre alt · \"Kann-Kind\"",
+                lunaTag1: "Derzeit im Kindergarten (Vorschule)",
+                lunaTag2: "Deutsch fließend",
+                lunaTag3: "Englisch-Kontakt",
+                lunaTag4: "Bereit für mehr Herausforderung",
+                lunaBoxTitle: "🔮 Lunas Situation",
+                lunaBoxText: "Als Kann-Kind (Geburtstag nach dem 30. Sept.) <strong>muss Luna dieses Jahr nicht eingeschult werden</strong> - es wäre unsere Entscheidung. Sie ist immer als Erste fertig in der Vorschule und langweilt sich. Schulleiter Asan meinte, sie könnte für die 1. Klasse bereit sein.",
+                avaMeta: "Wird 3 im Februar 2026",
+                avaTag1: "Bereit für den Kindergarten",
+                avaTag2: "Schon windelfrei",
+                avaTag3: "Kann Sept. 2026 starten",
+                avaBoxTitle: "📋 Avas Situation",
+                avaBoxText: "Ava kann im September 2026 mit dem Kindergarten beginnen, sobald sie 3 wird. Wenn Luna sich bei SIS für die Grundschule anmeldet, <strong>bekommt Ava Geschwisterpriorität</strong> für den Kindergartenplatz. SIS hat 75 Kindergartenplätze - derzeit voll, aber Plätze werden frei.",
+
+                // Section: Key Decisions
+                sectionDecisions: "Wichtige Entscheidungen",
+                sectionDecisionsDesc: "Die wichtigsten Entscheidungen",
+                decision1Title: "🎯 Entscheidung 1: Lunas Schulbeginn",
+                decision1Text: "<strong>Option A:</strong> Luna in Klasse 1 bei SIS Ingolstadt im September (2026) einschulen<br><strong>Option B:</strong> Ein Jahr warten, in der Vorschule bis September 2027 bleiben<br><strong>Option C:</strong> Bei Montessori anfangen",
+                decision1Note: "<em>Schulleiter Asans Meinung: Wenn sie sich langweilt und immer Erste ist, könnte die Neugier durch Warten getötet werden. Herausforderung ist wichtig für die Entwicklung.</em>",
+                decision2Title: "🎯 Entscheidung 2: Schulphilosophie",
+                decision2Text: "<strong>SIS (Zweisprachig Privat):</strong> Strukturierter Lehrplan, Deutsch + Englisch Immersion, kleine Klassen, bereitet auf Probeunterricht vor, Ganztagsschule<br><strong>Montessori:</strong> Selbstgesteuertes Lernen, keine Noten bis später, Feedback durch Kommentare, mehr Freiheit",
+                decision3Title: "🎯 Entscheidung 3: Avas Kindergarten",
+                decision3Text: "Wenn Luna zu SIS geht → Ava bekommt Geschwisterpriorität für September 2026 Kindergartenstart<br>Aktueller Kindergarten: Nur 1-2 Stunden Vorschule pro Woche vs SIS: Ganztags-Vorschulklasse",
+
+                // Section: Timeline
+                sectionTimeline: "Wichtiger Zeitplan",
+                sectionTimelineDesc: "Wichtige Termine und Fristen",
+                timeline1Title: "Ava wird 3",
+                timeline1Desc: "Berechtigt für Kindergartenanmeldung",
+                timeline2Title: "Anmeldefrist",
+                timeline2Desc: "Anmeldungen für Luna (Grundschule) und Ava (Kindergarten) bei SIS einreichen",
+                timeline3Title: "Probeunterricht beginnt",
+                timeline3Desc: "Bei staatlichem Gymnasium/Realschule, 3 Tage Prüfung",
+                timeline4Title: "Schuljahr beginnt",
+                timeline4Desc: "Luna Klasse 1 (falls entschieden), Ava Kindergartenstart",
+
+                // Section: System Overview
+                sectionSystem: "Überblick Bayerisches Bildungssystem",
+                sectionSystemDesc: "Das Wichtigste, was man wissen muss",
+                criticalPointTitle: "🔑 Kritischer Punkt",
+                criticalPointText: "In Bayern trifft man <strong>eine wichtige Entscheidung am Ende der 4. Klasse</strong> über den weiterführenden Schulweg. Wege können jedoch später geändert werden - es ist keine Sackgasse, erfordert nur mehr Aufwand.",
+                stat1Label: "Gymnasium ist jetzt 9 Jahre<br>(Geändert von G8 in 2019)",
+                stat2Label: "Deutsche Notenskala<br>(1 = beste, 6 = schlechteste)",
+                stat3Label: "Notenschnitt für Gymnasium<br>(3,33 für internationale Familien)",
+                whyBavaria: "📚 Warum Bayern anders ist",
+                whyBavariaText: "Das bayerische Schulsystem gilt als eines der anspruchsvollsten in Deutschland. Hauptunterschiede:",
+                whyBavaria1: "Anspruchsvollerer Lehrplan als andere Bundesländer",
+                whyBavaria2: "Von G8 (12 Jahre) auf G9 (13 Jahre) geändert, weil Schüler nicht alles schaffen konnten",
+                whyBavaria3: "Bei Umzug NACH Bayern aus einem anderen Bundesland evtl. Aufnahmeprüfungen nötig",
+                whyBavaria4: "Bei Umzug AUS Bayern in ein anderes Bundesland generell kein Problem",
+                whyBavaria5: "Jedes Bundesland hat andere Bildungsregeln - was in Berlin gilt, gilt hier nicht",
+
+                // Footer
+                footerCompiled: "Zusammengestellt aus Schulbesuchsaufnahmen · Januar 2026",
+                footerFor: "Für Daniel · Luna & Avas Bildungsplanung",
+
+                langButton: "EN"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'de' : 'en';
+            document.getElementById('lang-toggle').textContent = translations[currentLang].langButton;
+            document.documentElement.lang = currentLang;
+            applyTranslations();
+            localStorage.setItem('lunaava-lang', currentLang);
+        }
+
+        function applyTranslations() {
+            const t = translations[currentLang];
+
+            // Title
+            document.querySelector('[data-i18n="title"]').innerHTML = t.title;
+
+            // Navigation
+            const navSections = document.querySelectorAll('.nav-section-title');
+            navSections[0].textContent = t.navOverview;
+            navSections[1].textContent = t.navBavarianSystem;
+            navSections[2].textContent = t.navSIS;
+            navSections[3].textContent = t.navComparison;
+            navSections[4].textContent = t.navInsights;
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks[0].innerHTML = '<span class="icon">👧</span>' + t.navKids;
+            navLinks[1].innerHTML = '<span class="icon">⚡</span>' + t.navDecisions;
+            navLinks[2].innerHTML = '<span class="icon">📅</span>' + t.navTimeline;
+            navLinks[3].innerHTML = '<span class="icon">🏫</span>' + t.navSystemOverview;
+            navLinks[4].innerHTML = '<span class="icon">📊</span>' + t.navSchoolTypes;
+            navLinks[5].innerHTML = '<span class="icon">📝</span>' + t.navGradeReq;
+            navLinks[6].innerHTML = '<span class="icon">🛤️</span>' + t.navPathways;
+            navLinks[7].innerHTML = '<span class="icon">🏠</span>' + t.navSISOverview;
+            navLinks[8].innerHTML = '<span class="icon">🧒</span>' + t.navKindergarten + ' <span class="child-badge ava">Ava</span>';
+            navLinks[9].innerHTML = '<span class="icon">✏️</span>' + t.navPrimary + ' <span class="child-badge luna">Luna</span>';
+            navLinks[10].innerHTML = '<span class="icon">🎒</span>' + t.navGymnasium;
+            navLinks[11].innerHTML = '<span class="icon">🕐</span>' + t.navDaily;
+            navLinks[12].innerHTML = '<span class="icon">🌱</span>' + t.navMontessori;
+            navLinks[13].innerHTML = '<span class="icon">🌍</span>' + t.navBilingual;
+            navLinks[14].innerHTML = '<span class="icon">💬</span>' + t.navPrincipal;
+            navLinks[15].innerHTML = '<span class="icon">✅</span>' + t.navActions;
+
+            // Section: The Kids
+            const sections = document.querySelectorAll('.section');
+            sections[0].querySelector('h2').textContent = t.sectionKids;
+            sections[0].querySelector('.section-desc').textContent = t.sectionKidsDesc;
+
+            const childProfiles = document.querySelectorAll('.child-profile');
+            childProfiles[0].querySelector('.child-meta').textContent = t.lunaMeta;
+            const lunaTags = childProfiles[0].querySelectorAll('.child-tag');
+            lunaTags[0].textContent = t.lunaTag1;
+            lunaTags[1].textContent = t.lunaTag2;
+            lunaTags[2].textContent = t.lunaTag3;
+            lunaTags[3].textContent = t.lunaTag4;
+
+            childProfiles[1].querySelector('.child-meta').textContent = t.avaMeta;
+            const avaTags = childProfiles[1].querySelectorAll('.child-tag');
+            avaTags[0].textContent = t.avaTag1;
+            avaTags[1].textContent = t.avaTag2;
+            avaTags[2].textContent = t.avaTag3;
+
+            const infoBoxes = sections[0].querySelectorAll('.info-box');
+            infoBoxes[0].querySelector('.info-box-title').innerHTML = t.lunaBoxTitle;
+            infoBoxes[0].querySelector('p').innerHTML = t.lunaBoxText;
+            infoBoxes[1].querySelector('.info-box-title').innerHTML = t.avaBoxTitle;
+            infoBoxes[1].querySelector('p').innerHTML = t.avaBoxText;
+
+            // Section: Key Decisions
+            sections[1].querySelector('h2').textContent = t.sectionDecisions;
+            sections[1].querySelector('.section-desc').textContent = t.sectionDecisionsDesc;
+            const decisionBoxes = sections[1].querySelectorAll('.decision-box');
+            decisionBoxes[0].querySelector('h4').innerHTML = t.decision1Title;
+            decisionBoxes[0].querySelectorAll('p')[0].innerHTML = t.decision1Text;
+            decisionBoxes[0].querySelectorAll('p')[1].innerHTML = t.decision1Note;
+            decisionBoxes[1].querySelector('h4').innerHTML = t.decision2Title;
+            decisionBoxes[1].querySelector('p').innerHTML = t.decision2Text;
+            decisionBoxes[2].querySelector('h4').innerHTML = t.decision3Title;
+            decisionBoxes[2].querySelector('p').innerHTML = t.decision3Text;
+
+            // Section: Timeline
+            sections[2].querySelector('h2').textContent = t.sectionTimeline;
+            sections[2].querySelector('.section-desc').textContent = t.sectionTimelineDesc;
+            const timelineItems = sections[2].querySelectorAll('.timeline-item');
+            timelineItems[0].querySelector('.timeline-title').textContent = t.timeline1Title;
+            timelineItems[0].querySelector('.timeline-desc').textContent = t.timeline1Desc;
+            timelineItems[1].querySelector('.timeline-title').textContent = t.timeline2Title;
+            timelineItems[1].querySelector('.timeline-desc').textContent = t.timeline2Desc;
+            timelineItems[2].querySelector('.timeline-title').textContent = t.timeline3Title;
+            timelineItems[2].querySelector('.timeline-desc').textContent = t.timeline3Desc;
+            timelineItems[3].querySelector('.timeline-title').textContent = t.timeline4Title;
+            timelineItems[3].querySelector('.timeline-desc').textContent = t.timeline4Desc;
+
+            // Section: System Overview
+            sections[3].querySelector('h2').textContent = t.sectionSystem;
+            sections[3].querySelector('.section-desc').textContent = t.sectionSystemDesc;
+            const sysInfoBox = sections[3].querySelector('.info-box');
+            sysInfoBox.querySelector('.info-box-title').innerHTML = t.criticalPointTitle;
+            sysInfoBox.querySelector('p').innerHTML = t.criticalPointText;
+
+            const statLabels = sections[3].querySelectorAll('.stat-label');
+            statLabels[0].innerHTML = t.stat1Label;
+            statLabels[1].innerHTML = t.stat2Label;
+            statLabels[2].innerHTML = t.stat3Label;
+
+            const accordion = sections[3].querySelector('.accordion-trigger span:first-child');
+            accordion.textContent = t.whyBavaria;
+            const accordionContent = sections[3].querySelector('.accordion-content');
+            accordionContent.querySelector('p').textContent = t.whyBavariaText;
+            const whyPoints = accordionContent.querySelectorAll('li');
+            whyPoints[0].textContent = t.whyBavaria1;
+            whyPoints[1].textContent = t.whyBavaria2;
+            whyPoints[2].textContent = t.whyBavaria3;
+            whyPoints[3].textContent = t.whyBavaria4;
+            whyPoints[4].textContent = t.whyBavaria5;
+
+            // Footer
+            const footer = document.querySelector('footer');
+            footer.querySelectorAll('p')[0].textContent = t.footerCompiled;
+            footer.querySelectorAll('p')[1].textContent = t.footerFor;
+        }
+
+        // Check for saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('lunaava-lang');
+            if (savedLang && savedLang !== currentLang) {
+                currentLang = savedLang;
+                document.getElementById('lang-toggle').textContent = translations[currentLang].langButton;
+                document.documentElement.lang = currentLang;
+                applyTranslations();
+            }
+        });
+
         function toggleAccordion(trigger) {
             const content = trigger.nextElementSibling;
             const isOpen = content.classList.contains('show');
