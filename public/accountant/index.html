@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Accountant Meeting Reference | Self-Employed to GmbH</title>
+    <title>Complete Accountant Meeting Reference | Vollständige Steuerberater-Referenz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -25,6 +25,36 @@
             --border: #38383d;
         }
 
+        /* Language Toggle System */
+        body.lang-en .de { display: none !important; }
+        body.lang-de .en { display: none !important; }
+
+        .lang-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-btn:hover { color: var(--text-primary); background: var(--bg-highlight); }
+        .lang-btn.active { background: var(--accent-blue); color: white; }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
@@ -35,538 +65,155 @@
             font-size: 15px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
+        .container { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
 
-        /* Header */
-        .header {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-        }
+        .header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+        .header-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
+        .header-subtitle { font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; }
 
-        .header-meta {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--accent-blue);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-
-        .header-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-        }
-
-        /* Table of Contents */
-        .toc {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .toc-title {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-        }
-
-        .toc-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem 2rem;
-            list-style: none;
-        }
-
-        .toc-list a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.25rem 0;
-            transition: color 0.2s;
-        }
-
+        .toc { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 3rem; }
+        .toc-title { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1rem; }
+        .toc-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem 2rem; list-style: none; }
+        .toc-list a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0; transition: color 0.2s; }
         .toc-list a:hover { color: var(--accent-blue); }
+        .toc-number { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-muted); min-width: 1.5rem; }
 
-        .toc-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            min-width: 1.5rem;
-        }
+        .section { margin-bottom: 4rem; }
+        .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .section-number { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--bg-primary); background: var(--accent-blue); padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: 600; }
+        h2 { font-size: 1.5rem; font-weight: 600; }
+        h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--text-primary); }
 
-        /* Sections */
-        .section {
-            margin-bottom: 4rem;
-        }
+        .card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+        .card-title { font-weight: 600; font-size: 1rem; }
+        .card-subtitle { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
 
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .section-number {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--bg-primary);
-            background: var(--accent-blue);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin: 1.5rem 0 0.75rem;
-            color: var(--text-primary);
-        }
-
-        /* Cards */
-        .card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .card-title {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .card-subtitle {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-
-        /* Badges */
-        .badge {
-            font-size: 0.65rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-        }
-
+        .badge { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.3rem 0.6rem; border-radius: 4px; }
         .badge-blue { background: rgba(10, 132, 255, 0.15); color: var(--accent-blue); }
         .badge-green { background: rgba(48, 209, 88, 0.15); color: var(--accent-green); }
         .badge-orange { background: rgba(255, 159, 10, 0.15); color: var(--accent-orange); }
-        .badge-red { background: rgba(255, 69, 58, 0.15); color: var(--accent-red); }
         .badge-purple { background: rgba(191, 90, 242, 0.15); color: var(--accent-purple); }
 
-        /* Info Box */
-        .info-box {
-            background: var(--bg-highlight);
-            border-left: 3px solid var(--accent-blue);
-            padding: 1rem 1.25rem;
-            margin: 1rem 0;
-            border-radius: 0 8px 8px 0;
-        }
+        .info-box { background: var(--bg-highlight); border-left: 3px solid var(--accent-blue); padding: 1rem 1.25rem; margin: 1rem 0; border-radius: 0 8px 8px 0; }
+        .info-box.warning { border-left-color: var(--accent-orange); }
+        .info-box.success { border-left-color: var(--accent-green); }
+        .info-box-title { font-weight: 600; font-size: 0.85rem; margin-bottom: 0.5rem; }
+        .info-box p { font-size: 0.9rem; color: var(--text-secondary); }
 
-        .info-box.warning {
-            border-left-color: var(--accent-orange);
-        }
+        .definition { background: var(--bg-card); border-radius: 8px; padding: 1rem; margin: 0.5rem 0; }
+        .definition-term { font-weight: 600; color: var(--accent-teal); font-size: 0.9rem; margin-bottom: 0.25rem; }
+        .definition-german { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .definition-desc { font-size: 0.85rem; color: var(--text-secondary); }
 
-        .info-box.success {
-            border-left-color: var(--accent-green);
-        }
+        .numbers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+        .number-card { background: var(--bg-card); border-radius: 8px; padding: 1rem; text-align: center; }
+        .number-value { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 600; color: var(--accent-green); }
+        .number-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
 
-        .info-box-title {
-            font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+        .quote { background: var(--bg-card); border-radius: 8px; padding: 1.25rem; margin: 1rem 0; position: relative; }
+        .quote::before { content: '"'; font-size: 3rem; color: var(--accent-purple); opacity: 0.3; position: absolute; top: 0; left: 0.75rem; line-height: 1; }
+        .quote-text { font-style: italic; color: var(--text-secondary); padding-left: 1.5rem; }
+        .quote-source { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; padding-left: 1.5rem; }
 
-        .info-box p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
+        .checklist { list-style: none; }
+        .checklist-item { display: flex; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+        .checklist-item:last-child { border-bottom: none; }
+        .checkbox { width: 20px; height: 20px; border: 2px solid var(--border); border-radius: 4px; flex-shrink: 0; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+        .checkbox:hover { border-color: var(--accent-green); }
+        .checkbox.checked { background: var(--accent-green); border-color: var(--accent-green); }
+        .checkbox.checked::after { content: '✓'; color: var(--bg-primary); font-size: 0.75rem; font-weight: bold; }
+        .checklist-content { flex: 1; }
+        .checklist-title { font-weight: 500; margin-bottom: 0.25rem; }
+        .checklist-desc { font-size: 0.85rem; color: var(--text-muted); }
 
-        /* Definition List */
-        .definition {
-            background: var(--bg-card);
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 0.5rem 0;
-        }
-
-        .definition-term {
-            font-weight: 600;
-            color: var(--accent-teal);
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .definition-german {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-        }
-
-        .definition-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Numbers Grid */
-        .numbers-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-
-        .number-card {
-            background: var(--bg-card);
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .number-value {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--accent-green);
-        }
-
-        .number-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-
-        /* Quote */
-        .quote {
-            background: var(--bg-card);
-            border-radius: 8px;
-            padding: 1.25rem;
-            margin: 1rem 0;
-            position: relative;
-        }
-
-        .quote::before {
-            content: '"';
-            font-size: 3rem;
-            color: var(--accent-purple);
-            opacity: 0.3;
-            position: absolute;
-            top: 0;
-            left: 0.75rem;
-            line-height: 1;
-        }
-
-        .quote-text {
-            font-style: italic;
-            color: var(--text-secondary);
-            padding-left: 1.5rem;
-        }
-
-        .quote-source {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            padding-left: 1.5rem;
-        }
-
-        /* Checklist */
-        .checklist {
-            list-style: none;
-        }
-
-        .checklist-item {
-            display: flex;
-            gap: 0.75rem;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .checklist-item:last-child {
-            border-bottom: none;
-        }
-
-        .checkbox {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--border);
-            border-radius: 4px;
-            flex-shrink: 0;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .checkbox:hover {
-            border-color: var(--accent-green);
-        }
-
-        .checkbox.checked {
-            background: var(--accent-green);
-            border-color: var(--accent-green);
-        }
-
-        .checkbox.checked::after {
-            content: '✓';
-            color: var(--bg-primary);
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-
-        .checklist-content {
-            flex: 1;
-        }
-
-        .checklist-title {
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .checklist-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 6px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple), var(--accent-green));
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 1.5rem;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -2rem;
-            top: 0.25rem;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--bg-primary);
-            border: 3px solid var(--accent-blue);
-        }
-
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before { content: ''; position: absolute; left: 6px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple), var(--accent-green)); }
+        .timeline-item { position: relative; padding-bottom: 1.5rem; }
+        .timeline-dot { position: absolute; left: -2rem; top: 0.25rem; width: 14px; height: 14px; border-radius: 50%; background: var(--bg-primary); border: 3px solid var(--accent-blue); }
         .timeline-item:nth-child(2) .timeline-dot { border-color: var(--accent-purple); }
         .timeline-item:nth-child(3) .timeline-dot { border-color: var(--accent-teal); }
         .timeline-item:nth-child(4) .timeline-dot { border-color: var(--accent-green); }
+        .timeline-phase { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+        .timeline-title { font-weight: 600; margin-bottom: 0.25rem; }
+        .timeline-desc { font-size: 0.85rem; color: var(--text-secondary); }
 
-        .timeline-phase {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-bottom: 0.25rem;
-        }
+        .table-container { overflow-x: auto; margin: 1rem 0; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+        th { font-weight: 600; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        td { color: var(--text-secondary); }
+        tr:hover td { background: var(--bg-highlight); }
 
-        .timeline-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .timeline-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Table */
-        .table-container {
-            overflow-x: auto;
-            margin: 1rem 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-        }
-
-        th, td {
-            padding: 0.75rem 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        th {
-            font-weight: 600;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        td {
-            color: var(--text-secondary);
-        }
-
-        tr:hover td {
-            background: var(--bg-highlight);
-        }
-
-        /* Comparison */
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .comparison-card {
-            background: var(--bg-card);
-            border-radius: 8px;
-            padding: 1.25rem;
-        }
-
-        .comparison-header {
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
+        .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+        .comparison-card { background: var(--bg-card); border-radius: 8px; padding: 1.25rem; }
+        .comparison-header { font-weight: 600; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
         .comparison-card.good .comparison-header { color: var(--accent-green); }
         .comparison-card.bad .comparison-header { color: var(--accent-red); }
-
-        .comparison-list {
-            list-style: none;
-            font-size: 0.85rem;
-        }
-
-        .comparison-list li {
-            padding: 0.35rem 0;
-            color: var(--text-secondary);
-        }
-
-        .comparison-list li::before {
-            margin-right: 0.5rem;
-        }
-
+        .comparison-list { list-style: none; font-size: 0.85rem; }
+        .comparison-list li { padding: 0.35rem 0; color: var(--text-secondary); }
+        .comparison-list li::before { margin-right: 0.5rem; }
         .comparison-card.good .comparison-list li::before { content: '✓'; color: var(--accent-green); }
         .comparison-card.bad .comparison-list li::before { content: '✗'; color: var(--accent-red); }
 
-        /* Glossary */
-        .glossary-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
-        }
+        .glossary-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+        .glossary-item { background: var(--bg-card); border-radius: 6px; padding: 0.75rem 1rem; }
+        .glossary-term { font-weight: 600; font-size: 0.85rem; color: var(--accent-teal); }
+        .glossary-def { font-size: 0.8rem; color: var(--text-muted); }
 
-        .glossary-item {
-            background: var(--bg-card);
-            border-radius: 6px;
-            padding: 0.75rem 1rem;
-        }
+        @media print { body { background: white; color: black; } .card, .info-box, .definition, .quote { background: #f5f5f5; border: 1px solid #ddd; } }
+        @media (max-width: 768px) { .numbers-grid, .comparison, .glossary-grid, .toc-list { grid-template-columns: 1fr; } h1 { font-size: 1.75rem; } }
 
-        .glossary-term {
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: var(--accent-teal);
-        }
-
-        .glossary-def {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Print */
-        @media print {
-            body { background: white; color: black; }
-            .card, .info-box, .definition, .quote {
-                background: #f5f5f5;
-                border: 1px solid #ddd;
-            }
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            .numbers-grid, .comparison, .glossary-grid, .toc-list {
-                grid-template-columns: 1fr;
-            }
-            h1 { font-size: 1.75rem; }
-        }
+        .list-plain { list-style: none; color: var(--text-secondary); }
+        .list-plain li { padding: 0.35rem 0; }
     </style>
 </head>
-<body>
+<body class="lang-en">
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('de')">DE</button>
+    </div>
+
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <div class="header-meta">Meeting Reference Document • January 2025</div>
-            <h1>From Self-Employed to GmbH: Complete Guide</h1>
-            <p class="header-subtitle">Everything discussed with your Steuerberater (tax advisor) about transitioning NavAIgate from self-employed status to a German GmbH structure.</p>
+            <div class="header-meta">
+                <span class="en">Meeting Reference Document • January 2025</span>
+                <span class="de">Besprechungsreferenz • Januar 2025</span>
+            </div>
+            <h1>
+                <span class="en">From Self-Employed to GmbH: Complete Guide</span>
+                <span class="de">Von Selbstständig zur GmbH: Vollständiger Leitfaden</span>
+            </h1>
+            <p class="header-subtitle">
+                <span class="en">Everything discussed with your Steuerberater (tax advisor) about transitioning NavAIgate from self-employed status to a German GmbH structure.</span>
+                <span class="de">Alles, was mit Ihrem Steuerberater über den Übergang von NavAIgate vom Selbstständigenstatus zur deutschen GmbH-Struktur besprochen wurde.</span>
+            </p>
         </header>
 
         <!-- Table of Contents -->
         <nav class="toc">
-            <div class="toc-title">Contents</div>
+            <div class="toc-title">
+                <span class="en">Contents</span>
+                <span class="de">Inhalt</span>
+            </div>
             <ol class="toc-list">
-                <li><a href="#situation"><span class="toc-number">01</span> Your Current Situation</a></li>
-                <li><a href="#glossary"><span class="toc-number">02</span> German Tax Glossary</a></li>
-                <li><a href="#gmbh"><span class="toc-number">03</span> GmbH Structure Explained</a></li>
-                <li><a href="#holding"><span class="toc-number">04</span> Holding Company (Future)</a></li>
-                <li><a href="#salary"><span class="toc-number">05</span> Salary Optimization Strategy</a></li>
-                <li><a href="#expenses"><span class="toc-number">06</span> Business Expenses</a></li>
-                <li><a href="#investments"><span class="toc-number">07</span> Investment Options</a></li>
-                <li><a href="#realestate"><span class="toc-number">08</span> Real Estate Considerations</a></li>
-                <li><a href="#family"><span class="toc-number">09</span> Family & Inheritance</a></li>
-                <li><a href="#accountant"><span class="toc-number">10</span> Accountant's Role</a></li>
-                <li><a href="#timeline"><span class="toc-number">11</span> Timeline & Next Steps</a></li>
-                <li><a href="#checklist"><span class="toc-number">12</span> Master Action Checklist</a></li>
-                <li><a href="#transcript"><span class="toc-number">13</span> Key Quotes from Meeting</a></li>
-                <li><a href="#numbers"><span class="toc-number">14</span> All Financial Numbers</a></li>
+                <li><a href="#situation"><span class="toc-number">01</span> <span class="en">Your Current Situation</span><span class="de">Ihre aktuelle Situation</span></a></li>
+                <li><a href="#glossary"><span class="toc-number">02</span> <span class="en">German Tax Glossary</span><span class="de">Deutsches Steuer-Glossar</span></a></li>
+                <li><a href="#gmbh"><span class="toc-number">03</span> <span class="en">GmbH Structure Explained</span><span class="de">GmbH-Struktur erklärt</span></a></li>
+                <li><a href="#holding"><span class="toc-number">04</span> <span class="en">Holding Company (Future)</span><span class="de">Holdinggesellschaft (Zukunft)</span></a></li>
+                <li><a href="#salary"><span class="toc-number">05</span> <span class="en">Salary Optimization</span><span class="de">Gehaltsoptimierung</span></a></li>
+                <li><a href="#expenses"><span class="toc-number">06</span> <span class="en">Business Expenses</span><span class="de">Betriebsausgaben</span></a></li>
+                <li><a href="#investments"><span class="toc-number">07</span> <span class="en">Investment Options</span><span class="de">Investitionsmöglichkeiten</span></a></li>
+                <li><a href="#realestate"><span class="toc-number">08</span> <span class="en">Real Estate</span><span class="de">Immobilien</span></a></li>
+                <li><a href="#family"><span class="toc-number">09</span> <span class="en">Family & Inheritance</span><span class="de">Familie & Erbschaft</span></a></li>
+                <li><a href="#accountant"><span class="toc-number">10</span> <span class="en">Accountant's Role</span><span class="de">Rolle des Steuerberaters</span></a></li>
+                <li><a href="#timeline"><span class="toc-number">11</span> <span class="en">Timeline & Next Steps</span><span class="de">Zeitplan & nächste Schritte</span></a></li>
+                <li><a href="#checklist"><span class="toc-number">12</span> <span class="en">Master Checklist</span><span class="de">Haupt-Checkliste</span></a></li>
+                <li><a href="#quotes"><span class="toc-number">13</span> <span class="en">Key Quotes</span><span class="de">Wichtige Zitate</span></a></li>
+                <li><a href="#numbers"><span class="toc-number">14</span> <span class="en">All Financial Numbers</span><span class="de">Alle Finanzzahlen</span></a></li>
             </ol>
         </nav>
 
@@ -574,71 +221,75 @@
         <section class="section" id="situation">
             <div class="section-header">
                 <span class="section-number">01</span>
-                <h2>Your Current Situation</h2>
+                <h2><span class="en">Your Current Situation</span><span class="de">Ihre aktuelle Situation</span></h2>
             </div>
 
             <div class="card">
-                <h3>Your Businesses</h3>
+                <h3><span class="en">Your Businesses</span><span class="de">Ihre Unternehmen</span></h3>
                 <div class="table-container">
                     <table>
                         <tr>
-                            <th>Entity</th>
-                            <th>Role</th>
+                            <th><span class="en">Entity</span><span class="de">Unternehmen</span></th>
+                            <th><span class="en">Role</span><span class="de">Rolle</span></th>
                             <th>Status</th>
                         </tr>
                         <tr>
                             <td><strong>NavAIgate</strong> (navaigate.dev)</td>
-                            <td>Founder / Owner</td>
-                            <td>Self-employed → Converting to GmbH</td>
+                            <td><span class="en">Founder / Owner</span><span class="de">Gründer / Inhaber</span></td>
+                            <td><span class="en">Self-employed → Converting to GmbH</span><span class="de">Selbstständig → Umwandlung in GmbH</span></td>
                         </tr>
                         <tr>
                             <td><strong>Katana USA</strong></td>
-                            <td>VP of Sales</td>
-                            <td>Employment (separate from GmbH)</td>
+                            <td><span class="en">VP of Sales</span><span class="de">VP Vertrieb</span></td>
+                            <td><span class="en">Employment (separate from GmbH)</span><span class="de">Anstellung (getrennt von GmbH)</span></td>
                         </tr>
                         <tr>
                             <td><strong>CoatCreate</strong></td>
-                            <td>Sales (via Katana)</td>
-                            <td>Product you're selling</td>
+                            <td><span class="en">Sales (via Katana)</span><span class="de">Vertrieb (über Katana)</span></td>
+                            <td><span class="en">Product you're selling</span><span class="de">Produkt, das Sie verkaufen</span></td>
                         </tr>
                     </table>
                 </div>
 
                 <div class="info-box">
-                    <div class="info-box-title">Key Decision Point</div>
-                    <p>The accountant meeting focused on transitioning NavAIgate from self-employed (Freiberufler/Einzelunternehmer) to a GmbH structure for tax optimization and liability protection.</p>
+                    <div class="info-box-title"><span class="en">Key Decision Point</span><span class="de">Wichtiger Entscheidungspunkt</span></div>
+                    <p>
+                        <span class="en">The accountant meeting focused on transitioning NavAIgate from self-employed (Freiberufler/Einzelunternehmer) to a GmbH structure for tax optimization and liability protection.</span>
+                        <span class="de">Die Steuerberaterbesprechung konzentrierte sich auf den Übergang von NavAIgate von selbstständig (Freiberufler/Einzelunternehmer) zu einer GmbH-Struktur zur Steueroptimierung und Haftungsbeschränkung.</span>
+                    </p>
                 </div>
             </div>
 
             <div class="card">
-                <h3>Financial Snapshot (from meeting)</h3>
+                <h3><span class="en">Financial Snapshot (from meeting)</span><span class="de">Finanzübersicht (aus der Besprechung)</span></h3>
                 <div class="numbers-grid">
                     <div class="number-card">
                         <div class="number-value">€5,000</div>
-                        <div class="number-label">Personal Monthly Salary (target)</div>
+                        <div class="number-label"><span class="en">Personal Monthly Salary (target)</span><span class="de">Persönliches Monatsgehalt (Ziel)</span></div>
                     </div>
                     <div class="number-card">
                         <div class="number-value">€20,000</div>
-                        <div class="number-label">Business Monthly Revenue</div>
+                        <div class="number-label"><span class="en">Business Monthly Revenue</span><span class="de">Monatlicher Geschäftsumsatz</span></div>
                     </div>
                     <div class="number-card">
                         <div class="number-value">€25,000</div>
-                        <div class="number-label">Minimum GmbH Capital (€12.5K to start)</div>
+                        <div class="number-label"><span class="en">Minimum GmbH Capital (€12.5K to start)</span><span class="de">Mindest-GmbH-Kapital (€12,5K zum Start)</span></div>
                     </div>
                 </div>
-
                 <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">
-                    <strong>Note:</strong> GmbH minimum capital is €25,000, but you only need to deposit €12,500 (50%) to start. The €50,000 discussed in the meeting was about your specific capital plans, not the legal minimum.
+                    <strong><span class="en">Note:</span><span class="de">Hinweis:</span></strong>
+                    <span class="en">GmbH minimum capital is €25,000, but you only need to deposit €12,500 (50%) to start. The €50,000 discussed in the meeting was about your specific capital plans, not the legal minimum.</span>
+                    <span class="de">Das GmbH-Mindestkapital beträgt €25.000, aber Sie müssen nur €12.500 (50%) einzahlen, um zu starten. Die in der Besprechung besprochenen €50.000 bezogen sich auf Ihre spezifischen Kapitalpläne, nicht auf das gesetzliche Minimum.</span>
                 </p>
             </div>
 
             <div class="card">
-                <h3>Family Situation</h3>
-                <ul style="list-style: none; color: var(--text-secondary);">
-                    <li style="padding: 0.35rem 0;">• Two children: daughter (16) and daughter (10)</li>
-                    <li style="padding: 0.35rem 0;">• Wife manages household</li>
-                    <li style="padding: 0.35rem 0;">• Described as "jung und wachsend" (young and growing)</li>
-                    <li style="padding: 0.35rem 0;">• Children's education discussed (including AI/KI for learning)</li>
+                <h3><span class="en">Family Situation</span><span class="de">Familiensituation</span></h3>
+                <ul class="list-plain">
+                    <li>• <span class="en">Two children: daughter (16) and daughter (10)</span><span class="de">Zwei Kinder: Tochter (16) und Tochter (10)</span></li>
+                    <li>• <span class="en">Wife manages household</span><span class="de">Ehefrau führt den Haushalt</span></li>
+                    <li>• <span class="en">Described as "jung und wachsend" (young and growing)</span><span class="de">Beschrieben als "jung und wachsend"</span></li>
+                    <li>• <span class="en">Children's education discussed (including AI/KI for learning)</span><span class="de">Bildung der Kinder besprochen (einschließlich KI zum Lernen)</span></li>
                 </ul>
             </div>
         </section>
@@ -647,87 +298,129 @@
         <section class="section" id="glossary">
             <div class="section-header">
                 <span class="section-number">02</span>
-                <h2>German Tax & Business Glossary</h2>
+                <h2><span class="en">German Tax & Business Glossary</span><span class="de">Deutsches Steuer- & Geschäftsglossar</span></h2>
             </div>
 
-            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Essential terms you'll encounter. Bookmark this section for future reference.</p>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                <span class="en">Essential terms you'll encounter. Bookmark this section for future reference.</span>
+                <span class="de">Wichtige Begriffe, denen Sie begegnen werden. Setzen Sie ein Lesezeichen für diesen Abschnitt.</span>
+            </p>
 
             <div class="definition">
                 <div class="definition-term">GmbH (Gesellschaft mit beschränkter Haftung)</div>
                 <div class="definition-german">"Company with limited liability"</div>
-                <div class="definition-desc">The German equivalent of an LLC. Your personal assets are protected from business debts. Requires minimum €25,000 capital (or €50,000 for certain activities). The company is a separate legal entity from you.</div>
+                <div class="definition-desc">
+                    <span class="en">The German equivalent of an LLC. Your personal assets are protected from business debts. Requires minimum €25,000 capital. The company is a separate legal entity from you.</span>
+                    <span class="de">Das deutsche Äquivalent einer LLC. Ihr Privatvermögen ist vor Geschäftsschulden geschützt. Erfordert mindestens €25.000 Kapital. Das Unternehmen ist eine von Ihnen getrennte juristische Person.</span>
+                </div>
             </div>
 
             <div class="definition">
                 <div class="definition-term">Stammkapital</div>
                 <div class="definition-german">"Share capital" / "Registered capital"</div>
-                <div class="definition-desc">The initial capital you put into the GmbH. <strong>Legal minimum: €25,000</strong> (only €12,500 must be paid immediately to start). Your accountant discussed €50,000-100,000 for operational flexibility. This money can be used for business operations - it's not "locked away."</div>
+                <div class="definition-desc">
+                    <span class="en">The initial capital you put into the GmbH. <strong>Legal minimum: €25,000</strong> (only €12,500 must be paid immediately to start). Your accountant discussed €50,000-100,000 for operational flexibility. This money can be used for business operations - it's not "locked away."</span>
+                    <span class="de">Das Anfangskapital, das Sie in die GmbH einbringen. <strong>Gesetzliches Minimum: €25.000</strong> (nur €12.500 müssen sofort eingezahlt werden). Ihr Steuerberater besprach €50.000-100.000 für operative Flexibilität. Dieses Geld kann für den Geschäftsbetrieb verwendet werden - es ist nicht "eingefroren".</span>
+                </div>
             </div>
 
             <div class="definition">
                 <div class="definition-term">Holding / Holdinggesellschaft</div>
                 <div class="definition-german">"Holding company"</div>
-                <div class="definition-desc">A parent company that owns shares in other companies. Used when you have 3-5+ businesses. The Holding receives dividends from subsidiaries with favorable tax treatment (~1.5% effective tax on dividends between companies vs ~25% for personal dividends).</div>
+                <div class="definition-desc">
+                    <span class="en">A parent company that owns shares in other companies. Used when you have 3-5+ businesses. The Holding receives dividends from subsidiaries with favorable tax treatment (~1.5% effective tax on dividends between companies vs ~25% for personal dividends).</span>
+                    <span class="de">Eine Muttergesellschaft, die Anteile an anderen Unternehmen hält. Wird verwendet, wenn Sie 3-5+ Unternehmen haben. Die Holding erhält Dividenden von Tochtergesellschaften mit günstiger Steuerbehandlung (~1,5% effektive Steuer auf Dividenden zwischen Unternehmen vs ~25% für persönliche Dividenden).</span>
+                </div>
             </div>
 
             <div class="definition">
                 <div class="definition-term">Steuerberater</div>
                 <div class="definition-german">"Tax advisor" / "Accountant"</div>
-                <div class="definition-desc">Licensed tax professional in Germany. They handle Finanzamt filings, tax optimization, and strategic advice. Required for GmbH annual accounts.</div>
+                <div class="definition-desc">
+                    <span class="en">Licensed tax professional in Germany. They handle Finanzamt filings, tax optimization, and strategic advice. Required for GmbH annual accounts.</span>
+                    <span class="de">Zugelassener Steuerfachmann in Deutschland. Er kümmert sich um Finanzamt-Einreichungen, Steueroptimierung und strategische Beratung. Erforderlich für GmbH-Jahresabschlüsse.</span>
+                </div>
             </div>
 
             <div class="definition">
                 <div class="definition-term">Finanzamt</div>
                 <div class="definition-german">"Tax office"</div>
-                <div class="definition-desc">The German tax authority. Your Steuerberater communicates with them on your behalf. They will assign your GmbH a tax number (Steuernummer).</div>
+                <div class="definition-desc">
+                    <span class="en">The German tax authority. Your Steuerberater communicates with them on your behalf. They will assign your GmbH a tax number (Steuernummer).</span>
+                    <span class="de">Die deutsche Steuerbehörde. Ihr Steuerberater kommuniziert in Ihrem Namen mit ihnen. Sie werden Ihrer GmbH eine Steuernummer zuweisen.</span>
+                </div>
             </div>
 
             <div class="definition">
                 <div class="definition-term">Dividende</div>
                 <div class="definition-german">"Dividend"</div>
-                <div class="definition-desc">Profit distribution from the GmbH to you as owner. Taxed at ~25% (Kapitalertragsteuer) when paid to individuals. This is separate from your salary.</div>
+                <div class="definition-desc">
+                    <span class="en">Profit distribution from the GmbH to you as owner. Taxed at ~25% (Kapitalertragsteuer) when paid to individuals. This is separate from your salary.</span>
+                    <span class="de">Gewinnausschüttung von der GmbH an Sie als Eigentümer. Mit ~25% (Kapitalertragsteuer) besteuert, wenn an Privatpersonen gezahlt. Dies ist getrennt von Ihrem Gehalt.</span>
+                </div>
             </div>
 
             <div class="definition">
                 <div class="definition-term">Geschäftsführer</div>
                 <div class="definition-german">"Managing Director" / "CEO"</div>
-                <div class="definition-desc">The person who runs the GmbH. This will be you. You can pay yourself a salary as Geschäftsführer, which is a business expense.</div>
+                <div class="definition-desc">
+                    <span class="en">The person who runs the GmbH. This will be you. You can pay yourself a salary as Geschäftsführer, which is a business expense.</span>
+                    <span class="de">Die Person, die die GmbH führt. Das werden Sie sein. Sie können sich als Geschäftsführer ein Gehalt zahlen, das eine Betriebsausgabe ist.</span>
+                </div>
             </div>
 
             <div class="definition">
                 <div class="definition-term">Körperschaftsteuer</div>
                 <div class="definition-german">"Corporate tax"</div>
-                <div class="definition-desc">Tax on GmbH profits: ~15% federal + ~0.8% solidarity surcharge. Plus Gewerbesteuer (trade tax) ~14-17% depending on location. Total corporate tax burden: ~30%.</div>
+                <div class="definition-desc">
+                    <span class="en">Tax on GmbH profits: ~15% federal + ~0.8% solidarity surcharge. Plus Gewerbesteuer (trade tax) ~14-17% depending on location. Total corporate tax burden: ~30%.</span>
+                    <span class="de">Steuer auf GmbH-Gewinne: ~15% Bund + ~0,8% Solidaritätszuschlag. Plus Gewerbesteuer ~14-17% je nach Standort. Gesamte Körperschaftsteuerbelastung: ~30%.</span>
+                </div>
             </div>
 
             <div class="definition">
                 <div class="definition-term">Gewerbesteuer</div>
                 <div class="definition-german">"Trade tax"</div>
-                <div class="definition-desc">Local business tax paid to your municipality. Rate varies by city (Hebesatz). Typically 14-17% of profits. GmbHs always pay this.</div>
+                <div class="definition-desc">
+                    <span class="en">Local business tax paid to your municipality. Rate varies by city (Hebesatz). Typically 14-17% of profits. GmbHs always pay this.</span>
+                    <span class="de">Lokale Gewerbesteuer an Ihre Gemeinde. Der Satz variiert je nach Stadt (Hebesatz). Typischerweise 14-17% des Gewinns. GmbHs zahlen dies immer.</span>
+                </div>
             </div>
 
             <div class="definition">
                 <div class="definition-term">Einkommensteuer</div>
                 <div class="definition-german">"Income tax"</div>
-                <div class="definition-desc">Personal income tax on your salary. Progressive rates from 14% to 45%. This is why you want to minimize personal salary and keep money in the GmbH.</div>
+                <div class="definition-desc">
+                    <span class="en">Personal income tax on your salary. Progressive rates from 14% to 45%. This is why you want to minimize personal salary and keep money in the GmbH.</span>
+                    <span class="de">Persönliche Einkommensteuer auf Ihr Gehalt. Progressive Sätze von 14% bis 45%. Deshalb wollen Sie das persönliche Gehalt minimieren und Geld in der GmbH behalten.</span>
+                </div>
             </div>
 
             <div class="definition">
                 <div class="definition-term">Betriebsausgaben</div>
                 <div class="definition-german">"Business expenses"</div>
-                <div class="definition-desc">Costs that reduce taxable profit: computers, phones, internet, travel, office supplies, software subscriptions. Must be business-related ("nur related" as accountant said).</div>
+                <div class="definition-desc">
+                    <span class="en">Costs that reduce taxable profit: computers, phones, internet, travel, office supplies, software subscriptions. Must be business-related ("nur related" as accountant said).</span>
+                    <span class="de">Kosten, die den steuerpflichtigen Gewinn reduzieren: Computer, Telefone, Internet, Reisen, Bürobedarf, Software-Abonnements. Müssen geschäftsbezogen sein ("nur related" wie der Steuerberater sagte).</span>
+                </div>
             </div>
 
             <div class="definition">
                 <div class="definition-term">Notar</div>
                 <div class="definition-german">"Notary"</div>
-                <div class="definition-desc">Required for GmbH formation. They authenticate the founding documents (Gesellschaftsvertrag) and register with Handelsregister. Cost: ~€500-1,500.</div>
+                <div class="definition-desc">
+                    <span class="en">Required for GmbH formation. They authenticate the founding documents (Gesellschaftsvertrag) and register with Handelsregister. Cost: ~€500-1,500.</span>
+                    <span class="de">Erforderlich für die GmbH-Gründung. Sie beglaubigen die Gründungsdokumente (Gesellschaftsvertrag) und registrieren beim Handelsregister. Kosten: ~€500-1.500.</span>
+                </div>
             </div>
 
             <div class="definition">
                 <div class="definition-term">Handelsregister</div>
                 <div class="definition-german">"Commercial register"</div>
-                <div class="definition-desc">Public registry where all GmbHs are listed. Your company becomes official once registered here. Registration takes 2-4 weeks.</div>
+                <div class="definition-desc">
+                    <span class="en">Public registry where all GmbHs are listed. Your company becomes official once registered here. Registration takes 2-4 weeks.</span>
+                    <span class="de">Öffentliches Register, in dem alle GmbHs aufgeführt sind. Ihr Unternehmen wird offiziell, sobald es hier registriert ist. Die Registrierung dauert 2-4 Wochen.</span>
+                </div>
             </div>
         </section>
 
@@ -735,43 +428,44 @@
         <section class="section" id="gmbh">
             <div class="section-header">
                 <span class="section-number">03</span>
-                <h2>GmbH Structure Explained</h2>
+                <h2><span class="en">GmbH Structure Explained</span><span class="de">GmbH-Struktur erklärt</span></h2>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">What is a GmbH?</div>
-                        <div class="card-subtitle">The German "LLC" equivalent</div>
+                        <div class="card-title"><span class="en">What is a GmbH?</span><span class="de">Was ist eine GmbH?</span></div>
+                        <div class="card-subtitle"><span class="en">The German "LLC" equivalent</span><span class="de">Das deutsche Äquivalent einer "LLC"</span></div>
                     </div>
-                    <span class="badge badge-blue">Core Concept</span>
+                    <span class="badge badge-blue"><span class="en">Core Concept</span><span class="de">Kernkonzept</span></span>
                 </div>
 
                 <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-                    A GmbH is a separate legal entity. Unlike being self-employed where YOU are the business, the GmbH is its own "person" legally. This means:
+                    <span class="en">A GmbH is a separate legal entity. Unlike being self-employed where YOU are the business, the GmbH is its own "person" legally. This means:</span>
+                    <span class="de">Eine GmbH ist eine separate juristische Person. Im Gegensatz zur Selbstständigkeit, bei der SIE das Unternehmen sind, ist die GmbH rechtlich eine eigene "Person". Das bedeutet:</span>
                 </p>
 
                 <div class="comparison">
                     <div class="comparison-card good">
-                        <div class="comparison-header">Benefits</div>
+                        <div class="comparison-header"><span class="en">Benefits</span><span class="de">Vorteile</span></div>
                         <ul class="comparison-list">
-                            <li>Limited liability - your house/car protected</li>
-                            <li>Lower corporate tax rate (~30% vs up to 45%)</li>
-                            <li>Professional appearance to clients</li>
-                            <li>Easier to bring in investors/partners</li>
-                            <li>Can pay yourself optimal salary</li>
-                            <li>Business expenses reduce tax</li>
+                            <li><span class="en">Limited liability - your house/car protected</span><span class="de">Beschränkte Haftung - Ihr Haus/Auto geschützt</span></li>
+                            <li><span class="en">Lower corporate tax rate (~30% vs up to 45%)</span><span class="de">Niedrigerer Körperschaftsteuersatz (~30% vs bis zu 45%)</span></li>
+                            <li><span class="en">Professional appearance to clients</span><span class="de">Professionelles Erscheinungsbild gegenüber Kunden</span></li>
+                            <li><span class="en">Easier to bring in investors/partners</span><span class="de">Einfacher, Investoren/Partner einzubringen</span></li>
+                            <li><span class="en">Can pay yourself optimal salary</span><span class="de">Können sich optimales Gehalt zahlen</span></li>
+                            <li><span class="en">Business expenses reduce tax</span><span class="de">Betriebsausgaben reduzieren Steuern</span></li>
                         </ul>
                     </div>
                     <div class="comparison-card bad">
-                        <div class="comparison-header">Costs/Complexity</div>
+                        <div class="comparison-header"><span class="en">Costs/Complexity</span><span class="de">Kosten/Komplexität</span></div>
                         <ul class="comparison-list">
-                            <li>€25,000 minimum capital (€12,500 upfront)</li>
-                            <li>Annual accounting costs (~€2,000-5,000)</li>
-                            <li>Notary fees for setup (~€500-1,500)</li>
-                            <li>Must file annual accounts publicly</li>
-                            <li>More administrative work</li>
-                            <li>Double taxation on dividends</li>
+                            <li><span class="en">€25,000 minimum capital (€12,500 upfront)</span><span class="de">€25.000 Mindestkapital (€12.500 im Voraus)</span></li>
+                            <li><span class="en">Annual accounting costs (~€2,000-5,000)</span><span class="de">Jährliche Buchhaltungskosten (~€2.000-5.000)</span></li>
+                            <li><span class="en">Notary fees for setup (~€500-1,500)</span><span class="de">Notargebühren für Gründung (~€500-1.500)</span></li>
+                            <li><span class="en">Must file annual accounts publicly</span><span class="de">Müssen Jahresabschlüsse öffentlich einreichen</span></li>
+                            <li><span class="en">More administrative work</span><span class="de">Mehr Verwaltungsarbeit</span></li>
+                            <li><span class="en">Double taxation on dividends</span><span class="de">Doppelbesteuerung auf Dividenden</span></li>
                         </ul>
                     </div>
                 </div>
@@ -780,10 +474,10 @@
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">Stammkapital (Share Capital)</div>
-                        <div class="card-subtitle">Your initial investment in the company</div>
+                        <div class="card-title">Stammkapital (<span class="en">Share Capital</span><span class="de">Stammkapital</span>)</div>
+                        <div class="card-subtitle"><span class="en">Your initial investment in the company</span><span class="de">Ihre anfängliche Investition in das Unternehmen</span></div>
                     </div>
-                    <span class="badge badge-green">Key Number</span>
+                    <span class="badge badge-green"><span class="en">Key Number</span><span class="de">Wichtige Zahl</span></span>
                 </div>
 
                 <div class="quote">
@@ -792,87 +486,90 @@
                 </div>
 
                 <div class="info-box success">
-                    <div class="info-box-title">Important: Capital is NOT Locked Away</div>
-                    <p>The Stammkapital can be used for business operations. You can pay salaries, buy equipment, pay rent. It's working capital, not a frozen deposit. "Das ist das Stammkapital, mit dem können Sie in der GmbH arbeiten."</p>
+                    <div class="info-box-title"><span class="en">Important: Capital is NOT Locked Away</span><span class="de">Wichtig: Kapital ist NICHT eingefroren</span></div>
+                    <p>
+                        <span class="en">The Stammkapital can be used for business operations. You can pay salaries, buy equipment, pay rent. It's working capital, not a frozen deposit. "Das ist das Stammkapital, mit dem können Sie in der GmbH arbeiten."</span>
+                        <span class="de">Das Stammkapital kann für den Geschäftsbetrieb verwendet werden. Sie können Gehälter zahlen, Ausrüstung kaufen, Miete zahlen. Es ist Betriebskapital, keine eingefrorene Einlage. "Das ist das Stammkapital, mit dem können Sie in der GmbH arbeiten."</span>
+                    </p>
                 </div>
 
-                <h3>Capital Options Discussed</h3>
+                <h3><span class="en">Capital Options Discussed</span><span class="de">Besprochene Kapitaloptionen</span></h3>
                 <div class="numbers-grid">
                     <div class="number-card">
                         <div class="number-value">€25,000</div>
-                        <div class="number-label">Legal Minimum (€12.5K to start)</div>
+                        <div class="number-label"><span class="en">Legal Minimum (€12.5K to start)</span><span class="de">Gesetzliches Minimum (€12,5K zum Start)</span></div>
                     </div>
                     <div class="number-card">
                         <div class="number-value">€80,000</div>
-                        <div class="number-label">Discussed Option</div>
+                        <div class="number-label"><span class="en">Discussed Option</span><span class="de">Besprochene Option</span></div>
                     </div>
                     <div class="number-card">
                         <div class="number-value">€100,000</div>
-                        <div class="number-label">Maximum Mentioned</div>
+                        <div class="number-label"><span class="en">Maximum Mentioned</span><span class="de">Höchstbetrag erwähnt</span></div>
                     </div>
                 </div>
 
-                <div class="quote">
-                    <div class="quote-text">"Und, äh, wenn Sie, äh, sagen, Sie wollen mehr Geld, das ist, ist open end, ja? Sie gehen natürlich das Stammkapital hunderttausend Euro oder..."</div>
-                    <div class="quote-source">— Accountant on flexible capital (38:21)</div>
-                </div>
-
                 <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 0.9rem;">
-                    <strong>Bank leverage:</strong> Higher Stammkapital = better position when negotiating with banks for loans or credit lines.
+                    <strong><span class="en">Bank leverage:</span><span class="de">Bankverhandlung:</span></strong>
+                    <span class="en">Higher Stammkapital = better position when negotiating with banks for loans or credit lines.</span>
+                    <span class="de">Höheres Stammkapital = bessere Position bei Verhandlungen mit Banken über Kredite oder Kreditlinien.</span>
                 </p>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">GmbH Tax Structure</div>
-                        <div class="card-subtitle">How corporate vs personal tax works</div>
+                        <div class="card-title"><span class="en">GmbH Tax Structure</span><span class="de">GmbH-Steuerstruktur</span></div>
+                        <div class="card-subtitle"><span class="en">How corporate vs personal tax works</span><span class="de">Wie Körperschaftsteuer vs. persönliche Steuer funktioniert</span></div>
                     </div>
                 </div>
 
                 <div class="table-container">
                     <table>
                         <tr>
-                            <th>Tax Type</th>
-                            <th>Rate</th>
-                            <th>What It Applies To</th>
+                            <th><span class="en">Tax Type</span><span class="de">Steuerart</span></th>
+                            <th><span class="en">Rate</span><span class="de">Satz</span></th>
+                            <th><span class="en">What It Applies To</span><span class="de">Worauf sie angewendet wird</span></th>
                         </tr>
                         <tr>
-                            <td>Körperschaftsteuer (Corp tax)</td>
+                            <td>Körperschaftsteuer (<span class="en">Corp tax</span><span class="de">Körperschaftsteuer</span>)</td>
                             <td>~15%</td>
-                            <td>GmbH profits</td>
+                            <td><span class="en">GmbH profits</span><span class="de">GmbH-Gewinne</span></td>
                         </tr>
                         <tr>
                             <td>Solidaritätszuschlag</td>
                             <td>~0.8%</td>
-                            <td>On corp tax</td>
+                            <td><span class="en">On corp tax</span><span class="de">Auf Körperschaftsteuer</span></td>
                         </tr>
                         <tr>
-                            <td>Gewerbesteuer (Trade tax)</td>
+                            <td>Gewerbesteuer (<span class="en">Trade tax</span><span class="de">Gewerbesteuer</span>)</td>
                             <td>~14-17%</td>
-                            <td>GmbH profits (varies by city)</td>
+                            <td><span class="en">GmbH profits (varies by city)</span><span class="de">GmbH-Gewinne (variiert nach Stadt)</span></td>
                         </tr>
                         <tr>
-                            <td><strong>Total Corporate</strong></td>
+                            <td><strong><span class="en">Total Corporate</span><span class="de">Gesamt Körperschaft</span></strong></td>
                             <td><strong>~30%</strong></td>
-                            <td>On GmbH profits</td>
+                            <td><span class="en">On GmbH profits</span><span class="de">Auf GmbH-Gewinne</span></td>
                         </tr>
                         <tr>
-                            <td>Kapitalertragsteuer (Dividend tax)</td>
+                            <td>Kapitalertragsteuer (<span class="en">Dividend tax</span><span class="de">Dividendensteuer</span>)</td>
                             <td>~25%</td>
-                            <td>When you take dividends personally</td>
+                            <td><span class="en">When you take dividends personally</span><span class="de">Wenn Sie persönlich Dividenden entnehmen</span></td>
                         </tr>
                         <tr>
-                            <td>Your salary (Einkommensteuer)</td>
+                            <td><span class="en">Your salary</span><span class="de">Ihr Gehalt</span> (Einkommensteuer)</td>
                             <td>14-45%</td>
-                            <td>Progressive based on income</td>
+                            <td><span class="en">Progressive based on income</span><span class="de">Progressiv basierend auf Einkommen</span></td>
                         </tr>
                     </table>
                 </div>
 
                 <div class="info-box">
-                    <div class="info-box-title">The Strategy</div>
-                    <p>Keep money in GmbH (30% tax) rather than taking large salary (up to 45% tax). Only take minimum salary for living expenses. Let profits accumulate and invest through the company.</p>
+                    <div class="info-box-title"><span class="en">The Strategy</span><span class="de">Die Strategie</span></div>
+                    <p>
+                        <span class="en">Keep money in GmbH (30% tax) rather than taking large salary (up to 45% tax). Only take minimum salary for living expenses. Let profits accumulate and invest through the company.</span>
+                        <span class="de">Geld in der GmbH behalten (30% Steuer) statt hohem Gehalt (bis zu 45% Steuer). Nur Mindestgehalt für Lebenshaltungskosten nehmen. Gewinne ansammeln und über das Unternehmen investieren.</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -881,29 +578,29 @@
         <section class="section" id="holding">
             <div class="section-header">
                 <span class="section-number">04</span>
-                <h2>Holding Company Structure</h2>
+                <h2><span class="en">Holding Company Structure</span><span class="de">Holdinggesellschaft-Struktur</span></h2>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">When Does a Holding Make Sense?</div>
-                        <div class="card-subtitle">Not yet - but good to understand for the future</div>
+                        <div class="card-title"><span class="en">When Does a Holding Make Sense?</span><span class="de">Wann macht eine Holding Sinn?</span></div>
+                        <div class="card-subtitle"><span class="en">Not yet - but good to understand for the future</span><span class="de">Noch nicht - aber gut für die Zukunft zu verstehen</span></div>
                     </div>
-                    <span class="badge badge-purple">Future Planning</span>
+                    <span class="badge badge-purple"><span class="en">Future Planning</span><span class="de">Zukunftsplanung</span></span>
                 </div>
 
                 <div class="quote">
                     <div class="quote-text">"Normalerweise macht man, also wenn Sie jetzt drei, vier, fünf hier gemacht haben, dann ist das für uns eine Holding."</div>
-                    <div class="quote-source">— Accountant on when Holding becomes relevant (37:40)</div>
+                    <div class="quote-source">— Accountant (37:40)</div>
                 </div>
 
-                <h3>How It Works</h3>
+                <h3><span class="en">How It Works</span><span class="de">Wie es funktioniert</span></h3>
                 <div style="background: var(--bg-card); border-radius: 8px; padding: 1.5rem; margin: 1rem 0; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-secondary);">
 <pre style="margin: 0; white-space: pre-wrap;">
         ┌─────────────────────┐
-        │   HOLDING GmbH      │  ← You own this
-        │   (Parent Company)  │
+        │   HOLDING GmbH      │  ← <span class="en">You own this</span><span class="de">Sie besitzen dies</span>
+        │   (<span class="en">Parent Company</span><span class="de">Muttergesellschaft</span>)  │
         └─────────┬───────────┘
                   │
     ┌─────────────┼─────────────┐
@@ -912,28 +609,26 @@
 ┌───────┐   ┌───────┐   ┌───────┐
 │ GmbH  │   │ GmbH  │   │ GmbH  │
 │  #1   │   │  #2   │   │  #3   │
-│NavAI- │   │Future │   │Future │
+│NavAI- │   │<span class="en">Future</span><span class="de">Zukünft.</span>│   │<span class="en">Future</span><span class="de">Zukünft.</span>│
 │ gate  │   │ Biz   │   │ Biz   │
 └───────┘   └───────┘   └───────┘
 </pre>
                 </div>
 
-                <h3>Holding Benefits</h3>
-                <ul style="list-style: none; color: var(--text-secondary);">
-                    <li style="padding: 0.35rem 0;">• <strong>Tax-efficient dividend flow:</strong> Dividends from subsidiary to Holding taxed at only ~1.5% (vs 25% to you personally)</li>
-                    <li style="padding: 0.35rem 0;">• <strong>Asset protection:</strong> If one business fails, others are protected</li>
-                    <li style="padding: 0.35rem 0;">• <strong>Centralized cash management:</strong> Holding manages money across all entities</li>
-                    <li style="padding: 0.35rem 0;">• <strong>Exit planning:</strong> Easier to sell individual businesses</li>
+                <h3><span class="en">Holding Benefits</span><span class="de">Holding-Vorteile</span></h3>
+                <ul class="list-plain">
+                    <li>• <strong><span class="en">Tax-efficient dividend flow:</span><span class="de">Steuereffiziente Dividendenverteilung:</span></strong> <span class="en">Dividends from subsidiary to Holding taxed at only ~1.5% (vs 25% to you personally)</span><span class="de">Dividenden von Tochtergesellschaft an Holding nur mit ~1,5% besteuert (vs 25% an Sie persönlich)</span></li>
+                    <li>• <strong><span class="en">Asset protection:</span><span class="de">Vermögensschutz:</span></strong> <span class="en">If one business fails, others are protected</span><span class="de">Wenn ein Unternehmen scheitert, sind andere geschützt</span></li>
+                    <li>• <strong><span class="en">Centralized cash management:</span><span class="de">Zentralisiertes Cashmanagement:</span></strong> <span class="en">Holding manages money across all entities</span><span class="de">Holding verwaltet Geld über alle Einheiten</span></li>
+                    <li>• <strong><span class="en">Exit planning:</span><span class="de">Ausstiegsplanung:</span></strong> <span class="en">Easier to sell individual businesses</span><span class="de">Einfacher, einzelne Unternehmen zu verkaufen</span></li>
                 </ul>
 
-                <div class="quote">
-                    <div class="quote-text">"Und man muss einfach dieses Geld verwalten. Die Holding kriegt aber auch dann die Dividende."</div>
-                    <div class="quote-source">— Accountant on Holding receiving dividends (37:46)</div>
-                </div>
-
                 <div class="info-box warning">
-                    <div class="info-box-title">Recommendation: Start with Single GmbH</div>
-                    <p>Don't set up a Holding yet. The accountant's advice: start with one GmbH for NavAIgate. Add Holding structure later if/when you have 3-5 businesses. Setting up too early = unnecessary costs and complexity.</p>
+                    <div class="info-box-title"><span class="en">Recommendation: Start with Single GmbH</span><span class="de">Empfehlung: Mit einer einzelnen GmbH starten</span></div>
+                    <p>
+                        <span class="en">Don't set up a Holding yet. The accountant's advice: start with one GmbH for NavAIgate. Add Holding structure later if/when you have 3-5 businesses. Setting up too early = unnecessary costs and complexity.</span>
+                        <span class="de">Richten Sie noch keine Holding ein. Der Rat des Steuerberaters: Beginnen Sie mit einer GmbH für NavAIgate. Fügen Sie später eine Holdingstruktur hinzu, wenn Sie 3-5 Unternehmen haben. Zu früh einrichten = unnötige Kosten und Komplexität.</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -942,70 +637,67 @@
         <section class="section" id="salary">
             <div class="section-header">
                 <span class="section-number">05</span>
-                <h2>Salary Optimization Strategy</h2>
+                <h2><span class="en">Salary Optimization Strategy</span><span class="de">Gehaltsoptimierungsstrategie</span></h2>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">The Core Strategy</div>
-                        <div class="card-subtitle">Minimize personal income, maximize company benefits</div>
+                        <div class="card-title"><span class="en">The Core Strategy</span><span class="de">Die Kernstrategie</span></div>
+                        <div class="card-subtitle"><span class="en">Minimize personal income, maximize company benefits</span><span class="de">Persönliches Einkommen minimieren, Unternehmensvorteile maximieren</span></div>
                     </div>
-                    <span class="badge badge-green">Tax Savings</span>
+                    <span class="badge badge-green"><span class="en">Tax Savings</span><span class="de">Steuerersparnis</span></span>
                 </div>
 
                 <div class="quote">
                     <div class="quote-text">"I understand that basically you could have this and I could take out whatever I want, but I would take out the lowest amount and I can then pay for things with my business."</div>
-                    <div class="quote-source">— You, confirming understanding (38:50)</div>
+                    <div class="quote-source">— You (38:50)</div>
                 </div>
 
                 <div class="quote">
                     <div class="quote-text">"Only related."</div>
-                    <div class="quote-source">— Accountant's response (39:01)</div>
+                    <div class="quote-source">— Accountant (39:01)</div>
                 </div>
 
-                <h3>How It Works</h3>
+                <h3><span class="en">How It Works</span><span class="de">Wie es funktioniert</span></h3>
 
                 <div class="table-container">
                     <table>
                         <tr>
-                            <th>Instead of...</th>
-                            <th>Do This...</th>
-                            <th>Tax Savings</th>
+                            <th><span class="en">Instead of...</span><span class="de">Anstatt...</span></th>
+                            <th><span class="en">Do This...</span><span class="de">Tun Sie dies...</span></th>
+                            <th><span class="en">Tax Savings</span><span class="de">Steuerersparnis</span></th>
                         </tr>
                         <tr>
-                            <td>€8,000/month salary</td>
-                            <td>€5,000 salary + expenses through GmbH</td>
-                            <td>~€500-1,000/month</td>
+                            <td><span class="en">€8,000/month salary</span><span class="de">€8.000/Monat Gehalt</span></td>
+                            <td><span class="en">€5,000 salary + expenses through GmbH</span><span class="de">€5.000 Gehalt + Ausgaben über GmbH</span></td>
+                            <td>~€500-1,000/<span class="en">month</span><span class="de">Monat</span></td>
                         </tr>
                         <tr>
-                            <td>Buy laptop personally (€2,000)</td>
-                            <td>GmbH buys laptop (business expense)</td>
+                            <td><span class="en">Buy laptop personally (€2,000)</span><span class="de">Laptop privat kaufen (€2.000)</span></td>
+                            <td><span class="en">GmbH buys laptop (business expense)</span><span class="de">GmbH kauft Laptop (Betriebsausgabe)</span></td>
                             <td>~€600-900</td>
                         </tr>
                         <tr>
-                            <td>Pay phone bill personally (€50/mo)</td>
-                            <td>Business mobile (Handy)</td>
-                            <td>~€15-22/month</td>
+                            <td><span class="en">Pay phone bill personally (€50/mo)</span><span class="de">Telefonrechnung privat zahlen (€50/Mo)</span></td>
+                            <td><span class="en">Business mobile (Handy)</span><span class="de">Geschäftshandy</span></td>
+                            <td>~€15-22/<span class="en">month</span><span class="de">Monat</span></td>
                         </tr>
                         <tr>
-                            <td>Home internet (€50/mo)</td>
-                            <td>Business internet expense</td>
-                            <td>~€15-22/month</td>
+                            <td><span class="en">Home internet (€50/mo)</span><span class="de">Heim-Internet (€50/Mo)</span></td>
+                            <td><span class="en">Business internet expense</span><span class="de">Geschäftliche Internetkosten</span></td>
+                            <td>~€15-22/<span class="en">month</span><span class="de">Monat</span></td>
                         </tr>
                     </table>
                 </div>
 
                 <div class="info-box success">
-                    <div class="info-box-title">Numbers from Meeting</div>
-                    <p><strong>Personal salary:</strong> €5,000/month target (minimum needed for living)<br>
-                    <strong>Business revenue:</strong> €20,000/month<br>
-                    <strong>Difference (€15,000):</strong> Stays in GmbH at 30% tax instead of up to 45% personal tax</p>
-                </div>
-
-                <div class="quote">
-                    <div class="quote-text">"Ich kann nicht für Sie bezahlen, weil ich nur 5.000 Euro im Monat verdiene. Das Geschäft verdient 20.000 Euro im Monat."</div>
-                    <div class="quote-source">— From meeting (~02:04:52)</div>
+                    <div class="info-box-title"><span class="en">Numbers from Meeting</span><span class="de">Zahlen aus der Besprechung</span></div>
+                    <p>
+                        <strong><span class="en">Personal salary:</span><span class="de">Persönliches Gehalt:</span></strong> €5,000/<span class="en">month target (minimum needed for living)</span><span class="de">Monat Ziel (Minimum zum Leben)</span><br>
+                        <strong><span class="en">Business revenue:</span><span class="de">Geschäftsumsatz:</span></strong> €20,000/<span class="en">month</span><span class="de">Monat</span><br>
+                        <strong><span class="en">Difference (€15,000):</span><span class="de">Differenz (€15.000):</span></strong> <span class="en">Stays in GmbH at 30% tax instead of up to 45% personal tax</span><span class="de">Bleibt in GmbH mit 30% Steuer statt bis zu 45% persönlicher Steuer</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -1014,73 +706,71 @@
         <section class="section" id="expenses">
             <div class="section-header">
                 <span class="section-number">06</span>
-                <h2>Deductible Business Expenses</h2>
+                <h2><span class="en">Deductible Business Expenses</span><span class="de">Absetzbare Betriebsausgaben</span></h2>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">What Can the GmbH Pay For?</div>
-                        <div class="card-subtitle">"Only related" - must have business purpose</div>
+                        <div class="card-title"><span class="en">What Can the GmbH Pay For?</span><span class="de">Was kann die GmbH bezahlen?</span></div>
+                        <div class="card-subtitle">"Only related" - <span class="en">must have business purpose</span><span class="de">muss geschäftlichen Zweck haben</span></div>
                     </div>
                 </div>
 
-                <div class="quote">
-                    <div class="quote-text">"Only related, like outdoors and bikes or, or anything, you know, or a computer or a Handy, whatever. Internet."</div>
-                    <div class="quote-source">— You listing potential expenses (39:02)</div>
-                </div>
-
-                <h3>Clearly Deductible (Mentioned in Meeting)</h3>
+                <h3><span class="en">Clearly Deductible (Mentioned in Meeting)</span><span class="de">Eindeutig absetzbar (in Besprechung erwähnt)</span></h3>
                 <div class="glossary-grid">
                     <div class="glossary-item">
                         <div class="glossary-term">Computer / Laptop</div>
-                        <div class="glossary-def">100% if only for business</div>
+                        <div class="glossary-def"><span class="en">100% if only for business</span><span class="de">100% wenn nur geschäftlich</span></div>
                     </div>
                     <div class="glossary-item">
-                        <div class="glossary-term">Handy (Mobile Phone)</div>
-                        <div class="glossary-def">Business phone line/device</div>
+                        <div class="glossary-term">Handy (<span class="en">Mobile Phone</span><span class="de">Mobiltelefon</span>)</div>
+                        <div class="glossary-def"><span class="en">Business phone line/device</span><span class="de">Geschäftliche Telefonleitung/Gerät</span></div>
                     </div>
                     <div class="glossary-item">
                         <div class="glossary-term">Internet</div>
-                        <div class="glossary-def">Home office portion deductible</div>
+                        <div class="glossary-def"><span class="en">Home office portion deductible</span><span class="de">Homeoffice-Anteil absetzbar</span></div>
                     </div>
                     <div class="glossary-item">
                         <div class="glossary-term">Software Subscriptions</div>
-                        <div class="glossary-def">Dev tools, cloud services, etc.</div>
+                        <div class="glossary-def"><span class="en">Dev tools, cloud services, etc.</span><span class="de">Entwicklungstools, Cloud-Dienste, etc.</span></div>
                     </div>
                     <div class="glossary-item">
-                        <div class="glossary-term">Office Supplies</div>
-                        <div class="glossary-def">Desk, chair, monitors, etc.</div>
+                        <div class="glossary-term"><span class="en">Office Supplies</span><span class="de">Bürobedarf</span></div>
+                        <div class="glossary-def"><span class="en">Desk, chair, monitors, etc.</span><span class="de">Schreibtisch, Stuhl, Monitore, etc.</span></div>
                     </div>
                     <div class="glossary-item">
-                        <div class="glossary-term">Business Travel</div>
-                        <div class="glossary-def">Flights, hotels for client meetings</div>
+                        <div class="glossary-term"><span class="en">Business Travel</span><span class="de">Geschäftsreisen</span></div>
+                        <div class="glossary-def"><span class="en">Flights, hotels for client meetings</span><span class="de">Flüge, Hotels für Kundentermine</span></div>
                     </div>
                 </div>
 
-                <h3>Potentially Deductible (Requires Justification)</h3>
+                <h3><span class="en">Potentially Deductible (Requires Justification)</span><span class="de">Möglicherweise absetzbar (erfordert Begründung)</span></h3>
                 <div class="glossary-grid">
                     <div class="glossary-item">
-                        <div class="glossary-term">Outdoor Equipment / Bikes</div>
-                        <div class="glossary-def">If NavAIgate is in outdoor/XR tech</div>
+                        <div class="glossary-term"><span class="en">Outdoor Equipment / Bikes</span><span class="de">Outdoor-Ausrüstung / Fahrräder</span></div>
+                        <div class="glossary-def"><span class="en">If NavAIgate is in outdoor/XR tech</span><span class="de">Wenn NavAIgate im Outdoor/XR-Bereich tätig ist</span></div>
                     </div>
                     <div class="glossary-item">
-                        <div class="glossary-term">Car / Auto</div>
-                        <div class="glossary-def">Business use portion only</div>
+                        <div class="glossary-term"><span class="en">Car / Auto</span><span class="de">Auto</span></div>
+                        <div class="glossary-def"><span class="en">Business use portion only</span><span class="de">Nur geschäftlicher Nutzungsanteil</span></div>
                     </div>
                     <div class="glossary-item">
                         <div class="glossary-term">Home Office</div>
-                        <div class="glossary-def">Portion of rent/utilities</div>
+                        <div class="glossary-def"><span class="en">Portion of rent/utilities</span><span class="de">Anteil der Miete/Nebenkosten</span></div>
                     </div>
                     <div class="glossary-item">
-                        <div class="glossary-term">Meals with Clients</div>
-                        <div class="glossary-def">70% deductible typically</div>
+                        <div class="glossary-term"><span class="en">Meals with Clients</span><span class="de">Essen mit Kunden</span></div>
+                        <div class="glossary-def"><span class="en">70% deductible typically</span><span class="de">Typischerweise 70% absetzbar</span></div>
                     </div>
                 </div>
 
                 <div class="info-box warning">
-                    <div class="info-box-title">Key Rule: Must Be Business Related</div>
-                    <p>Keep documentation for everything. The Finanzamt can challenge expenses without clear business purpose. When in doubt, ask your Steuerberater before purchasing.</p>
+                    <div class="info-box-title"><span class="en">Key Rule: Must Be Business Related</span><span class="de">Hauptregel: Muss geschäftsbezogen sein</span></div>
+                    <p>
+                        <span class="en">Keep documentation for everything. The Finanzamt can challenge expenses without clear business purpose. When in doubt, ask your Steuerberater before purchasing.</span>
+                        <span class="de">Bewahren Sie für alles Dokumentation auf. Das Finanzamt kann Ausgaben ohne klaren geschäftlichen Zweck anfechten. Im Zweifelsfall fragen Sie Ihren Steuerberater vor dem Kauf.</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -1089,61 +779,55 @@
         <section class="section" id="investments">
             <div class="section-header">
                 <span class="section-number">07</span>
-                <h2>Investment Options Through GmbH</h2>
+                <h2><span class="en">Investment Options Through GmbH</span><span class="de">Investitionsmöglichkeiten durch GmbH</span></h2>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">What to Do with Excess Cash</div>
-                        <div class="card-subtitle">The accountant's ongoing advisory role</div>
+                        <div class="card-title"><span class="en">What to Do with Excess Cash</span><span class="de">Was mit überschüssigem Geld tun</span></div>
+                        <div class="card-subtitle"><span class="en">The accountant's ongoing advisory role</span><span class="de">Die fortlaufende Beratungsrolle des Steuerberaters</span></div>
                     </div>
                 </div>
 
                 <div class="quote">
-                    <div class="quote-text">"Der uns zum Beispiel sagt: Herr Müller, es sind sieben tausend Euro da, und das ist, und das bleibt auch, investiert in die Firma oder investiert in Einnahmen, in die ETF-Aktie oder so."</div>
-                    <div class="quote-source">— Accountant describing advisory role (42:05)</div>
+                    <div class="quote-text">"Herr Müller, es sind sieben tausend Euro da, und das ist, und das bleibt auch, investiert in die Firma oder investiert in Einnahmen, in die ETF-Aktie oder so."</div>
+                    <div class="quote-source">— Accountant (42:05)</div>
                 </div>
 
-                <h3>Investment Options Discussed</h3>
+                <h3><span class="en">Investment Options Discussed</span><span class="de">Besprochene Investitionsmöglichkeiten</span></h3>
 
                 <div class="table-container">
                     <table>
                         <tr>
                             <th>Option</th>
-                            <th>Pros</th>
-                            <th>Cons</th>
-                            <th>Tax Treatment</th>
+                            <th><span class="en">Pros</span><span class="de">Vorteile</span></th>
+                            <th><span class="en">Cons</span><span class="de">Nachteile</span></th>
                         </tr>
                         <tr>
-                            <td><strong>Reinvest in Firma</strong></td>
-                            <td>Grows the business, immediate deduction</td>
-                            <td>Not diversified</td>
-                            <td>Expense = reduces tax</td>
+                            <td><strong><span class="en">Reinvest in Business</span><span class="de">In Firma reinvestieren</span></strong></td>
+                            <td><span class="en">Grows the business, immediate deduction</span><span class="de">Wächst das Geschäft, sofortiger Abzug</span></td>
+                            <td><span class="en">Not diversified</span><span class="de">Nicht diversifiziert</span></td>
                         </tr>
                         <tr>
-                            <td><strong>ETFs / Aktien (Stocks)</strong></td>
-                            <td>Diversified, passive growth</td>
-                            <td>30% tax on gains when sold</td>
-                            <td>Corp tax on realized gains</td>
+                            <td><strong>ETFs / Aktien</strong></td>
+                            <td><span class="en">Diversified, passive growth</span><span class="de">Diversifiziert, passives Wachstum</span></td>
+                            <td><span class="en">30% tax on gains when sold</span><span class="de">30% Steuer auf Gewinne beim Verkauf</span></td>
                         </tr>
                         <tr>
-                            <td><strong>Real Estate</strong></td>
-                            <td>Tangible asset, rental income</td>
-                            <td>Illiquid, management hassle</td>
-                            <td>Complex - see section 8</td>
+                            <td><strong><span class="en">Real Estate</span><span class="de">Immobilien</span></strong></td>
+                            <td><span class="en">Tangible asset, rental income</span><span class="de">Sachanlage, Mieteinnahmen</span></td>
+                            <td><span class="en">Illiquid, management hassle</span><span class="de">Illiquid, Verwaltungsaufwand</span></td>
                         </tr>
                     </table>
                 </div>
 
                 <div class="info-box">
-                    <div class="info-box-title">€7,000 Example</div>
-                    <p>The accountant used €7,000 as an example. When you have excess cash, the question becomes: invest back into NavAIgate (equipment, marketing, hiring) OR invest in financial markets through the GmbH?</p>
-                </div>
-
-                <div class="quote">
-                    <div class="quote-text">"Wir werden im Moment maximal möglich und wie kann ich investieren? Bestmöglich, dass das Geld dort raus, wo wir unser Leben haben."</div>
-                    <div class="quote-source">— Accountant on optimizing investments (42:34)</div>
+                    <div class="info-box-title"><span class="en">€7,000 Example</span><span class="de">€7.000 Beispiel</span></div>
+                    <p>
+                        <span class="en">The accountant used €7,000 as an example. When you have excess cash, the question becomes: invest back into NavAIgate (equipment, marketing, hiring) OR invest in financial markets through the GmbH?</span>
+                        <span class="de">Der Steuerberater nutzte €7.000 als Beispiel. Wenn Sie überschüssiges Geld haben, stellt sich die Frage: Zurück in NavAIgate investieren (Ausrüstung, Marketing, Einstellung) ODER in Finanzmärkte über die GmbH investieren?</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -1152,47 +836,36 @@
         <section class="section" id="realestate">
             <div class="section-header">
                 <span class="section-number">08</span>
-                <h2>Real Estate Considerations</h2>
+                <h2><span class="en">Real Estate Considerations</span><span class="de">Immobilienüberlegungen</span></h2>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">Accountant's Warning on Real Estate</div>
-                        <div class="card-subtitle">Proceed with caution</div>
+                        <div class="card-title"><span class="en">Accountant's Warning on Real Estate</span><span class="de">Warnung des Steuerberaters zu Immobilien</span></div>
+                        <div class="card-subtitle"><span class="en">Proceed with caution</span><span class="de">Mit Vorsicht vorgehen</span></div>
                     </div>
-                    <span class="badge badge-orange">Risk Alert</span>
+                    <span class="badge badge-orange"><span class="en">Risk Alert</span><span class="de">Risikowarnung</span></span>
                 </div>
 
                 <div class="quote">
                     <div class="quote-text">"Und finden Sie mal den Mieter, der das macht, das ist nicht so einfach."</div>
-                    <div class="quote-source">— Accountant on finding tenants (40:29)</div>
+                    <div class="quote-source">— Accountant (40:29)</div>
                 </div>
 
-                <div class="quote">
-                    <div class="quote-text">"Wenn Sie früher gehen, dann... Ja. Das ist immer das große Problem."</div>
-                    <div class="quote-source">— Accountant on early exit risks (40:51)</div>
-                </div>
-
-                <h3>Key Concerns Raised</h3>
-                <ul style="list-style: none; color: var(--text-secondary);">
-                    <li style="padding: 0.5rem 0;">
-                        <strong style="color: var(--accent-orange);">Finding tenants:</strong> "Das ist nicht so einfach" - it's not so easy. Vacancy = no income but still have costs.
-                    </li>
-                    <li style="padding: 0.5rem 0;">
-                        <strong style="color: var(--accent-orange);">Early exit:</strong> If you need to sell/exit before retirement, can be problematic. Real estate through GmbH has different tax treatment than personal.
-                    </li>
-                    <li style="padding: 0.5rem 0;">
-                        <strong style="color: var(--accent-orange);">Retirement timing:</strong> "Wenn Sie in Rente gehen, müssen Sie das vorher rausmachen" - need to extract before retirement.
-                    </li>
-                    <li style="padding: 0.5rem 0;">
-                        <strong style="color: var(--accent-orange);">Risk assessment:</strong> "Deswegen sage ich immer, wenn Sie was machen, nur, dann schaue ich immer, welches Risiko."
-                    </li>
+                <h3><span class="en">Key Concerns Raised</span><span class="de">Hauptbedenken</span></h3>
+                <ul class="list-plain">
+                    <li style="padding: 0.5rem 0;"><strong style="color: var(--accent-orange);"><span class="en">Finding tenants:</span><span class="de">Mieter finden:</span></strong> <span class="en">"Das ist nicht so einfach" - it's not so easy. Vacancy = no income but still have costs.</span><span class="de">"Das ist nicht so einfach". Leerstand = kein Einkommen, aber immer noch Kosten.</span></li>
+                    <li style="padding: 0.5rem 0;"><strong style="color: var(--accent-orange);"><span class="en">Early exit:</span><span class="de">Früher Ausstieg:</span></strong> <span class="en">If you need to sell before retirement, can be problematic.</span><span class="de">Wenn Sie vor der Rente verkaufen müssen, kann das problematisch sein.</span></li>
+                    <li style="padding: 0.5rem 0;"><strong style="color: var(--accent-orange);"><span class="en">Retirement timing:</span><span class="de">Rentenzeitpunkt:</span></strong> <span class="en">"Wenn Sie in Rente gehen, müssen Sie das vorher rausmachen"</span><span class="de">"Wenn Sie in Rente gehen, müssen Sie das vorher rausmachen"</span></li>
                 </ul>
 
                 <div class="info-box warning">
-                    <div class="info-box-title">Accountant's Position</div>
-                    <p>The accountant was cautious about real estate investment through the GmbH. If you're interested in property, discuss specific scenarios with them first. The tax treatment of real estate in a GmbH is complex and exit timing matters significantly.</p>
+                    <div class="info-box-title"><span class="en">Accountant's Position</span><span class="de">Position des Steuerberaters</span></div>
+                    <p>
+                        <span class="en">The accountant was cautious about real estate investment through the GmbH. If you're interested in property, discuss specific scenarios with them first.</span>
+                        <span class="de">Der Steuerberater war vorsichtig bei Immobilieninvestitionen über die GmbH. Wenn Sie an Immobilien interessiert sind, besprechen Sie konkrete Szenarien zuerst mit ihm.</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -1201,46 +874,31 @@
         <section class="section" id="family">
             <div class="section-header">
                 <span class="section-number">09</span>
-                <h2>Family & Inheritance Planning</h2>
+                <h2><span class="en">Family & Inheritance Planning</span><span class="de">Familien- & Erbschaftsplanung</span></h2>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">Planning for Your Children</div>
-                        <div class="card-subtitle">Long-term wealth transfer</div>
+                        <div class="card-title"><span class="en">Planning for Your Children</span><span class="de">Planung für Ihre Kinder</span></div>
+                        <div class="card-subtitle"><span class="en">Long-term wealth transfer</span><span class="de">Langfristige Vermögensübertragung</span></div>
                     </div>
                 </div>
 
-                <div class="quote">
-                    <div class="quote-text">"Und dann erleben die Kinder, die eben auch ein bisschen mehr sein..."</div>
-                    <div class="quote-source">— Accountant on children benefiting (41:48)</div>
-                </div>
-
-                <h3>Family Details from Meeting</h3>
-                <ul style="list-style: none; color: var(--text-secondary);">
-                    <li style="padding: 0.35rem 0;">• Older daughter: 16 years old</li>
-                    <li style="padding: 0.35rem 0;">• Younger daughter: 10 years old</li>
-                    <li style="padding: 0.35rem 0;">• Described situation: "Jung und wachsend" (young and growing)</li>
-                    <li style="padding: 0.35rem 0;">• "Alles ist neu" - everything is new</li>
+                <h3><span class="en">Family Details from Meeting</span><span class="de">Familiendetails aus der Besprechung</span></h3>
+                <ul class="list-plain">
+                    <li>• <span class="en">Older daughter: 16 years old</span><span class="de">Ältere Tochter: 16 Jahre alt</span></li>
+                    <li>• <span class="en">Younger daughter: 10 years old</span><span class="de">Jüngere Tochter: 10 Jahre alt</span></li>
+                    <li>• <span class="en">Described situation: "Jung und wachsend" (young and growing)</span><span class="de">Beschriebene Situation: "Jung und wachsend"</span></li>
+                    <li>• "Alles ist neu" - <span class="en">everything is new</span><span class="de">alles ist neu</span></li>
                 </ul>
 
-                <h3>AI/KI for Children's Learning</h3>
-                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Discussion about using AI for the children's education:</p>
-
-                <div class="quote">
-                    <div class="quote-text">"Es ist Lernphase, weil die Funktion, die Organisation kommt... aber du musst es immer noch mal am Ende kontrollieren."</div>
-                    <div class="quote-source">— On AI being in "learning phase" - always verify at the end (01:44:32)</div>
-                </div>
-
-                <div class="quote">
-                    <div class="quote-text">"Deswegen habe ich mich für den Prozess entschieden, weil ich sage ja jetzt ständig das Gleiche."</div>
-                    <div class="quote-source">— Choosing process-based approach for consistency (01:44:32)</div>
-                </div>
-
                 <div class="info-box">
-                    <div class="info-box-title">Inheritance Planning Through GmbH</div>
-                    <p>The GmbH structure can facilitate generational wealth transfer. GmbH shares can be gifted to children with favorable tax treatment (€400,000 tax-free per child per 10 years). This was briefly mentioned - ask your accountant for details when ready.</p>
+                    <div class="info-box-title"><span class="en">Inheritance Planning Through GmbH</span><span class="de">Erbschaftsplanung durch GmbH</span></div>
+                    <p>
+                        <span class="en">The GmbH structure can facilitate generational wealth transfer. GmbH shares can be gifted to children with favorable tax treatment (€400,000 tax-free per child per 10 years). Ask your accountant for details when ready.</span>
+                        <span class="de">Die GmbH-Struktur kann die generationsübergreifende Vermögensübertragung erleichtern. GmbH-Anteile können mit günstiger Steuerbehandlung an Kinder verschenkt werden (€400.000 steuerfrei pro Kind alle 10 Jahre). Fragen Sie Ihren Steuerberater nach Details, wenn Sie bereit sind.</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -1249,72 +907,33 @@
         <section class="section" id="accountant">
             <div class="section-header">
                 <span class="section-number">10</span>
-                <h2>Your Accountant's Role</h2>
+                <h2><span class="en">Your Accountant's Role</span><span class="de">Die Rolle Ihres Steuerberaters</span></h2>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">What the Steuerberater Will Do</div>
-                        <div class="card-subtitle">Ongoing services and support</div>
+                        <div class="card-title"><span class="en">What the Steuerberater Will Do</span><span class="de">Was der Steuerberater tun wird</span></div>
+                        <div class="card-subtitle"><span class="en">Ongoing services and support</span><span class="de">Laufende Dienstleistungen und Unterstützung</span></div>
                     </div>
                 </div>
 
-                <h3>Services Discussed</h3>
-                <ul class="checklist">
-                    <li class="checklist-item">
-                        <div class="checkbox checked"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Finanzamt Compliance</div>
-                            <div class="checklist-desc">Handle all tax authority filings and communications</div>
-                        </div>
-                    </li>
-                    <li class="checklist-item">
-                        <div class="checkbox checked"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Investment Advisory</div>
-                            <div class="checklist-desc">"€7,000 da - investiert in die Firma oder in ETF-Aktie?"</div>
-                        </div>
-                    </li>
-                    <li class="checklist-item">
-                        <div class="checkbox checked"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Tax Optimization</div>
-                            <div class="checklist-desc">"Maximal möglich und wie kann ich investieren?"</div>
-                        </div>
-                    </li>
-                    <li class="checklist-item">
-                        <div class="checkbox checked"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Risk Assessment</div>
-                            <div class="checklist-desc">"Welches Risiko" - evaluate risk for each decision</div>
-                        </div>
-                    </li>
-                    <li class="checklist-item">
-                        <div class="checkbox checked"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Retirement Planning</div>
-                            <div class="checklist-desc">"Wenn Sie in Rente gehen" - plan exit strategy</div>
-                        </div>
-                    </li>
-                    <li class="checklist-item">
-                        <div class="checkbox checked"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Annual Reviews</div>
-                            <div class="checklist-desc">First year evaluation form + yearly feedback</div>
-                        </div>
-                    </li>
+                <h3><span class="en">Services Discussed</span><span class="de">Besprochene Dienstleistungen</span></h3>
+                <ul class="list-plain">
+                    <li>• <strong>Finanzamt Compliance:</strong> <span class="en">Handle all tax authority filings and communications</span><span class="de">Alle Finanzamt-Einreichungen und Kommunikation übernehmen</span></li>
+                    <li>• <strong><span class="en">Investment Advisory:</span><span class="de">Anlageberatung:</span></strong> <span class="en">"€7,000 da - invest in business or ETF?"</span><span class="de">"€7.000 da - in Firma oder ETF investieren?"</span></li>
+                    <li>• <strong><span class="en">Tax Optimization:</span><span class="de">Steueroptimierung:</span></strong> <span class="en">"Maximal möglich und wie kann ich investieren?"</span><span class="de">"Maximal möglich und wie kann ich investieren?"</span></li>
+                    <li>• <strong><span class="en">Risk Assessment:</span><span class="de">Risikobewertung:</span></strong> <span class="en">"Welches Risiko" - evaluate risk for each decision</span><span class="de">"Welches Risiko" - Risiko für jede Entscheidung bewerten</span></li>
+                    <li>• <strong><span class="en">Retirement Planning:</span><span class="de">Ruhestandsplanung:</span></strong> <span class="en">"Wenn Sie in Rente gehen" - plan exit strategy</span><span class="de">"Wenn Sie in Rente gehen" - Ausstiegsstrategie planen</span></li>
+                    <li>• <strong><span class="en">Annual Reviews:</span><span class="de">Jährliche Überprüfungen:</span></strong> <span class="en">First year evaluation form + yearly feedback</span><span class="de">Erstjahresbewertung + jährliches Feedback</span></li>
                 </ul>
 
-                <h3>Annual Evaluation Requirement</h3>
-                <div class="quote">
-                    <div class="quote-text">"You have to know that the first year, you will have an evaluation form, and on a yearly basis, you have to give them feedback the next before you left at the end."</div>
-                    <div class="quote-source">— On yearly review process (01:39:16)</div>
-                </div>
-
                 <div class="info-box">
-                    <div class="info-box-title">Recommendation: Financial Advisor Too</div>
-                    <p>The accountant mentioned needing "Steuerberater und einen Arbeiter oder einen ganzen Berater" - a tax advisor AND a financial advisor for investment strategy (ETFs, stocks, etc.).</p>
+                    <div class="info-box-title"><span class="en">Recommendation: Financial Advisor Too</span><span class="de">Empfehlung: Auch Finanzberater</span></div>
+                    <p>
+                        <span class="en">The accountant mentioned needing "Steuerberater und einen Finanzberater" - a tax advisor AND a financial advisor for investment strategy (ETFs, stocks, etc.).</span>
+                        <span class="de">Der Steuerberater erwähnte, dass Sie "Steuerberater und einen Finanzberater" brauchen - einen Steuerberater UND einen Finanzberater für die Anlagestrategie (ETFs, Aktien, etc.).</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -1323,41 +942,41 @@
         <section class="section" id="timeline">
             <div class="section-header">
                 <span class="section-number">11</span>
-                <h2>Timeline & Process</h2>
+                <h2><span class="en">Timeline & Process</span><span class="de">Zeitplan & Prozess</span></h2>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">GmbH Formation Timeline</div>
-                        <div class="card-subtitle">What to expect</div>
+                        <div class="card-title"><span class="en">GmbH Formation Timeline</span><span class="de">GmbH-Gründungszeitplan</span></div>
+                        <div class="card-subtitle"><span class="en">What to expect</span><span class="de">Was Sie erwarten können</span></div>
                     </div>
                 </div>
 
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-phase">PHASE 1: Preparation</div>
-                        <div class="timeline-title">Gather Requirements</div>
-                        <div class="timeline-desc">Confirm Stammkapital amount (€50K-100K). Prepare business plan. Define company purpose (Unternehmensgegenstand). Choose company name.</div>
+                        <div class="timeline-phase">PHASE 1: <span class="en">Preparation</span><span class="de">Vorbereitung</span></div>
+                        <div class="timeline-title"><span class="en">Gather Requirements</span><span class="de">Anforderungen sammeln</span></div>
+                        <div class="timeline-desc"><span class="en">Confirm Stammkapital amount. Prepare business plan. Define company purpose. Choose company name.</span><span class="de">Stammkapital-Betrag bestätigen. Businessplan vorbereiten. Unternehmenszweck definieren. Firmennamen wählen.</span></div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-phase">PHASE 2: Formation</div>
-                        <div class="timeline-title">Notary & Registration</div>
-                        <div class="timeline-desc">Notary appointment to sign Gesellschaftsvertrag. Open business bank account. Deposit Stammkapital. Submit to Handelsregister.</div>
+                        <div class="timeline-phase">PHASE 2: <span class="en">Formation</span><span class="de">Gründung</span></div>
+                        <div class="timeline-title"><span class="en">Notary & Registration</span><span class="de">Notar & Registrierung</span></div>
+                        <div class="timeline-desc"><span class="en">Notary appointment to sign Gesellschaftsvertrag. Open business bank account. Deposit Stammkapital. Submit to Handelsregister.</span><span class="de">Notartermin zur Unterzeichnung des Gesellschaftsvertrags. Geschäftsbankkonto eröffnen. Stammkapital einzahlen. Beim Handelsregister einreichen.</span></div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-phase">PHASE 3: Official</div>
-                        <div class="timeline-title">GmbH is Active</div>
-                        <div class="timeline-desc">Receive Handelsregister entry. Get Steuernummer from Finanzamt. Set up accounting with Steuerberater. Begin operations.</div>
+                        <div class="timeline-phase">PHASE 3: <span class="en">Official</span><span class="de">Offiziell</span></div>
+                        <div class="timeline-title"><span class="en">GmbH is Active</span><span class="de">GmbH ist aktiv</span></div>
+                        <div class="timeline-desc"><span class="en">Receive Handelsregister entry. Get Steuernummer from Finanzamt. Set up accounting with Steuerberater. Begin operations.</span><span class="de">Handelsregistereintrag erhalten. Steuernummer vom Finanzamt erhalten. Buchhaltung mit Steuerberater einrichten. Betrieb aufnehmen.</span></div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
-                        <div class="timeline-phase">ONGOING</div>
-                        <div class="timeline-title">Annual Requirements</div>
-                        <div class="timeline-desc">Monthly/quarterly VAT filings. Annual accounts (Jahresabschluss). Corporate tax return. First year evaluation. Yearly feedback before year-end.</div>
+                        <div class="timeline-phase"><span class="en">ONGOING</span><span class="de">LAUFEND</span></div>
+                        <div class="timeline-title"><span class="en">Annual Requirements</span><span class="de">Jährliche Anforderungen</span></div>
+                        <div class="timeline-desc"><span class="en">Monthly/quarterly VAT filings. Annual accounts. Corporate tax return. First year evaluation. Yearly feedback.</span><span class="de">Monatliche/vierteljährliche USt-Meldungen. Jahresabschlüsse. Körperschaftsteuererklärung. Erstjahresbewertung. Jährliches Feedback.</span></div>
                     </div>
                 </div>
             </div>
@@ -1367,227 +986,128 @@
         <section class="section" id="checklist">
             <div class="section-header">
                 <span class="section-number">12</span>
-                <h2>Master Action Checklist</h2>
+                <h2><span class="en">Master Action Checklist</span><span class="de">Haupt-Aktionscheckliste</span></h2>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">Everything You Need to Do</div>
-                        <div class="card-subtitle">Click to mark items as complete</div>
+                        <div class="card-title"><span class="en">Everything You Need to Do</span><span class="de">Alles, was Sie tun müssen</span></div>
+                        <div class="card-subtitle"><span class="en">Click to mark items as complete</span><span class="de">Klicken Sie, um Punkte als erledigt zu markieren</span></div>
                     </div>
                 </div>
 
-                <h3>Immediate (Before GmbH Formation)</h3>
+                <h3><span class="en">Immediate (Before GmbH Formation)</span><span class="de">Sofort (Vor GmbH-Gründung)</span></h3>
                 <ul class="checklist">
                     <li class="checklist-item">
                         <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
                         <div class="checklist-content">
-                            <div class="checklist-title">Confirm Stammkapital amount</div>
-                            <div class="checklist-desc">Legal minimum €25,000 (can start with €12,500). Higher amounts (€50K-100K) discussed for more flexibility.</div>
+                            <div class="checklist-title"><span class="en">Confirm Stammkapital amount</span><span class="de">Stammkapital-Betrag bestätigen</span></div>
+                            <div class="checklist-desc"><span class="en">Legal minimum €25,000 (can start with €12,500). Higher amounts discussed for flexibility.</span><span class="de">Gesetzliches Minimum €25.000 (kann mit €12.500 starten). Höhere Beträge für Flexibilität besprochen.</span></div>
                         </div>
                     </li>
                     <li class="checklist-item">
                         <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
                         <div class="checklist-content">
-                            <div class="checklist-title">Ensure starting capital is available</div>
-                            <div class="checklist-desc">Minimum €12,500 required upfront (50% of €25,000). Remaining €12,500 can be paid later.</div>
+                            <div class="checklist-title"><span class="en">Ensure starting capital is available</span><span class="de">Sicherstellen, dass Startkapital verfügbar ist</span></div>
+                            <div class="checklist-desc"><span class="en">Minimum €12,500 required upfront (50% of €25,000).</span><span class="de">Minimum €12.500 im Voraus erforderlich (50% von €25.000).</span></div>
                         </div>
                     </li>
                     <li class="checklist-item">
                         <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
                         <div class="checklist-content">
-                            <div class="checklist-title">Engage Steuerberater formally</div>
-                            <div class="checklist-desc">Confirm scope of services and fees</div>
+                            <div class="checklist-title"><span class="en">Engage Steuerberater formally</span><span class="de">Steuerberater formell beauftragen</span></div>
+                            <div class="checklist-desc"><span class="en">Confirm scope of services and fees</span><span class="de">Leistungsumfang und Honorare bestätigen</span></div>
                         </div>
                     </li>
                     <li class="checklist-item">
                         <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
                         <div class="checklist-content">
-                            <div class="checklist-title">Choose company name</div>
-                            <div class="checklist-desc">Check availability with Handelsregister</div>
-                        </div>
-                    </li>
-                    <li class="checklist-item">
-                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Define business purpose</div>
-                            <div class="checklist-desc">Unternehmensgegenstand - what the GmbH will do (software development, consulting, etc.)</div>
+                            <div class="checklist-title"><span class="en">Choose company name</span><span class="de">Firmennamen wählen</span></div>
+                            <div class="checklist-desc"><span class="en">Check availability with Handelsregister</span><span class="de">Verfügbarkeit beim Handelsregister prüfen</span></div>
                         </div>
                     </li>
                 </ul>
 
-                <h3>GmbH Formation Steps</h3>
+                <h3><span class="en">GmbH Formation Steps</span><span class="de">GmbH-Gründungsschritte</span></h3>
                 <ul class="checklist">
                     <li class="checklist-item">
                         <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
                         <div class="checklist-content">
-                            <div class="checklist-title">Schedule notary appointment</div>
-                            <div class="checklist-desc">For signing Gesellschaftsvertrag (articles of association)</div>
+                            <div class="checklist-title"><span class="en">Schedule notary appointment</span><span class="de">Notartermin vereinbaren</span></div>
+                            <div class="checklist-desc"><span class="en">For signing Gesellschaftsvertrag (articles of association)</span><span class="de">Zur Unterzeichnung des Gesellschaftsvertrags</span></div>
                         </div>
                     </li>
                     <li class="checklist-item">
                         <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
                         <div class="checklist-content">
-                            <div class="checklist-title">Open business bank account</div>
-                            <div class="checklist-desc">GmbH i.G. (in Gründung) account for initial capital</div>
+                            <div class="checklist-title"><span class="en">Open business bank account</span><span class="de">Geschäftsbankkonto eröffnen</span></div>
+                            <div class="checklist-desc"><span class="en">GmbH i.G. (in Gründung) account for initial capital</span><span class="de">GmbH i.G. (in Gründung) Konto für Anfangskapital</span></div>
                         </div>
                     </li>
                     <li class="checklist-item">
                         <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
                         <div class="checklist-content">
-                            <div class="checklist-title">Deposit Stammkapital</div>
-                            <div class="checklist-desc">At least 50% must be deposited before registration</div>
+                            <div class="checklist-title"><span class="en">Deposit Stammkapital</span><span class="de">Stammkapital einzahlen</span></div>
+                            <div class="checklist-desc"><span class="en">At least 50% must be deposited before registration</span><span class="de">Mindestens 50% müssen vor der Registrierung eingezahlt werden</span></div>
                         </div>
                     </li>
                     <li class="checklist-item">
                         <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
                         <div class="checklist-content">
-                            <div class="checklist-title">Submit to Handelsregister</div>
-                            <div class="checklist-desc">Notary typically handles this</div>
+                            <div class="checklist-title"><span class="en">Submit to Handelsregister</span><span class="de">Beim Handelsregister einreichen</span></div>
+                            <div class="checklist-desc"><span class="en">Notary typically handles this</span><span class="de">Notar übernimmt dies normalerweise</span></div>
                         </div>
                     </li>
                     <li class="checklist-item">
                         <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
                         <div class="checklist-content">
-                            <div class="checklist-title">Register with Finanzamt</div>
-                            <div class="checklist-desc">Get Steuernummer (tax number)</div>
-                        </div>
-                    </li>
-                </ul>
-
-                <h3>Ongoing / When Applicable</h3>
-                <ul class="checklist">
-                    <li class="checklist-item">
-                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Define business expenses clearly</div>
-                            <div class="checklist-desc">List all legitimate expenses: computers, phones, internet, software, travel</div>
-                        </div>
-                    </li>
-                    <li class="checklist-item">
-                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Consider financial advisor</div>
-                            <div class="checklist-desc">For ETF/stock investment strategy</div>
-                        </div>
-                    </li>
-                    <li class="checklist-item">
-                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Set up salary payment</div>
-                            <div class="checklist-desc">Monthly Geschäftsführer salary (target: €5,000/month)</div>
-                        </div>
-                    </li>
-                    <li class="checklist-item">
-                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">First year evaluation</div>
-                            <div class="checklist-desc">Complete evaluation form with accountant</div>
-                        </div>
-                    </li>
-                    <li class="checklist-item">
-                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Research real estate carefully</div>
-                            <div class="checklist-desc">If interested, discuss specific scenarios with accountant first</div>
-                        </div>
-                    </li>
-                </ul>
-
-                <h3>NavAIgate Specific</h3>
-                <ul class="checklist">
-                    <li class="checklist-item">
-                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Profile marketing</div>
-                            <div class="checklist-desc">"It's been nine notice, but I think it's time to do it here. We need help."</div>
-                        </div>
-                    </li>
-                    <li class="checklist-item">
-                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">Decide if NavAIgate goes under GmbH</div>
-                            <div class="checklist-desc">Transition existing business into new structure</div>
+                            <div class="checklist-title"><span class="en">Register with Finanzamt</span><span class="de">Beim Finanzamt anmelden</span></div>
+                            <div class="checklist-desc"><span class="en">Get Steuernummer (tax number)</span><span class="de">Steuernummer erhalten</span></div>
                         </div>
                     </li>
                 </ul>
             </div>
         </section>
 
-        <!-- Section 13: Quotes -->
-        <section class="section" id="transcript">
+        <!-- Section 13: Key Quotes -->
+        <section class="section" id="quotes">
             <div class="section-header">
                 <span class="section-number">13</span>
-                <h2>Key Quotes from Meeting</h2>
+                <h2><span class="en">Key Quotes from Meeting</span><span class="de">Wichtige Zitate aus der Besprechung</span></h2>
             </div>
 
             <div class="card">
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem;">Direct quotes from the transcript for reference.</p>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem;"><span class="en">Direct quotes from the transcript for reference.</span><span class="de">Direkte Zitate aus dem Transkript zur Referenz.</span></p>
 
                 <div class="quote">
                     <div class="quote-text">"Normalerweise macht man, also wenn Sie jetzt drei, vier, fünf hier gemacht haben, dann ist das für uns eine Holding."</div>
-                    <div class="quote-source">— On when Holding structure becomes relevant [37:40]</div>
-                </div>
-
-                <div class="quote">
-                    <div class="quote-text">"Und man muss einfach dieses Geld verwalten. Die Holding kriegt aber auch dann die Dividende."</div>
-                    <div class="quote-source">— On Holding receiving dividends [37:46]</div>
-                </div>
-
-                <div class="quote">
-                    <div class="quote-text">"Genau, ich würde eine GmbH gründen. So, die GmbH gründen Sie, weil ich Stammkapital ausgeben. Also mindestens fünfzigtausend Euro."</div>
-                    <div class="quote-source">— On GmbH formation [38:06]</div>
+                    <div class="quote-source">— <span class="en">On when Holding structure becomes relevant</span><span class="de">Wann Holding-Struktur relevant wird</span> [37:40]</div>
                 </div>
 
                 <div class="quote">
                     <div class="quote-text">"Das ist das Stammkapital, mit dem können Sie in der GmbH arbeiten. Das heißt, Sie können Löhne auszahlen, Sie können einkaufen damit."</div>
-                    <div class="quote-source">— Capital can be used for operations [38:21]</div>
-                </div>
-
-                <div class="quote">
-                    <div class="quote-text">"I understand that basically you could have this and I could take out whatever I want, but I would take out the lowest amount and I can then pay for things with my business."</div>
-                    <div class="quote-source">— Your salary optimization understanding [38:50]</div>
+                    <div class="quote-source">— <span class="en">Capital can be used for operations</span><span class="de">Kapital kann für Betrieb verwendet werden</span> [38:21]</div>
                 </div>
 
                 <div class="quote">
                     <div class="quote-text">"Only related."</div>
-                    <div class="quote-source">— Accountant on business expenses [39:01]</div>
+                    <div class="quote-source">— <span class="en">Accountant on business expenses</span><span class="de">Steuerberater zu Betriebsausgaben</span> [39:01]</div>
                 </div>
 
                 <div class="quote">
                     <div class="quote-text">"Deswegen sage ich immer, wenn Sie was machen, nur, dann schaue ich immer, welches Risiko."</div>
-                    <div class="quote-source">— On always assessing risk [40:17]</div>
+                    <div class="quote-source">— <span class="en">On always assessing risk</span><span class="de">Über die ständige Risikobewertung</span> [40:17]</div>
                 </div>
 
                 <div class="quote">
                     <div class="quote-text">"Und finden Sie mal den Mieter, der das macht, das ist nicht so einfach."</div>
-                    <div class="quote-source">— Warning about real estate [40:29]</div>
-                </div>
-
-                <div class="quote">
-                    <div class="quote-text">"Herr Müller, es sind sieben tausend Euro da, und das ist, und das bleibt auch, investiert in die Firma oder investiert in Einnahmen, in die ETF-Aktie oder so."</div>
-                    <div class="quote-source">— Example of accountant's advisory role [42:05]</div>
-                </div>
-
-                <div class="quote">
-                    <div class="quote-text">"Bestmöglich, dass das Geld dort raus, wo wir unser Leben haben."</div>
-                    <div class="quote-source">— On optimizing where money goes [42:43]</div>
-                </div>
-
-                <div class="quote">
-                    <div class="quote-text">"Jung und wachsend... Und alles ist neu."</div>
-                    <div class="quote-source">— Describing your business stage [01:39:47]</div>
-                </div>
-
-                <div class="quote">
-                    <div class="quote-text">"Es ist Lernphase... aber du musst es immer noch mal am Ende kontrollieren."</div>
-                    <div class="quote-source">— On AI/KI: still learning phase, always verify [01:44:32]</div>
+                    <div class="quote-source">— <span class="en">Warning about real estate</span><span class="de">Warnung zu Immobilien</span> [40:29]</div>
                 </div>
 
                 <div class="quote">
                     <div class="quote-text">"Ich kann nicht für Sie bezahlen, weil ich nur 5.000 Euro im Monat verdiene. Das Geschäft verdient 20.000 Euro im Monat."</div>
-                    <div class="quote-source">— Personal vs business income [02:04:52]</div>
+                    <div class="quote-source">— <span class="en">Personal vs business income</span><span class="de">Persönliches vs. geschäftliches Einkommen</span> [02:04:52]</div>
                 </div>
             </div>
         </section>
@@ -1596,135 +1116,117 @@
         <section class="section" id="numbers">
             <div class="section-header">
                 <span class="section-number">14</span>
-                <h2>All Financial Numbers Mentioned</h2>
+                <h2><span class="en">All Financial Numbers Mentioned</span><span class="de">Alle erwähnten Finanzzahlen</span></h2>
             </div>
 
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <div class="card-title">Complete Number Reference</div>
-                        <div class="card-subtitle">Every financial figure from the meeting</div>
+                        <div class="card-title"><span class="en">Complete Number Reference</span><span class="de">Vollständige Zahlenreferenz</span></div>
+                        <div class="card-subtitle"><span class="en">Every financial figure from the meeting</span><span class="de">Jede Finanzzahl aus der Besprechung</span></div>
                     </div>
                 </div>
 
                 <div class="table-container">
                     <table>
                         <tr>
-                            <th>Amount</th>
-                            <th>Context</th>
-                            <th>Source</th>
+                            <th><span class="en">Amount</span><span class="de">Betrag</span></th>
+                            <th><span class="en">Context</span><span class="de">Kontext</span></th>
                         </tr>
                         <tr>
                             <td><strong>€25,000</strong></td>
-                            <td>Legal minimum GmbH Stammkapital (€12,500 upfront to start)</td>
-                            <td>German law</td>
+                            <td><span class="en">Legal minimum GmbH Stammkapital (€12,500 upfront to start)</span><span class="de">Gesetzliches Mindest-GmbH-Stammkapital (€12.500 zum Start)</span></td>
                         </tr>
                         <tr>
                             <td><strong>€50,000</strong></td>
-                            <td>Higher capital option discussed in meeting</td>
-                            <td>Accountant [38:06]</td>
+                            <td><span class="en">Higher capital option discussed in meeting</span><span class="de">In Besprechung besprochene höhere Kapitaloption</span></td>
                         </tr>
                         <tr>
                             <td><strong>€100,000</strong></td>
-                            <td>Higher Stammkapital option mentioned</td>
-                            <td>Accountant [38:21]</td>
+                            <td><span class="en">Higher Stammkapital option mentioned</span><span class="de">Erwähnte höhere Stammkapital-Option</span></td>
                         </tr>
                         <tr>
                             <td><strong>€80,000</strong></td>
-                            <td>Middle ground capital option discussed</td>
-                            <td>New transcript [02:03:03]</td>
+                            <td><span class="en">Middle ground capital option discussed</span><span class="de">Besprochene mittlere Kapitaloption</span></td>
                         </tr>
                         <tr>
-                            <td><strong>€20,000</strong></td>
-                            <td>Expected funds after one month (you mentioned)</td>
-                            <td>You [38:16]</td>
+                            <td><strong>€5,000/<span class="en">month</span><span class="de">Monat</span></strong></td>
+                            <td><span class="en">Personal salary target</span><span class="de">Persönliches Gehaltsziel</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>€20,000/<span class="en">month</span><span class="de">Monat</span></strong></td>
+                            <td><span class="en">Business revenue</span><span class="de">Geschäftsumsatz</span></td>
                         </tr>
                         <tr>
                             <td><strong>€7,000</strong></td>
-                            <td>Example excess cash for investment decision</td>
-                            <td>Accountant [42:05]</td>
+                            <td><span class="en">Example excess cash for investment decision</span><span class="de">Beispiel überschüssiges Geld für Investitionsentscheidung</span></td>
                         </tr>
                         <tr>
-                            <td><strong>€5,000/month</strong></td>
-                            <td>Personal salary target</td>
-                            <td>New transcript [02:04:52]</td>
+                            <td><strong>~30%</strong></td>
+                            <td><span class="en">Total corporate tax rate</span><span class="de">Gesamter Körperschaftsteuersatz</span></td>
                         </tr>
                         <tr>
-                            <td><strong>€20,000/month</strong></td>
-                            <td>Business revenue</td>
-                            <td>New transcript [02:05:00]</td>
+                            <td><strong>~25%</strong></td>
+                            <td><span class="en">Dividend tax (Kapitalertragsteuer)</span><span class="de">Dividendensteuer (Kapitalertragsteuer)</span></td>
                         </tr>
                         <tr>
-                            <td><strong>€30,000</strong></td>
-                            <td>Mentioned multiple times (income/savings?)</td>
-                            <td>New transcript [00:31:52+]</td>
-                        </tr>
-                        <tr>
-                            <td><strong>€15,000</strong></td>
-                            <td>First/second "Stock" amounts</td>
-                            <td>New transcript [00:31:57]</td>
-                        </tr>
-                        <tr>
-                            <td><strong>€10,000</strong></td>
-                            <td>Mentioned with "9 COs"</td>
-                            <td>New transcript [00:33:23]</td>
-                        </tr>
-                        <tr>
-                            <td><strong>€300/month</strong></td>
-                            <td>"Interesse" (interest) mentioned</td>
-                            <td>New transcript [02:04:00]</td>
-                        </tr>
-                        <tr>
-                            <td><strong>€1,830</strong></td>
-                            <td>Repeated amount (unclear context)</td>
-                            <td>New transcript [02:05:22]</td>
-                        </tr>
-                        <tr>
-                            <td><strong>25%</strong></td>
-                            <td>Tax rate mentioned</td>
-                            <td>Multiple [00:20:08]</td>
-                        </tr>
-                        <tr>
-                            <td><strong>22%</strong></td>
-                            <td>Tax rate mentioned</td>
-                            <td>New transcript [00:20:15]</td>
-                        </tr>
-                        <tr>
-                            <td><strong>30%</strong></td>
-                            <td>Tax rate mentioned</td>
-                            <td>New transcript [00:20:24]</td>
+                            <td><strong>14-45%</strong></td>
+                            <td><span class="en">Personal income tax (Einkommensteuer)</span><span class="de">Persönliche Einkommensteuer</span></td>
                         </tr>
                     </table>
                 </div>
 
                 <div class="info-box warning">
-                    <div class="info-box-title">Transcript Quality Note</div>
-                    <p>Some numbers from the new transcript may be inaccurate due to audio quality issues. The most reliable figures are from the clearer portions: €50,000 minimum capital, €5,000/month personal salary, €20,000/month business income, and €7,000 investment example.</p>
+                    <div class="info-box-title"><span class="en">Transcript Quality Note</span><span class="de">Hinweis zur Transkriptqualität</span></div>
+                    <p>
+                        <span class="en">Some numbers from the transcript may be inaccurate due to audio quality issues. The most reliable figures are: €25,000 minimum capital, €5,000/month personal salary, €20,000/month business income.</span>
+                        <span class="de">Einige Zahlen aus dem Transkript können aufgrund von Audioqualitätsproblemen ungenau sein. Die zuverlässigsten Zahlen sind: €25.000 Mindestkapital, €5.000/Monat persönliches Gehalt, €20.000/Monat Geschäftsumsatz.</span>
+                    </p>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
         <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.8rem;">
-            <p>Document generated from accountant meeting transcript • January 2025</p>
-            <p style="margin-top: 0.5rem;">Meeting duration: ~128 minutes | Languages: German/English</p>
-            <p style="margin-top: 1rem; color: var(--text-muted);">Remember to rotate your OpenAI API key at <a href="https://platform.openai.com/api-keys" style="color: var(--accent-blue);">platform.openai.com/api-keys</a></p>
+            <p><span class="en">Document generated from accountant meeting transcript • January 2025</span><span class="de">Dokument erstellt aus Steuerberater-Besprechungsprotokoll • Januar 2025</span></p>
+            <p style="margin-top: 0.5rem;"><span class="en">Meeting duration: ~128 minutes | Languages: German/English</span><span class="de">Besprechungsdauer: ~128 Minuten | Sprachen: Deutsch/Englisch</span></p>
         </footer>
     </div>
 
     <script>
-        // Persist checkbox state
-        document.querySelectorAll('.checkbox').forEach((box, i) => {
-            const key = 'accountant-checklist-' + i;
-            if (localStorage.getItem(key) === 'checked') {
-                box.classList.add('checked');
+        function setLang(lang) {
+            document.body.className = 'lang-' + lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            localStorage.setItem('preferred-lang', lang);
+        }
+
+        // Load saved preferences and set up checkboxes
+        document.addEventListener('DOMContentLoaded', () => {
+            // Language preference
+            const saved = localStorage.getItem('preferred-lang');
+            if (saved) {
+                document.body.className = 'lang-' + saved;
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.textContent === saved.toUpperCase());
+                });
             }
-            box.addEventListener('click', () => {
-                if (box.classList.contains('checked')) {
-                    localStorage.setItem(key, 'checked');
-                } else {
-                    localStorage.removeItem(key);
+
+            // Checkbox persistence
+            document.querySelectorAll('.checkbox').forEach((box, i) => {
+                const key = 'accountant-checklist-' + i;
+                if (localStorage.getItem(key) === 'checked') {
+                    box.classList.add('checked');
                 }
+                box.addEventListener('click', () => {
+                    if (box.classList.contains('checked')) {
+                        localStorage.setItem(key, 'checked');
+                    } else {
+                        localStorage.removeItem(key);
+                    }
+                });
             });
         });
     </script>
