@@ -162,11 +162,201 @@
         .glossary-term { font-weight: 600; font-size: 0.85rem; color: var(--accent-teal); }
         .glossary-def { font-size: 0.8rem; color: var(--text-muted); }
 
+        /* Summary Table Styles */
+        .summary-table { border-collapse: separate; border-spacing: 0; }
+        .summary-table thead th {
+            position: sticky;
+            top: 0;
+            background: var(--bg-highlight);
+            font-size: 0.7rem;
+            padding: 1rem 0.75rem;
+            border-bottom: 2px solid var(--accent-blue);
+        }
+        .summary-table tbody td {
+            padding: 1rem 0.75rem;
+            font-size: 0.8rem;
+            vertical-align: top;
+            border-bottom: 1px solid var(--border);
+        }
+        .summary-table tbody tr:hover td {
+            background: rgba(10, 132, 255, 0.05);
+        }
+        .summary-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
         @media print { body { background: white; color: black; } .card, .info-box, .definition, .quote { background: #f5f5f5; border: 1px solid #ddd; } }
         @media (max-width: 768px) { .numbers-grid, .comparison, .glossary-grid, .toc-list { grid-template-columns: 1fr; } h1 { font-size: 1.75rem; } }
 
         .list-plain { list-style: none; color: var(--text-secondary); }
         .list-plain li { padding: 0.35rem 0; }
+
+        /* Visual Infographic Styles */
+        .infographic {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+        .infographic-title {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .infographic-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 900px) {
+            .infographic-grid { grid-template-columns: 1fr; }
+        }
+        .info-panel {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            position: relative;
+        }
+        .info-panel-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .info-panel-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        .info-panel-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .info-panel-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .info-panel-item {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+        .info-panel-item-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--bg-highlight);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+        .info-panel-item-content h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: var(--text-primary);
+        }
+        .info-panel-item-content p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        .highlight-stat {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-highlight);
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .highlight-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .highlight-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .roadmap-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .roadmap-steps { grid-template-columns: 1fr; }
+        }
+        .roadmap-step {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+        .roadmap-step-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin: 0 auto 0.75rem;
+        }
+        .roadmap-step h4 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .roadmap-step p {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        .key-finding {
+            background: linear-gradient(135deg, rgba(48, 209, 88, 0.1), rgba(10, 132, 255, 0.1));
+            border: 1px solid rgba(48, 209, 88, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        .key-finding-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+        .key-finding p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body class="lang-en">
@@ -193,6 +383,264 @@
             </p>
         </header>
 
+        <!-- Visual Strategic Guide Infographic -->
+        <div class="infographic" id="visual-guide">
+            <h2 class="infographic-title">
+                <span class="en">Navigating the German GmbH: A Strategic Guide</span>
+                <span class="de">Navigation durch die deutsche GmbH: Ein strategischer Leitfaden</span>
+            </h2>
+
+            <div class="infographic-grid">
+                <!-- Panel 1: Tax & Corporate Structure -->
+                <div class="info-panel">
+                    <div class="info-panel-header">
+                        <div class="info-panel-icon" style="background: rgba(255, 159, 10, 0.15); color: var(--accent-orange);">&#128176;</div>
+                        <div class="info-panel-title">
+                            <span class="en">Tax & Corporate Structure</span>
+                            <span class="de">Steuer- & Unternehmensstruktur</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+                        <div class="highlight-stat">
+                            <span class="highlight-stat-value" style="color: var(--accent-orange);">~30%</span>
+                            <span class="highlight-stat-label">
+                                <span class="en">Total Tax</span>
+                                <span class="de">Gesamtsteuer</span>
+                            </span>
+                        </div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted);">
+                            <span class="en">~15% Corporate Tax + ~15% Trade Tax (Hebesatz varies)</span>
+                            <span class="de">~15% Körperschaftsteuer + ~15% Gewerbesteuer (Hebesatz variiert)</span>
+                        </div>
+                    </div>
+                    <div class="info-panel-items">
+                        <div class="info-panel-item">
+                            <div class="info-panel-item-icon">&#127970;</div>
+                            <div class="info-panel-item-content">
+                                <h4>
+                                    <span class="en">The Holding Advantage</span>
+                                    <span class="de">Der Holding-Vorteil</span>
+                                </h4>
+                                <p>
+                                    <span class="en">Dividends to Holding are <strong style="color: var(--accent-green);">95% tax-free</strong> = effective 1.5% rate on reinvested profits</span>
+                                    <span class="de">Dividenden an Holding sind <strong style="color: var(--accent-green);">95% steuerfrei</strong> = effektiver 1,5% Satz auf reinvestierte Gewinne</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="key-finding">
+                        <div class="key-finding-title">
+                            <span class="en">Key Finding: €100k Rule</span>
+                            <span class="de">Wichtige Erkenntnis: €100k Regel</span>
+                        </div>
+                        <p>
+                            <span class="en">Holding structure recommended once ~€100,000 annual profit is NOT needed for personal living.</span>
+                            <span class="de">Holdingstruktur empfohlen, wenn ~€100.000 Jahresgewinn NICHT für den persönlichen Lebensunterhalt benötigt werden.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Panel 2: Payroll & Social Security -->
+                <div class="info-panel">
+                    <div class="info-panel-header">
+                        <div class="info-panel-icon" style="background: rgba(48, 209, 88, 0.15); color: var(--accent-green);">&#128101;</div>
+                        <div class="info-panel-title">
+                            <span class="en">Payroll & Social Security</span>
+                            <span class="de">Lohnabrechnung & Sozialversicherung</span>
+                        </div>
+                    </div>
+                    <div class="info-panel-items">
+                        <div class="info-panel-item">
+                            <div class="info-panel-item-icon">&#128106;</div>
+                            <div class="info-panel-item-content">
+                                <h4>
+                                    <span class="en">Family Minijob: €520/month</span>
+                                    <span class="de">Familien-Minijob: €520/Monat</span>
+                                </h4>
+                                <p>
+                                    <span class="en">Tax-free for spouse, fully deductible for GmbH. Higher salaries trigger expensive social security.</span>
+                                    <span class="de">Steuerfrei für Ehepartner, voll absetzbar für GmbH. Höhere Gehälter lösen teure Sozialversicherung aus.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info-panel-item">
+                            <div class="info-panel-item-icon">&#128176;</div>
+                            <div class="info-panel-item-content">
+                                <h4>
+                                    <span class="en">Founder Salary: €5,000/month</span>
+                                    <span class="de">Gründergehalt: €5.000/Monat</span>
+                                </h4>
+                                <p>
+                                    <span class="en">Fixed salary provides liquidity. Requires Status Determination Procedure (Statusfeststellungsverfahren) for pension exemption.</span>
+                                    <span class="de">Festes Gehalt bietet Liquidität. Erfordert Statusfeststellungsverfahren für Rentenbefreiung.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info-panel-item">
+                            <div class="info-panel-item-icon">&#128274;</div>
+                            <div class="info-panel-item-content">
+                                <h4>
+                                    <span class="en">The "Tax Vault" Strategy</span>
+                                    <span class="de">Die "Steuer-Tresor" Strategie</span>
+                                </h4>
+                                <p>
+                                    <span class="en">Set aside <strong style="color: var(--accent-orange);">30-40%</strong> of all revenue into a separate account for tax prepayments & annual settlements.</span>
+                                    <span class="de"><strong style="color: var(--accent-orange);">30-40%</strong> aller Einnahmen auf separates Konto für Steuervorauszahlungen & Jahresabrechnungen.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 3: Smart Asset & Expense Management -->
+                <div class="info-panel">
+                    <div class="info-panel-header">
+                        <div class="info-panel-icon" style="background: rgba(10, 132, 255, 0.15); color: var(--accent-blue);">&#128187;</div>
+                        <div class="info-panel-title">
+                            <span class="en">Smart Asset & Expense Management</span>
+                            <span class="de">Intelligentes Vermögens- & Ausgabenmanagement</span>
+                        </div>
+                    </div>
+                    <div class="info-panel-items">
+                        <div class="info-panel-item">
+                            <div class="info-panel-item-icon">&#128663;</div>
+                            <div class="info-panel-item-content">
+                                <h4>
+                                    <span class="en">Private vs. Business Vehicle</span>
+                                    <span class="de">Privat- vs. Firmenwagen</span>
+                                </h4>
+                                <p>
+                                    <span class="en">Low business mileage? Buy privately (e.g., Tesla). Charge GmbH <strong>€0.30/km</strong> for business trips.</span>
+                                    <span class="de">Wenig geschäftliche Fahrten? Privat kaufen (z.B. Tesla). GmbH <strong>€0,30/km</strong> für Geschäftsreisen berechnen.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info-panel-item">
+                            <div class="info-panel-item-icon">&#128421;</div>
+                            <div class="info-panel-item-content">
+                                <h4>
+                                    <span class="en">Transferring Assets (Sacheinlage)</span>
+                                    <span class="de">Vermögensübertragung (Sacheinlage)</span>
+                                </h4>
+                                <p>
+                                    <span class="en">Sell personal equipment (MacBook, iPhone) to GmbH at "fair market value" via contract for depreciation.</span>
+                                    <span class="de">Persönliche Geräte (MacBook, iPhone) zum "Zeitwert" per Vertrag an GmbH verkaufen für Abschreibung.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info-panel-item">
+                            <div class="info-panel-item-icon">&#127860;</div>
+                            <div class="info-panel-item-content">
+                                <h4>
+                                    <span class="en">Entertainment & Gift Limits</span>
+                                    <span class="de">Bewirtung & Geschenkgrenzen</span>
+                                </h4>
+                                <p>
+                                    <span class="en">Meals: <strong>70% deductible</strong> with signed receipts. Gifts: strictly <strong>€50/person/year</strong> maximum.</span>
+                                    <span class="de">Bewirtung: <strong>70% absetzbar</strong> mit unterschriebenen Belegen. Geschenke: strikt <strong>€50/Person/Jahr</strong> Maximum.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel 4: Compliance & Long-Term Risks -->
+                <div class="info-panel">
+                    <div class="info-panel-header">
+                        <div class="info-panel-icon" style="background: rgba(255, 69, 58, 0.15); color: var(--accent-red);">&#9888;</div>
+                        <div class="info-panel-title">
+                            <span class="en">Compliance & Long-Term Risks</span>
+                            <span class="de">Compliance & Langfristige Risiken</span>
+                        </div>
+                    </div>
+                    <div class="info-panel-items">
+                        <div class="info-panel-item">
+                            <div class="info-panel-item-icon" style="background: rgba(255, 69, 58, 0.15);">&#128683;</div>
+                            <div class="info-panel-item-content">
+                                <h4>
+                                    <span class="en">The "Exit Tax" Trap (§ 6 AStG)</span>
+                                    <span class="de">Die "Wegzugssteuer" Falle (§ 6 AStG)</span>
+                                </h4>
+                                <p>
+                                    <span class="en">Moving abroad triggers "fictional sale" of shares, taxed on theoretical gain (~13.75x avg. annual profit). Consult 6+ months before moving!</span>
+                                    <span class="de">Wegzug löst "fiktiven Verkauf" der Anteile aus, besteuert auf theoretischen Gewinn (~13,75x durchschn. Jahresgewinn). 6+ Monate vorher beraten lassen!</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info-panel-item">
+                            <div class="info-panel-item-icon">&#128451;</div>
+                            <div class="info-panel-item-content">
+                                <h4>
+                                    <span class="en">10-Year Data Retention</span>
+                                    <span class="de">10 Jahre Aufbewahrungspflicht</span>
+                                </h4>
+                                <p>
+                                    <span class="en">All records must be archived 10 years in GoBD-compliant digital format. Word invoices need timestamp workaround.</span>
+                                    <span class="de">Alle Unterlagen müssen 10 Jahre GoBD-konform digital archiviert werden. Word-Rechnungen brauchen Zeitstempel-Workaround.</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info-panel-item">
+                            <div class="info-panel-item-icon">&#128737;</div>
+                            <div class="info-panel-item-content">
+                                <h4>
+                                    <span class="en">IT Liability Insurance</span>
+                                    <span class="de">IT-Haftpflichtversicherung</span>
+                                </h4>
+                                <p>
+                                    <span class="en">Essential for "pecuniary loss" (e.g., accidental client database deletion). Costs <strong>€400-600/year</strong>.</span>
+                                    <span class="de">Essentiell für "Vermögensschäden" (z.B. versehentliche Kundendatenbank-Löschung). Kostet <strong>€400-600/Jahr</strong>.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Founding Roadmap -->
+            <div style="margin-top: 2rem;">
+                <h3 style="text-align: center; font-size: 1rem; color: var(--text-secondary); margin-bottom: 1rem;">
+                    <span class="en">The Founding Roadmap (Next Steps)</span>
+                    <span class="de">Der Gründungs-Fahrplan (Nächste Schritte)</span>
+                </h3>
+                <div class="roadmap-steps">
+                    <div class="roadmap-step">
+                        <div class="roadmap-step-number">1</div>
+                        <h4>
+                            <span class="en">Draft Articles</span>
+                            <span class="de">Verträge erstellen</span>
+                        </h4>
+                        <p>
+                            <span class="en">Prepare "Gesellschaftsvertrag" & Managing Director contract with § 181 BGB exemption for self-dealing</span>
+                            <span class="de">"Gesellschaftsvertrag" & Geschäftsführervertrag mit § 181 BGB Befreiung für Insichgeschäfte vorbereiten</span>
+                        </p>
+                    </div>
+                    <div class="roadmap-step">
+                        <div class="roadmap-step-number" style="background: var(--accent-purple);">2</div>
+                        <h4>
+                            <span class="en">Notary & Capital</span>
+                            <span class="de">Notar & Kapital</span>
+                        </h4>
+                        <p>
+                            <span class="en">Visit Notary to sign; open business account (e.g., Qonto) & deposit share capital (€12,500 or €25,000)</span>
+                            <span class="de">Notartermin zur Unterschrift; Geschäftskonto eröffnen (z.B. Qonto) & Stammkapital einzahlen (€12.500 oder €25.000)</span>
+                        </p>
+                    </div>
+                    <div class="roadmap-step">
+                        <div class="roadmap-step-number" style="background: var(--accent-green);">3</div>
+                        <h4>
+                            <span class="en">Tax Registration</span>
+                            <span class="de">Steuerliche Erfassung</span>
+                        </h4>
+                        <p>
+                            <span class="en">Complete questionnaire for Finanzamt to receive tax ID & begin VAT (Umsatzsteuer) reporting</span>
+                            <span class="de">Fragebogen beim Finanzamt ausfüllen für Steuernummer & Umsatzsteuer-Meldungen beginnen</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Table of Contents -->
         <nav class="toc">
             <div class="toc-title">
@@ -214,6 +662,8 @@
                 <li><a href="#checklist"><span class="toc-number">12</span> <span class="en">Master Checklist</span><span class="de">Haupt-Checkliste</span></a></li>
                 <li><a href="#quotes"><span class="toc-number">13</span> <span class="en">Key Quotes</span><span class="de">Wichtige Zitate</span></a></li>
                 <li><a href="#numbers"><span class="toc-number">14</span> <span class="en">All Financial Numbers</span><span class="de">Alle Finanzzahlen</span></a></li>
+                <li><a href="#summary"><span class="toc-number">15</span> <span class="en">Executive Advisory Summary</span><span class="de">Zusammenfassung der Beratung</span></a></li>
+                <li><a href="#advanced"><span class="toc-number">16</span> <span class="en">Advanced Topics & Compliance</span><span class="de">Fortgeschrittene Themen & Compliance</span></a></li>
             </ol>
         </nav>
 
@@ -1181,6 +1631,622 @@
                     <p>
                         <span class="en">Some numbers from the transcript may be inaccurate due to audio quality issues. The most reliable figures are: €25,000 minimum capital, €5,000/month personal salary, €20,000/month business income.</span>
                         <span class="de">Einige Zahlen aus dem Transkript können aufgrund von Audioqualitätsproblemen ungenau sein. Die zuverlässigsten Zahlen sind: €25.000 Mindestkapital, €5.000/Monat persönliches Gehalt, €20.000/Monat Geschäftsumsatz.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 15: Executive Summary Table -->
+        <section class="section" id="summary">
+            <div class="section-header">
+                <span class="section-number">15</span>
+                <h2><span class="en">Executive Advisory Summary</span><span class="de">Zusammenfassung der Beratung</span></h2>
+            </div>
+
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                <span class="en">A comprehensive overview of all key advisory topics, actions required, and financial implications discussed with your Steuerberater.</span>
+                <span class="de">Ein umfassender Überblick über alle wichtigen Beratungsthemen, erforderliche Maßnahmen und finanziellen Auswirkungen, die mit Ihrem Steuerberater besprochen wurden.</span>
+            </p>
+
+            <div class="card" style="padding: 0; overflow: hidden;">
+                <div class="table-container" style="overflow-x: auto;">
+                    <table class="summary-table" style="min-width: 1200px;">
+                        <thead>
+                            <tr style="background: var(--bg-highlight);">
+                                <th style="width: 12%; white-space: nowrap;"><span class="en">Topic</span><span class="de">Thema</span></th>
+                                <th style="width: 18%;"><span class="en">Advice Given</span><span class="de">Gegebene Empfehlung</span></th>
+                                <th style="width: 18%;"><span class="en">Requirements / Actions</span><span class="de">Anforderungen / Maßnahmen</span></th>
+                                <th style="width: 18%;"><span class="en">Financial Implications</span><span class="de">Finanzielle Auswirkungen</span></th>
+                                <th style="width: 16%;"><span class="en">Working with Freelancers</span><span class="de">Arbeit mit Freelancern</span></th>
+                                <th style="width: 18%;"><span class="en">Future Considerations</span><span class="de">Zukünftige Überlegungen</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1: Working with Freelancers -->
+                            <tr>
+                                <td style="font-weight: 600; color: var(--accent-blue);">
+                                    <span class="en">Working with Freelancers</span>
+                                    <span class="de">Arbeit mit Freelancern</span>
+                                </td>
+                                <td>
+                                    <span class="en">Use platforms like Upwork as a "shield" to avoid direct employment risks (Scheinselbstständigkeit). Avoid paying contractors directly outside established platforms.</span>
+                                    <span class="de">Plattformen wie Upwork als "Schutzschild" nutzen, um direkte Beschäftigungsrisiken (Scheinselbstständigkeit) zu vermeiden. Auftragnehmer nicht direkt außerhalb etablierter Plattformen bezahlen.</span>
+                                </td>
+                                <td>
+                                    <span class="en">Keep all contracts and payments within the Upwork platform to ensure invoicing is GoBD-compliant and legally separated.</span>
+                                    <span class="de">Alle Verträge und Zahlungen innerhalb der Upwork-Plattform halten, um GoBD-konforme Rechnungsstellung und rechtliche Trennung sicherzustellen.</span>
+                                </td>
+                                <td>
+                                    <span class="en">Upwork fees are considered an "insurance" cost against social security misclassification risks.</span>
+                                    <span class="de">Upwork-Gebühren gelten als "Versicherungskosten" gegen Risiken der Sozialversicherungsfehlklassifizierung.</span>
+                                </td>
+                                <td>
+                                    <span class="en">International contractors (Ukraine, Pakistan) should be managed via Upwork to avoid German social security and handling German wage tax.</span>
+                                    <span class="de">Internationale Auftragnehmer (Ukraine, Pakistan) sollten über Upwork verwaltet werden, um deutsche Sozialversicherung und Lohnsteuer zu vermeiden.</span>
+                                </td>
+                                <td>
+                                    <span class="en">Direct hiring in the future would require registration in the freelancer's country or handling German wage tax liabilities.</span>
+                                    <span class="de">Direkteinstellungen in der Zukunft würden eine Registrierung im Land des Freiberuflers oder die Handhabung deutscher Lohnsteuerpflichten erfordern.</span>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2: Salary and Social Security -->
+                            <tr>
+                                <td style="font-weight: 600; color: var(--accent-green);">
+                                    <span class="en">Salary & Social Security</span>
+                                    <span class="de">Gehalt & Sozialversicherung</span>
+                                </td>
+                                <td>
+                                    <span class="en">Set up a monthly salary of €5,000 with automated transfers. Social security exemptions apply due to 100% ownership, but status verification is required.</span>
+                                    <span class="de">Monatliches Gehalt von €5.000 mit automatischen Überweisungen einrichten. Sozialversicherungsbefreiungen gelten aufgrund 100% Eigentum, aber Statusüberprüfung ist erforderlich.</span>
+                                </td>
+                                <td>
+                                    <span class="en">Conduct a "Statusfeststellungsverfahren" (status determination procedure) with the Pension Insurance Clearing House.</span>
+                                    <span class="de">Ein "Statusfeststellungsverfahren" bei der Clearingstelle der Rentenversicherung durchführen.</span>
+                                </td>
+                                <td>
+                                    <span class="en">€5,000 monthly gross; GmbH profit taxed at approx. <strong>30%</strong> (15% Corporate Tax + 15% Trade Tax).</span>
+                                    <span class="de">€5.000 monatliches Brutto; GmbH-Gewinn mit ca. <strong>30%</strong> besteuert (15% Körperschaftsteuer + 15% Gewerbesteuer).</span>
+                                </td>
+                                <td style="color: var(--text-muted); font-style: italic;">
+                                    <span class="en">N/A</span>
+                                    <span class="de">N/A</span>
+                                </td>
+                                <td>
+                                    <span class="en">Maintain a "Tax Vault" with 30-40% of incoming funds to cover future tax prepayments.</span>
+                                    <span class="de">"Steuer-Tresor" mit 30-40% der eingehenden Mittel für zukünftige Steuervorauszahlungen unterhalten.</span>
+                                </td>
+                            </tr>
+
+                            <!-- Row 3: Holding Structure -->
+                            <tr>
+                                <td style="font-weight: 600; color: var(--accent-purple);">
+                                    <span class="en">Holding Structure</span>
+                                    <span class="de">Holdingstruktur</span>
+                                </td>
+                                <td>
+                                    <span class="en">A holding company allows for tax-privileged dividends (95% tax-free) but is only worth it if reinvesting profits (approx. €100,000+ annual profit).</span>
+                                    <span class="de">Eine Holdinggesellschaft ermöglicht steuerbegünstigte Dividenden (95% steuerfrei), lohnt sich aber nur bei Gewinnreinvestition (ca. €100.000+ Jahresgewinn).</span>
+                                </td>
+                                <td>
+                                    <span class="en">Requires founding a holding GmbH/UG first, which then founds the operative GmbH; necessitates separate accounting and notaries.</span>
+                                    <span class="de">Erfordert zunächst die Gründung einer Holding-GmbH/UG, die dann die operative GmbH gründet; erfordert separate Buchführung und Notare.</span>
+                                </td>
+                                <td>
+                                    <span class="en"><strong>1.5%</strong> tax on dividends to holding vs. <strong>25%</strong> private capital gains tax. Extra annual admin costs of €2,000 - €3,000.</span>
+                                    <span class="de"><strong>1,5%</strong> Steuer auf Dividenden an Holding vs. <strong>25%</strong> private Kapitalertragsteuer. Zusätzliche jährliche Verwaltungskosten von €2.000 - €3.000.</span>
+                                </td>
+                                <td style="color: var(--text-muted); font-style: italic;">
+                                    <span class="en">N/A</span>
+                                    <span class="de">N/A</span>
+                                </td>
+                                <td>
+                                    <span class="en">A holding is essential for a "Share Deal" exit to minimize tax to 1.5% on sale proceeds.</span>
+                                    <span class="de">Eine Holding ist essentiell für einen "Share Deal"-Exit, um Steuern auf Verkaufserlöse auf 1,5% zu minimieren.</span>
+                                </td>
+                            </tr>
+
+                            <!-- Row 4: Operational & Legal Setup -->
+                            <tr>
+                                <td style="font-weight: 600; color: var(--accent-orange);">
+                                    <span class="en">Operational & Legal Setup</span>
+                                    <span class="de">Operative & rechtliche Einrichtung</span>
+                                </td>
+                                <td>
+                                    <span class="en">Start with a single GmbH for speed; use specific IT liability insurance; avoid Word for invoicing.</span>
+                                    <span class="de">Mit einer einzelnen GmbH für Schnelligkeit starten; spezifische IT-Haftpflichtversicherung nutzen; Word für Rechnungsstellung vermeiden.</span>
+                                </td>
+                                <td>
+                                    <span class="en">Founding via notary; €25,000 capital (or €12,500); digital archiving (10 years).</span>
+                                    <span class="de">Gründung über Notar; €25.000 Kapital (oder €12.500); digitale Archivierung (10 Jahre).</span>
+                                </td>
+                                <td>
+                                    <span class="en">€200/month accounting fee; €1,500 - €2,000 for year-end closing; €400 - €600 for IT insurance.</span>
+                                    <span class="de">€200/Monat Buchhaltungsgebühr; €1.500 - €2.000 für Jahresabschluss; €400 - €600 für IT-Versicherung.</span>
+                                </td>
+                                <td>
+                                    <span class="en">Upwork invoices are GoBD-compliant; other direct invoices need specific software like Lexoffice.</span>
+                                    <span class="de">Upwork-Rechnungen sind GoBD-konform; andere Direktrechnungen benötigen spezifische Software wie Lexoffice.</span>
+                                </td>
+                                <td>
+                                    <span class="en">Transition from consulting to a SaaS model for better scalability and exit potential.</span>
+                                    <span class="de">Übergang von Beratung zu einem SaaS-Modell für bessere Skalierbarkeit und Exit-Potenzial.</span>
+                                </td>
+                            </tr>
+
+                            <!-- Row 5: Business Assets and Expenses -->
+                            <tr>
+                                <td style="font-weight: 600; color: var(--accent-teal);">
+                                    <span class="en">Business Assets & Expenses</span>
+                                    <span class="de">Betriebsvermögen & Ausgaben</span>
+                                </td>
+                                <td>
+                                    <span class="en">Private assets like MacBooks or iPhones can be sold to the GmbH at "fair market value". Software and travel are fully deductible.</span>
+                                    <span class="de">Private Vermögenswerte wie MacBooks oder iPhones können zum "fairen Marktwert" an die GmbH verkauft werden. Software und Reisen sind voll absetzbar.</span>
+                                </td>
+                                <td>
+                                    <span class="en">Create a simple purchase agreement between the individual and the GmbH; keep travel logs (Excel template).</span>
+                                    <span class="de">Einfachen Kaufvertrag zwischen Privatperson und GmbH erstellen; Reiseprotokolle führen (Excel-Vorlage).</span>
+                                </td>
+                                <td>
+                                    <span class="en">€0.30/km for private car use; per diems (e.g., €66 for London); 70% deductibility for business meals.</span>
+                                    <span class="de">€0,30/km für private Autonutzung; Tagessätze (z.B. €66 für London); 70% Absetzbarkeit für Geschäftsessen.</span>
+                                </td>
+                                <td style="color: var(--text-muted); font-style: italic;">
+                                    <span class="en">N/A</span>
+                                    <span class="de">N/A</span>
+                                </td>
+                                <td>
+                                    <span class="en">Transfer phone contracts to the GmbH name for cleaner accounting.</span>
+                                    <span class="de">Telefonverträge auf GmbH-Namen übertragen für sauberere Buchführung.</span>
+                                </td>
+                            </tr>
+
+                            <!-- Row 6: Family Employment -->
+                            <tr>
+                                <td style="font-weight: 600; color: var(--accent-green);">
+                                    <span class="en">Family Employment (Luna)</span>
+                                    <span class="de">Familienbeschäftigung (Luna)</span>
+                                </td>
+                                <td>
+                                    <span class="en">Employ the spouse via a "Minijob" rather than a standard salary to save on social security and taxes.</span>
+                                    <span class="de">Ehepartner über einen "Minijob" statt eines Standardgehalts beschäftigen, um Sozialversicherung und Steuern zu sparen.</span>
+                                </td>
+                                <td>
+                                    <span class="en">Sign a Minijob contract (draft provided by advisors).</span>
+                                    <span class="de">Minijob-Vertrag unterzeichnen (Entwurf vom Berater bereitgestellt).</span>
+                                </td>
+                                <td>
+                                    <span class="en"><strong>€520</strong> monthly; tax-free for the employee and a deductible expense for the GmbH.</span>
+                                    <span class="de"><strong>€520</strong> monatlich; steuerfrei für die Arbeitnehmerin und abzugsfähige Ausgabe für die GmbH.</span>
+                                </td>
+                                <td style="color: var(--text-muted); font-style: italic;">
+                                    <span class="en">N/A</span>
+                                    <span class="de">N/A</span>
+                                </td>
+                                <td>
+                                    <span class="en">Remaining funds for the family can be handled via dividends or shared household expenses.</span>
+                                    <span class="de">Verbleibende Mittel für die Familie können über Dividenden oder geteilte Haushaltsausgaben gehandhabt werden.</span>
+                                </td>
+                            </tr>
+
+                            <!-- Row 7: Exit Tax -->
+                            <tr>
+                                <td style="font-weight: 600; color: var(--accent-red);">
+                                    <span class="en">Exit Tax (Wegzugsbesteuerung)</span>
+                                    <span class="de">Wegzugsbesteuerung</span>
+                                </td>
+                                <td>
+                                    <span class="en">Moving abroad triggers a fictitious sale of the company, which can be ruinous due to lack of liquidity ("dry income").</span>
+                                    <span class="de">Wegzug ins Ausland löst einen fiktiven Verkauf des Unternehmens aus, was wegen mangelnder Liquidität ("trockenes Einkommen") ruinös sein kann.</span>
+                                </td>
+                                <td>
+                                    <span class="en">Must consult advisors at least 6 months before moving out of Germany.</span>
+                                    <span class="de">Berater müssen mindestens 6 Monate vor dem Wegzug aus Deutschland konsultiert werden.</span>
+                                </td>
+                                <td>
+                                    <span class="en">Fictitious valuation (e.g., avg. profit × 13.75) is taxed as private income even if no sale occurs.</span>
+                                    <span class="de">Fiktive Bewertung (z.B. durchschn. Gewinn × 13,75) wird als Privateinkommen besteuert, auch wenn kein Verkauf stattfindet.</span>
+                                </td>
+                                <td style="color: var(--text-muted); font-style: italic;">
+                                    <span class="en">N/A</span>
+                                    <span class="de">N/A</span>
+                                </td>
+                                <td>
+                                    <span class="en">Options include keeping a German residence, transferring shares to family, or returning within 7 years to defer tax.</span>
+                                    <span class="de">Optionen umfassen Beibehaltung eines deutschen Wohnsitzes, Übertragung von Anteilen an Familie oder Rückkehr innerhalb von 7 Jahren zur Steuerstundung.</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="padding: 1rem 1.5rem; background: var(--bg-highlight); border-top: 1px solid var(--border);">
+                    <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">
+                        <span class="en"><strong>Source:</strong> Steuerberater meeting transcript, January 2025. Scroll horizontally to view all columns.</span>
+                        <span class="de"><strong>Quelle:</strong> Steuerberater-Besprechungsprotokoll, Januar 2025. Horizontal scrollen, um alle Spalten zu sehen.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Quick Reference Cards -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                <div class="info-box success" style="margin: 0;">
+                    <div class="info-box-title"><span class="en">Key Tax Savings</span><span class="de">Wichtige Steuerersparnisse</span></div>
+                    <p style="font-size: 0.85rem;">
+                        <span class="en">• Holding dividends: 1.5% vs 25%<br>• Minijob: €520/month tax-free<br>• 30-40% tax reserve recommended</span>
+                        <span class="de">• Holding-Dividenden: 1,5% vs 25%<br>• Minijob: €520/Monat steuerfrei<br>• 30-40% Steuerrücklage empfohlen</span>
+                    </p>
+                </div>
+                <div class="info-box warning" style="margin: 0;">
+                    <div class="info-box-title"><span class="en">Critical Warnings</span><span class="de">Kritische Warnungen</span></div>
+                    <p style="font-size: 0.85rem;">
+                        <span class="en">• Exit tax: Consult 6+ months ahead<br>• Freelancer risk: Use Upwork only<br>• Status verification required</span>
+                        <span class="de">• Wegzugssteuer: 6+ Monate vorher beraten<br>• Freelancer-Risiko: Nur Upwork nutzen<br>• Statusüberprüfung erforderlich</span>
+                    </p>
+                </div>
+                <div class="info-box" style="margin: 0;">
+                    <div class="info-box-title"><span class="en">Monthly Costs</span><span class="de">Monatliche Kosten</span></div>
+                    <p style="font-size: 0.85rem;">
+                        <span class="en">• Accounting: ~€200/month<br>• IT Insurance: €33-50/month<br>• Year-end: €1,500-2,000</span>
+                        <span class="de">• Buchhaltung: ~€200/Monat<br>• IT-Versicherung: €33-50/Monat<br>• Jahresabschluss: €1.500-2.000</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 16: Advanced Topics & Compliance -->
+        <section class="section" id="advanced">
+            <div class="section-header">
+                <span class="section-number">16</span>
+                <h2><span class="en">Advanced Topics & Compliance Warnings</span><span class="de">Fortgeschrittene Themen & Compliance-Warnungen</span></h2>
+            </div>
+
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                <span class="en">Critical operational details from the meeting that every GmbH owner must understand to avoid costly mistakes.</span>
+                <span class="de">Kritische operative Details aus der Besprechung, die jeder GmbH-Inhaber verstehen muss, um teure Fehler zu vermeiden.</span>
+            </p>
+
+            <!-- vGA Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">vGA – <span class="en">Hidden Profit Distribution</span><span class="de">Verdeckte Gewinnausschüttung</span></div>
+                        <div class="card-subtitle"><span class="en">The #1 mistake in one-person GmbHs</span><span class="de">Der häufigste Fehler bei Ein-Mann-GmbHs</span></div>
+                    </div>
+                    <span class="badge badge-orange"><span class="en">Critical</span><span class="de">Kritisch</span></span>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-title"><span class="en">What is vGA?</span><span class="de">Was ist vGA?</span></div>
+                    <p>
+                        <span class="en">When you (as shareholder) gain a benefit that a third party wouldn't receive. Example: Paying your private Netflix, groceries, or personal items with the business card.</span>
+                        <span class="de">Wenn Sie (als Gesellschafter) einen Vorteil erhalten, den ein Dritter nicht bekommen würde. Beispiel: Zahlung von privatem Netflix, Lebensmitteln oder persönlichen Artikeln mit der Firmenkarte.</span>
+                    </p>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-card bad">
+                        <div class="comparison-header"><span class="en">The Brutal Consequence</span><span class="de">Die brutale Konsequenz</span></div>
+                        <ul class="comparison-list">
+                            <li><span class="en">GmbH cannot deduct costs (profit rises, taxes rise)</span><span class="de">GmbH kann Kosten nicht abziehen (Gewinn steigt, Steuern steigen)</span></li>
+                            <li><span class="en">You personally pay 25% Kapitalertragsteuer on top</span><span class="de">Sie zahlen persönlich zusätzlich 25% Kapitalertragsteuer</span></li>
+                            <li><span class="en">Result: DOUBLE TAXATION on private expenses</span><span class="de">Ergebnis: DOPPELBESTEUERUNG auf private Ausgaben</span></li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card good">
+                        <div class="comparison-header"><span class="en">The Solution</span><span class="de">Die Lösung</span></div>
+                        <ul class="comparison-list">
+                            <li><span class="en">Strict separation: Private card for Edeka</span><span class="de">Strikte Trennung: Privatkarte für Edeka</span></li>
+                            <li><span class="en">Business card ONLY for software, tools, travel</span><span class="de">Firmenkarte NUR für Software, Tools, Reisen</span></li>
+                            <li><span class="en">Need cash? Pay yourself salary or dividend properly</span><span class="de">Geld brauchen? Gehalt oder Dividende ordnungsgemäß zahlen</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compulsory Fees Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="en">Compulsory Memberships & Fees</span><span class="de">Pflichtmitgliedschaften & Gebühren</span></div>
+                        <div class="card-subtitle"><span class="en">"Germany loves fees" – hidden costs you'll receive</span><span class="de">"Deutschland liebt Gebühren" – versteckte Kosten, die Sie erhalten werden</span></div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th><span class="en">Fee</span><span class="de">Gebühr</span></th>
+                            <th><span class="en">Cost</span><span class="de">Kosten</span></th>
+                            <th><span class="en">Notes</span><span class="de">Hinweise</span></th>
+                        </tr>
+                        <tr>
+                            <td><strong>IHK</strong> (<span class="en">Chamber of Commerce</span><span class="de">Industrie- und Handelskammer</span>)</td>
+                            <td>~€150/<span class="en">year</span><span class="de">Jahr</span> + <span class="en">profit levy</span><span class="de">Gewinnumlage</span></td>
+                            <td><span class="en">Mandatory for every GmbH. Don't throw away this mail!</span><span class="de">Pflicht für jede GmbH. Diese Post nicht wegwerfen!</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rundfunkbeitrag</strong> (GEZ)</td>
+                            <td>~€18/<span class="en">month</span><span class="de">Monat</span></td>
+                            <td><span class="en">For business premises. Home office exemption sometimes possible.</span><span class="de">Für Betriebsstätte. Heimbüro-Befreiung manchmal möglich.</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Transparenzregister</strong></td>
+                            <td>~€50 <span class="en">one-time</span><span class="de">einmalig</span></td>
+                            <td><span class="en">Anti-money laundering register. Must declare "beneficial owner" (you).</span><span class="de">Anti-Geldwäsche-Register. Muss "wirtschaftlich Berechtigten" (Sie) melden.</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>DATEV</strong> (<span class="en">optional</span><span class="de">optional</span>)</td>
+                            <td>~€15/<span class="en">month</span><span class="de">Monat</span></td>
+                            <td><span class="en">Digital accounting platform. Upload invoices, connect bank.</span><span class="de">Digitale Buchhaltungsplattform. Rechnungen hochladen, Bank verbinden.</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- GoBD & Invoicing Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">GoBD – <span class="en">Digital Bookkeeping Rules</span><span class="de">Digitale Buchführungsregeln</span></div>
+                        <div class="card-subtitle"><span class="en">Why Word invoices make accountants nervous</span><span class="de">Warum Word-Rechnungen Steuerberater nervös machen</span></div>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-title"><span class="en">The Word Problem</span><span class="de">Das Word-Problem</span></div>
+                    <p>
+                        <span class="en">GoBD requires invoices to be <strong>immutable</strong> (unchangeable). Word documents can be edited without trace – the Finanzamt doesn't like this. PDF from Word is fine, but keep proof of when it was created.</span>
+                        <span class="de">GoBD verlangt, dass Rechnungen <strong>unveränderbar</strong> sind. Word-Dokumente können spurlos bearbeitet werden – das Finanzamt mag das nicht. PDF aus Word ist okay, aber Nachweis der Erstellungszeit aufbewahren.</span>
+                    </p>
+                </div>
+
+                <h3><span class="en">Recommended Solutions</span><span class="de">Empfohlene Lösungen</span></h3>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <div class="glossary-term">Lexoffice / SevDesk / FastBill</div>
+                        <div class="glossary-def"><span class="en">Professional invoicing software. GoBD-compliant by design.</span><span class="de">Professionelle Rechnungssoftware. GoBD-konform von Haus aus.</span></div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-term"><span class="en">Workaround for 2 invoices/year</span><span class="de">Workaround für 2 Rechnungen/Jahr</span></div>
+                        <div class="glossary-def"><span class="en">Email PDF immediately to accountant – timestamp in inbox serves as proof.</span><span class="de">PDF sofort an Steuerberater mailen – Zeitstempel im Posteingang dient als Nachweis.</span></div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-term">Upwork / <span class="en">Platform invoices</span><span class="de">Plattform-Rechnungen</span></div>
+                        <div class="glossary-def"><span class="en">Already GoBD-compliant. No action needed – just archive them.</span><span class="de">Bereits GoBD-konform. Keine Aktion nötig – einfach archivieren.</span></div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-term"><span class="en">10-Year Retention</span><span class="de">10-Jahres-Aufbewahrung</span></div>
+                        <div class="glossary-def"><span class="en">All records must be archived digitally for 10 years. DATEV is your archive.</span><span class="de">Alle Unterlagen müssen 10 Jahre digital archiviert werden. DATEV ist Ihr Archiv.</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- International Freelancers Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="en">International Freelancers & Scheinselbstständigkeit</span><span class="de">Internationale Freelancer & Scheinselbstständigkeit</span></div>
+                        <div class="card-subtitle"><span class="en">Why Upwork fees are "insurance"</span><span class="de">Warum Upwork-Gebühren "Versicherung" sind</span></div>
+                    </div>
+                    <span class="badge badge-purple"><span class="en">Risk</span><span class="de">Risiko</span></span>
+                </div>
+
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    <span class="en">If you hire freelancers (especially long-term, like a developer working "almost every day for 2 years"), German authorities may classify them as <strong>fake self-employed</strong> = actually your employee.</span>
+                    <span class="de">Wenn Sie Freelancer beschäftigen (besonders langfristig, wie ein Entwickler, der "fast jeden Tag seit 2 Jahren" arbeitet), können deutsche Behörden sie als <strong>scheinselbstständig</strong> einstufen = eigentlich Ihr Angestellter.</span>
+                </p>
+
+                <div class="comparison">
+                    <div class="comparison-card bad">
+                        <div class="comparison-header"><span class="en">The Problem with Direct Contracts</span><span class="de">Das Problem mit Direktverträgen</span></div>
+                        <ul class="comparison-list">
+                            <li><span class="en">You may owe German wage tax for them</span><span class="de">Sie könnten deutsche Lohnsteuer für sie schulden</span></li>
+                            <li><span class="en">Back-payment of social security contributions</span><span class="de">Nachzahlung von Sozialversicherungsbeiträgen</span></li>
+                            <li><span class="en">Penalties and interest from Finanzamt</span><span class="de">Strafen und Zinsen vom Finanzamt</span></li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card good">
+                        <div class="comparison-header"><span class="en">The Upwork Shield</span><span class="de">Der Upwork-Schutzschild</span></div>
+                        <ul class="comparison-list">
+                            <li><span class="en">Your contract is with Upwork Inc. (USA), not the person</span><span class="de">Ihr Vertrag ist mit Upwork Inc. (USA), nicht der Person</span></li>
+                            <li><span class="en">Upwork handles invoicing (GoBD-compliant)</span><span class="de">Upwork erledigt die Rechnungsstellung (GoBD-konform)</span></li>
+                            <li><span class="en">Legal separation protects you</span><span class="de">Rechtliche Trennung schützt Sie</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="info-box-title"><span class="en">Golden Rule</span><span class="de">Goldene Regel</span></div>
+                    <p>
+                        <span class="en">"Don't be tempted to pay freelancers directly to save the Upwork fees. That opens Pandora's box." – Think of platform fees as insurance premium.</span>
+                        <span class="de">"Lassen Sie sich nicht verleiten, Freelancer direkt zu bezahlen, um die Upwork-Gebühren zu sparen. Das öffnet die Büchse der Pandora." – Denken Sie an Plattformgebühren als Versicherungsprämie.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Health Insurance Subsidy Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="en">Private Health Insurance Subsidy</span><span class="de">Zuschuss zur privaten Krankenversicherung</span></div>
+                        <div class="card-subtitle"><span class="en">Tax-free benefit the GmbH can pay you</span><span class="de">Steuerfreier Vorteil, den die GmbH Ihnen zahlen kann</span></div>
+                    </div>
+                    <span class="badge badge-green"><span class="en">Benefit</span><span class="de">Vorteil</span></span>
+                </div>
+
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    <span class="en">As 100% owner, you're exempt from social security. But the GmbH can still subsidize your private health insurance (and Pflegeversicherung) as a tax-free benefit.</span>
+                    <span class="de">Als 100% Eigentümer sind Sie von der Sozialversicherung befreit. Aber die GmbH kann trotzdem Ihre private Krankenversicherung (und Pflegeversicherung) als steuerfreien Vorteil bezuschussen.</span>
+                </p>
+
+                <div class="numbers-grid">
+                    <div class="number-card">
+                        <div class="number-value">~€700</div>
+                        <div class="number-label"><span class="en">Your monthly premium (example)</span><span class="de">Ihre monatliche Prämie (Beispiel)</span></div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-value" style="color: var(--accent-green);">€350-400</div>
+                        <div class="number-label"><span class="en">GmbH subsidy (tax-free)</span><span class="de">GmbH-Zuschuss (steuerfrei)</span></div>
+                    </div>
+                    <div class="number-card">
+                        <div class="number-value">50%</div>
+                        <div class="number-label"><span class="en">Max subsidy = half your premium</span><span class="de">Max. Zuschuss = Hälfte Ihrer Prämie</span></div>
+                    </div>
+                </div>
+
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">
+                    <span class="en"><strong>Action needed:</strong> Get a certificate from your insurer (e.g., Allianz) showing your premium amount. Your accountant handles the rest in payroll.</span>
+                    <span class="de"><strong>Aktion erforderlich:</strong> Bescheinigung vom Versicherer (z.B. Allianz) über die Prämienhöhe holen. Ihr Steuerberater erledigt den Rest in der Lohnabrechnung.</span>
+                </p>
+            </div>
+
+            <!-- Trade Tax Location Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="en">Trade Tax by Location (Hebesatz)</span><span class="de">Gewerbesteuer nach Standort (Hebesatz)</span></div>
+                        <div class="card-subtitle"><span class="en">Why Grünwald is famous (and risky)</span><span class="de">Warum Grünwald berühmt (und riskant) ist</span></div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th><span class="en">Location</span><span class="de">Standort</span></th>
+                            <th>Hebesatz</th>
+                            <th><span class="en">Effective Trade Tax</span><span class="de">Effektive Gewerbesteuer</span></th>
+                            <th><span class="en">Notes</span><span class="de">Hinweise</span></th>
+                        </tr>
+                        <tr>
+                            <td><strong>Ingolstadt</strong></td>
+                            <td>400%</td>
+                            <td>~14%</td>
+                            <td><span class="en">Standard, your location</span><span class="de">Standard, Ihr Standort</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>München</strong></td>
+                            <td>490%</td>
+                            <td>~17%</td>
+                            <td><span class="en">Higher than average</span><span class="de">Höher als Durchschnitt</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Grünwald</strong></td>
+                            <td>240%</td>
+                            <td>~8%</td>
+                            <td style="color: var(--accent-orange);"><span class="en">Famous "tax haven" – but risky</span><span class="de">Berühmte "Steueroase" – aber riskant</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Norderfriedrichskoog</strong></td>
+                            <td>200%</td>
+                            <td>~7%</td>
+                            <td style="color: var(--accent-orange);"><span class="en">Famous in Schleswig-Holstein</span><span class="de">Berühmt in Schleswig-Holstein</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-title"><span class="en">Warning: Briefkastenfirma Risk</span><span class="de">Warnung: Briefkastenfirma-Risiko</span></div>
+                    <p>
+                        <span class="en">You need a <strong>real business presence</strong> at the registered address. A mailbox doesn't count anymore – the Finanzamt checks this strictly. If you work from home in Ingolstadt, your "place of management" is Ingolstadt. The rent for a real Grünwald office often eats up the tax savings.</span>
+                        <span class="de">Sie brauchen eine <strong>echte Geschäftspräsenz</strong> an der eingetragenen Adresse. Ein Briefkasten reicht nicht mehr – das Finanzamt prüft das streng. Wenn Sie von zu Hause in Ingolstadt arbeiten, ist Ihr "Ort der Geschäftsleitung" Ingolstadt. Die Miete für ein echtes Grünwald-Büro frisst oft die Steuerersparnis auf.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Home Office / Betriebsaufspaltung Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="en">Home Office: The Betriebsaufspaltung Trap</span><span class="de">Heimbüro: Die Betriebsaufspaltung-Falle</span></div>
+                        <div class="card-subtitle"><span class="en">Why NOT to rent your office room to your GmbH</span><span class="de">Warum Sie Ihr Bürozimmer NICHT an Ihre GmbH vermieten sollten</span></div>
+                    </div>
+                    <span class="badge badge-orange"><span class="en">Warning</span><span class="de">Warnung</span></span>
+                </div>
+
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    <span class="en">You might think: "I'll rent my home office to the GmbH = business expense!" But this creates a <strong>Betriebsaufspaltung</strong> (operational split) with nasty consequences.</span>
+                    <span class="de">Sie denken vielleicht: "Ich vermiete mein Heimbüro an die GmbH = Betriebsausgabe!" Aber das erzeugt eine <strong>Betriebsaufspaltung</strong> mit üblen Konsequenzen.</span>
+                </p>
+
+                <div class="info-box warning">
+                    <div class="info-box-title"><span class="en">The Problem</span><span class="de">Das Problem</span></div>
+                    <p>
+                        <span class="en">If you rent the room to your GmbH, it becomes "business assets" (Betriebsvermögen). When you close or sell the GmbH, you must pay tax on the <strong>appreciation</strong> of that room since you rented it – even though you never sold your apartment!</span>
+                        <span class="de">Wenn Sie das Zimmer an Ihre GmbH vermieten, wird es "Betriebsvermögen". Wenn Sie die GmbH schließen oder verkaufen, müssen Sie Steuern auf die <strong>Wertsteigerung</strong> dieses Zimmers zahlen – obwohl Sie Ihre Wohnung nie verkauft haben!</span>
+                    </p>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-card bad">
+                        <div class="comparison-header"><span class="en">Don't: Rent to GmbH</span><span class="de">Nicht: An GmbH vermieten</span></div>
+                        <ul class="comparison-list">
+                            <li><span class="en">Creates Betriebsaufspaltung</span><span class="de">Erzeugt Betriebsaufspaltung</span></li>
+                            <li><span class="en">Room becomes taxable business asset</span><span class="de">Zimmer wird steuerpflichtiges Betriebsvermögen</span></li>
+                            <li><span class="en">Tax on "phantom gains" when exiting</span><span class="de">Steuer auf "Phantomgewinne" beim Exit</span></li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card good">
+                        <div class="comparison-header"><span class="en">Do: Private Deduction</span><span class="de">Machen: Privater Abzug</span></div>
+                        <ul class="comparison-list">
+                            <li><span class="en">Deduct 15% of rent/utilities in personal tax return</span><span class="de">15% der Miete/Nebenkosten in privater Steuererklärung abziehen</span></li>
+                            <li><span class="en">Room = 15qm / 120qm apartment = 12.5% (round to 15%)</span><span class="de">Zimmer = 15qm / 120qm Wohnung = 12,5% (runden auf 15%)</span></li>
+                            <li><span class="en">Safe, clean, no future tax surprises</span><span class="de">Sicher, sauber, keine zukünftigen Steuerüberraschungen</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SaaS Exit Planning Card -->
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title"><span class="en">SaaS Exit Planning: Asset Deal vs. Share Deal</span><span class="de">SaaS Exit-Planung: Asset Deal vs. Share Deal</span></div>
+                        <div class="card-subtitle"><span class="en">How to sell your company for maximum after-tax value</span><span class="de">Wie Sie Ihr Unternehmen für maximalen Netto-Wert verkaufen</span></div>
+                    </div>
+                    <span class="badge badge-blue"><span class="en">Future</span><span class="de">Zukunft</span></span>
+                </div>
+
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    <span class="en">Planning to transition from consulting to SaaS? If you sell in 5+ years, how you sell matters enormously for taxes.</span>
+                    <span class="de">Planen Sie den Übergang von Beratung zu SaaS? Wenn Sie in 5+ Jahren verkaufen, ist die Art des Verkaufs enorm wichtig für Steuern.</span>
+                </p>
+
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th><span class="en">Exit Type</span><span class="de">Exit-Typ</span></th>
+                            <th><span class="en">What's Sold</span><span class="de">Was verkauft wird</span></th>
+                            <th><span class="en">Tax Rate</span><span class="de">Steuersatz</span></th>
+                            <th><span class="en">Notes</span><span class="de">Hinweise</span></th>
+                        </tr>
+                        <tr>
+                            <td><strong>Asset Deal</strong></td>
+                            <td><span class="en">Code, customers, brand</span><span class="de">Code, Kunden, Marke</span></td>
+                            <td>~30% + 25%</td>
+                            <td style="color: var(--accent-red);"><span class="en">GmbH pays corp tax, then you pay dividend tax = ~48% total</span><span class="de">GmbH zahlt Körperschaftsteuer, dann Sie Dividendensteuer = ~48% gesamt</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Share Deal (private)</strong></td>
+                            <td><span class="en">Your GmbH shares</span><span class="de">Ihre GmbH-Anteile</span></td>
+                            <td>~25-26%</td>
+                            <td><span class="en">Teileinkünfteverfahren: 60% taxable at your rate</span><span class="de">Teileinkünfteverfahren: 60% steuerpflichtig zu Ihrem Satz</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Share Deal (via Holding)</strong></td>
+                            <td><span class="en">Your GmbH shares</span><span class="de">Ihre GmbH-Anteile</span></td>
+                            <td style="color: var(--accent-green);"><strong>~1.5%</strong></td>
+                            <td style="color: var(--accent-green);"><span class="en">Best outcome – 95% tax-free!</span><span class="de">Bestes Ergebnis – 95% steuerfrei!</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="key-finding">
+                    <div class="key-finding-title"><span class="en">The €100k ARR Milestone</span><span class="de">Der €100k ARR Meilenstein</span></div>
+                    <p>
+                        <span class="en">"At €100,000 Annual Recurring Revenue, let's talk about the Holding." – Set this milestone. Creating the Holding BEFORE the company becomes valuable is much cheaper than restructuring later.</span>
+                        <span class="de">"Bei €100.000 jährlichem wiederkehrenden Umsatz reden wir über die Holding." – Setzen Sie diesen Meilenstein. Die Holding VOR der Wertsteigerung zu gründen ist viel günstiger als spätere Umstrukturierung.</span>
                     </p>
                 </div>
             </div>
