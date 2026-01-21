@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
           <Button
             variant="primary"
             size="lg"
@@ -61,6 +61,49 @@ const Hero: React.FC = () => {
           <Button variant="secondary" size="lg" onClick={() => document.getElementById('enteprise')?.scrollIntoView({ behavior: 'smooth' })}>
             Learn More
           </Button>
+        </div>
+
+        {/* Product Logos */}
+        <div className="mb-10">
+          <p className="text-xs text-gray-500 uppercase tracking-wider mb-4">Our Software</p>
+          <div className="flex items-center justify-center gap-6 md:gap-10">
+            <a
+              href="https://bluplai.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group transition-all duration-300"
+            >
+              <img
+                src="/logos/Softwares/bluplai.png"
+                alt="bluplai"
+                className="h-10 md:h-14 w-auto opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
+              />
+            </a>
+            <a
+              href="https://stillme.navaigate.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group transition-all duration-300"
+            >
+              <img
+                src="/logos/Softwares/Still%20Me.png"
+                alt="Still Me"
+                className="h-10 md:h-14 w-auto opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
+              />
+            </a>
+            <a
+              href="https://www.ente-prise.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group transition-all duration-300"
+            >
+              <img
+                src="/logos/Softwares/ente-prise.png"
+                alt="Ente-prise"
+                className="h-10 md:h-14 w-auto opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
+              />
+            </a>
+          </div>
         </div>
 
         {/* Trust indicators */}
