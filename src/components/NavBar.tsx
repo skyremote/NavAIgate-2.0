@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import Button from './Button';
 import UserMenu from './auth/UserMenu';
 import { getUser } from '../lib/auth';
@@ -11,11 +11,22 @@ interface NavLink {
   external?: boolean;
 }
 
+interface AppLink {
+  label: string;
+  href: string;
+  description: string;
+}
+
 const navLinks: NavLink[] = [
   { label: 'About', href: '#about' },
   { label: 'Apps', href: '#apps' },
-  { label: 'Ente-prise', href: 'https://www.ente-prise.com', external: true },
   { label: 'Contact', href: '#contact' },
+];
+
+const appLinks: AppLink[] = [
+  { label: 'Ente-prise', href: 'https://www.ente-prise.com', description: 'Enterprise solutions' },
+  { label: 'Still Me', href: 'https://stillme.navaigate.dev/', description: 'Personal identity' },
+  { label: 'Bluplai', href: 'https://bluplai.com/', description: 'AI platform' },
 ];
 
 interface NavBarProps {
@@ -24,8 +35,10 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ showAuth = true }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [appsDropdownOpen, setAppsDropdownOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(showAuth);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (showAuth) {
@@ -35,6 +48,17 @@ const NavBar: React.FC<NavBarProps> = ({ showAuth = true }) => {
       });
     }
   }, [showAuth]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setAppsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur bg-gray-900/70 border-b border-white/5">
@@ -57,6 +81,36 @@ const NavBar: React.FC<NavBarProps> = ({ showAuth = true }) => {
               {link.label}
             </a>
           ))}
+
+          {/* Our Apps Dropdown */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setAppsDropdownOpen(!appsDropdownOpen)}
+              className="flex items-center gap-1 text-gray-300 hover:text-cyan-400 transition-colors text-sm font-medium"
+            >
+              Our Apps
+              <ChevronDown className={`h-4 w-4 transition-transform ${appsDropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {appsDropdownOpen && (
+              <div className="absolute top-full right-0 mt-2 w-56 rounded-xl border border-white/10 bg-gray-900/95 backdrop-blur-xl shadow-xl py-2">
+                {appLinks.map((app) => (
+                  <a
+                    key={app.href}
+                    href={app.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2.5 hover:bg-white/5 transition-colors"
+                    onClick={() => setAppsDropdownOpen(false)}
+                  >
+                    <div className="text-white text-sm font-medium">{app.label}</div>
+                    <div className="text-gray-400 text-xs mt-0.5">{app.description}</div>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
           {showAuth ? (
             isLoading ? (
               <div className="w-24 h-9 bg-gray-800 rounded-full animate-pulse" />
@@ -117,6 +171,27 @@ const NavBar: React.FC<NavBarProps> = ({ showAuth = true }) => {
                 {link.label}
               </a>
             ))}
+
+            {/* Our Apps Section */}
+            <div className="pt-4 border-t border-white/10">
+              <span className="text-sm text-gray-500 uppercase tracking-wider">Our Apps</span>
+              <div className="mt-3 space-y-4">
+                {appLinks.map((app) => (
+                  <a
+                    key={app.href}
+                    href={app.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <div className="text-xl text-gray-200 hover:text-cyan-400 transition-colors">{app.label}</div>
+                    <div className="text-sm text-gray-500">{app.description}</div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
             <div className="pt-4 space-y-3">
               {showAuth ? (
                 user ? (
