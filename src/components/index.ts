@@ -22,6 +22,7 @@ export { default as ClientLogos } from './ClientLogos';
 export { default as EntepriseSection } from './EntepriseSection';
 export { default as AppsSection } from './AppsSection';
 export { default as ContactSection } from './ContactSection';
+export { default as ProductsSection } from './ProductsSection';
 
 // UI Components
 export { default as LogoLoop } from './LogoLoop';
