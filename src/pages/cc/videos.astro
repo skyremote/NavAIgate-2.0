@@ -1,0 +1,524 @@
+---
+// Claude Code Training Videos - Password Protected
+// Access: navaigate.dev/cc/videos
+// Password: techse
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Tutorials | Claude Code Training | NavAIgate</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nav-cyan: #22D3EE;
+            --nav-cyan-dark: #06B6D4;
+            --nav-cyan-light: #67E8F9;
+            --nav-gray-900: #111827;
+            --nav-gray-800: #1F2937;
+            --nav-gray-700: #374151;
+            --nav-gray-600: #4B5563;
+            --nav-gray-400: #9CA3AF;
+            --nav-gray-300: #D1D5DB;
+            --nav-white: #FFFFFF;
+            --bg-primary: var(--nav-gray-900);
+            --bg-card: var(--nav-gray-800);
+            --bg-dark: #0a0f1a;
+            --accent: var(--nav-cyan);
+            --accent-dark: var(--nav-cyan-dark);
+            --text-primary: var(--nav-white);
+            --text-muted: var(--nav-gray-400);
+            --border-color: var(--nav-gray-700);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Password Screen */
+        .password-screen {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .password-screen.hidden {
+            display: none;
+        }
+
+        .password-box {
+            background: var(--bg-card);
+            padding: 48px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .password-box img {
+            height: 48px;
+            margin-bottom: 24px;
+        }
+
+        .password-box h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--nav-white);
+        }
+
+        .password-box p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .password-box input {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            background: var(--nav-gray-700);
+            color: var(--nav-white);
+            font-size: 16px;
+            margin-bottom: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .password-box input:focus {
+            border-color: var(--accent);
+        }
+
+        .password-box input::placeholder {
+            color: var(--nav-gray-400);
+        }
+
+        .password-box button {
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--nav-gray-900);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .password-box button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(34, 211, 238, 0.3);
+        }
+
+        .password-error {
+            color: #EF4444;
+            font-size: 14px;
+            margin-top: 12px;
+            display: none;
+        }
+
+        .password-error.show {
+            display: block;
+        }
+
+        /* Main Content */
+        .main-wrapper {
+            display: none;
+        }
+
+        .main-wrapper.visible {
+            display: block;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-dark);
+            color: var(--nav-white);
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-lg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--nav-white);
+        }
+
+        .logo-text img {
+            height: 32px;
+            width: auto;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .header-badge {
+            background: var(--accent);
+            color: var(--nav-gray-900);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .header-right a {
+            color: var(--nav-gray-400);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .header-right a:hover {
+            color: var(--accent);
+        }
+
+        .header-right a.active {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-primary) 100%);
+            color: var(--nav-white);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--nav-white) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--nav-gray-300);
+        }
+
+        /* Videos Grid */
+        .videos-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+            border-color: var(--accent);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .video-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+            transition: gap 0.2s;
+        }
+
+        .back-link:hover {
+            gap: 12px;
+        }
+
+        .back-link svg {
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover svg {
+            transform: translateX(-4px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-dark);
+            color: var(--nav-gray-400);
+            padding: 36px 40px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer p {
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 16px 20px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .videos-container {
+                padding: 24px 16px 60px;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Password Screen -->
+    <div class="password-screen" id="passwordScreen">
+        <div class="password-box">
+            <img src="/logos/NavAIgate.svg" alt="NavAIgate" />
+            <h2>Training Portal</h2>
+            <p>Enter the access code to view the video tutorials.</p>
+            <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="off" />
+            <button onclick="checkPassword()">Access Videos</button>
+            <p class="password-error" id="passwordError">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-wrapper" id="mainContent">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <a href="/cc" class="logo-text">
+                        <img src="/logos/NavAIgate.svg" alt="NavAIgate" />
+                        NavAIgate <span>Training</span>
+                    </a>
+                    <span class="header-badge">Videos</span>
+                </div>
+                <div class="header-right">
+                    <a href="/cc">Training Guide</a>
+                    <a href="/cc/videos" class="active">Videos</a>
+                    <a href="https://navaigate.dev" target="_blank">navaigate.dev</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h1>Video Tutorials</h1>
+            <p>Watch and learn Claude Code techniques from these curated video tutorials.</p>
+        </section>
+
+        <main class="videos-container">
+            <a href="/cc" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Training Guide
+            </a>
+
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube.com/embed/saggDHHnmtQ"
+                            title="Claude Code Tutorial"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Claude Code Tutorial</h3>
+                        <p class="video-description">A comprehensive walkthrough of Claude Code features and capabilities. Perfect for getting started.</p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube.com/embed/eMZmDH3T2bY"
+                            title="Getting Started Guide"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Getting Started Guide</h3>
+                        <p class="video-description">Step-by-step guide to setting up and using Claude Code for the first time.</p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe
+                            src="https://www.youtube.com/embed/P-5bWpUbO60"
+                            title="Advanced Workflows"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Advanced Workflows</h3>
+                        <p class="video-description">Learn advanced techniques and workflows to maximize your productivity with Claude Code.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>NavAIgate Training Portal | <a href="https://github.com/anthropics/claude-code" target="_blank">Claude Code on GitHub</a></p>
+            <p style="margin-top: 8px; font-size: 12px;">Questions? Contact <a href="https://navaigate.dev">navaigate.dev</a></p>
+        </footer>
+    </div>
+
+    <script is:inline>
+        const CORRECT_PASSWORD = 'techse';
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const error = document.getElementById('passwordError');
+
+            if (input.value === CORRECT_PASSWORD) {
+                document.getElementById('passwordScreen').classList.add('hidden');
+                document.getElementById('mainContent').classList.add('visible');
+                sessionStorage.setItem('cc_authenticated', 'true');
+            } else {
+                error.classList.add('show');
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        // Check if already authenticated this session
+        if (sessionStorage.getItem('cc_authenticated') === 'true') {
+            document.getElementById('passwordScreen').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('visible');
+        }
+
+        // Allow Enter key to submit password
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>

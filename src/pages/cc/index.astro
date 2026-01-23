@@ -984,6 +984,7 @@
                     <span class="header-badge">Claude Code</span>
                 </div>
                 <div class="header-right">
+                    <a href="/cc/videos" style="margin-right: 20px;">Videos</a>
                     <a href="https://navaigate.dev" target="_blank">navaigate.dev</a>
                 </div>
             </div>
@@ -1028,7 +1029,6 @@
                     <a href="#workflows" class="nav-link">Workflows</a>
                     <a href="#shortcuts" class="nav-link">Shortcuts</a>
                     <a href="#tips" class="nav-link">Pro Tips</a>
-                    <a href="#resources" class="nav-link">Video Resources</a>
                 </div>
             </nav>
 
@@ -1424,6 +1424,67 @@
                             <div class="info-box-content">
                                 <div class="info-box-title">Why "clear context"?</div>
                                 <div class="info-box-text">Clearing context removes the planning conversation but KEEPS the plan. This prevents Claude from getting confused or "hallucinating" as the context grows. It's like giving it a clean slate with clear instructions.</div>
+                            </div>
+                        </div>
+
+                        <h4>Choosing the Right Model</h4>
+                        <p>Claude Code lets you switch between different Claude models. Use <code>/model</code> to change models during a session.</p>
+
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>Best For</th>
+                                        <th>Key Strengths</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Opus 4.5</strong> (Recommended)</td>
+                                        <td>Complex tasks, detailed outputs, creative work</td>
+                                        <td>Most capable model - best reasoning, highest quality outputs, handles nuance well</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sonnet 4</strong></td>
+                                        <td>General tasks, balanced speed/quality</td>
+                                        <td>Good all-rounder, faster than Opus, still very capable</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Haiku</strong></td>
+                                        <td>Simple tasks, quick responses</td>
+                                        <td>Fastest model, good for simple queries, lower cost</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="info-box important">
+                            <div class="info-box-icon">
+                                <svg viewBox="0 0 24 24" fill="#22D3EE"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">Use Opus 4.5 for best results</div>
+                                <div class="info-box-text">For creating HTML interfaces, working with documents, and any task requiring attention to detail, <strong>always use Opus 4.5</strong>. It produces significantly better outputs and makes fewer mistakes. The extra time is worth it!</div>
+                            </div>
+                        </div>
+
+                        <div class="code-block">
+                            <div class="code-label">Switch to Opus 4.5</div>
+                            <button class="copy-btn" onclick="copyCode(this)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                Copy
+                            </button>
+                            <code>/model opus</code>
+                        </div>
+
+                        <div class="info-box tip">
+                            <div class="info-box-icon">
+                                <svg viewBox="0 0 24 24" fill="#22C55E"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            </div>
+                            <div class="info-box-content">
+                                <div class="info-box-title">When to use faster models</div>
+                                <div class="info-box-text">Use Sonnet or Haiku only for quick questions, simple file operations, or when you need rapid iterations on small changes. For anything creative or complex, stick with Opus 4.5.</div>
                             </div>
                         </div>
                     </div>
@@ -2110,66 +2171,6 @@ Use my PRD for styling and put the output in the html folder.</code>
                 </div>
             </div>
 
-            <!-- Section 10: Video Resources -->
-            <div class="section" id="resources">
-                <div class="section-header" onclick="toggleSection(this)">
-                    <div class="section-header-left">
-                        <div class="section-number">10</div>
-                        <div>
-                            <div class="section-title">Video Resources</div>
-                            <div class="section-subtitle">Learn from tutorials and demos</div>
-                        </div>
-                    </div>
-                    <div class="section-toggle">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 9l6 6 6-6"/>
-                        </svg>
-                    </div>
-                </div>
-                <div class="section-content">
-                    <div class="section-body">
-                        <h4>Recommended Video Tutorials</h4>
-                        <p>Watch these videos to see Claude Code in action and learn advanced techniques:</p>
-
-                        <div style="display: grid; gap: 20px; margin-top: 20px;">
-                            <div style="background: var(--nav-gray-700); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border-color);">
-                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                                    <span style="font-weight: 600; color: var(--text-primary);">Claude Code Tutorial</span>
-                                </div>
-                                <a href="https://youtu.be/saggDHHnmtQ?si=PlVxdsUb_uvgReeJ" target="_blank" style="color: var(--accent); word-break: break-all;">https://youtu.be/saggDHHnmtQ</a>
-                            </div>
-
-                            <div style="background: var(--nav-gray-700); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border-color);">
-                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                                    <span style="font-weight: 600; color: var(--text-primary);">Getting Started Guide</span>
-                                </div>
-                                <a href="https://www.youtube.com/watch?v=eMZmDH3T2bY" target="_blank" style="color: var(--accent); word-break: break-all;">https://www.youtube.com/watch?v=eMZmDH3T2bY</a>
-                            </div>
-
-                            <div style="background: var(--nav-gray-700); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border-color);">
-                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                                    <span style="font-weight: 600; color: var(--text-primary);">Advanced Workflows</span>
-                                </div>
-                                <a href="https://www.youtube.com/watch?v=P-5bWpUbO60" target="_blank" style="color: var(--accent); word-break: break-all;">https://www.youtube.com/watch?v=P-5bWpUbO60</a>
-                            </div>
-                        </div>
-
-                        <div class="info-box tip" style="margin-top: 24px;">
-                            <div class="info-box-icon">
-                                <svg viewBox="0 0 24 24" fill="#22C55E"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                            </div>
-                            <div class="info-box-content">
-                                <div class="info-box-title">Watch at 1.5x speed</div>
-                                <div class="info-box-text">These videos contain a lot of detail. Feel free to speed them up once you're familiar with the basics, and slow down for the parts that are new to you.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Quick Reference Card -->
             <div class="quick-ref-card">
                 <h3>Quick Reference Card</h3>
@@ -2301,7 +2302,7 @@ Use my PRD for styling and put the output in the html folder.</code>
         </footer>
     </div>
 
-    <script>
+    <script is:inline>
         // Password check
         const CORRECT_PASSWORD = 'techse';
 
