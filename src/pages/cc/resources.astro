@@ -1,0 +1,1098 @@
+---
+// Frontend Resources - Password Protected
+// Access: navaigate.dev/cc/resources
+// Password: techse
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Resources | Claude Code Training | NavAIgate</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nav-cyan: #22D3EE;
+            --nav-cyan-dark: #06B6D4;
+            --nav-cyan-light: #67E8F9;
+            --nav-gray-900: #111827;
+            --nav-gray-800: #1F2937;
+            --nav-gray-700: #374151;
+            --nav-gray-600: #4B5563;
+            --nav-gray-400: #9CA3AF;
+            --nav-gray-300: #D1D5DB;
+            --nav-white: #FFFFFF;
+            --bg-primary: var(--nav-gray-900);
+            --bg-card: var(--nav-gray-800);
+            --bg-dark: #0a0f1a;
+            --accent: var(--nav-cyan);
+            --accent-dark: var(--nav-cyan-dark);
+            --text-primary: var(--nav-white);
+            --text-muted: var(--nav-gray-400);
+            --border-color: var(--nav-gray-700);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Password Screen */
+        .password-screen {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .password-screen.hidden {
+            display: none;
+        }
+
+        .password-box {
+            background: var(--bg-card);
+            padding: 48px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .password-box img {
+            height: 48px;
+            margin-bottom: 24px;
+        }
+
+        .password-box h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--nav-white);
+        }
+
+        .password-box p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .password-box input {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            background: var(--nav-gray-700);
+            color: var(--nav-white);
+            font-size: 16px;
+            margin-bottom: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .password-box input:focus {
+            border-color: var(--accent);
+        }
+
+        .password-box input::placeholder {
+            color: var(--nav-gray-400);
+        }
+
+        .password-box button {
+            width: 100%;
+            padding: 14px 24px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--nav-gray-900);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .password-box button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(34, 211, 238, 0.3);
+        }
+
+        .password-error {
+            color: #EF4444;
+            font-size: 14px;
+            margin-top: 12px;
+            display: none;
+        }
+
+        .password-error.show {
+            display: block;
+        }
+
+        /* Main Content */
+        .main-wrapper {
+            display: none;
+        }
+
+        .main-wrapper.visible {
+            display: block;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-dark);
+            color: var(--nav-white);
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-lg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--nav-white);
+        }
+
+        .logo-text img {
+            height: 32px;
+            width: auto;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .header-badge {
+            background: var(--accent);
+            color: var(--nav-gray-900);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .header-right a {
+            color: var(--nav-gray-400);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .header-right a:hover {
+            color: var(--accent);
+        }
+
+        .header-right a.active {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-primary) 100%);
+            color: var(--nav-white);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, var(--nav-white) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--nav-gray-300);
+        }
+
+        /* Filter Tabs */
+        .filter-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px 0;
+        }
+
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .filter-tab {
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-tab:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .filter-tab.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--nav-gray-900);
+        }
+
+        /* Resources Grid */
+        .resources-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px 80px;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .resource-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+            border-color: var(--accent);
+        }
+
+        .resource-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .resource-number {
+            background: var(--nav-gray-700);
+            color: var(--accent);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .resource-category {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .resource-category.components {
+            background: rgba(34, 211, 238, 0.15);
+            color: var(--accent);
+        }
+
+        .resource-category.animation {
+            background: rgba(168, 85, 247, 0.15);
+            color: #A855F7;
+        }
+
+        .resource-category.tailwind {
+            background: rgba(56, 189, 248, 0.15);
+            color: #38BDF8;
+        }
+
+        .resource-category.utility {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22C55E;
+        }
+
+        .resource-category.community {
+            background: rgba(251, 146, 60, 0.15);
+            color: #FB923C;
+        }
+
+        .resource-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .resource-description {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            flex-grow: 1;
+            margin-bottom: 16px;
+        }
+
+        .resource-purpose {
+            font-size: 13px;
+            color: var(--nav-gray-300);
+            padding: 12px;
+            background: var(--nav-gray-700);
+            border-radius: var(--radius-sm);
+            margin-bottom: 16px;
+        }
+
+        .resource-purpose strong {
+            color: var(--accent);
+        }
+
+        .resource-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: gap 0.2s;
+        }
+
+        .resource-link:hover {
+            gap: 12px;
+        }
+
+        .resource-link svg {
+            transition: transform 0.2s;
+        }
+
+        .resource-link:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
+            transition: gap 0.2s;
+        }
+
+        .back-link:hover {
+            gap: 12px;
+        }
+
+        .back-link svg {
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover svg {
+            transform: translateX(-4px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-dark);
+            color: var(--nav-gray-400);
+            padding: 36px 40px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer p {
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 16px 20px;
+            }
+
+            .header-right {
+                gap: 12px;
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .resources-container {
+                padding: 24px 16px 60px;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding-bottom: 10px;
+            }
+
+            .filter-tab {
+                flex-shrink: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Password Screen -->
+    <div class="password-screen" id="passwordScreen">
+        <div class="password-box">
+            <img src="/logos/NavAIgate.svg" alt="NavAIgate" />
+            <h2>Training Portal</h2>
+            <p>Enter the access code to view the resources.</p>
+            <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="off" />
+            <button onclick="checkPassword()">Access Resources</button>
+            <p class="password-error" id="passwordError">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-wrapper" id="mainContent">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <a href="/cc" class="logo-text">
+                        <img src="/logos/NavAIgate.svg" alt="NavAIgate" />
+                        NavAIgate <span>Training</span>
+                    </a>
+                    <span class="header-badge">Resources</span>
+                </div>
+                <div class="header-right">
+                    <a href="/cc">Training Guide</a>
+                    <a href="/cc/videos">Videos</a>
+                    <a href="/cc/resources" class="active">Resources</a>
+                    <a href="https://navaigate.dev" target="_blank">navaigate.dev</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h1>Frontend Resources</h1>
+            <p>A curated collection of 27 frontend libraries for creative developers. Use these with Claude Code to build stunning interfaces.</p>
+        </section>
+
+        <div class="filter-section">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Libraries</button>
+                <button class="filter-tab" data-filter="components">UI Components</button>
+                <button class="filter-tab" data-filter="animation">Animation</button>
+                <button class="filter-tab" data-filter="tailwind">Tailwind</button>
+                <button class="filter-tab" data-filter="utility">Utility</button>
+                <button class="filter-tab" data-filter="community">Community</button>
+            </div>
+        </div>
+
+        <main class="resources-container">
+            <a href="/cc" class="back-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Training Guide
+            </a>
+
+            <div class="resources-grid">
+                <!-- 1. shadcn/ui -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">1</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">shadcn/ui</h3>
+                    <p class="resource-description">Built on Radix UI, offers beautifully designed, accessible component system. Copy and paste components into your projects.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Professional, customizable applications</div>
+                    <a href="https://ui.shadcn.com/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 2. Radix UI -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">2</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">Radix UI</h3>
+                    <p class="resource-description">Unstyled, accessible components that serve as foundation for custom design systems. Full control over styling.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Building custom design systems</div>
+                    <a href="https://www.radix-ui.com/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 3. PrimeReact -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">3</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">PrimeReact</h3>
+                    <p class="resource-description">Comprehensive collection with consistent design language. 90+ components for React applications.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Enterprise applications</div>
+                    <a href="https://primereact.org/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 4. Motion.dev -->
+                <div class="resource-card" data-category="animation">
+                    <div class="resource-header">
+                        <div class="resource-number">4</div>
+                        <span class="resource-category animation">Animation</span>
+                    </div>
+                    <h3 class="resource-title">Motion.dev</h3>
+                    <p class="resource-description">Revolutionary approach to web animations with intuitive API. Formerly Framer Motion, now framework-agnostic.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Smooth, professional animations</div>
+                    <a href="https://motion.dev/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 5. Animate.style -->
+                <div class="resource-card" data-category="animation">
+                    <div class="resource-header">
+                        <div class="resource-number">5</div>
+                        <span class="resource-category animation">Animation</span>
+                    </div>
+                    <h3 class="resource-title">Animate.css</h3>
+                    <p class="resource-description">Collection of ready-to-use CSS animations requiring no JavaScript. Just add classes to animate elements.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Quick animation effects</div>
+                    <a href="https://animate.style/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 6. Hover.dev -->
+                <div class="resource-card" data-category="animation">
+                    <div class="resource-header">
+                        <div class="resource-number">6</div>
+                        <span class="resource-category animation">Animation</span>
+                    </div>
+                    <h3 class="resource-title">Hover.dev</h3>
+                    <p class="resource-description">Specializes in hover effects for interactive elements. Beautiful micro-interactions for buttons and links.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Enhancing button/link interactions</div>
+                    <a href="https://www.hover.dev/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 7. DaisyUI -->
+                <div class="resource-card" data-category="tailwind">
+                    <div class="resource-header">
+                        <div class="resource-number">7</div>
+                        <span class="resource-category tailwind">Tailwind</span>
+                    </div>
+                    <h3 class="resource-title">DaisyUI</h3>
+                    <p class="resource-description">Tailwind CSS component library with semantic class names. Reduces verbose utility classes with component classes.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Rapid prototyping</div>
+                    <a href="https://daisyui.com/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 8. HyperUI -->
+                <div class="resource-card" data-category="tailwind">
+                    <div class="resource-header">
+                        <div class="resource-number">8</div>
+                        <span class="resource-category tailwind">Tailwind</span>
+                    </div>
+                    <h3 class="resource-title">HyperUI</h3>
+                    <p class="resource-description">Vast collection of Tailwind CSS components with modern designs. Free, open-source, and regularly updated.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Modern web interfaces</div>
+                    <a href="https://www.hyperui.dev/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 9. MagicUI -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">9</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">MagicUI</h3>
+                    <p class="resource-description">Components with unique animations and interactions. Create memorable, delightful user experiences.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Memorable user experiences</div>
+                    <a href="https://magicui.design/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 10. Aceternity UI -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">10</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">Aceternity UI</h3>
+                    <p class="resource-description">High-performance components optimized for visual excellence. Stunning effects and animations built-in.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Fast, impressive applications</div>
+                    <a href="https://ui.aceternity.com/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 11. CuiCui -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">11</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">CuiCui</h3>
+                    <p class="resource-description">Fresh take on common UI patterns with distinctive styling. Stand out with unique component designs.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Unique visual identity</div>
+                    <a href="https://cuicui.day/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 12. HeroUI -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">12</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">HeroUI</h3>
+                    <p class="resource-description">Hero section-focused components with responsive layouts. Perfect for creating engaging landing pages.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Engaging landing pages</div>
+                    <a href="https://www.heroui.com/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 13. Cursify -->
+                <div class="resource-card" data-category="utility">
+                    <div class="resource-header">
+                        <div class="resource-number">13</div>
+                        <span class="resource-category utility">Utility</span>
+                    </div>
+                    <h3 class="resource-title">Cursify</h3>
+                    <p class="resource-description">Provides custom cursor effects and interactions. Add personality with unique cursor animations.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Enhanced user experience</div>
+                    <a href="https://cursify.vercel.app/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 14. ZenUI -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">14</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">ZenUI</h3>
+                    <p class="resource-description">Minimalist components with focus on essential functionality. Clean, distraction-free design system.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Clean applications</div>
+                    <a href="https://zenui.net/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 15. Inspira UI -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">15</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">Inspira UI</h3>
+                    <p class="resource-description">Creatively designed components and layouts. Make your websites stand out with inspired designs.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Standout websites</div>
+                    <a href="https://inspira-ui.com/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 16. LunarUI -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">16</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">LunarUI</h3>
+                    <p class="resource-description">Dark-mode optimized components and color schemes. Perfect for night-friendly interfaces.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Night-friendly interfaces</div>
+                    <a href="https://lunarui.dev/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 17. Animation-Svelte -->
+                <div class="resource-card" data-category="animation">
+                    <div class="resource-header">
+                        <div class="resource-number">17</div>
+                        <span class="resource-category animation">Animation</span>
+                    </div>
+                    <h3 class="resource-title">Animation-Svelte</h3>
+                    <p class="resource-description">Svelte-optimized animations leveraging framework reactivity. Smooth animations native to Svelte.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Svelte applications</div>
+                    <a href="https://animation-svelte.vercel.app/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 18. SyntaxUI -->
+                <div class="resource-card" data-category="utility">
+                    <div class="resource-header">
+                        <div class="resource-number">18</div>
+                        <span class="resource-category utility">Utility</span>
+                    </div>
+                    <h3 class="resource-title">SyntaxUI</h3>
+                    <p class="resource-description">Components for code display and developer tools. Beautiful syntax highlighting and code blocks.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Documentation sites</div>
+                    <a href="https://syntaxui.com/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 19. EldoraUI -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">19</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">EldoraUI</h3>
+                    <p class="resource-description">Elegantly designed components with attention to detail. Sophisticated, refined interface elements.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Sophisticated interfaces</div>
+                    <a href="https://www.eldoraui.site/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 20. Cult-UI -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">20</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">Cult-UI</h3>
+                    <p class="resource-description">Experimental and innovative UI components pushing boundaries. For avant-garde, cutting-edge designs.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Avant-garde experiences</div>
+                    <a href="https://www.cult-ui.com/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 21. UIverse -->
+                <div class="resource-card" data-category="community">
+                    <div class="resource-header">
+                        <div class="resource-number">21</div>
+                        <span class="resource-category community">Community</span>
+                    </div>
+                    <h3 class="resource-title">UIverse</h3>
+                    <p class="resource-description">Community-created UI components and animations. Thousands of free elements from developers worldwide.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Unique solutions</div>
+                    <a href="https://uiverse.io/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 22. UI Layouts -->
+                <div class="resource-card" data-category="utility">
+                    <div class="resource-header">
+                        <div class="resource-number">22</div>
+                        <span class="resource-category utility">Utility</span>
+                    </div>
+                    <h3 class="resource-title">UI Layouts</h3>
+                    <p class="resource-description">Pre-built responsive layout patterns and templates. Solve complex layout challenges quickly.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Complex layouts</div>
+                    <a href="https://www.ui-layouts.com/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 23. Tailwind Flex -->
+                <div class="resource-card" data-category="tailwind">
+                    <div class="resource-header">
+                        <div class="resource-number">23</div>
+                        <span class="resource-category tailwind">Tailwind</span>
+                    </div>
+                    <h3 class="resource-title">Tailwind Flex</h3>
+                    <p class="resource-description">Flexible, customizable Tailwind components and layouts. Community-driven collection of patterns.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Rapid development</div>
+                    <a href="https://tailwindflex.com/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 24. React Bits -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">24</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">React Bits</h3>
+                    <p class="resource-description">React-specific solutions and implementation patterns. Snippets and components optimized for React.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> React applications</div>
+                    <a href="https://www.reactbits.dev/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 25. Spectrum UI -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">25</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">Spectrum UI</h3>
+                    <p class="resource-description">Flexible component ecosystem with adaptive components. Build consistent interfaces across platforms.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Consistent interfaces</div>
+                    <a href="https://spectrumui.arihantcodes.in/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 26. Fly On UI -->
+                <div class="resource-card" data-category="components">
+                    <div class="resource-header">
+                        <div class="resource-number">26</div>
+                        <span class="resource-category components">Components</span>
+                    </div>
+                    <h3 class="resource-title">Fly On UI</h3>
+                    <p class="resource-description">Modern, performant components with minimal overhead. Fast, elegant interfaces without the bloat.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Fast, elegant interfaces</div>
+                    <a href="https://flyonui.com/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- 27. animata.design -->
+                <div class="resource-card" data-category="animation">
+                    <div class="resource-header">
+                        <div class="resource-number">27</div>
+                        <span class="resource-category animation">Animation</span>
+                    </div>
+                    <h3 class="resource-title">animata.design</h3>
+                    <p class="resource-description">Distinctive animation patterns and visual effects. Create unique animated elements that captivate users.</p>
+                    <div class="resource-purpose"><strong>Best for:</strong> Unique animated elements</div>
+                    <a href="https://animata.design/" target="_blank" class="resource-link">
+                        Visit Website
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>NavAIgate Training Portal | <a href="https://dev.to/hadil/the-ultimate-list-of-27-frontend-libraries-for-creative-developers-15go" target="_blank">Original Article by Hadil</a></p>
+            <p style="margin-top: 8px; font-size: 12px;">Questions? Contact <a href="https://navaigate.dev">navaigate.dev</a></p>
+        </footer>
+    </div>
+
+    <script is:inline>
+        const CORRECT_PASSWORD = 'techse';
+
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const error = document.getElementById('passwordError');
+
+            if (input.value === CORRECT_PASSWORD) {
+                document.getElementById('passwordScreen').classList.add('hidden');
+                document.getElementById('mainContent').classList.add('visible');
+                sessionStorage.setItem('cc_authenticated', 'true');
+            } else {
+                error.classList.add('show');
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        // Check if already authenticated this session
+        if (sessionStorage.getItem('cc_authenticated') === 'true') {
+            document.getElementById('passwordScreen').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('visible');
+        }
+
+        // Allow Enter key to submit password
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        // Filter functionality
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.dataset.filter;
+                const cards = document.querySelectorAll('.resource-card');
+
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
