@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
     <style>
         :root {
             /* NavAIgate Brand Colors */
@@ -239,6 +240,16 @@
             color: var(--nav-white);
             padding: 50px 40px 60px;
             text-align: center;
+        }
+
+        .hero-lottie {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-lottie dotlottie-player {
+            filter: drop-shadow(0 0 30px rgba(34, 211, 238, 0.3));
         }
 
         .hero h1 {
@@ -991,6 +1002,16 @@
         </header>
 
         <section class="hero">
+            <div class="hero-lottie">
+                <dotlottie-player
+                    src="https://lottie.host/ca831a9f-ca3c-4959-bca3-65efa2f2b526/UujSR6vHgp.lottie"
+                    background="transparent"
+                    speed="1"
+                    style="width: 200px; height: 200px; margin: 0 auto 20px;"
+                    loop
+                    autoplay>
+                </dotlottie-player>
+            </div>
             <h1>Claude Code Mastery</h1>
             <p>Your complete guide to using Claude Code for creating professional HTML interfaces, managing workflows, and supercharging your productivity.</p>
             <div class="hero-stats">
