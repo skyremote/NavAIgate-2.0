@@ -146,7 +146,7 @@ const NavBar: React.FC<NavBarProps> = ({ showAuth = true }) => {
 
       {/* Mobile Menu Overlay */}
       {menuOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-gray-900/95 backdrop-blur">
+        <div className="md:hidden fixed inset-0 z-50 bg-gray-900/80 backdrop-blur-2xl backdrop-saturate-150">
           <div className="flex items-center justify-between p-4 border-b border-white/5">
             <a href="/" className="flex items-center gap-2">
               <img src="/logos/NavAIgate.svg" alt="NavAIgate" className="h-8 w-auto" />
