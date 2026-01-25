@@ -146,27 +146,28 @@ const NavBar: React.FC<NavBarProps> = ({ showAuth = true }) => {
 
       {/* Mobile Menu Overlay */}
       {menuOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-gray-900/80 backdrop-blur-2xl backdrop-saturate-150">
-          <div className="flex items-center justify-between p-4 border-b border-white/5">
+        <div className="md:hidden fixed inset-0 z-50 bg-gray-900/95 backdrop-blur-3xl">
+          <div className="flex items-center justify-between px-4 py-4">
             <a href="/" className="flex items-center gap-2">
               <img src="/logos/NavAIgate.svg" alt="NavAIgate" className="h-8 w-auto" />
               <span className="text-white font-semibold text-xl">NavAIgate</span>
             </a>
             <button
-              className="inline-flex items-center justify-center rounded-lg border border-white/10 bg-white/10 p-2 text-gray-100 hover:bg-white/20 transition"
+              className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 px-3 py-2 text-white hover:bg-white/20 transition"
               aria-label="Close menu"
               onClick={() => setMenuOpen(false)}
             >
               <X className="h-5 w-5" />
             </button>
           </div>
-          <nav className="px-6 py-8 space-y-6">
+          {/* Contained Card Menu */}
+          <div className="mx-4 mt-4 p-6 rounded-2xl bg-gray-800/90 backdrop-blur-2xl border border-white/20 shadow-2xl space-y-5">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="block text-xl text-gray-200 hover:text-cyan-400 transition-colors"
+                className="block text-xl text-white font-semibold hover:text-cyan-400 transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -174,9 +175,9 @@ const NavBar: React.FC<NavBarProps> = ({ showAuth = true }) => {
             ))}
 
             {/* Our Apps Section */}
-            <div className="pt-4 border-t border-white/10">
-              <span className="text-sm text-gray-500 uppercase tracking-wider">Our Apps</span>
-              <div className="mt-3 space-y-4">
+            <div className="pt-4 border-t border-gray-600">
+              <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Our Apps</span>
+              <div className="mt-3 space-y-4 ml-4 border-l-2 border-gray-600 pl-4">
                 {appLinks.map((app) => (
                   <a
                     key={app.href}
@@ -186,56 +187,54 @@ const NavBar: React.FC<NavBarProps> = ({ showAuth = true }) => {
                     className="block"
                     onClick={() => setMenuOpen(false)}
                   >
-                    <div className="text-xl text-gray-200 hover:text-cyan-400 transition-colors">{app.label}</div>
-                    <div className="text-sm text-gray-500">{app.description}</div>
+                    <div className="text-gray-300 hover:text-white transition-colors">{app.label}</div>
+                    <div className="text-xs text-gray-500">{app.description}</div>
                   </a>
                 ))}
               </div>
             </div>
 
-            <div className="pt-4 space-y-3">
-              {showAuth ? (
-                user ? (
-                  <>
-                    <a
-                      href="/dashboard"
-                      className="block text-xl text-gray-200 hover:text-cyan-400 transition-colors"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      Dashboard
-                    </a>
-                    <Button variant="outline" className="w-full" onClick={() => {
-                      import('../lib/auth').then(({ signOut }) => {
-                        signOut().then(() => window.location.href = '/');
-                      });
-                    }}>
-                      Sign out
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <a
-                      href="/auth/login"
-                      className="block text-xl text-gray-200 hover:text-cyan-400 transition-colors"
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      Sign in
-                    </a>
-                    <Button variant="primary" shimmer className="w-full" onClick={() => window.location.href = '/auth/signup'}>
-                      Sign up
-                    </Button>
-                  </>
-                )
+            {showAuth ? (
+              user ? (
+                <>
+                  <a
+                    href="/dashboard"
+                    className="block text-xl text-white font-semibold hover:text-cyan-400 transition-colors"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Dashboard
+                  </a>
+                  <Button variant="outline" className="w-full" onClick={() => {
+                    import('../lib/auth').then(({ signOut }) => {
+                      signOut().then(() => window.location.href = '/');
+                    });
+                  }}>
+                    Sign out
+                  </Button>
+                </>
               ) : (
-                <Button variant="primary" shimmer className="w-full" onClick={() => {
-                  setMenuOpen(false);
-                  (window as any).openWaitlist?.();
-                }}>
-                  Join Waitlist
-                </Button>
-              )}
-            </div>
-          </nav>
+                <>
+                  <a
+                    href="/auth/login"
+                    className="block text-xl text-white font-semibold hover:text-cyan-400 transition-colors"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    Sign in
+                  </a>
+                  <Button variant="primary" shimmer className="w-full" onClick={() => window.location.href = '/auth/signup'}>
+                    Sign up
+                  </Button>
+                </>
+              )
+            ) : (
+              <Button variant="primary" shimmer className="w-full" onClick={() => {
+                setMenuOpen(false);
+                (window as any).openWaitlist?.();
+              }}>
+                Join Waitlist
+              </Button>
+            )}
+          </div>
         </div>
       )}
     </header>
