@@ -18,9 +18,10 @@ interface AppLink {
 }
 
 const navLinks: NavLink[] = [
-  { label: 'About', href: '#about' },
-  { label: 'Apps', href: '#apps' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '/#about' },
+  { label: 'Portfolio', href: '/portfolio/bluplai-claude-code' },
+  { label: 'Apps', href: '/#apps' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 const appLinks: AppLink[] = [
