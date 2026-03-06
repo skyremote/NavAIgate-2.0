@@ -214,8 +214,7 @@ const credibilityStats = [
   <script is:inline>
     (() => {
       const storedTheme = localStorage.getItem('pitchconfidential-theme');
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.dataset.pitchTheme = storedTheme || systemTheme;
+      document.documentElement.dataset.pitchTheme = storedTheme || 'dark';
     })();
   </script>
 
@@ -254,10 +253,10 @@ const credibilityStats = [
             <span class="eyebrow">NavAIgate</span>
             <div class="hero-actions">
               <div class="theme-switch" role="group" aria-label="Theme toggle">
-                <button type="button" class="theme-button is-active" data-theme-option="light" aria-pressed="true">
+                <button type="button" class="theme-button" data-theme-option="light" aria-pressed="false">
                   Light
                 </button>
-                <button type="button" class="theme-button" data-theme-option="dark" aria-pressed="false">
+                <button type="button" class="theme-button is-active" data-theme-option="dark" aria-pressed="true">
                   Dark
                 </button>
               </div>
@@ -505,8 +504,7 @@ const credibilityStats = [
       };
 
       const storedTheme = localStorage.getItem(storageKey);
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      setTheme(storedTheme || systemTheme);
+      setTheme(storedTheme || 'dark');
 
       themeButtons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -518,7 +516,7 @@ const credibilityStats = [
       });
 
       const forcePrintTheme = () => {
-        prePrintTheme = root.dataset.pitchTheme || localStorage.getItem(storageKey) || systemTheme;
+        prePrintTheme = root.dataset.pitchTheme || localStorage.getItem(storageKey) || 'dark';
         root.dataset.pitchTheme = 'light';
       };
 
