@@ -1,0 +1,1561 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const COOKIE_NAME = 'navaigate_pitch_access';
+const DEFAULT_PASSWORD = 'navaigate2024';
+const routePath = '/pitchconfidential';
+const pitchPassword = import.meta.env.PITCH_PAGE_PASSWORD ?? DEFAULT_PASSWORD;
+const requestUrl = new URL(Astro.request.url);
+
+if (requestUrl.searchParams.get('logout') === '1') {
+  Astro.cookies.delete(COOKIE_NAME, { path: routePath });
+  return Astro.redirect(routePath);
+}
+
+let authError = '';
+
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  const submittedPassword = String(formData.get('password') ?? '').trim();
+
+  if (submittedPassword === pitchPassword) {
+    Astro.cookies.set(COOKIE_NAME, 'granted', {
+      path: routePath,
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: import.meta.env.PROD,
+      maxAge: 60 * 60 * 8,
+    });
+
+    return Astro.redirect(routePath);
+  }
+
+  authError = 'Incorrect password. Please try again.';
+}
+
+const hasAccess = Astro.cookies.get(COOKIE_NAME)?.value === 'granted';
+
+const advisoryPillars = [
+  {
+    title: 'Revenue Leadership & Strategic Selling',
+    description:
+      'Hands-on commercial leadership for businesses that need executive sales structure, sharper deal strategy, and a more disciplined route to revenue.',
+  },
+  {
+    title: 'Custom Enablement Software',
+    description:
+      'We build bespoke tools that help teams sell products more effectively, reduce prep time, automate repetitive work, and give users the right information at the right moment.',
+  },
+  {
+    title: 'Internal System Optimisation',
+    description:
+      'Auditing and improving existing internal systems so they actually serve the people using them. Less friction, better data, faster decisions.',
+  },
+  {
+    title: 'Proof-of-Concept Sprints',
+    description:
+      'Focused 4–8 week POCs that prove R&D value inside the business before committing to a full build. Designed to de-risk investment and show measurable outcomes early.',
+  },
+  {
+    title: 'AI Leadership Sessions',
+    description:
+      'On-site and virtual sessions with leadership teams to guide AI adoption, address change management, and align the organisation around what AI can realistically deliver.',
+  },
+  {
+    title: 'Strategic Selling Systems',
+    description:
+      'Positioning, enterprise messaging, account planning, and decision frameworks that help teams sell complex offers with more clarity and consistency.',
+  },
+];
+
+const engagementTracks = [
+  'Executive sales and GTM advisory',
+  'Founder-led sales maturation',
+  'Enterprise positioning and strategic messaging',
+  'AI-enabled workflow and process design',
+  'Product-to-market narrative development',
+  'Team cadence, pipeline discipline, and deal inspection',
+  'On-site AI leadership workshops',
+  'Change management guidance for AI adoption',
+  '4–8 week proof-of-concept sprints',
+  'Internal tooling audits and optimisation',
+];
+
+const engagementGroups = [
+  {
+    title: 'Strategic selling advisory',
+    body:
+      'Narrative refinement, account planning, pipeline discipline, forecasting cadence, and sharper leadership visibility into how revenue work is actually progressing.',
+  },
+  {
+    title: 'AI product and system work',
+    body:
+      'Custom enablement software, internal system optimisation, and focused POCs that prove whether an idea creates measurable value before the business overcommits.',
+  },
+  {
+    title: 'Leadership alignment and adoption',
+    body:
+      'On-site sessions with leadership teams around AI adoption, change management, practical implementation paths, and where AI should fit into the operating model.',
+  },
+];
+
+const serviceModes = [
+  {
+    id: 'sell',
+    label: 'Sell',
+    title: 'I help teams sell complex offers with more clarity.',
+    description:
+      'This is where I focus on strategic selling: tightening the narrative, improving how accounts are worked, and creating a commercial motion that leaders can actually inspect and scale.',
+    bullets: [
+      'Enterprise positioning and message clarity',
+      'Account planning and deal inspection',
+      'Pipeline discipline, forecasting, and cadence',
+      'Founder and leadership support for sales maturation',
+    ],
+  },
+  {
+    id: 'build',
+    label: 'Build',
+    title: 'I build the systems and software that support the motion.',
+    description:
+      'When the bottleneck is internal execution, I build or scope the tools around it. That can mean custom enablement software, system optimisation, or a short POC that proves the opportunity before a larger investment.',
+    bullets: [
+      'Custom enablement software for users and teams',
+      'Internal system optimisation and workflow redesign',
+      '4-8 week AI and R&D proof-of-concept sprints',
+      'Practical measures for time saved and friction reduced',
+    ],
+  },
+  {
+    id: 'lead',
+    label: 'Lead',
+    title: 'I work directly with leadership teams on adoption and change.',
+    description:
+      'AI only changes a business when leadership is aligned on why it matters, what it should change, and how the organisation will adopt it. I help guide that conversation in practical terms.',
+    bullets: [
+      'On-site AI leadership sessions and workshops',
+      'Change management guidance for adoption',
+      'Decision support around where AI should and should not be applied',
+      'Operating plans that connect product direction to revenue outcomes',
+    ],
+  },
+];
+
+const proofPoints = [
+  {
+    eyebrow: 'Consultancy in action',
+    title: 'Global Sales Leadership',
+    logo: '/logos/katana.svg',
+    logoAlt: 'Katana',
+    summary:
+      'Currently leading a global sales organisation, which directly informs how we approach every consultancy engagement. The consulting is sharper because the operating experience is live — not historical.',
+    details: ['Active GTM execution', 'Enterprise deal cycles', 'Revenue strategy and team design'],
+  },
+  {
+    eyebrow: 'Enterprise client work',
+    title: 'Custom AI Enablement',
+    logo: '/logos/NavAIgate.svg',
+    logoAlt: 'NavAIgate',
+    summary:
+      'Building outcome-driven technology for enterprise clients that enables their teams through custom software, streamlines internal workflows, and reduces time spent on repetitive tasks so teams can sell and execute more effectively.',
+    details: ['Workflow-led AI tools', '4-8 week POCs', 'Measured time savings'],
+  },
+  {
+    eyebrow: 'Owned portfolio',
+    title: 'Products In Market',
+    logo: '/logos/NavAIgate.svg',
+    logoAlt: 'NavAIgate',
+    summary:
+      'Still Me, Ente-prise, and Bluplai demonstrate product thinking beyond consulting. The model is simple: advise from real operating experience, then build what the market actually needs.',
+    details: ['Still Me', 'Ente-prise', 'Bluplai'],
+  },
+];
+
+const productPortfolio = [
+  {
+    name: 'Still Me',
+    logo: '/logos/Softwares/Still%20Me.png',
+    url: 'https://stillme.navaigate.dev/',
+    description: 'Real-time translation that helps businesses and consumers connect more closely by preserving voice and tone across languages.',
+  },
+  {
+    name: 'Ente-prise',
+    logo: '/logos/Softwares/ente-prise.png',
+    url: 'https://www.ente-prise.com',
+    description: 'Enterprise decision-support platform built around structured selling and better workflow execution.',
+  },
+  {
+    name: 'Bluplai',
+    logo: '/logos/Softwares/bluplai.png',
+    url: 'https://bluplai.com/',
+    description: 'AI platform work focused on practical automation, enablement, and applied adoption.',
+  },
+];
+
+const outcomes = [
+  'Clarify the commercial story so the business is easier to buy from.',
+  'Tighten the bridge between product strategy, sales execution, and customer outcomes.',
+  'Give leadership teams a senior operator who can shape the motion and build the assets around it.',
+  'Prove AI value quickly through focused POCs before committing to full-scale investment.',
+  'Equip leaders with a practical understanding of AI adoption and change management.',
+];
+
+const credibilityStats = [
+  { value: '25+', label: 'Custom solutions' },
+  { value: '10+', label: 'Enterprise clients' },
+  { value: '50+', label: 'AI implementations' },
+];
+---
+
+<BaseLayout
+  title="Confidential Strategic Brief"
+  description="Private overview of NavAIgate's strategic selling, leadership consulting, and outcome-driven product work."
+>
+  <script is:inline>
+    (() => {
+      const storedTheme = localStorage.getItem('pitchconfidential-theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.pitchTheme = storedTheme || systemTheme;
+    })();
+  </script>
+
+  <div class="pitch-shell">
+    {!hasAccess ? (
+      <main class="gate-wrap">
+        <section class="gate-card">
+          <p class="eyebrow">Private client preview</p>
+          <h1>Confidential strategic brief for prospective partners.</h1>
+          <p class="gate-copy">
+            This page is a focused one-pager for how I position NavAIgate: leadership consulting,
+            strategic selling support, and outcome-driven product work.
+          </p>
+
+          <form method="POST" class="gate-form">
+            <label for="password" class="field-label">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              class="field-input"
+              placeholder="Enter password"
+              autocomplete="current-password"
+              required
+              autofocus
+            />
+            {authError && <p class="error-text">{authError}</p>}
+            <button type="submit" class="primary-button">Open brief</button>
+          </form>
+
+          <p class="gate-note">
+            For stronger production protection, set <code>PITCH_PAGE_PASSWORD</code> in the
+            deployment environment.
+          </p>
+        </section>
+      </main>
+    ) : (
+      <main class="brief-page">
+        <section class="hero-panel">
+          <div class="hero-topline">
+            <span class="eyebrow">NavAIgate</span>
+            <div class="hero-actions">
+              <div class="theme-switch" role="group" aria-label="Theme toggle">
+                <button type="button" class="theme-button is-active" data-theme-option="light" aria-pressed="true">
+                  Light
+                </button>
+                <button type="button" class="theme-button" data-theme-option="dark" aria-pressed="false">
+                  Dark
+                </button>
+              </div>
+              <button type="button" class="ghost-button" data-print-brief>Save as PDF</button>
+              <a href="/pitchconfidential?logout=1" class="ghost-link">Lock page</a>
+            </div>
+          </div>
+
+          <div class="hero-grid">
+            <div>
+              <p class="mini-label">Strategic selling. AI adoption. Active operator context.</p>
+              <h1>
+                I help businesses sell more clearly, adopt AI pragmatically, and prove value fast.
+              </h1>
+              <p class="hero-copy">
+                NavAIgate is how I package operator-led growth work: leading revenue teams, shaping
+                enterprise narratives, building custom enablement software, improving internal systems,
+                and running focused 4-8 week POCs that show whether an idea is worth scaling.
+              </p>
+              <div class="signal-row" aria-label="Core capabilities">
+                <span>Strategic selling</span>
+                <span>Enablement software</span>
+                <span>Internal systems</span>
+                <span>Leadership AI sessions</span>
+              </div>
+              <div class="stat-row" aria-label="Credibility highlights">
+                {credibilityStats.map((stat) => (
+                  <div class="stat-card">
+                    <strong>{stat.value}</strong>
+                    <span>{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <aside class="quote-card">
+              <p class="quote-label">Elevator pitch</p>
+              <p class="quote-text">
+                I bring commercial leadership and product execution into the same room. I do not advise
+                from the sidelines. I lead sales organisations, build custom enablement tools for
+                enterprise clients, run AI leadership sessions with decision-makers, and turn that work
+                into strategy, systems, and offers that companies can actually use.
+              </p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="content-grid">
+          <div class="main-column">
+            <section class="card-block intro-block reveal-card">
+              <div class="section-head">
+                <p class="eyebrow">Why clients bring me in</p>
+                <h2>Strategic selling and AI execution from an operator, not a commentator.</h2>
+              </div>
+
+              <div class="pillars-grid">
+                {advisoryPillars.map((pillar, index) => (
+                  <article class="pillar-card reveal-card" style={`--reveal-delay:${index * 70}ms;`}>
+                    <h3>{pillar.title}</h3>
+                    <p>{pillar.description}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section class="card-block service-block reveal-card">
+              <div class="section-head">
+                <p class="eyebrow">How I work</p>
+                <h2>Three ways I typically create momentum inside a business.</h2>
+              </div>
+
+              <div class="service-switch" role="tablist" aria-label="Service modes">
+                {serviceModes.map((mode, index) => (
+                  <button
+                    type="button"
+                    class:list={['service-chip', index === 0 && 'is-active']}
+                    data-mode-target={mode.id}
+                    role="tab"
+                    aria-selected={index === 0 ? 'true' : 'false'}
+                  >
+                    {mode.label}
+                  </button>
+                ))}
+              </div>
+
+              <div class="service-stage">
+                {serviceModes.map((mode, index) => (
+                  <article
+                    class:list={['service-panel', index === 0 && 'is-active']}
+                    data-mode-panel={mode.id}
+                  >
+                    <div class="service-copy">
+                      <p class="eyebrow">Mode {index + 1}</p>
+                      <h3>{mode.title}</h3>
+                      <p>{mode.description}</p>
+                    </div>
+                    <ul class="service-points">
+                      {mode.bullets.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section class="card-block proof-block reveal-card">
+              <div class="section-head">
+                <p class="eyebrow">Highlights of active work</p>
+                <h2>The consultancy stays sharp because the work is happening right now.</h2>
+              </div>
+
+              <div class="proof-list">
+                {proofPoints.map((point, index) => (
+                  <article class="proof-card reveal-card" style={`--reveal-delay:${index * 90}ms;`}>
+                    <div class="proof-head">
+                      <div class="proof-logo-wrap">
+                        <img src={point.logo} alt={point.logoAlt} class="proof-logo" />
+                      </div>
+                      <div>
+                        <p class="proof-eyebrow">{point.eyebrow}</p>
+                        <h3>{point.title}</h3>
+                      </div>
+                    </div>
+                    <p class="proof-summary">{point.summary}</p>
+                    <ul class="chip-row" aria-label={`${point.title} highlights`}>
+                      {point.details.map((detail) => (
+                        <li>{detail}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section class="card-block portfolio-block reveal-card">
+              <div class="section-head">
+                <p class="eyebrow">Portfolio signal</p>
+                <h2>The products I ship make the advisory sharper.</h2>
+              </div>
+
+              <div class="portfolio-grid">
+                {productPortfolio.map((product, index) => (
+                  <a
+                    href={product.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="product-card reveal-card"
+                    style={`--reveal-delay:${index * 90}ms;`}
+                  >
+                    <div class="product-logo-wrap">
+                      <img src={product.logo} alt={product.name} class="product-logo" />
+                    </div>
+                    <div>
+                      <h3>{product.name}</h3>
+                      <p>{product.description}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+          </div>
+
+          <aside class="side-column">
+            <section class="sidebar-card portrait-card reveal-card">
+              <img src="/images/daniel.png" alt="Daniel Wright" class="portrait" />
+              <div>
+                <p class="eyebrow">Operator profile</p>
+                <h2>Daniel Wright</h2>
+                <p>
+                  I founded NavAIgate to bring commercial leadership, practical AI implementation,
+                  and product thinking into the same conversation.
+                </p>
+              </div>
+            </section>
+
+            <section class="sidebar-card reveal-card">
+              <p class="eyebrow">How I can help</p>
+              <h2>Typical engagement areas</h2>
+              <div class="accordion" data-accordion>
+                {engagementGroups.map((group, index) => (
+                  <section class:list={['accordion-item', index === 0 && 'is-open']}>
+                    <button
+                      type="button"
+                      class="accordion-trigger"
+                      data-accordion-trigger
+                      aria-expanded={index === 0 ? 'true' : 'false'}
+                    >
+                      <span>{group.title}</span>
+                      <span class="accordion-plus" aria-hidden="true">+</span>
+                    </button>
+                    <div class:list={['accordion-panel', index === 0 && 'is-open']} data-accordion-panel>
+                      <p>{group.body}</p>
+                    </div>
+                  </section>
+                ))}
+              </div>
+            </section>
+
+            <section class="sidebar-card outcome-card reveal-card">
+              <p class="eyebrow">What clients leave with</p>
+              <h2>Expected outcomes</h2>
+              <ul class="outcome-list">
+                {outcomes.map((outcome) => (
+                  <li>{outcome}</li>
+                ))}
+              </ul>
+            </section>
+
+            <section class="sidebar-card cta-card reveal-card">
+              <p class="eyebrow">Next step</p>
+              <h2>If this is the problem set, the conversation is straightforward.</h2>
+              <p>
+                If your business needs stronger strategic selling, clearer market narrative, or a senior
+                operator to connect product decisions to revenue outcomes, this is where I typically help.
+              </p>
+              <a
+                href="mailto:dw@navaigate.dev?subject=NavAIgate%20Strategic%20Brief"
+                class="primary-link"
+              >
+                dw@navaigate.dev
+              </a>
+              <a href="https://navaigate.dev" class="secondary-link">Visit navaigate.dev</a>
+            </section>
+          </aside>
+        </section>
+      </main>
+    )}
+  </div>
+
+  <script is:inline>
+    (() => {
+      const storageKey = 'pitchconfidential-theme';
+      const root = document.documentElement;
+      const themeButtons = document.querySelectorAll('[data-theme-option]');
+      const printButton = document.querySelector('[data-print-brief]');
+      let prePrintTheme = null;
+      const setTheme = (theme) => {
+        root.dataset.pitchTheme = theme;
+        themeButtons.forEach((button) => {
+          const isActive = button.dataset.themeOption === theme;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-pressed', String(isActive));
+        });
+      };
+
+      const storedTheme = localStorage.getItem(storageKey);
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      setTheme(storedTheme || systemTheme);
+
+      themeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const theme = button.dataset.themeOption;
+          if (!theme) return;
+          localStorage.setItem(storageKey, theme);
+          setTheme(theme);
+        });
+      });
+
+      const forcePrintTheme = () => {
+        prePrintTheme = root.dataset.pitchTheme || localStorage.getItem(storageKey) || systemTheme;
+        root.dataset.pitchTheme = 'light';
+      };
+
+      const restorePrintTheme = () => {
+        if (!prePrintTheme) return;
+        root.dataset.pitchTheme = prePrintTheme;
+        prePrintTheme = null;
+      };
+
+      if (printButton) {
+        printButton.addEventListener('click', async () => {
+          forcePrintTheme();
+          await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+          window.print();
+        });
+      }
+
+      window.addEventListener('beforeprint', forcePrintTheme);
+      window.addEventListener('afterprint', restorePrintTheme);
+
+      const modeButtons = document.querySelectorAll('[data-mode-target]');
+      const modePanels = document.querySelectorAll('[data-mode-panel]');
+      const modeSwitch = document.querySelector('.service-switch');
+
+      const setMode = (mode) => {
+        modeButtons.forEach((button) => {
+          const isActive = button.dataset.modeTarget === mode;
+          button.classList.toggle('is-active', isActive);
+          button.setAttribute('aria-selected', String(isActive));
+          if (isActive && modeSwitch) {
+            modeSwitch.style.setProperty('--active-left', `${button.offsetLeft}px`);
+            modeSwitch.style.setProperty('--active-width', `${button.offsetWidth}px`);
+          }
+        });
+
+        modePanels.forEach((panel) => {
+          panel.classList.toggle('is-active', panel.dataset.modePanel === mode);
+        });
+      };
+
+      if (modeButtons.length && modePanels.length) {
+        setMode(modeButtons[0].dataset.modeTarget || 'sell');
+        modeButtons.forEach((button) => {
+          button.addEventListener('click', () => {
+            const mode = button.dataset.modeTarget;
+            if (mode) setMode(mode);
+          });
+        });
+      }
+
+      window.addEventListener('resize', () => {
+        const activeMode = document.querySelector('[data-mode-target].is-active')?.dataset.modeTarget;
+        if (activeMode) setMode(activeMode);
+      });
+
+      document.querySelectorAll('[data-accordion]').forEach((accordion) => {
+        const items = accordion.querySelectorAll('.accordion-item');
+        items.forEach((item) => {
+          const trigger = item.querySelector('[data-accordion-trigger]');
+          const panel = item.querySelector('[data-accordion-panel]');
+          if (!trigger || !panel) return;
+
+          trigger.addEventListener('click', () => {
+            const willOpen = !item.classList.contains('is-open');
+            items.forEach((entry) => {
+              entry.classList.remove('is-open');
+              entry.querySelector('[data-accordion-trigger]')?.setAttribute('aria-expanded', 'false');
+              entry.querySelector('[data-accordion-panel]')?.classList.remove('is-open');
+            });
+
+            if (willOpen) {
+              item.classList.add('is-open');
+              trigger.setAttribute('aria-expanded', 'true');
+              panel.classList.add('is-open');
+            }
+          });
+        });
+      });
+
+      const revealCards = document.querySelectorAll('.reveal-card');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+      );
+
+      revealCards.forEach((card) => observer.observe(card));
+    })();
+  </script>
+</BaseLayout>
+
+<style is:global>
+  :root,
+  html[data-pitch-theme='light'] {
+    --page-bg:
+      radial-gradient(circle at 12% 14%, rgba(0, 205, 160, 0.16), transparent 24%),
+      radial-gradient(circle at 84% 12%, rgba(0, 144, 255, 0.14), transparent 28%),
+      linear-gradient(180deg, #f4f7fb 0%, #edf2f7 100%);
+    --surface: rgba(255, 255, 255, 0.72);
+    --surface-strong: rgba(255, 255, 255, 0.86);
+    --surface-soft: rgba(14, 30, 37, 0.05);
+    --line: rgba(15, 23, 42, 0.10);
+    --line-strong: rgba(15, 23, 42, 0.18);
+    --text-main: #0f172a;
+    --text-soft: rgba(15, 23, 42, 0.72);
+    --text-faint: rgba(15, 23, 42, 0.56);
+    --accent: #0090ff;
+    --accent-2: #00cda0;
+    --accent-soft: linear-gradient(135deg, rgba(0, 144, 255, 0.16), rgba(0, 205, 160, 0.18));
+    --shadow: 0 24px 80px rgba(15, 23, 42, 0.10);
+    --hero-glow: rgba(0, 144, 255, 0.14);
+    --cta-bg: linear-gradient(160deg, #07111f 0%, #10233a 100%);
+    --cta-text: #f8fbff;
+  }
+
+  html[data-pitch-theme='dark'] {
+    --page-bg:
+      radial-gradient(circle at 12% 14%, rgba(0, 205, 160, 0.12), transparent 24%),
+      radial-gradient(circle at 84% 12%, rgba(0, 144, 255, 0.16), transparent 28%),
+      linear-gradient(180deg, #06111b 0%, #0b1724 100%);
+    --surface: rgba(7, 18, 32, 0.76);
+    --surface-strong: rgba(9, 23, 38, 0.92);
+    --surface-soft: rgba(255, 255, 255, 0.05);
+    --line: rgba(255, 255, 255, 0.09);
+    --line-strong: rgba(255, 255, 255, 0.16);
+    --text-main: #eef7ff;
+    --text-soft: rgba(238, 247, 255, 0.78);
+    --text-faint: rgba(238, 247, 255, 0.58);
+    --accent: #44b0ff;
+    --accent-2: #3be0b8;
+    --accent-soft: linear-gradient(135deg, rgba(68, 176, 255, 0.20), rgba(59, 224, 184, 0.18));
+    --shadow: 0 28px 90px rgba(0, 0, 0, 0.30);
+    --hero-glow: rgba(68, 176, 255, 0.18);
+    --cta-bg: linear-gradient(160deg, #ecf6ff 0%, #d8efff 100%);
+    --cta-text: #07111f;
+  }
+
+  body {
+    background: var(--page-bg);
+    color: var(--text-main);
+    transition: background 0.35s ease, color 0.35s ease;
+  }
+
+  .pitch-shell {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    isolation: isolate;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-main);
+  }
+
+  .pitch-shell::before,
+  .pitch-shell::after {
+    content: '';
+    position: fixed;
+    inset: auto;
+    width: 26rem;
+    height: 26rem;
+    border-radius: 999px;
+    filter: blur(70px);
+    opacity: 0.34;
+    z-index: -1;
+    animation: ambientFloat 18s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .pitch-shell::before {
+    top: 6%;
+    right: -6rem;
+    background: rgba(0, 144, 255, 0.16);
+  }
+
+  .pitch-shell::after {
+    bottom: 10%;
+    left: -7rem;
+    background: rgba(0, 205, 160, 0.16);
+    animation-delay: -8s;
+  }
+
+  .pitch-shell h1,
+  .pitch-shell h2,
+  .pitch-shell h3 {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.045em;
+  }
+
+  .gate-wrap,
+  .brief-page {
+    width: min(1180px, calc(100vw - 2rem));
+    margin: 0 auto;
+  }
+
+  .gate-wrap {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 2rem 0;
+  }
+
+  .gate-card,
+  .card-block,
+  .sidebar-card,
+  .quote-card,
+  .hero-panel {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(16px);
+    transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+  }
+
+  .gate-card {
+    width: min(100%, 560px);
+    border-radius: 32px;
+    padding: 2rem;
+  }
+
+  .gate-card h1,
+  .hero-panel h1 {
+    font-size: clamp(2.8rem, 5vw, 5.6rem);
+    line-height: 0.92;
+    margin: 0 0 1rem;
+    color: var(--text-main);
+    text-wrap: balance;
+  }
+
+  .gate-copy,
+  .hero-copy,
+  .quote-text,
+  .proof-summary,
+  .product-card p,
+  .sidebar-card p,
+  .pillar-card p,
+  .service-panel p,
+  .gate-note,
+  .accordion-panel p {
+    color: var(--text-soft);
+    font-size: 1.02rem;
+    line-height: 1.65;
+  }
+
+  .gate-form {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 1.75rem;
+  }
+
+  .field-label,
+  .mini-label,
+  .quote-label,
+  .proof-eyebrow,
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .field-input {
+    width: 100%;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: var(--surface-strong);
+    padding: 0.95rem 1.2rem;
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.35s ease;
+  }
+
+  .field-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+  }
+
+  .primary-button,
+  .primary-link,
+  .secondary-link,
+  .ghost-button,
+  .ghost-link,
+  .theme-button,
+  .service-chip,
+  .accordion-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 600;
+    transition:
+      transform 0.24s ease,
+      background 0.24s ease,
+      color 0.24s ease,
+      border-color 0.24s ease,
+      opacity 0.24s ease;
+  }
+
+  .primary-button,
+  .primary-link {
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #08111d;
+    padding: 0.95rem 1.35rem;
+  }
+
+  .primary-button:hover,
+  .primary-link:hover,
+  .secondary-link:hover,
+  .ghost-button:hover,
+  .ghost-link:hover,
+  .theme-button:hover,
+  .service-chip:hover,
+  .accordion-trigger:hover {
+    transform: translateY(-1px);
+  }
+
+  .secondary-link,
+  .ghost-button,
+  .ghost-link {
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--text-main);
+    background: var(--surface-strong);
+    padding: 0.8rem 1.1rem;
+  }
+
+  .ghost-button,
+  .theme-button,
+  .service-chip,
+  .accordion-trigger {
+    cursor: pointer;
+  }
+
+  .theme-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.28rem;
+    border-radius: 999px;
+    background: var(--surface-soft);
+    border: 1px solid var(--line);
+  }
+
+  .theme-button {
+    padding: 0.65rem 0.9rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-faint);
+  }
+
+  .theme-button.is-active {
+    background: var(--surface-strong);
+    color: var(--text-main);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+
+  .error-text {
+    color: #e25b49;
+    font-size: 0.95rem;
+  }
+
+  .gate-note {
+    margin-top: 1.25rem;
+    font-size: 0.92rem;
+  }
+
+  .gate-note code {
+    font-family: inherit;
+    font-weight: 700;
+  }
+
+  .brief-page {
+    padding: 1.5rem 0 3rem;
+  }
+
+  .hero-panel {
+    border-radius: 38px;
+    padding: clamp(1.4rem, 2vw, 2.2rem);
+    margin-bottom: 1.2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-panel::after {
+    content: '';
+    position: absolute;
+    inset: auto -8% -16% auto;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--hero-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-topline,
+  .proof-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-grid,
+  .content-grid,
+  .service-panel {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.92fr);
+    align-items: end;
+    margin-top: 2rem;
+  }
+
+  .mini-label {
+    margin-bottom: 0.8rem;
+  }
+
+  .signal-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.4rem;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+
+  .stat-card {
+    display: grid;
+    gap: 0.18rem;
+    padding: 1rem 1rem 0.95rem;
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: var(--surface-strong);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  .stat-card strong {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: var(--text-main);
+  }
+
+  .stat-card span {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-faint);
+  }
+
+  .signal-row span,
+  .chip-row li {
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface-strong);
+    padding: 0.55rem 0.85rem;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .quote-card {
+    border-radius: 28px;
+    padding: 1.5rem;
+    align-self: stretch;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 10%, transparent), transparent 46%);
+    pointer-events: none;
+  }
+
+  .quote-label {
+    display: block;
+    margin-bottom: 0.7rem;
+  }
+
+  .content-grid {
+    grid-template-columns: minmax(0, 1.6fr) minmax(300px, 0.92fr);
+    align-items: start;
+  }
+
+  .main-column,
+  .side-column,
+  .proof-list,
+  .portfolio-grid,
+  .pillars-grid,
+  .outcome-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .card-block,
+  .sidebar-card {
+    border-radius: 30px;
+    padding: 1.4rem;
+  }
+
+  .section-head {
+    margin-bottom: 1.25rem;
+  }
+
+  .section-head h2,
+  .sidebar-card h2 {
+    font-size: clamp(1.9rem, 3vw, 3rem);
+    line-height: 0.98;
+    color: var(--text-main);
+    margin: 0.2rem 0 0;
+    text-wrap: balance;
+  }
+
+  .pillars-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pillar-card,
+  .proof-card,
+  .product-card,
+  .service-panel {
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    background: var(--surface-strong);
+  }
+
+  .pillar-card,
+  .proof-card {
+    padding: 1.2rem;
+  }
+
+  .pillar-card:hover,
+  .proof-card:hover,
+  .product-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 30%, var(--line));
+    transform: translateY(-2px);
+  }
+
+  .pillar-card h3,
+  .proof-card h3,
+  .product-card h3,
+  .service-panel h3 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin: 0 0 0.45rem;
+    color: var(--text-main);
+  }
+
+  .service-switch {
+    --active-left: 0px;
+    --active-width: 0px;
+    position: relative;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    width: fit-content;
+    padding: 0.35rem;
+    margin-bottom: 1rem;
+    border-radius: 999px;
+    background: var(--surface-soft);
+    border: 1px solid var(--line);
+  }
+
+  .service-switch::before {
+    content: '';
+    position: absolute;
+    top: 0.35rem;
+    left: var(--active-left);
+    width: var(--active-width);
+    height: calc(100% - 0.7rem);
+    border-radius: 999px;
+    background: var(--accent-soft);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent);
+    transition: left 0.28s ease, width 0.28s ease, background 0.28s ease;
+  }
+
+  .service-chip {
+    position: relative;
+    z-index: 1;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-faint);
+    padding: 0.8rem 1rem;
+  }
+
+  .service-chip.is-active {
+    color: var(--text-main);
+  }
+
+  .service-stage {
+    position: relative;
+  }
+
+  .service-panel {
+    display: none;
+    grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+    gap: 1.2rem;
+    padding: 1.2rem;
+    animation: panelRise 0.28s ease;
+  }
+
+  .service-panel.is-active {
+    display: grid;
+  }
+
+  .service-points,
+  .chip-row,
+  .outcome-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .service-points {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .service-points li,
+  .outcome-list li {
+    position: relative;
+    padding-left: 1rem;
+    color: var(--text-soft);
+    line-height: 1.6;
+  }
+
+  .service-points li::before,
+  .outcome-list li::before {
+    content: '';
+    position: absolute;
+    top: 0.68rem;
+    left: 0;
+    width: 0.38rem;
+    height: 0.38rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  }
+
+  .proof-logo-wrap,
+  .product-logo-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: color-mix(in srgb, var(--surface-strong) 86%, white 14%);
+    border: 1px solid var(--line);
+  }
+
+  .proof-logo-wrap {
+    width: 72px;
+    height: 72px;
+    padding: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .proof-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1rem;
+  }
+
+  .product-card {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .product-logo-wrap {
+    width: 92px;
+    height: 92px;
+    padding: 0.8rem;
+  }
+
+  .product-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .portrait-card {
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .portrait {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    display: block;
+  }
+
+  .portrait-card div {
+    padding: 1.2rem 1.2rem 1.35rem;
+  }
+
+  .accordion {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .accordion-item {
+    border-radius: 20px;
+    border: 1px solid var(--line);
+    background: var(--surface-strong);
+    overflow: hidden;
+  }
+
+  .accordion-trigger {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--text-main);
+    padding: 1rem 1rem 0.95rem;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .accordion-plus {
+    font-size: 1.35rem;
+    line-height: 1;
+    color: var(--accent);
+    transition: transform 0.24s ease;
+  }
+
+  .accordion-item.is-open .accordion-plus {
+    transform: rotate(45deg);
+  }
+
+  .accordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.28s ease;
+  }
+
+  .accordion-panel p {
+    overflow: hidden;
+    margin: 0;
+    padding: 0 1rem 0;
+  }
+
+  .accordion-panel.is-open {
+    grid-template-rows: 1fr;
+  }
+
+  .accordion-panel.is-open p {
+    padding-bottom: 1rem;
+  }
+
+  .cta-card {
+    background: var(--cta-bg);
+    color: var(--cta-text);
+  }
+
+  .cta-card h2,
+  .cta-card p,
+  .cta-card .eyebrow {
+    color: var(--cta-text);
+  }
+
+  .cta-card .eyebrow {
+    opacity: 0.76;
+  }
+
+  .cta-card .primary-link {
+    width: 100%;
+    margin-top: 0.6rem;
+  }
+
+  .cta-card .secondary-link {
+    width: 100%;
+    margin-top: 0.75rem;
+    background: transparent;
+    color: var(--cta-text);
+    border-color: color-mix(in srgb, var(--cta-text) 26%, transparent);
+  }
+
+  .reveal-card {
+    opacity: 0;
+    transform: translateY(42px) scale(0.975);
+    filter: blur(16px) saturate(0.88);
+    clip-path: inset(8% 0 0 0 round 30px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease,
+      filter 0.7s ease,
+      clip-path 0.7s ease,
+      border-color 0.3s ease,
+      background 0.35s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal-card.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0) saturate(1);
+    clip-path: inset(0 0 0 0 round 30px);
+  }
+
+  @keyframes ambientFloat {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(0, -18px, 0) scale(1.06);
+    }
+  }
+
+  @keyframes panelRise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pitch-shell::before,
+    .pitch-shell::after,
+    .reveal-card,
+    .service-switch::before,
+    .accordion-panel,
+    .service-panel {
+      animation: none;
+      transition: none;
+    }
+
+    .reveal-card {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid,
+    .content-grid,
+    .pillars-grid,
+    .service-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-panel h1 {
+      font-size: clamp(2.5rem, 12vw, 4.2rem);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .gate-wrap,
+    .brief-page {
+      width: min(100vw - 1rem, 1180px);
+    }
+
+    .gate-card,
+    .hero-panel,
+    .card-block,
+    .sidebar-card,
+    .quote-card {
+      border-radius: 24px;
+    }
+
+    .hero-topline,
+    .proof-head,
+    .product-card {
+      grid-template-columns: 1fr;
+      display: grid;
+      justify-items: start;
+    }
+
+    .hero-actions {
+      width: 100%;
+    }
+
+    .hero-actions > * {
+      flex: 1 1 auto;
+    }
+
+    .theme-switch {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .stat-row {
+      grid-template-columns: 1fr;
+    }
+
+    .theme-button {
+      flex: 1 1 0;
+    }
+
+    .service-switch {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .service-switch::before {
+      top: auto;
+      display: none;
+    }
+
+    .service-chip {
+      background: var(--surface-strong);
+    }
+
+    .service-chip.is-active {
+      background: color-mix(in srgb, var(--accent) 12%, var(--surface-strong));
+    }
+
+    .product-card {
+      gap: 0.8rem;
+    }
+
+    .product-logo-wrap {
+      width: 84px;
+      height: 84px;
+    }
+  }
+
+  @media print {
+    html {
+      --page-bg: #ffffff;
+      --surface: #ffffff;
+      --surface-strong: #ffffff;
+      --surface-soft: #ffffff;
+      --line: rgba(0, 0, 0, 0.08);
+      --line-strong: rgba(0, 0, 0, 0.12);
+      --text-main: #111111;
+      --text-soft: rgba(17, 17, 17, 0.78);
+      --text-faint: rgba(17, 17, 17, 0.58);
+      --accent: #111111;
+      --accent-2: #4a4a4a;
+      --accent-soft: linear-gradient(135deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.03));
+      --shadow: none;
+      --hero-glow: transparent;
+      --cta-bg: #ffffff;
+      --cta-text: #111111;
+    }
+
+    body {
+      background: #ffffff;
+      color: #111111;
+    }
+
+    .pitch-shell {
+      color: #111111;
+    }
+
+    .pitch-shell::before,
+    .pitch-shell::after,
+    .theme-switch,
+    .ghost-button,
+    .ghost-link,
+    .secondary-link {
+      display: none;
+    }
+
+    .brief-page {
+      width: 100%;
+      padding: 0;
+    }
+
+    .signal-row span,
+    .chip-row li,
+    .stat-card,
+    .service-chip,
+    .accordion-item,
+    .proof-logo-wrap,
+    .product-logo-wrap {
+      background: #ffffff;
+      color: #111111;
+    }
+
+    .hero-panel,
+    .card-block,
+    .sidebar-card,
+    .quote-card,
+    .proof-card,
+    .product-card,
+    .pillar-card,
+    .service-panel,
+    .accordion-item {
+      box-shadow: none;
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.08);
+      backdrop-filter: none;
+    }
+
+    .reveal-card {
+      opacity: 1;
+      transform: none;
+      filter: none;
+      clip-path: none;
+    }
+  }
+</style>
