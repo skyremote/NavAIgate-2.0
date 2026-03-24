@@ -21,12 +21,10 @@ const navLinks: NavLink[] = [
   { label: 'About', href: '/#about' },
   { label: 'Portfolio', href: '/portfolio/bluplai-claude-code' },
   { label: 'AIOS Programme', href: '/aios' },
-  { label: 'Apps', href: '/#apps' },
   { label: 'Contact', href: '/#contact' },
 ];
 
 const appLinks: AppLink[] = [
-  { label: 'Ente-prise', href: 'https://www.ente-prise.com', description: 'Enterprise solutions' },
   { label: 'Still Me', href: 'https://stillme.navaigate.dev/', description: 'Personal identity' },
   { label: 'Bluplai', href: 'https://bluplai.com/', description: 'AI platform' },
 ];

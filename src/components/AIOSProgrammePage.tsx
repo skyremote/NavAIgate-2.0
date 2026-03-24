@@ -546,10 +546,10 @@ const HeroSection: React.FC = () => (
               Apply Now <ArrowRight size={20} />
             </a>
             <a
-              href="#outcomes"
-              className="inline-flex items-center gap-2 border border-white/10 text-text-secondary px-8 py-4 rounded-lg hover:border-white/20 hover:text-text-primary transition-all font-medium text-lg"
+              href="#programme"
+              className="inline-flex items-center gap-2 border border-white/10 text-text-secondary px-8 py-4 rounded-lg hover:border-white/20 hover:text-text-primary transition-all font-medium text-lg pointer-events-auto"
             >
-              Resources
+              Learn More
             </a>
           </motion.div>
 
@@ -1273,7 +1273,7 @@ const AccordionItem: React.FC<{
    ───────────────────────────────────────────── */
 
 const AccordionBody: React.FC = () => (
-  <section className="relative py-16 sm:py-24">
+  <section id="programme" className="relative py-16 sm:py-24">
     <div className="max-w-4xl mx-auto px-4 sm:px-6">
 
       <AccordionItem index="01" title="Our Manifesto" subtitle="What we believe about AI in business" defaultOpen>
