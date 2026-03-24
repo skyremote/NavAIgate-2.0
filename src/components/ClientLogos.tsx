@@ -14,10 +14,10 @@ const clientLogos = [
     scale: 1.8,
   },
   {
-    src: '/logos/vectal.png',
+    src: '/logos/vectal.svg',
     alt: 'Vectal AI',
     href: 'https://www.vectal.ai',
-    scale: 0.8,
+    scale: 0.9,
   },
   {
     src: '/logos/matroschkasch.png',
