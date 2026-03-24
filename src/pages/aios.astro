@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+import AIOSProgramme from '../components/AIOSProgrammePage';
+---
+
+<BaseLayout
+  title="AIOS Programme — AI as an Operating System"
+  description="An intimate, outcome-driven executive programme for senior leaders. One immersive day. 6–8 people per cohort. On-site in London, Ingolstadt, and Los Angeles."
+>
+  <NavBar client:load />
+  <AIOSProgramme client:load />
+  <Footer client:load />
+</BaseLayout>

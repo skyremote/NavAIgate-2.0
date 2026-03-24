@@ -20,6 +20,7 @@ interface AppLink {
 const navLinks: NavLink[] = [
   { label: 'About', href: '/#about' },
   { label: 'Portfolio', href: '/portfolio/bluplai-claude-code' },
+  { label: 'AIOS Programme', href: '/aios' },
   { label: 'Apps', href: '/#apps' },
   { label: 'Contact', href: '/#contact' },
 ];
