@@ -42,9 +42,9 @@ const AboutSection: React.FC = () => {
                 having the right frameworks, workflows, and decision-making processes.
               </p>
               <p>
-                That's why I created <a href="https://www.ente-prise.com" target="_blank" rel="noopener noreferrer" className="text-purple-400 font-medium hover:underline">Ente-prise</a>—an
-                AI that navigates decisions rather than just generating text.
-                It's built on real-world patterns from helping organizations like
+                That's why we built <a href="https://bluplai.com" target="_blank" rel="noopener noreferrer" className="text-cyan-400 font-medium hover:underline">Bluplai</a>—an
+                AI platform that helps teams work smarter, not harder.
+                It's built on real-world patterns from helping organisations like
                 Autodesk transform their workflows.
               </p>
             </div>
