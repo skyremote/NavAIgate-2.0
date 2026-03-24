@@ -412,7 +412,7 @@ const AIOSBrain: React.FC = () => {
       {/* Hover tooltip with outcome */}
       {hoveredNode && (
         <div
-          className="absolute pointer-events-none z-20 px-4 py-3 rounded-xl bg-background-lighter/95 border border-white/15 backdrop-blur-md shadow-2xl max-w-[280px]"
+          className="absolute pointer-events-none z-20 px-4 py-3 rounded-xl bg-gray-800/95 border border-white/15 backdrop-blur-md shadow-2xl max-w-[280px]"
           style={{
             left: hoverPos.x + 20,
             top: hoverPos.y - 16,
@@ -420,9 +420,9 @@ const AIOSBrain: React.FC = () => {
           }}
         >
           <p className="text-white font-bold text-sm leading-tight">{hoveredNode.label}</p>
-          <p className="text-accent-blue text-[10px] font-semibold tracking-wider uppercase mt-1">{hoveredNode.category}</p>
+          <p className="text-blue-500 text-[10px] font-semibold tracking-wider uppercase mt-1">{hoveredNode.category}</p>
           {hoveredNode.outcome && (
-            <p className="text-text-secondary text-xs leading-relaxed mt-2 border-t border-white/10 pt-2">{hoveredNode.outcome}</p>
+            <p className="text-gray-300 text-xs leading-relaxed mt-2 border-t border-white/10 pt-2">{hoveredNode.outcome}</p>
           )}
         </div>
       )}
@@ -453,7 +453,7 @@ const FadeInSection: React.FC<{
 );
 
 const SectionLabel: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <p className="text-accent-blue font-semibold tracking-widest uppercase text-sm mb-4">
+  <p className="text-blue-500 font-semibold tracking-widest uppercase text-sm mb-4">
     {children}
   </p>
 );
@@ -490,7 +490,7 @@ const HeroSection: React.FC = () => (
       <div className="max-w-lg">
         <div className="text-center md:text-left">
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-blue/10 border border-accent-blue/20 text-accent-blue text-sm font-medium mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-500 text-sm font-medium mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -500,7 +500,7 @@ const HeroSection: React.FC = () => (
           </motion.div>
 
           <motion.p
-            className="text-accent-blue font-semibold tracking-widest uppercase text-xs mb-4"
+            className="text-blue-500 font-semibold tracking-widest uppercase text-xs mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -515,15 +515,15 @@ const HeroSection: React.FC = () => (
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             Your AI{' '}
-            <span className="bg-gradient-to-r from-accent-blue via-accent-purple to-accent-teal bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent">
               Operating System.
             </span>
             <br />
-            <span className="text-text-secondary italic font-light">Your Intelligence.</span>
+            <span className="text-gray-300 italic font-light">Your Intelligence.</span>
           </motion.h1>
 
           <motion.p
-            className="text-lg sm:text-xl text-text-secondary mb-10 max-w-md"
+            className="text-lg sm:text-xl text-gray-300 mb-10 max-w-md"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
@@ -541,13 +541,13 @@ const HeroSection: React.FC = () => (
           >
             <a
               href="#apply"
-              className="inline-flex items-center gap-2 bg-accent-blue text-white px-8 py-4 rounded-lg hover:bg-accent-blue/90 transition-all font-semibold text-lg shadow-lg shadow-accent-blue/20"
+              className="inline-flex items-center gap-2 bg-blue-500 text-white px-8 py-4 rounded-lg hover:bg-blue-500/90 transition-all font-semibold text-lg shadow-lg shadow-blue-500/20"
             >
               Apply Now <ArrowRight size={20} />
             </a>
             <a
               href="#programme"
-              className="inline-flex items-center gap-2 border border-white/10 text-text-secondary px-8 py-4 rounded-lg hover:border-white/20 hover:text-text-primary transition-all font-medium text-lg pointer-events-auto"
+              className="inline-flex items-center gap-2 border border-white/10 text-gray-300 px-8 py-4 rounded-lg hover:border-white/20 hover:text-white transition-all font-medium text-lg pointer-events-auto"
             >
               Learn More
             </a>
@@ -555,7 +555,7 @@ const HeroSection: React.FC = () => (
 
           {/* Location pills */}
           <motion.div
-            className="flex flex-wrap items-center md:items-start gap-4 text-text-muted text-sm"
+            className="flex flex-wrap items-center md:items-start gap-4 text-gray-500 text-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.1 }}
@@ -563,15 +563,15 @@ const HeroSection: React.FC = () => (
             <span className="inline-flex items-center gap-1.5">
               <MapPin size={14} /> London
             </span>
-            <span className="text-text-muted/30">&middot;</span>
+            <span className="text-gray-500/30">&middot;</span>
             <span className="inline-flex items-center gap-1.5">
               <MapPin size={14} /> Ingolstadt
             </span>
-            <span className="text-text-muted/30">&middot;</span>
+            <span className="text-gray-500/30">&middot;</span>
             <span className="inline-flex items-center gap-1.5">
               <MapPin size={14} /> Los Angeles
             </span>
-            <span className="text-text-muted/30">&middot;</span>
+            <span className="text-gray-500/30">&middot;</span>
             <span className="inline-flex items-center gap-1.5">
               <Calendar size={14} /> Dates TBD
             </span>
@@ -591,40 +591,40 @@ const manifestoPillars = [
     icon: Cpu,
     title: "AI Isn't a Chatbot — It's Infrastructure",
     desc: 'Stop treating AI as a toy you ask questions. Start treating it as the central nervous system of your entire business.',
-    color: 'from-accent-blue to-accent-teal',
+    color: 'from-blue-500 to-cyan-500',
   },
   {
     icon: Shield,
     title: 'Your AIOS Is Uniquely Yours',
     desc: 'Built around your processes, your data, your strategy. Not a generic template — a system that knows you.',
-    color: 'from-accent-purple to-accent-blue',
+    color: 'from-purple-500 to-blue-500',
   },
   {
     icon: Target,
     title: 'Outcomes Over Theory',
     desc: 'Every session produces something real. You leave with a working system, not a certificate.',
-    color: 'from-accent-teal to-accent-blue',
+    color: 'from-cyan-500 to-blue-500',
   },
   {
     icon: TrendingUp,
     title: 'It Compounds',
     desc: 'Every workflow you automate, every context you add, makes the system exponentially more valuable.',
-    color: 'from-accent-blue to-accent-purple',
+    color: 'from-blue-500 to-purple-500',
   },
 ];
 
 const ManifestoSection: React.FC = () => (
-  <FadeInSection id="manifesto" className="relative py-24 bg-background-lighter/30">
+  <FadeInSection id="manifesto" className="relative py-24 bg-gray-800/30">
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
       <div className="text-center mb-16">
         <SectionLabel>Our Manifesto</SectionLabel>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
           Build Your{' '}
-          <span className="bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
             AI Operating System
           </span>
         </h2>
-        <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
           Four principles that define how we think about AI in business.
         </p>
       </div>
@@ -633,7 +633,7 @@ const ManifestoSection: React.FC = () => (
         {manifestoPillars.map(({ icon: Icon, title, desc, color }, i) => (
           <motion.div
             key={i}
-            className="group relative p-8 rounded-xl bg-background-dark border border-white/5 hover:border-accent-blue/30 transition-all overflow-hidden"
+            className="group relative p-8 rounded-xl bg-gray-900 border border-white/5 hover:border-blue-500/30 transition-all overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -642,11 +642,11 @@ const ManifestoSection: React.FC = () => (
             <div
               className={`absolute top-0 left-0 h-1 w-full bg-gradient-to-r ${color} opacity-0 group-hover:opacity-100 transition-opacity`}
             />
-            <div className="w-12 h-12 rounded-lg bg-accent-blue/10 flex items-center justify-center mb-5">
-              <Icon size={24} className="text-accent-blue" />
+            <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mb-5">
+              <Icon size={24} className="text-blue-500" />
             </div>
-            <h3 className="font-bold text-xl mb-3 text-text-primary">{title}</h3>
-            <p className="text-text-secondary text-sm leading-relaxed">{desc}</p>
+            <h3 className="font-bold text-xl mb-3 text-white">{title}</h3>
+            <p className="text-gray-300 text-sm leading-relaxed">{desc}</p>
           </motion.div>
         ))}
       </div>
@@ -705,9 +705,9 @@ const OutcomesSection: React.FC = () => (
         <SectionLabel>What You Walk Away With</SectionLabel>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
           Concrete Outcomes.{' '}
-          <span className="text-accent-blue">Not Theory.</span>
+          <span className="text-blue-500">Not Theory.</span>
         </h2>
-        <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
           This is not a course with slides and homework. You leave each session with something
           working. Here is what you will have built by the end of the programme:
         </p>
@@ -717,17 +717,17 @@ const OutcomesSection: React.FC = () => (
         {outcomes.map(({ icon: Icon, title, desc }, i) => (
           <motion.div
             key={i}
-            className="p-6 rounded-xl bg-background-lighter border border-white/5 hover:border-accent-blue/30 transition-all group"
+            className="p-6 rounded-xl bg-gray-800 border border-white/5 hover:border-blue-500/30 transition-all group"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
           >
-            <div className="w-10 h-10 rounded-lg bg-accent-blue/10 flex items-center justify-center mb-4 group-hover:bg-accent-blue/20 transition-colors">
-              <Icon size={20} className="text-accent-blue" />
+            <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4 group-hover:bg-blue-500/20 transition-colors">
+              <Icon size={20} className="text-blue-500" />
             </div>
             <h3 className="font-semibold text-lg mb-2">{title}</h3>
-            <p className="text-text-muted text-sm leading-relaxed">{desc}</p>
+            <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
           </motion.div>
         ))}
       </div>
@@ -737,16 +737,16 @@ const OutcomesSection: React.FC = () => (
         {metrics.map(({ value, label }, i) => (
           <motion.div
             key={i}
-            className="text-center p-6 rounded-xl bg-background-lighter border border-white/5"
+            className="text-center p-6 rounded-xl bg-gray-800 border border-white/5"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.1 }}
           >
-            <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent mb-2">
+            <p className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent mb-2">
               {value}
             </p>
-            <p className="text-text-muted text-sm">{label}</p>
+            <p className="text-gray-500 text-sm">{label}</p>
           </motion.div>
         ))}
       </div>
@@ -770,15 +770,15 @@ const sessions = [
 ];
 
 const ProgrammeSection: React.FC = () => (
-  <FadeInSection id="programme" className="relative py-24 bg-background-lighter/30">
+  <FadeInSection id="programme" className="relative py-24 bg-gray-800/30">
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
       <div className="text-center mb-16">
         <SectionLabel>The Programme</SectionLabel>
         <h2 className="text-3xl sm:text-4xl font-bold mb-6">
           8 Sessions. From Zero to{' '}
-          <span className="text-accent-blue">Operating System.</span>
+          <span className="text-blue-500">Operating System.</span>
         </h2>
-        <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
           Each session is hands-on. You build on real business problems — yours — not
           hypothetical case studies.
         </p>
@@ -788,7 +788,7 @@ const ProgrammeSection: React.FC = () => (
         {sessions.map(({ num, title, desc, icon: Icon }, i) => (
           <motion.div
             key={num}
-            className="relative p-5 rounded-xl bg-background-dark border border-white/5 hover:border-accent-blue/30 transition-all group overflow-hidden"
+            className="relative p-5 rounded-xl bg-gray-900 border border-white/5 hover:border-blue-500/30 transition-all group overflow-hidden"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -798,11 +798,11 @@ const ProgrammeSection: React.FC = () => (
               {num}
             </div>
             <div className="flex items-center gap-3 mb-3">
-              <span className="text-accent-blue font-bold text-lg">{num}</span>
-              <Icon size={18} className="text-text-muted group-hover:text-accent-blue transition-colors" />
+              <span className="text-blue-500 font-bold text-lg">{num}</span>
+              <Icon size={18} className="text-gray-500 group-hover:text-blue-500 transition-colors" />
             </div>
             <h3 className="font-semibold mb-1 text-sm">{title}</h3>
-            <p className="text-text-muted text-xs leading-relaxed">{desc}</p>
+            <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
           </motion.div>
         ))}
       </div>
@@ -830,9 +830,9 @@ const UseCasesSection: React.FC = () => (
         <SectionLabel>Real Results</SectionLabel>
         <h2 className="text-3xl sm:text-4xl font-bold mb-6">
           What Founders Built in a{' '}
-          <span className="text-accent-blue">Single Day</span>
+          <span className="text-blue-500">Single Day</span>
         </h2>
-        <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
           6 non-technical founders. 8 hours. Zero coding experience. Real systems, deployed:
         </p>
       </div>
@@ -841,16 +841,16 @@ const UseCasesSection: React.FC = () => (
         {useCases.map(({ title, desc }, i) => (
           <motion.div
             key={i}
-            className="flex items-start gap-4 p-5 rounded-xl bg-background-lighter border border-white/5 hover:border-accent-teal/30 transition-all"
+            className="flex items-start gap-4 p-5 rounded-xl bg-gray-800 border border-white/5 hover:border-cyan-500/30 transition-all"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.08 }}
           >
-            <CheckCircle2 size={20} className="text-accent-teal mt-0.5 flex-shrink-0" />
+            <CheckCircle2 size={20} className="text-cyan-500 mt-0.5 flex-shrink-0" />
             <div>
               <h3 className="font-semibold text-sm mb-1">{title}</h3>
-              <p className="text-text-muted text-xs leading-relaxed">{desc}</p>
+              <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
             </div>
           </motion.div>
         ))}
@@ -887,13 +887,13 @@ const audienceCards = [
 ];
 
 const AudienceSection: React.FC = () => (
-  <FadeInSection className="relative py-24 bg-background-lighter/30">
+  <FadeInSection className="relative py-24 bg-gray-800/30">
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
       <div className="text-center mb-16">
         <SectionLabel>Who Is This For</SectionLabel>
         <h2 className="text-3xl sm:text-4xl font-bold mb-6">
           Built for Senior Leaders,{' '}
-          <span className="text-accent-blue">Not Developers</span>
+          <span className="text-blue-500">Not Developers</span>
         </h2>
       </div>
 
@@ -901,18 +901,18 @@ const AudienceSection: React.FC = () => (
         {audienceCards.map(({ icon: Icon, title, desc }, i) => (
           <motion.div
             key={i}
-            className="p-6 rounded-xl bg-background-dark border border-white/5 flex items-start gap-5 hover:border-accent-blue/20 transition-all"
+            className="p-6 rounded-xl bg-gray-900 border border-white/5 flex items-start gap-5 hover:border-blue-500/20 transition-all"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.1 }}
           >
-            <div className="w-12 h-12 rounded-lg bg-accent-blue/10 flex items-center justify-center flex-shrink-0">
-              <Icon size={22} className="text-accent-blue" />
+            <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+              <Icon size={22} className="text-blue-500" />
             </div>
             <div>
               <h3 className="font-semibold text-lg mb-1">{title}</h3>
-              <p className="text-text-muted text-sm leading-relaxed">{desc}</p>
+              <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
             </div>
           </motion.div>
         ))}
@@ -927,9 +927,9 @@ const AudienceSection: React.FC = () => (
 
 const spectrumLevels = [
   { label: 'Manual', desc: 'You do everything', color: 'bg-gray-600' },
-  { label: 'Assisted', desc: 'AI drafts, you review', color: 'bg-accent-teal' },
-  { label: 'Supervised', desc: 'AI executes, you approve', color: 'bg-accent-blue' },
-  { label: 'Autonomous', desc: 'AI runs independently', color: 'bg-accent-purple' },
+  { label: 'Assisted', desc: 'AI drafts, you review', color: 'bg-cyan-500' },
+  { label: 'Supervised', desc: 'AI executes, you approve', color: 'bg-blue-500' },
+  { label: 'Autonomous', desc: 'AI runs independently', color: 'bg-purple-500' },
 ];
 
 const spectrumRows = [
@@ -946,9 +946,9 @@ const SpectrumSection: React.FC = () => (
       <div className="text-center mb-16">
         <SectionLabel>The Framework</SectionLabel>
         <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-          The Automation <span className="text-accent-blue">Spectrum</span>
+          The Automation <span className="text-blue-500">Spectrum</span>
         </h2>
-        <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
           Not everything should be automated at once. We map your operations and prioritise by
           impact.
         </p>
@@ -967,32 +967,32 @@ const SpectrumSection: React.FC = () => (
           >
             <div className={`h-2 ${color} rounded-full mb-3`} />
             <p className="font-semibold text-sm mb-1">{label}</p>
-            <p className="text-text-muted text-xs">{desc}</p>
+            <p className="text-gray-500 text-xs">{desc}</p>
           </motion.div>
         ))}
       </div>
 
       {/* Before/After table */}
       <div className="rounded-xl border border-white/5 overflow-hidden">
-        <div className="grid grid-cols-3 bg-background-lighter p-4 text-sm font-semibold border-b border-white/5">
+        <div className="grid grid-cols-3 bg-gray-800 p-4 text-sm font-semibold border-b border-white/5">
           <span>Operation</span>
-          <span className="text-center text-text-muted">Today</span>
-          <span className="text-center text-accent-blue">After Programme</span>
+          <span className="text-center text-gray-500">Today</span>
+          <span className="text-center text-blue-500">After Programme</span>
         </div>
         {spectrumRows.map(([op, before, after], i) => (
           <motion.div
             key={i}
             className={`grid grid-cols-3 p-4 text-sm ${
-              i % 2 ? 'bg-background-lighter/20' : ''
+              i % 2 ? 'bg-gray-800/20' : ''
             } border-b border-white/5 last:border-0`}
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: i * 0.08 }}
           >
-            <span className="text-text-secondary">{op}</span>
-            <span className="text-center text-text-muted">{before}</span>
-            <span className="text-center text-accent-blue font-medium">{after}</span>
+            <span className="text-gray-300">{op}</span>
+            <span className="text-center text-gray-500">{before}</span>
+            <span className="text-center text-blue-500 font-medium">{after}</span>
           </motion.div>
         ))}
       </div>
@@ -1026,15 +1026,15 @@ const locations = [
 ];
 
 const LocationsSection: React.FC = () => (
-  <FadeInSection id="locations" className="relative py-24 bg-background-lighter/30">
+  <FadeInSection id="locations" className="relative py-24 bg-gray-800/30">
     <div className="max-w-6xl mx-auto px-4 sm:px-6">
       <div className="text-center mb-16">
         <SectionLabel>Locations</SectionLabel>
         <h2 className="text-3xl sm:text-4xl font-bold mb-6">
           Three Cities. One Programme.{' '}
-          <span className="text-accent-blue">Global Impact.</span>
+          <span className="text-blue-500">Global Impact.</span>
         </h2>
-        <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
           On-site only. 6–8 people per cohort. An intimate, focused environment designed for real
           outcomes.
         </p>
@@ -1044,18 +1044,18 @@ const LocationsSection: React.FC = () => (
         {locations.map(({ city, country, desc, flag }, i) => (
           <motion.div
             key={i}
-            className="p-8 rounded-xl bg-background-dark border border-accent-blue/20 hover:border-accent-blue/50 transition-all text-center group"
+            className="p-8 rounded-xl bg-gray-900 border border-blue-500/20 hover:border-blue-500/50 transition-all text-center group"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.15 }}
           >
             <div className="text-4xl mb-4">{flag}</div>
-            <MapPin size={24} className="text-accent-blue mx-auto mb-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <MapPin size={24} className="text-blue-500 mx-auto mb-3 opacity-0 group-hover:opacity-100 transition-opacity" />
             <h3 className="font-bold text-xl mb-1">{city}</h3>
-            <p className="text-text-muted text-sm mb-3">{country}</p>
-            <p className="text-text-secondary text-sm leading-relaxed">{desc}</p>
-            <p className="text-accent-blue/60 text-xs mt-4 font-medium">
+            <p className="text-gray-500 text-sm mb-3">{country}</p>
+            <p className="text-gray-300 text-sm leading-relaxed">{desc}</p>
+            <p className="text-blue-500/60 text-xs mt-4 font-medium">
               Dates TBD — Enquire below
             </p>
           </motion.div>
@@ -1103,7 +1103,7 @@ const WhySection: React.FC = () => (
         <SectionLabel>Why NavAIgate</SectionLabel>
         <h2 className="text-3xl sm:text-4xl font-bold mb-6">
           Your Guide Through the{' '}
-          <span className="text-accent-blue">AI Transformation</span>
+          <span className="text-blue-500">AI Transformation</span>
         </h2>
       </div>
 
@@ -1111,14 +1111,14 @@ const WhySection: React.FC = () => (
         {whyPillars.map(({ title, desc }, i) => (
           <motion.div
             key={i}
-            className="p-5 border-l-2 border-accent-blue/30 hover:border-accent-blue transition-all"
+            className="p-5 border-l-2 border-blue-500/30 hover:border-blue-500 transition-all"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.08 }}
           >
-            <h3 className="font-semibold mb-2 text-accent-blue">{title}</h3>
-            <p className="text-text-muted text-sm leading-relaxed">{desc}</p>
+            <h3 className="font-semibold mb-2 text-blue-500">{title}</h3>
+            <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
           </motion.div>
         ))}
       </div>
@@ -1157,23 +1157,23 @@ const ApplySection: React.FC = () => {
   }, []);
 
   return (
-    <FadeInSection id="apply" className="relative py-24 bg-background-lighter/30">
+    <FadeInSection id="apply" className="relative py-24 bg-gray-800/30">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
           <SectionLabel>Get In Contact</SectionLabel>
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
             Ready to Build Your{' '}
-            <span className="bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
               AI Operating System?
             </span>
           </h2>
-          <p className="text-text-secondary text-lg">
+          <p className="text-gray-300 text-lg">
             One immersive day. 6–8 people. On-site only. Enquire about pricing and availability.
           </p>
         </div>
 
         <motion.div
-          className="rounded-2xl bg-background-dark border border-white/10 p-6 sm:p-10"
+          className="rounded-2xl bg-gray-900 border border-white/10 p-6 sm:p-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -1189,18 +1189,18 @@ const ApplySection: React.FC = () => {
           />
         </motion.div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8 text-text-muted text-sm">
-          <span className="font-medium text-text-secondary">Daniel Wright</span>
-          <span className="hidden sm:inline text-text-muted/30">&middot;</span>
-          <a href="mailto:dw@navaigate.dev" className="hover:text-accent-blue transition-colors">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8 text-gray-500 text-sm">
+          <span className="font-medium text-gray-300">Daniel Wright</span>
+          <span className="hidden sm:inline text-gray-500/30">&middot;</span>
+          <a href="mailto:dw@navaigate.dev" className="hover:text-blue-500 transition-colors">
             dw@navaigate.dev
           </a>
-          <span className="hidden sm:inline text-text-muted/30">&middot;</span>
+          <span className="hidden sm:inline text-gray-500/30">&middot;</span>
           <a
             href="https://navaigate.dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-accent-blue transition-colors"
+            className="hover:text-blue-500 transition-colors"
           >
             navaigate.dev
           </a>
@@ -1237,18 +1237,18 @@ const AccordionItem: React.FC<{
         className="w-full flex items-center justify-between py-6 sm:py-8 text-left group"
       >
         <div className="flex items-center gap-4 sm:gap-6">
-          <span className="text-accent-blue font-bold text-lg sm:text-xl tabular-nums min-w-[2rem]">{index}</span>
+          <span className="text-blue-500 font-bold text-lg sm:text-xl tabular-nums min-w-[2rem]">{index}</span>
           <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-text-primary group-hover:text-white transition-colors">{title}</h3>
-            {subtitle && <p className="text-text-muted text-sm mt-1">{subtitle}</p>}
+            <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-white transition-colors">{title}</h3>
+            {subtitle && <p className="text-gray-500 text-sm mt-1">{subtitle}</p>}
           </div>
         </div>
         <motion.div
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className="flex-shrink-0 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-accent-blue/50 transition-colors"
+          className="flex-shrink-0 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-blue-500/50 transition-colors"
         >
-          <span className="text-text-secondary text-xl leading-none">+</span>
+          <span className="text-gray-300 text-xl leading-none">+</span>
         </motion.div>
       </button>
       <motion.div
@@ -1279,12 +1279,12 @@ const AccordionBody: React.FC = () => (
       <AccordionItem index="01" title="Our Manifesto" subtitle="What we believe about AI in business" defaultOpen>
         <div className="grid sm:grid-cols-2 gap-5">
           {manifestoPillars.map(({ icon: Icon, title, desc }, i) => (
-            <div key={i} className="p-5 rounded-xl bg-background-lighter/50 border border-white/5">
-              <div className="w-10 h-10 rounded-lg bg-accent-blue/10 flex items-center justify-center mb-4">
-                <Icon size={20} className="text-accent-blue" />
+            <div key={i} className="p-5 rounded-xl bg-gray-800/50 border border-white/5">
+              <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-4">
+                <Icon size={20} className="text-blue-500" />
               </div>
               <h4 className="font-bold text-sm mb-2">{title}</h4>
-              <p className="text-text-muted text-xs leading-relaxed">{desc}</p>
+              <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -1293,48 +1293,48 @@ const AccordionBody: React.FC = () => (
       <AccordionItem index="02" title="What You Walk Away With" subtitle="Concrete outcomes from a single day">
         <div className="grid sm:grid-cols-2 gap-5 mb-8">
           {outcomes.map(({ icon: Icon, title, desc }, i) => (
-            <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-background-lighter/50 border border-white/5">
-              <div className="w-8 h-8 rounded-lg bg-accent-blue/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <Icon size={16} className="text-accent-blue" />
+            <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-gray-800/50 border border-white/5">
+              <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Icon size={16} className="text-blue-500" />
               </div>
               <div>
                 <h4 className="font-semibold text-sm mb-1">{title}</h4>
-                <p className="text-text-muted text-xs leading-relaxed">{desc}</p>
+                <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
               </div>
             </div>
           ))}
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {metrics.map(({ value, label }, i) => (
-            <div key={i} className="text-center p-4 rounded-xl bg-background-lighter/30 border border-white/5">
-              <p className="text-2xl font-bold bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">{value}</p>
-              <p className="text-text-muted text-xs mt-1">{label}</p>
+            <div key={i} className="text-center p-4 rounded-xl bg-gray-800/30 border border-white/5">
+              <p className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">{value}</p>
+              <p className="text-gray-500 text-xs mt-1">{label}</p>
             </div>
           ))}
         </div>
       </AccordionItem>
 
       <AccordionItem index="03" title="The Day" subtitle="One immersive day with Claude Code — from zero to operating system">
-        <p className="text-text-secondary text-sm leading-relaxed mb-6">
+        <p className="text-gray-300 text-sm leading-relaxed mb-6">
           This is not a lecture series. It is one intensive, hands-on day where you build your AI Operating System
           using Claude Code — on real business problems (yours). The principles apply to any AI platform,
           but we teach it through the most powerful tool available today. You leave with a working system.
         </p>
         <div className="grid sm:grid-cols-2 gap-3">
           {sessions.map(({ num, title, desc, icon: Icon }) => (
-            <div key={num} className="relative p-4 rounded-xl bg-background-lighter/50 border border-white/5 group">
+            <div key={num} className="relative p-4 rounded-xl bg-gray-800/50 border border-white/5 group">
               <div className="flex items-center gap-3 mb-2">
-                <span className="text-accent-blue font-bold text-sm">{num}</span>
-                <Icon size={14} className="text-text-muted group-hover:text-accent-blue transition-colors" />
+                <span className="text-blue-500 font-bold text-sm">{num}</span>
+                <Icon size={14} className="text-gray-500 group-hover:text-blue-500 transition-colors" />
               </div>
               <h4 className="font-semibold text-xs">{title}</h4>
-              <p className="text-text-muted text-[11px] leading-relaxed mt-1">{desc}</p>
+              <p className="text-gray-500 text-[11px] leading-relaxed mt-1">{desc}</p>
             </div>
           ))}
         </div>
-        <div className="mt-6 p-4 rounded-xl bg-accent-blue/5 border border-accent-blue/20">
-          <p className="text-text-secondary text-sm">
-            <span className="text-accent-blue font-semibold">What happens next?</span> After the day, there is an opportunity
+        <div className="mt-6 p-4 rounded-xl bg-blue-500/5 border border-blue-500/20">
+          <p className="text-gray-300 text-sm">
+            <span className="text-blue-500 font-semibold">What happens next?</span> After the day, there is an opportunity
             to continue with an extended programme — deeper integrations, advanced automations, and ongoing support to scale
             your AIOS across your entire organisation.
           </p>
@@ -1342,16 +1342,16 @@ const AccordionBody: React.FC = () => (
       </AccordionItem>
 
       <AccordionItem index="04" title="Real Results" subtitle="What founders built in a single day">
-        <p className="text-text-secondary text-sm mb-6">
+        <p className="text-gray-300 text-sm mb-6">
           6 non-technical founders. One day. Zero coding experience. Real systems, deployed:
         </p>
         <div className="grid sm:grid-cols-2 gap-4">
           {useCases.map(({ title, desc }, i) => (
-            <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-background-lighter/50 border border-white/5">
-              <CheckCircle2 size={16} className="text-accent-teal mt-0.5 flex-shrink-0" />
+            <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-gray-800/50 border border-white/5">
+              <CheckCircle2 size={16} className="text-cyan-500 mt-0.5 flex-shrink-0" />
               <div>
                 <h4 className="font-semibold text-xs mb-1">{title}</h4>
-                <p className="text-text-muted text-[11px] leading-relaxed">{desc}</p>
+                <p className="text-gray-500 text-[11px] leading-relaxed">{desc}</p>
               </div>
             </div>
           ))}
@@ -1361,13 +1361,13 @@ const AccordionBody: React.FC = () => (
       <AccordionItem index="05" title="Who Is This For" subtitle="Built for senior leaders, not developers">
         <div className="grid sm:grid-cols-2 gap-5">
           {audienceCards.map(({ icon: Icon, title, desc }, i) => (
-            <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-background-lighter/50 border border-white/5">
-              <div className="w-10 h-10 rounded-lg bg-accent-blue/10 flex items-center justify-center flex-shrink-0">
-                <Icon size={18} className="text-accent-blue" />
+            <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-gray-800/50 border border-white/5">
+              <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                <Icon size={18} className="text-blue-500" />
               </div>
               <div>
                 <h4 className="font-semibold text-sm mb-1">{title}</h4>
-                <p className="text-text-muted text-xs leading-relaxed">{desc}</p>
+                <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
               </div>
             </div>
           ))}
@@ -1380,21 +1380,21 @@ const AccordionBody: React.FC = () => (
             <div key={i} className="text-center">
               <div className={`h-2 ${color} rounded-full mb-3`} />
               <p className="font-semibold text-xs mb-1">{label}</p>
-              <p className="text-text-muted text-[10px]">{desc}</p>
+              <p className="text-gray-500 text-[10px]">{desc}</p>
             </div>
           ))}
         </div>
         <div className="rounded-xl border border-white/5 overflow-hidden text-sm">
-          <div className="grid grid-cols-3 bg-background-lighter p-3 font-semibold border-b border-white/5 text-xs">
+          <div className="grid grid-cols-3 bg-gray-800 p-3 font-semibold border-b border-white/5 text-xs">
             <span>Operation</span>
-            <span className="text-center text-text-muted">Today</span>
-            <span className="text-center text-accent-blue">After</span>
+            <span className="text-center text-gray-500">Today</span>
+            <span className="text-center text-blue-500">After</span>
           </div>
           {spectrumRows.map(([op, before, after], i) => (
-            <div key={i} className={`grid grid-cols-3 p-3 text-xs ${i % 2 ? 'bg-background-lighter/20' : ''} border-b border-white/5 last:border-0`}>
-              <span className="text-text-secondary">{op}</span>
-              <span className="text-center text-text-muted">{before}</span>
-              <span className="text-center text-accent-blue font-medium">{after}</span>
+            <div key={i} className={`grid grid-cols-3 p-3 text-xs ${i % 2 ? 'bg-gray-800/20' : ''} border-b border-white/5 last:border-0`}>
+              <span className="text-gray-300">{op}</span>
+              <span className="text-center text-gray-500">{before}</span>
+              <span className="text-center text-blue-500 font-medium">{after}</span>
             </div>
           ))}
         </div>
@@ -1403,12 +1403,12 @@ const AccordionBody: React.FC = () => (
       <AccordionItem index="07" title="Locations" subtitle="On-site only — 6–8 people per cohort">
         <div className="grid sm:grid-cols-3 gap-5">
           {locations.map(({ city, country, desc, flag }, i) => (
-            <div key={i} className="p-5 rounded-xl bg-background-lighter/50 border border-accent-blue/15 text-center">
+            <div key={i} className="p-5 rounded-xl bg-gray-800/50 border border-blue-500/15 text-center">
               <div className="text-3xl mb-3">{flag}</div>
               <h4 className="font-bold text-lg mb-1">{city}</h4>
-              <p className="text-text-muted text-xs mb-2">{country}</p>
-              <p className="text-text-secondary text-xs leading-relaxed">{desc}</p>
-              <p className="text-accent-blue/60 text-[10px] mt-3 font-medium">Dates TBD</p>
+              <p className="text-gray-500 text-xs mb-2">{country}</p>
+              <p className="text-gray-300 text-xs leading-relaxed">{desc}</p>
+              <p className="text-blue-500/60 text-[10px] mt-3 font-medium">Dates TBD</p>
             </div>
           ))}
         </div>
@@ -1417,9 +1417,9 @@ const AccordionBody: React.FC = () => (
       <AccordionItem index="08" title="Why NavAIgate" subtitle="Your guide through the AI transformation">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {whyPillars.map(({ title, desc }, i) => (
-            <div key={i} className="p-4 border-l-2 border-accent-blue/30">
-              <h4 className="font-semibold text-sm mb-1 text-accent-blue">{title}</h4>
-              <p className="text-text-muted text-xs leading-relaxed">{desc}</p>
+            <div key={i} className="p-4 border-l-2 border-blue-500/30">
+              <h4 className="font-semibold text-sm mb-1 text-blue-500">{title}</h4>
+              <p className="text-gray-500 text-xs leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -1434,7 +1434,7 @@ const AccordionBody: React.FC = () => (
    ───────────────────────────────────────────── */
 
 const AIOSProgrammePage: React.FC = () => (
-  <div className="min-h-screen bg-background-dark text-text-primary">
+  <div className="min-h-screen bg-gray-900 text-white">
     <HeroSection />
     <AccordionBody />
     <ApplySection />
