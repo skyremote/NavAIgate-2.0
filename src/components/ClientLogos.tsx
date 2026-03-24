@@ -14,6 +14,12 @@ const clientLogos = [
     scale: 1.8,
   },
   {
+    src: '/logos/vectal.svg',
+    alt: 'Vectal AI',
+    href: 'https://www.vectal.ai',
+    scale: 0.9,
+  },
+  {
     src: '/logos/matroschkasch.png',
     alt: 'Matroschkasch Banya & More',
     href: 'https://www.matroschkasch.de',
