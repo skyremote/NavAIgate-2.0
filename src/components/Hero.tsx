@@ -56,6 +56,37 @@ const Hero: React.FC = () => {
           </Button>
         </div>
 
+        {/* Product Logos */}
+        <div className="mb-10">
+          <p className="text-xs text-gray-500 uppercase tracking-wider mb-4">Our Software</p>
+          <div className="flex items-center justify-center gap-6 md:gap-10">
+            <a
+              href="https://bluplai.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group transition-all duration-300"
+            >
+              <img
+                src="/logos/Softwares/bluplai.png"
+                alt="bluplai"
+                className="h-10 md:h-14 w-auto opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
+              />
+            </a>
+            <a
+              href="https://stillme.navaigate.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group transition-all duration-300"
+            >
+              <img
+                src="/logos/Softwares/Still%20Me.png"
+                alt="Still Me"
+                className="h-10 md:h-14 w-auto opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
+              />
+            </a>
+          </div>
+        </div>
+
         {/* Trust indicators */}
         <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
           <span>Custom AI Solutions</span>
