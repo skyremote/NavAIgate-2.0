@@ -1164,12 +1164,11 @@ const ApplySection: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
             Ready to Build Your{' '}
             <span className="bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent">
-              AI Operating System
+              AI Operating System?
             </span>
-            ?
           </h2>
           <p className="text-text-secondary text-lg">
-            One immersive day. 6–6–8 people. On-site only. Enquire about pricing and availability.
+            One immersive day. 6–8 people. On-site only. Enquire about pricing and availability.
           </p>
         </div>
 
@@ -1401,7 +1400,7 @@ const AccordionBody: React.FC = () => (
         </div>
       </AccordionItem>
 
-      <AccordionItem index="07" title="Locations" subtitle="On-site only — 6–6–8 people per cohort">
+      <AccordionItem index="07" title="Locations" subtitle="On-site only — 6–8 people per cohort">
         <div className="grid sm:grid-cols-3 gap-5">
           {locations.map(({ city, country, desc, flag }, i) => (
             <div key={i} className="p-5 rounded-xl bg-background-lighter/50 border border-accent-blue/15 text-center">
