@@ -35,75 +35,25 @@ const Hero: React.FC = () => {
         </h1>
 
         {/* Subheadline */}
-        <p className="text-lg md:text-xl text-gray-300 mb-4 max-w-3xl mx-auto">
-          Custom AI tools and strategic consulting for organizations ready to{' '}
+        <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          Custom AI tools and strategic consulting for organisations ready to{' '}
           <GradientText gradient="default">transform their workflows</GradientText>.
-        </p>
-        <p className="text-base md:text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-          Introducing <a href="https://www.ente-prise.com" target="_blank" rel="noopener noreferrer" className="hover:underline"><GradientText gradient="purple-teal">Ente-prise</GradientText></a> —
-          an enterprise AI that navigates decisions, not just generates text.
-          <span className="block mt-2 text-yellow-400/80 text-sm font-medium">
-            Limited to 500 early adopters
-          </span>
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
           <Button
             variant="primary"
             size="lg"
             shimmer
             icon={<ChevronRight className="w-5 h-5" />}
-            onClick={() => (window as any).openWaitlist?.()}
+            onClick={() => window.location.href = '/aios'}
           >
-            Join Ente-prise Waitlist
+            AIOS Programme
           </Button>
-          <Button variant="secondary" size="lg" onClick={() => document.getElementById('enteprise')?.scrollIntoView({ behavior: 'smooth' })}>
-            Learn More
+          <Button variant="secondary" size="lg" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+            Get in Contact
           </Button>
-        </div>
-
-        {/* Product Logos */}
-        <div className="mb-10">
-          <p className="text-xs text-gray-500 uppercase tracking-wider mb-4">Our Software</p>
-          <div className="flex items-center justify-center gap-6 md:gap-10">
-            <a
-              href="https://bluplai.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group transition-all duration-300"
-            >
-              <img
-                src="/logos/Softwares/bluplai.png"
-                alt="bluplai"
-                className="h-10 md:h-14 w-auto opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
-              />
-            </a>
-            <a
-              href="https://stillme.navaigate.dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group transition-all duration-300"
-            >
-              <img
-                src="/logos/Softwares/Still%20Me.png"
-                alt="Still Me"
-                className="h-10 md:h-14 w-auto opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
-              />
-            </a>
-            <a
-              href="https://www.ente-prise.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group transition-all duration-300"
-            >
-              <img
-                src="/logos/Softwares/ente-prise.png"
-                alt="Ente-prise"
-                className="h-10 md:h-14 w-auto opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
-              />
-            </a>
-          </div>
         </div>
 
         {/* Trust indicators */}
@@ -112,7 +62,7 @@ const Hero: React.FC = () => {
           <span className="hidden sm:inline">•</span>
           <span>Enterprise Consulting</span>
           <span className="hidden sm:inline">•</span>
-          <span>In partnership with bluplai</span>
+          <span>AI Operating Systems</span>
         </div>
       </div>
 
