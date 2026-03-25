@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NavAIgate - AI Strategy Consulting Proposal for Kajima U.S.A. (v3)</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #0F172A;
+    color: #CBD5E1;
+    font-size: 11pt;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 40px 50px;
+    page-break-after: always;
+    position: relative;
+    background: #0F172A;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+
+  /* Cover Page */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 297mm;
+    padding: 60px 50px;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    border: 1px solid #3B82F6;
+    color: #3B82F6;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 9pt;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .cover-logo {
+    font-size: 42pt;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+  }
+
+  .cover-logo span {
+    color: #3B82F6;
+  }
+
+  .cover-tagline {
+    font-size: 13pt;
+    color: #64748B;
+    font-weight: 300;
+    margin-bottom: 60px;
+  }
+
+  .cover-title {
+    font-size: 22pt;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .cover-subtitle {
+    font-size: 14pt;
+    color: #3B82F6;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .cover-client {
+    font-size: 13pt;
+    color: #94A3B8;
+    font-weight: 400;
+    margin-bottom: 60px;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 3px;
+    background: #3B82F6;
+    margin: 0 auto 40px;
+  }
+
+  .cover-meta {
+    font-size: 9.5pt;
+    color: #64748B;
+    line-height: 1.8;
+  }
+
+  .cover-meta strong {
+    color: #94A3B8;
+  }
+
+  .cover-confidential {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 8pt;
+    color: #475569;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Page Header */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #1E293B;
+  }
+
+  .page-header-logo {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #F8FAFC;
+  }
+
+  .page-header-logo span {
+    color: #3B82F6;
+  }
+
+  .page-header-section {
+    font-size: 8pt;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  /* Section Headings */
+  h1 {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 16pt;
+    font-weight: 700;
+    color: #F8FAFC;
+    margin-bottom: 6px;
+    margin-top: 28px;
+  }
+
+  h3 {
+    font-size: 13pt;
+    font-weight: 600;
+    color: #3B82F6;
+    margin-bottom: 6px;
+    margin-top: 20px;
+  }
+
+  .section-number {
+    color: #3B82F6;
+    font-weight: 700;
+  }
+
+  .section-subtitle {
+    font-size: 11pt;
+    color: #64748B;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .blue-bar {
+    width: 40px;
+    height: 3px;
+    background: #3B82F6;
+    margin-bottom: 20px;
+  }
+
+  /* Body Text */
+  p {
+    margin-bottom: 12px;
+    color: #CBD5E1;
+    font-size: 10.5pt;
+    line-height: 1.7;
+  }
+
+  /* Cards */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .card-grid-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .card {
+    background: #1E293B;
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #334155;
+  }
+
+  .card-accent {
+    border-left: 3px solid #3B82F6;
+  }
+
+  .card h4 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #F8FAFC;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 9.5pt;
+    color: #94A3B8;
+    margin-bottom: 0;
+  }
+
+  .card-icon {
+    font-size: 20pt;
+    margin-bottom: 10px;
+  }
+
+  /* Lists */
+  ul, ol {
+    margin: 10px 0 16px 20px;
+    font-size: 10.5pt;
+  }
+
+  li {
+    margin-bottom: 6px;
+    color: #CBD5E1;
+    line-height: 1.6;
+  }
+
+  li strong {
+    color: #F8FAFC;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 10pt;
+  }
+
+  th {
+    background: #1E293B;
+    color: #3B82F6;
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 2px solid #334155;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #1E293B;
+    color: #CBD5E1;
+  }
+
+  tr:hover td {
+    background: rgba(59, 130, 246, 0.05);
+  }
+
+  /* Phase Timeline */
+  .phase-block {
+    background: #1E293B;
+    border-radius: 8px;
+    padding: 24px;
+    margin: 16px 0;
+    border-left: 3px solid #3B82F6;
+  }
+
+  .phase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .phase-title {
+    font-size: 13pt;
+    font-weight: 600;
+    color: #F8FAFC;
+  }
+
+  .phase-duration {
+    font-size: 9pt;
+    color: #3B82F6;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+
+  .phase-block ul {
+    margin-left: 16px;
+  }
+
+  .phase-block li {
+    font-size: 10pt;
+    color: #94A3B8;
+  }
+
+  /* Highlight Boxes */
+  .highlight-box {
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+
+  .highlight-box p {
+    color: #E2E8F0;
+    font-size: 10.5pt;
+    margin-bottom: 0;
+  }
+
+  /* Stats Row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 20px 12px;
+    background: #1E293B;
+    border-radius: 8px;
+  }
+
+  .stat-number {
+    font-size: 24pt;
+    font-weight: 700;
+    color: #3B82F6;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 8.5pt;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  /* Investment Table */
+  .investment-table {
+    background: #1E293B;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+
+  .investment-table table {
+    margin: 0;
+  }
+
+  .investment-table th {
+    background: #0F172A;
+  }
+
+  .investment-total {
+    background: rgba(59, 130, 246, 0.1);
+    font-weight: 600;
+  }
+
+  .investment-total td {
+    color: #3B82F6;
+    font-weight: 600;
+    border-bottom: none;
+  }
+
+  /* Value Props */
+  .value-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .value-item {
+    padding: 20px;
+    background: #1E293B;
+    border-radius: 8px;
+    border-top: 2px solid #3B82F6;
+  }
+
+  .value-item h4 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #F8FAFC;
+    margin-bottom: 8px;
+  }
+
+  .value-item p {
+    font-size: 9.5pt;
+    color: #94A3B8;
+    margin-bottom: 0;
+  }
+
+  /* Timeline Visual */
+  .timeline-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0;
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .timeline-visual-5 {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .timeline-visual::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 5%;
+    right: 5%;
+    height: 3px;
+    background: #334155;
+    z-index: 0;
+  }
+
+  .timeline-item {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 8px;
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    background: #3B82F6;
+    border-radius: 50%;
+    margin: 24px auto 16px;
+    border: 3px solid #0F172A;
+    box-shadow: 0 0 0 2px #3B82F6;
+  }
+
+  .timeline-dot-green {
+    background: #22C55E;
+    box-shadow: 0 0 0 2px #22C55E;
+  }
+
+  .timeline-label {
+    font-size: 9pt;
+    font-weight: 600;
+    color: #F8FAFC;
+    margin-bottom: 4px;
+  }
+
+  .timeline-weeks {
+    font-size: 8pt;
+    color: #3B82F6;
+    margin-bottom: 6px;
+  }
+
+  .timeline-desc {
+    font-size: 8pt;
+    color: #64748B;
+    line-height: 1.4;
+  }
+
+  /* Footer */
+  .page-footer {
+    position: absolute;
+    bottom: 30px;
+    left: 50px;
+    right: 50px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 8pt;
+    color: #475569;
+    border-top: 1px solid #1E293B;
+    padding-top: 12px;
+  }
+
+  /* Print Styles */
+  @media print {
+    body {
+      background: #0F172A;
+    }
+    .page {
+      margin: 0;
+      box-shadow: none;
+    }
+  }
+
+  /* Screen display */
+  @media screen {
+    .page {
+      box-shadow: 0 4px 40px rgba(0,0,0,0.4);
+      margin-bottom: 30px;
+    }
+    body {
+      padding: 30px 0;
+    }
+  }
+
+  .checkmark {
+    color: #22C55E;
+    font-weight: bold;
+  }
+
+  .green-accent {
+    border-left-color: #22C55E;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== COVER PAGE ==================== -->
+<div class="page cover">
+  <div class="cover-badge">Proposal Response</div>
+  <div class="cover-logo">Nav<span>AI</span>gate</div>
+  <div class="cover-tagline">AI Strategy &amp; Implementation</div>
+
+  <div class="cover-divider"></div>
+
+  <div class="cover-title">AI Strategy Consulting Services</div>
+  <div class="cover-subtitle">Enterprise AI Strategy Blueprint &amp; Roadmap</div>
+  <div class="cover-client">Prepared for Kajima U.S.A. AI Acceleration Committee</div>
+
+  <div class="cover-meta">
+    <strong>Prepared by:</strong> Daniel Wright, Founder &amp; Managing Director<br>
+    <strong>Date:</strong> 25 March 2026<br>
+    <strong>Contact:</strong> dw@navaigate.dev &nbsp;|&nbsp; navaigate.dev<br>
+    <strong>Valid until:</strong> 30 April 2026
+  </div>
+
+  <div class="cover-confidential">Confidential &mdash; Prepared solely for Kajima U.S.A. AI Acceleration Committee</div>
+</div>
+
+<!-- ==================== PAGE 2: TABLE OF CONTENTS ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">Contents</div>
+  </div>
+
+  <h1>Table of Contents</h1>
+  <div class="blue-bar"></div>
+
+  <table style="margin-top: 20px;">
+    <tbody>
+      <tr><td style="color: #3B82F6; font-weight: 600; width: 30px;">01</td><td><strong>Executive Summary</strong></td><td style="text-align: right; color: #64748B;">3</td></tr>
+      <tr><td style="color: #3B82F6; font-weight: 600;">02</td><td><strong>About NavAIgate</strong></td><td style="text-align: right; color: #64748B;">4</td></tr>
+      <tr><td style="color: #3B82F6; font-weight: 600;">03</td><td><strong>Understanding Your Challenge</strong></td><td style="text-align: right; color: #64748B;">5</td></tr>
+      <tr><td style="color: #3B82F6; font-weight: 600;">04</td><td><strong>Our Approach &amp; Methodology</strong></td><td style="text-align: right; color: #64748B;">6</td></tr>
+      <tr><td style="color: #3B82F6; font-weight: 600;">05</td><td><strong>Scope of Work &amp; Deliverables</strong></td><td style="text-align: right; color: #64748B;">7&ndash;9</td></tr>
+      <tr><td style="color: #3B82F6; font-weight: 600;">06</td><td><strong>Proposed Team</strong></td><td style="text-align: right; color: #64748B;">10</td></tr>
+      <tr><td style="color: #3B82F6; font-weight: 600;">07</td><td><strong>Timeline &amp; Milestones</strong></td><td style="text-align: right; color: #64748B;">11</td></tr>
+      <tr><td style="color: #3B82F6; font-weight: 600;">08</td><td><strong>Investment</strong></td><td style="text-align: right; color: #64748B;">12</td></tr>
+      <tr><td style="color: #3B82F6; font-weight: 600;">09</td><td><strong>Ongoing Partnership &amp; Implementation Support</strong></td><td style="text-align: right; color: #64748B;">13</td></tr>
+      <tr><td style="color: #3B82F6; font-weight: 600;">10</td><td><strong>Relevant Experience</strong></td><td style="text-align: right; color: #64748B;">14</td></tr>
+      <tr><td style="color: #3B82F6; font-weight: 600;">11</td><td><strong>Why NavAIgate</strong></td><td style="text-align: right; color: #64748B;">15</td></tr>
+      <tr><td style="color: #3B82F6; font-weight: 600;">12</td><td><strong>Next Steps</strong></td><td style="text-align: right; color: #64748B;">16</td></tr>
+      <tr><td style="color: #3B82F6; font-weight: 600;">13</td><td><strong>Assumptions, Risks &amp; Dependencies</strong></td><td style="text-align: right; color: #64748B;">16</td></tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 2</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 3: EXECUTIVE SUMMARY ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">01 &mdash; Executive Summary</div>
+  </div>
+
+  <h1><span class="section-number">01</span> Executive Summary</h1>
+  <div class="blue-bar"></div>
+
+  <p>NavAIgate is pleased to submit this proposal in response to the Kajima U.S.A. AI Acceleration Committee's Request for Proposal for AI Strategy Consulting Services.</p>
+
+  <p>The construction industry stands at a critical inflection point. Whilst AI adoption across most sectors has accelerated rapidly, construction remains one of the least digitised industries globally &mdash; creating both an urgent challenge and an extraordinary opportunity for organisations willing to move decisively.</p>
+
+  <p>Kajima U.S.A., through Batson-Cook Construction and Rodgers Builders, has the scale, operational breadth, and leadership commitment to become a frontrunner in AI-driven construction management. What you need is not a theoretical framework from a firm that has never shipped production AI &mdash; you need a partner who understands both the strategy and the engineering required to deliver real outcomes.</p>
+
+  <div class="highlight-box">
+    <p><strong>Our commitment:</strong> We will deliver a practical, actionable AI Strategy Blueprint with a clearly prioritised roadmap spanning 0&ndash;12 months and 12&ndash;36 months &mdash; not a shelf document, but a living plan designed for sustained execution. Every recommendation will be grounded in your actual data landscape, operational realities, and business priorities. And we will be alongside you as the strategy moves from paper to production.</p>
+  </div>
+
+  <h3>What Sets This Proposal Apart</h3>
+  <div class="card-grid">
+    <div class="card card-accent">
+      <h4>Practitioner-Led, Not Theory-Led</h4>
+      <p>We build and deploy AI systems in production. Our strategy recommendations come from hands-on experience delivering AI at enterprise scale, not from research papers.</p>
+    </div>
+    <div class="card card-accent">
+      <h4>Construction-Aware</h4>
+      <p>We understand the construction lifecycle &mdash; from preconstruction estimating through to project controls, field operations, and closeout &mdash; and where AI creates the most leverage at each stage.</p>
+    </div>
+    <div class="card card-accent">
+      <h4>Vendor-Independent</h4>
+      <p>NavAIgate is not tied to any AI platform or software vendor. Our recommendations are based purely on what is best for Kajima U.S.A.'s objectives, data, and technical landscape.</p>
+    </div>
+    <div class="card card-accent">
+      <h4>Strategists Who Build</h4>
+      <p>We are not just consultants &mdash; we are builders. NavAIgate has an in-house engineering team that designs, develops, and deploys production AI systems. When the strategy identifies what to build, we have the capability to build it. This means our recommendations are grounded in engineering reality, not theoretical possibility.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 3</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 4: ABOUT NAVAIGATE ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">02 &mdash; About NavAIgate</div>
+  </div>
+
+  <h1><span class="section-number">02</span> About NavAIgate</h1>
+  <div class="blue-bar"></div>
+
+  <p>NavAIgate is an AI strategy and implementation consultancy that helps enterprise organisations identify, prioritise, and deploy artificial intelligence to drive measurable business outcomes. We work across the full AI lifecycle &mdash; from strategic assessment through to production deployment &mdash; ensuring that AI initiatives deliver tangible value rather than remaining in perpetual proof-of-concept.</p>
+
+  <h3>Our Focus</h3>
+  <p>We specialise in helping organisations that are operationally complex &mdash; those with distributed teams, fragmented data landscapes, and business-critical processes that demand reliability. Construction, engineering, and asset-intensive industries are a natural fit for our capabilities.</p>
+
+  <div class="stats-row">
+    <div class="stat-item">
+      <span class="stat-number">4</span>
+      <div class="stat-label">Enterprise AI<br>Engagements</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">12+</span>
+      <div class="stat-label">AI Systems in<br>Production</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">100%</span>
+      <div class="stat-label">Vendor<br>Independent</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">2025</span>
+      <div class="stat-label">Founded</div>
+    </div>
+  </div>
+
+  <h3>Core Capabilities</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h4>AI Strategy &amp; Roadmapping</h4>
+      <p>Enterprise AI assessments, opportunity identification, use case prioritisation, and phased implementation roadmaps aligned to business objectives.</p>
+    </div>
+    <div class="card">
+      <h4>AI Application Development</h4>
+      <p>Custom AI-powered applications, intelligent document processing, automated workflows, and decision-support systems &mdash; designed, built, and deployed by our in-house engineering team for production use.</p>
+    </div>
+    <div class="card">
+      <h4>Data Strategy &amp; Readiness</h4>
+      <p>Data landscape assessment, governance frameworks, integration architecture, and readiness planning to ensure AI initiatives have the right foundation.</p>
+    </div>
+    <div class="card">
+      <h4>Change Management &amp; Enablement</h4>
+      <p>AI literacy programmes, stakeholder alignment, adoption strategies, and training to ensure technology investments translate into lasting operational change.</p>
+    </div>
+  </div>
+
+  <h3>Our Philosophy</h3>
+  <p>We believe the greatest risk in enterprise AI is not choosing the wrong technology &mdash; it is building the right technology in the wrong order, or building solutions that never leave the lab. Our methodology is designed to identify the highest-impact, most achievable initiatives first, creating early momentum that funds and justifies broader transformation.</p>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 4</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 5: UNDERSTANDING YOUR CHALLENGE ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">03 &mdash; Understanding Your Challenge</div>
+  </div>
+
+  <h1><span class="section-number">03</span> Understanding Your Challenge</h1>
+  <div class="blue-bar"></div>
+
+  <p>Based on our review of the RFP and our understanding of the commercial general construction management landscape, we see the following dynamics shaping Kajima U.S.A.'s AI opportunity:</p>
+
+  <h3>The Construction AI Landscape</h3>
+  <p>Construction is one of the last major industries to undergo digital transformation at scale. According to McKinsey, it remains among the least digitised sectors globally, with productivity growth averaging just 1% annually over the past two decades. This creates a significant competitive advantage for early movers.</p>
+
+  <div class="card-grid">
+    <div class="card card-accent">
+      <h4>Fragmented Data</h4>
+      <p>Data across estimating, scheduling, procurement, project controls, field operations, safety, quality, and finance exists in multiple systems and formats &mdash; a challenge, but also where AI creates the most value through unification and insight.</p>
+    </div>
+    <div class="card card-accent">
+      <h4>Multi-Entity Complexity</h4>
+      <p>Operating across Kajima U.S.A., Batson-Cook Construction, and Rodgers Builders requires an AI strategy that accounts for shared capabilities alongside entity-specific needs and operational cultures.</p>
+    </div>
+    <div class="card card-accent">
+      <h4>Labour &amp; Knowledge Challenges</h4>
+      <p>An ageing workforce and skilled labour shortages make knowledge capture and transfer critical. AI can preserve institutional knowledge and accelerate onboarding of less experienced staff.</p>
+    </div>
+    <div class="card card-accent">
+      <h4>Margin Pressure</h4>
+      <p>Construction margins are typically thin (2&ndash;5%). AI-driven improvements in estimating accuracy, schedule optimisation, and risk identification directly protect and improve profitability.</p>
+    </div>
+  </div>
+
+  <h3>Where We See the Highest-Impact AI Opportunities</h3>
+  <p>Whilst the full opportunity inventory will be developed during the engagement, our initial assessment identifies these high-potential areas for construction organisations of your scale:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Functional Area</th>
+        <th>AI Opportunity</th>
+        <th>Expected Impact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Preconstruction</strong></td>
+        <td>AI-assisted estimating, historical cost analysis, bid/no-bid intelligence</td>
+        <td>Faster bids, improved accuracy</td>
+      </tr>
+      <tr>
+        <td><strong>Project Controls</strong></td>
+        <td>Schedule risk prediction, cost variance early warning, progress tracking</td>
+        <td>Reduced overruns, earlier intervention</td>
+      </tr>
+      <tr>
+        <td><strong>Document Management</strong></td>
+        <td>Intelligent RFI processing, submittal review, contract clause extraction</td>
+        <td>Hours saved per project, reduced risk</td>
+      </tr>
+      <tr>
+        <td><strong>Safety</strong></td>
+        <td>Predictive safety analytics, incident pattern recognition, compliance monitoring</td>
+        <td>Incident reduction, regulatory compliance</td>
+      </tr>
+      <tr>
+        <td><strong>Procurement</strong></td>
+        <td>Supplier performance analytics, price benchmarking, specification matching</td>
+        <td>Cost savings, better vendor selection</td>
+      </tr>
+      <tr>
+        <td><strong>Knowledge Mgmt</strong></td>
+        <td>Lessons learned capture, institutional knowledge search, onboarding acceleration</td>
+        <td>Workforce resilience, faster ramp-up</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 5</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 6: APPROACH & METHODOLOGY ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">04 &mdash; Approach &amp; Methodology</div>
+  </div>
+
+  <h1><span class="section-number">04</span> Our Approach &amp; Methodology</h1>
+  <div class="blue-bar"></div>
+
+  <p>Our methodology is designed around one principle: <strong>every recommendation must be actionable, measurable, and tied to business value.</strong> We align closely with the four-phase structure outlined in the RFP, with enhancements drawn from our experience delivering AI strategies for enterprise organisations.</p>
+
+  <h3>The NavAIgate AI Strategy Framework</h3>
+
+  <div class="card-grid">
+    <div class="card" style="border-top: 3px solid #3B82F6;">
+      <h4>1. Listen &amp; Learn</h4>
+      <p>We start by understanding your business, not your technology. Executive interviews, process mapping, and data landscape assessment ensure our recommendations are grounded in your reality.</p>
+    </div>
+    <div class="card" style="border-top: 3px solid #3B82F6;">
+      <h4>2. Discover &amp; Evaluate</h4>
+      <p>Structured workshops surface AI opportunities from every function. Each is evaluated against a consistent framework: business impact, feasibility, data readiness, and change effort.</p>
+    </div>
+    <div class="card" style="border-top: 3px solid #3B82F6;">
+      <h4>3. Prioritise &amp; Plan</h4>
+      <p>Quantitative scoring produces a ranked opportunity matrix. We identify quick wins, foundational enablers, and strategic bets &mdash; then sequence them into a phased roadmap across 0&ndash;12 month and 12&ndash;36 month horizons.</p>
+    </div>
+    <div class="card" style="border-top: 3px solid #3B82F6;">
+      <h4>4. Blueprint &amp; Present</h4>
+      <p>The AI Strategy Blueprint synthesises everything into a clear, executive-ready document with governance principles, success metrics, and a concrete implementation plan.</p>
+    </div>
+  </div>
+
+  <h3>Evaluation Framework</h3>
+  <p>Every identified AI opportunity is scored across five dimensions using a weighted matrix:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>Weight</th>
+        <th>What We Assess</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Business Impact</strong></td>
+        <td>30%</td>
+        <td>Revenue uplift, cost reduction, risk mitigation, competitive advantage</td>
+      </tr>
+      <tr>
+        <td><strong>Feasibility</strong></td>
+        <td>25%</td>
+        <td>Technical complexity, integration requirements, vendor maturity</td>
+      </tr>
+      <tr>
+        <td><strong>Data Readiness</strong></td>
+        <td>20%</td>
+        <td>Data availability, quality, accessibility, governance requirements</td>
+      </tr>
+      <tr>
+        <td><strong>Time-to-Value</strong></td>
+        <td>15%</td>
+        <td>Implementation timeline, dependencies, speed to measurable outcomes</td>
+      </tr>
+      <tr>
+        <td><strong>Change Effort</strong></td>
+        <td>10%</td>
+        <td>Workflow disruption, training needs, cultural readiness, stakeholder buy-in</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <p><strong>Workshop Approach:</strong> We facilitate structured, cross-functional workshops using a combination of process mapping, pain-point identification, and opportunity brainstorming. Participants typically include department heads, project managers, field supervisors, and technology leads. Each workshop is designed to surface both obvious and non-obvious AI opportunities.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 6</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 7: SCOPE OF WORK (Part 1) ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">05 &mdash; Scope of Work</div>
+  </div>
+
+  <h1><span class="section-number">05</span> Scope of Work &amp; Deliverables</h1>
+  <div class="blue-bar"></div>
+
+  <p>We propose a thorough <strong>16-week engagement</strong> structured across four phases, with built-in checkpoints and buffer time to accommodate stakeholder availability across three business entities. This timeline reflects the reality of working with senior leaders across multiple offices and ensures the depth of analysis required to produce genuinely actionable recommendations.</p>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-title">Phase 1: Discovery &amp; Current-State Assessment</div>
+      <div class="phase-duration">Weeks 1&ndash;5</div>
+    </div>
+    <p style="margin-bottom: 12px;">Deeply understand the strategic landscape, operational realities, data environment, and organisational readiness across all three entities. This phase is deliberately paced to allow proper access to senior stakeholders without creating scheduling pressure.</p>
+    <ul>
+      <li><strong>Executive &amp; leadership interviews</strong> (12&ndash;15 sessions) across Kajima U.S.A., Batson-Cook, and Rodgers Builders &mdash; scheduled across 4 weeks to accommodate executive availability and allow time for reflection between conversations</li>
+      <li><strong>Operational deep-dives</strong> (4&ndash;6 sessions) with mid-level managers and project teams to understand day-to-day workflows, pain points, and workarounds that leadership may not see</li>
+      <li><strong>Process mapping</strong> across the full construction lifecycle: estimating, scheduling, procurement, project controls, field operations, safety, quality, finance, and talent development</li>
+      <li><strong>Data landscape assessment:</strong> inventory of all systems, data flows, quality metrics, accessibility, and governance posture across entities</li>
+      <li><strong>Technology platform review:</strong> existing tools, analytics capabilities, integration points, and technical debt</li>
+      <li><strong>AI readiness assessment:</strong> people (skills, culture, appetite for change), process (maturity, standardisation), technology (infrastructure, data pipelines)</li>
+    </ul>
+    <p style="margin-top: 12px; font-size: 9.5pt;"><strong style="color: #3B82F6;">Deliverable:</strong> Current-State Assessment Summary including process maps, data landscape diagram, technology inventory, AI readiness scorecard, and stakeholder alignment report</p>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-title">Phase 2: AI Opportunity Identification &amp; Evaluation</div>
+      <div class="phase-duration">Weeks 5&ndash;9</div>
+    </div>
+    <p style="margin-bottom: 12px;">Surface, catalogue, and rigorously evaluate AI opportunities across all functions and business units. Workshops are spread across 4 weeks to allow for preparation, follow-up, and iterative refinement.</p>
+    <ul>
+      <li><strong>Cross-functional workshops</strong> (6&ndash;8 sessions) covering preconstruction, operations, project controls, safety, procurement, finance, HR/talent, and corporate functions &mdash; conducted entity-by-entity, then jointly</li>
+      <li><strong>Standardised evaluation</strong> of each opportunity against the five-dimension framework (business impact, feasibility, data readiness, time-to-value, change effort)</li>
+      <li><strong>AI opportunity inventory</strong> with detailed descriptions, assumptions, prerequisites, estimated value ranges, and implementation considerations</li>
+      <li><strong>External benchmarking:</strong> how leading construction firms (Skanska, Kiewit, Turner, etc.) and adjacent industries are deploying AI in comparable functions</li>
+      <li><strong>Quick wins identification:</strong> initiatives that can deliver measurable value within 0&ndash;6 months to build momentum and organisational confidence</li>
+    </ul>
+    <p style="margin-top: 12px; font-size: 9.5pt;"><strong style="color: #3B82F6;">Deliverable:</strong> AI Opportunity Inventory &amp; Evaluation Matrix (scored, categorised, with full supporting detail and benchmarking data)</p>
+  </div>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 7</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 8: SCOPE OF WORK (Part 2) ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">05 &mdash; Scope of Work (continued)</div>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-title">Phase 3: Prioritisation &amp; Roadmap Development</div>
+      <div class="phase-duration">Weeks 9&ndash;13</div>
+    </div>
+    <p style="margin-bottom: 12px;">Transform the opportunity inventory into a clear, ranked, and sequenced implementation roadmap that spans two planning horizons, distinguishing between quick wins, foundational enablers, and strategic transformation programmes.</p>
+    <ul>
+      <li><strong>Quantitative and qualitative ranking</strong> of all identified AI opportunities using weighted scoring, with sensitivity analysis on key assumptions</li>
+      <li><strong>Three-tier categorisation:</strong>
+        <ul style="margin-top: 6px;">
+          <li><strong>Quick Wins</strong> (0&ndash;6 months): Low complexity, high visibility initiatives to build momentum and demonstrate AI value</li>
+          <li><strong>Foundation &amp; Scale</strong> (6&ndash;12 months): Initiatives requiring data preparation, platform investment, or organisational change</li>
+          <li><strong>Strategic Transformation</strong> (12&ndash;36 months): Enterprise-grade AI capabilities that drive sustained competitive advantage</li>
+        </ul>
+      </li>
+      <li><strong>Dependency mapping:</strong> identify shared prerequisites, data foundations, capability building blocks, and sequencing constraints</li>
+      <li><strong>Resource and capability analysis:</strong> what can be executed internally, what requires external support, and where to invest in building internal AI capability</li>
+      <li><strong>Investment modelling:</strong> estimated costs, expected returns, and business case summaries for top-priority initiatives</li>
+      <li><strong>Phased AI roadmap</strong> with clear 0&ndash;12 month and 12&ndash;36 month horizons, milestones, decision gates, and success criteria</li>
+    </ul>
+    <p style="margin-top: 12px; font-size: 9.5pt;"><strong style="color: #3B82F6;">Deliverable:</strong> Ranked &amp; Prioritised AI Roadmap (0&ndash;12 months + 12&ndash;36 months) with dependency map, investment model, and business case summaries</p>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-title">Phase 4: AI Strategy Blueprint</div>
+      <div class="phase-duration">Weeks 13&ndash;16</div>
+    </div>
+    <p style="margin-bottom: 12px;">Synthesise all findings into a comprehensive, executive-ready strategy document and present to leadership. This phase includes review cycles with the Committee to ensure the final Blueprint fully reflects organisational priorities.</p>
+    <ul>
+      <li><strong>AI Strategy Blueprint document</strong> including: enterprise AI vision, strategic principles and objectives, prioritised roadmap (0&ndash;12 and 12&ndash;36 months), high-level implementation approach, governance framework, risk considerations, and success metrics/KPIs</li>
+      <li><strong>Governance recommendations:</strong> AI ethics principles, data governance requirements, model oversight, responsible AI usage policy, and risk management framework</li>
+      <li><strong>Success metrics and KPIs</strong> for each prioritised initiative, tied to business outcomes with clear measurement methodology</li>
+      <li><strong>Executive presentation</strong> of findings, recommendations, and next steps to the AI Acceleration Committee and senior leadership</li>
+      <li><strong>Implementation playbook</strong> for the top 3&ndash;5 recommended quick-win initiatives, including detailed specifications, resource requirements, and 90-day launch plans</li>
+    </ul>
+    <p style="margin-top: 12px; font-size: 9.5pt;"><strong style="color: #3B82F6;">Deliverable:</strong> AI Strategy Blueprint Document + Executive Presentation + Quick-Win Implementation Playbook</p>
+  </div>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 8</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 9: SCOPE OF WORK (Part 3 - Deliverables Summary) ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">05 &mdash; Scope of Work (deliverables)</div>
+  </div>
+
+  <h3>Complete Deliverables Summary</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Deliverable</th>
+        <th>Phase</th>
+        <th>Format</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Current-State Assessment Summary</td><td>Phase 1</td><td>Report + Diagrams</td></tr>
+      <tr><td>Stakeholder Alignment Report</td><td>Phase 1</td><td>Report</td></tr>
+      <tr><td>AI Opportunity Inventory &amp; Evaluation Matrix</td><td>Phase 2</td><td>Spreadsheet + Report</td></tr>
+      <tr><td>Industry Benchmarking Analysis</td><td>Phase 2</td><td>Report</td></tr>
+      <tr><td>Ranked &amp; Prioritised AI Roadmap (0&ndash;12 + 12&ndash;36 months)</td><td>Phase 3</td><td>Visual Roadmap + Report</td></tr>
+      <tr><td>Investment Model &amp; Business Cases</td><td>Phase 3</td><td>Spreadsheet + Report</td></tr>
+      <tr><td>AI Strategy Blueprint Document</td><td>Phase 4</td><td>Executive Document</td></tr>
+      <tr><td>Executive Presentation</td><td>Phase 4</td><td>Slide Deck + Live Presentation</td></tr>
+      <tr><td>Quick-Win Implementation Playbook (Top 3&ndash;5)</td><td>Phase 4</td><td>Detailed Guide</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Roadmap Structure</h3>
+  <p>The roadmap will clearly distinguish between three categories of initiative, mapped across two planning horizons:</p>
+
+  <div class="card-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+    <div class="card" style="border-top: 3px solid #22C55E;">
+      <h4 style="color: #22C55E;">Quick Wins</h4>
+      <p><strong>0&ndash;6 months</strong><br>Low complexity, high visibility. Build confidence and demonstrate AI value. Typically document processing, knowledge management, or reporting enhancements.</p>
+    </div>
+    <div class="card" style="border-top: 3px solid #3B82F6;">
+      <h4>Foundation &amp; Scale</h4>
+      <p><strong>6&ndash;12 months</strong><br>Data platform investments, governance frameworks, and initial production AI deployments across core operational areas.</p>
+    </div>
+    <div class="card" style="border-top: 3px solid #8B5CF6;">
+      <h4 style="color: #8B5CF6;">Strategic Transformation</h4>
+      <p><strong>12&ndash;36 months</strong><br>Enterprise-grade AI capabilities: predictive analytics, intelligent automation, cross-entity knowledge systems, and competitive differentiation.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Why this structure matters:</strong> Quick wins create the organisational momentum, executive confidence, and measurable ROI that justify the larger foundational investments. The 12&ndash;36 month strategic initiatives then build on those foundations to deliver transformative business outcomes. This isn't a report that sits on a shelf &mdash; it's a 36-month execution plan with clear gates and decision points.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 9</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 10: PROPOSED TEAM ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">06 &mdash; Proposed Team</div>
+  </div>
+
+  <h1><span class="section-number">06</span> Proposed Team</h1>
+  <div class="blue-bar"></div>
+
+  <p>NavAIgate operates as a focused consultancy with senior practitioners leading every engagement. You will work directly with decision-makers, not junior analysts learning on your project.</p>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-title">Daniel Wright &mdash; Engagement Lead &amp; AI Strategist</div>
+    </div>
+    <p><strong>Role:</strong> Overall engagement leadership, executive interviews, strategy development, and final Blueprint authorship.</p>
+    <ul>
+      <li>Founder &amp; Managing Director of NavAIgate</li>
+      <li>Enterprise AI strategy and implementation experience across multiple industries</li>
+      <li>Currently leading AI strategy and application development for Autodesk (global enterprise, $60B+ market cap)</li>
+      <li>Background in enterprise sales and technology leadership &mdash; understands both the strategic and commercial dimensions of AI investment</li>
+      <li>Hands-on AI practitioner: builds and deploys production AI systems, not just strategy documents</li>
+    </ul>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-title">AI Strategy Consultant</div>
+    </div>
+    <p><strong>Role:</strong> Workshop facilitation, stakeholder interviews, industry benchmarking, opportunity evaluation, and deliverable production.</p>
+    <ul>
+      <li>Experienced AI strategy practitioner with deep consulting and facilitation skills</li>
+      <li>Works alongside Daniel in executive interviews, co-facilitates workshops, and leads industry benchmarking research</li>
+      <li>Responsible for opportunity documentation, evaluation scoring, and deliverable quality assurance</li>
+      <li>Brings complementary strategic perspective and ensures rigorous analysis across all workstreams</li>
+    </ul>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-title">AI Solutions Architect</div>
+    </div>
+    <p><strong>Role:</strong> Data landscape assessment, technology platform review, technical feasibility evaluation, integration architecture, and implementation planning.</p>
+    <ul>
+      <li>Hands-on AI engineer with deep expertise in modern AI infrastructure: cloud platforms, LLM integration, data pipelines, and production deployment</li>
+      <li>Leads the technical assessment of existing systems, data quality, and integration points across all three entities</li>
+      <li>Responsible for technical feasibility scoring, implementation effort estimates, and architecture recommendations</li>
+      <li>This is the person who would lead the build when initiatives move from strategy into development &mdash; ensuring complete continuity from assessment through to production</li>
+    </ul>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Our commitment:</strong> Daniel Wright will be personally present at every executive interview, every workshop, and will author the final AI Strategy Blueprint. You will not experience the "bait and switch" common with larger consultancies where senior partners sell the engagement and junior staff deliver it.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 10</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 11: TIMELINE ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">07 &mdash; Timeline &amp; Milestones</div>
+  </div>
+
+  <h1><span class="section-number">07</span> Timeline &amp; Milestones</h1>
+  <div class="blue-bar"></div>
+
+  <p>We propose a <strong>16-week engagement</strong> from kick-off to final delivery. This timeline gives proper space for executive access across three entities, thorough analysis, and iterative review with the Committee &mdash; whilst still delivering results within one quarter plus one month.</p>
+
+  <div class="timeline-visual timeline-visual-5">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Phase 1</div>
+      <div class="timeline-weeks">Weeks 1&ndash;5</div>
+      <div class="timeline-desc">Discovery &amp;<br>Assessment</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Phase 2</div>
+      <div class="timeline-weeks">Weeks 5&ndash;9</div>
+      <div class="timeline-desc">Opportunity ID<br>&amp; Evaluation</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Phase 3</div>
+      <div class="timeline-weeks">Weeks 9&ndash;13</div>
+      <div class="timeline-desc">Prioritisation<br>&amp; Roadmap</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Phase 4</div>
+      <div class="timeline-weeks">Weeks 13&ndash;16</div>
+      <div class="timeline-desc">Blueprint &amp;<br>Presentation</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot timeline-dot-green"></div>
+      <div class="timeline-label" style="color: #22C55E;">Ongoing</div>
+      <div class="timeline-weeks" style="color: #22C55E;">Quarterly</div>
+      <div class="timeline-desc">Partnership &amp;<br>Implementation</div>
+    </div>
+  </div>
+
+  <h3>Detailed Milestone Schedule</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Milestone</th>
+        <th>Key Activities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td>Kick-off &amp; Planning</td>
+        <td>Project kick-off, stakeholder mapping, interview scheduling, document requests</td>
+      </tr>
+      <tr>
+        <td><strong>1&ndash;4</strong></td>
+        <td>Executive Interviews</td>
+        <td>12&ndash;15 leadership interviews, 3&ndash;4 per week across all three entities</td>
+      </tr>
+      <tr>
+        <td><strong>2&ndash;5</strong></td>
+        <td>Operational Deep-Dives</td>
+        <td>4&ndash;6 sessions with mid-level managers and project teams</td>
+      </tr>
+      <tr>
+        <td><strong>3&ndash;5</strong></td>
+        <td>Data &amp; Tech Assessment</td>
+        <td>Systems inventory, data quality review, platform capabilities assessment</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td style="color: #3B82F6;"><strong>Checkpoint 1</strong></td>
+        <td>Current-state findings review with Committee</td>
+      </tr>
+      <tr>
+        <td><strong>5&ndash;8</strong></td>
+        <td>Cross-Functional Workshops</td>
+        <td>6&ndash;8 workshops: entity-by-entity, then joint sessions</td>
+      </tr>
+      <tr>
+        <td><strong>8&ndash;9</strong></td>
+        <td>Opportunity Evaluation</td>
+        <td>Scoring, benchmarking, analysis, and documentation</td>
+      </tr>
+      <tr>
+        <td><strong>9</strong></td>
+        <td style="color: #3B82F6;"><strong>Checkpoint 2</strong></td>
+        <td>Opportunity inventory review with Committee</td>
+      </tr>
+      <tr>
+        <td><strong>9&ndash;12</strong></td>
+        <td>Roadmap Development</td>
+        <td>Prioritisation, sequencing, dependency mapping, investment modelling</td>
+      </tr>
+      <tr>
+        <td><strong>12&ndash;13</strong></td>
+        <td style="color: #3B82F6;"><strong>Checkpoint 3</strong></td>
+        <td>Draft roadmap &amp; business cases review with Committee</td>
+      </tr>
+      <tr>
+        <td><strong>13&ndash;15</strong></td>
+        <td>Blueprint Production</td>
+        <td>Strategy document, governance framework, implementation playbook</td>
+      </tr>
+      <tr>
+        <td><strong>16</strong></td>
+        <td style="color: #22C55E;"><strong>Final Delivery</strong></td>
+        <td>Executive presentation to AI Acceleration Committee + all deliverables</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <p><strong>Four checkpoints</strong> (including final delivery) are built into the timeline to ensure the Committee has visibility and input at every critical juncture. No surprises at the end &mdash; the strategy is co-developed with your leadership team.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 11</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 12: INVESTMENT ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">08 &mdash; Investment</div>
+  </div>
+
+  <h1><span class="section-number">08</span> Investment</h1>
+  <div class="blue-bar"></div>
+
+  <p>Our pricing reflects the seniority of the team, the depth of the engagement, and the practical value of the deliverables. We offer a fixed-fee structure for the strategy engagement so there are no surprises.</p>
+
+  <div class="investment-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Phase</th>
+          <th>Description</th>
+          <th>Duration</th>
+          <th style="text-align: right;">Fee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Phase 1</strong></td>
+          <td>Discovery &amp; Current-State Assessment</td>
+          <td>Weeks 1&ndash;5</td>
+          <td style="text-align: right;">&euro;35,000</td>
+        </tr>
+        <tr>
+          <td><strong>Phase 2</strong></td>
+          <td>AI Opportunity Identification &amp; Evaluation</td>
+          <td>Weeks 5&ndash;9</td>
+          <td style="text-align: right;">&euro;32,000</td>
+        </tr>
+        <tr>
+          <td><strong>Phase 3</strong></td>
+          <td>Prioritisation &amp; Roadmap Development</td>
+          <td>Weeks 9&ndash;13</td>
+          <td style="text-align: right;">&euro;28,000</td>
+        </tr>
+        <tr>
+          <td><strong>Phase 4</strong></td>
+          <td>AI Strategy Blueprint &amp; Executive Presentation</td>
+          <td>Weeks 13&ndash;16</td>
+          <td style="text-align: right;">&euro;25,000</td>
+        </tr>
+        <tr class="investment-total">
+          <td></td>
+          <td><strong>Total Fixed Fee</strong></td>
+          <td><strong>16 Weeks</strong></td>
+          <td style="text-align: right;"><strong>&euro;120,000</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Team &amp; Day Rates</h3>
+  <p>Our team is composed of three complementary roles. The following day rates apply to additional advisory work beyond the fixed-fee scope:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Role</th>
+        <th>Focus</th>
+        <th style="text-align: right;">Day Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Daniel Wright</strong> &mdash; Engagement Lead</td>
+        <td>Strategy, executive interviews, Blueprint authorship</td>
+        <td style="text-align: right;">&euro;1,200/day</td>
+      </tr>
+      <tr>
+        <td><strong>AI Strategy Consultant</strong></td>
+        <td>Workshops, research, evaluation, deliverables</td>
+        <td style="text-align: right;">&euro;800/day</td>
+      </tr>
+      <tr>
+        <td><strong>AI Solutions Architect</strong></td>
+        <td>Technical assessment, data analysis, architecture</td>
+        <td style="text-align: right;">&euro;500/day</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>What's Included</h3>
+  <div class="card-grid">
+    <div class="card card-accent">
+      <h4>All Deliverables</h4>
+      <p>Nine deliverables including current-state assessment, opportunity inventory, benchmarking, roadmap, investment model, AI Strategy Blueprint, executive presentation, and quick-win implementation playbook.</p>
+    </div>
+    <div class="card card-accent">
+      <h4>All Workshops &amp; Interviews</h4>
+      <p>Up to 15 executive interviews, 6 operational deep-dives, and 8 cross-functional workshops, facilitated on-site or virtually as preferred.</p>
+    </div>
+    <div class="card card-accent">
+      <h4>Three Committee Checkpoints</h4>
+      <p>Interim reviews at the end of Phases 1, 2, and 3 to ensure alignment before proceeding.</p>
+    </div>
+    <div class="card card-accent">
+      <h4>30-Day Post-Delivery Support</h4>
+      <p>After final delivery, 30 days of advisory support to answer questions and assist with early implementation decisions.</p>
+    </div>
+  </div>
+
+  <h3>Payment Schedule</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Milestone</th>
+        <th>Timing</th>
+        <th style="text-align: right;">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Engagement kick-off</td><td>Week 1</td><td style="text-align: right;">&euro;36,000 (30%)</td></tr>
+      <tr><td>Checkpoint 2 (Opportunity Inventory delivered)</td><td>Week 9</td><td style="text-align: right;">&euro;42,000 (35%)</td></tr>
+      <tr><td>Final delivery (Blueprint &amp; Presentation)</td><td>Week 16</td><td style="text-align: right;">&euro;42,000 (35%)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Travel &amp; Expenses</h3>
+  <p>We strongly recommend on-site sessions for key workshops and the final executive presentation. Travel expenses (flights, accommodation, and ground transport) will be invoiced at cost with prior approval. Consultant time during travel is not billed separately &mdash; only direct expenses are passed through. We anticipate 3&ndash;4 on-site visits to Charlotte, NC and/or Atlanta, GA during the engagement.</p>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 12</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 13: ONGOING PARTNERSHIP ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">09 &mdash; Ongoing Partnership</div>
+  </div>
+
+  <h1><span class="section-number">09</span> Ongoing Partnership &amp; Implementation Support</h1>
+  <div class="blue-bar"></div>
+
+  <p>A strategy is only as good as its execution. The AI roadmap we deliver will span 36 months &mdash; and during that time, the technology landscape, your organisational priorities, and the competitive environment will evolve. We believe the greatest value comes from a sustained partnership that ensures your strategy stays current and your implementation delivers real results.</p>
+
+  <p><strong>NavAIgate is not just a strategy consultancy &mdash; we are builders.</strong> Our in-house engineering team designs, develops, and deploys production AI systems. When the roadmap identifies an initiative to pursue, we have the capability to take it from concept through to a working solution integrated into your existing technology stack. This is a critical differentiator: the people who understand your strategy are the same people who can build the technology to deliver it.</p>
+
+  <h3>Proposed Partnership Model</h3>
+  <p>Following the 16-week strategy engagement, we recommend a quarterly advisory retainer that provides ongoing strategic guidance, implementation oversight, and roadmap refinement:</p>
+
+  <div class="phase-block green-accent" style="border-left-color: #22C55E;">
+    <div class="phase-header">
+      <div class="phase-title">Quarterly AI Strategy Reviews</div>
+      <div class="phase-duration" style="color: #22C55E; background: rgba(34, 197, 94, 0.1);">Ongoing</div>
+    </div>
+    <ul>
+      <li><strong>Quarterly progress review</strong> against the roadmap: what's been delivered, what's in flight, what needs adjustment</li>
+      <li><strong>Roadmap refinement:</strong> re-prioritise based on lessons learned, new opportunities, and changing business conditions</li>
+      <li><strong>Technology landscape updates:</strong> brief the Committee on relevant AI developments that could accelerate or improve planned initiatives</li>
+      <li><strong>Implementation guidance:</strong> advise on vendor selection, architecture decisions, and build-vs-buy questions as initiatives move forward</li>
+      <li><strong>KPI tracking:</strong> measure and report on the success metrics defined in the Blueprint</li>
+    </ul>
+  </div>
+
+  <h3>Technology Development &amp; Implementation</h3>
+  <p>As quick wins and foundational initiatives move into execution, NavAIgate's engineering team can design, build, and deploy the AI solutions identified in the roadmap. We build technology that integrates into your existing platforms and workflows:</p>
+
+  <div class="card-grid">
+    <div class="card" style="border-top: 3px solid #22C55E;">
+      <h4>Custom AI Applications</h4>
+      <p>End-to-end development of AI-powered tools &mdash; from intelligent document processing and automated reporting to predictive analytics dashboards and decision-support systems.</p>
+    </div>
+    <div class="card" style="border-top: 3px solid #22C55E;">
+      <h4>System Integration</h4>
+      <p>Connect AI capabilities to your existing construction management platforms, ERP systems, and project controls tools. We build to integrate, not to replace.</p>
+    </div>
+    <div class="card" style="border-top: 3px solid #22C55E;">
+      <h4>Data Readiness &amp; Pipelines</h4>
+      <p>Prepare data foundations, build integration pipelines, and establish the data governance structures required for specific AI initiatives to succeed.</p>
+    </div>
+    <div class="card" style="border-top: 3px solid #22C55E;">
+      <h4>AI Enablement &amp; Training</h4>
+      <p>Build internal AI literacy and capability through targeted training programmes for leadership, project teams, and technical staff.</p>
+    </div>
+  </div>
+
+  <h3>Pricing Approach</h3>
+  <div class="investment-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Pricing Model</th>
+          <th style="text-align: right;">Indicative Fee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Quarterly AI Strategy Review</td>
+          <td>Fixed quarterly retainer</td>
+          <td style="text-align: right;">&euro;8,000/quarter</td>
+        </tr>
+        <tr>
+          <td>Advisory &amp; Consulting (ad-hoc)</td>
+          <td>Day rate (per team role)</td>
+          <td style="text-align: right;">&euro;500&ndash;&euro;1,200/day</td>
+        </tr>
+        <tr>
+          <td>Technology Development &amp; Implementation</td>
+          <td><strong>Outcome-based pricing</strong></td>
+          <td style="text-align: right;">Scoped per project</td>
+        </tr>
+        <tr>
+          <td>Travel expenses</td>
+          <td>At cost (flights, hotel, transport)</td>
+          <td style="text-align: right;">Pass-through</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Outcome-based development pricing:</strong> When it comes to building AI solutions, we prefer to price on outcomes rather than hourly rates. Each implementation project is scoped with clear deliverables, acceptance criteria, and a fixed project fee &mdash; so you know exactly what you're getting and what it costs before work begins. This aligns our incentives with yours: we succeed when the solution works, not when the clock runs.</p>
+  </div>
+
+  <div class="highlight-box" style="margin-top: 12px;">
+    <p><strong>The 36-month view:</strong> The strategy engagement (&euro;120K) identifies what to do and in what order. The quarterly reviews (&euro;32K/year) ensure the plan stays on track. The implementation projects deliver the actual AI capabilities. Together, this represents a comprehensive AI transformation partnership &mdash; from strategy through to working technology, with a single team that knows your business inside out.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 13</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 14: RELEVANT EXPERIENCE ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">10 &mdash; Relevant Experience</div>
+  </div>
+
+  <h1><span class="section-number">10</span> Relevant Experience</h1>
+  <div class="blue-bar"></div>
+
+  <p>Below are representative engagements that demonstrate our capability to deliver the scope outlined in this proposal.</p>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-title">Autodesk &mdash; AI Strategy &amp; Application Development</div>
+      <div class="phase-duration">Ongoing</div>
+    </div>
+    <p><strong>Client:</strong> Autodesk, Inc. (NYSE: ADSK, $60B+ market cap)<br>
+    <strong>Scope:</strong> Enterprise AI strategy consulting and custom AI application development</p>
+    <ul>
+      <li>Engaged directly with Autodesk leadership to identify and prioritise AI opportunities across multiple product and operational areas</li>
+      <li>Developed and deployed production AI applications replacing legacy systems (including enterprise reporting and data intelligence tools)</li>
+      <li>Multiple concurrent workstreams spanning strategy, technical implementation, and change management</li>
+      <li>Particularly relevant: Autodesk serves the AEC (Architecture, Engineering, Construction) industry &mdash; direct overlap with Kajima's domain</li>
+    </ul>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-title">Causeway Technologies &mdash; AI Opportunity Assessment</div>
+      <div class="phase-duration">2026</div>
+    </div>
+    <p><strong>Client:</strong> Causeway Technologies (UK-based construction technology provider)<br>
+    <strong>Scope:</strong> AI opportunity identification and strategic assessment</p>
+    <ul>
+      <li>Assessed AI integration opportunities within Causeway's construction management software suite</li>
+      <li>Evaluated use cases across construction project management, cost control, and workforce planning</li>
+      <li>Directly relevant construction industry experience and understanding of the data challenges unique to this sector</li>
+    </ul>
+  </div>
+
+  <div class="phase-block">
+    <div class="phase-header">
+      <div class="phase-title">Enterprise XR &amp; AI Solutions &mdash; Katana Studio</div>
+      <div class="phase-duration">2024&ndash;Present</div>
+    </div>
+    <p><strong>Context:</strong> VP of Sales at Katana Studio, delivering AI and XR solutions to enterprise clients<br>
+    <strong>Relevance:</strong> Direct experience in enterprise technology sales and deployment across asset-intensive industries</p>
+    <ul>
+      <li>Experience selling and deploying AI-enhanced technology solutions to enterprise organisations</li>
+      <li>Understanding of enterprise procurement, change management, and stakeholder alignment</li>
+      <li>Clients span automotive, manufacturing, and other asset-intensive sectors with parallels to construction</li>
+    </ul>
+  </div>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 14</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 15: WHY NAVAIGATE ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">11 &mdash; Why NavAIgate</div>
+  </div>
+
+  <h1><span class="section-number">11</span> Why NavAIgate</h1>
+  <div class="blue-bar"></div>
+
+  <p>You have choices. Here's why we believe NavAIgate is the right partner for this engagement.</p>
+
+  <div class="value-grid">
+    <div class="value-item">
+      <h4>Strategists Who Build</h4>
+      <p>We don't just recommend &mdash; we build. NavAIgate has an in-house engineering team that designs, develops, and deploys production AI systems. When your roadmap says "build this", we can build it. Our feasibility assessments are grounded in engineering reality because we've shipped similar systems.</p>
+    </div>
+    <div class="value-item">
+      <h4>Senior-Led, Every Step</h4>
+      <p>Daniel Wright leads every interview, every workshop, and authors every deliverable. No handoff to junior staff. The person who understands your business is the person writing your strategy.</p>
+    </div>
+    <div class="value-item">
+      <h4>AEC Industry Understanding</h4>
+      <p>Through our work with Autodesk (the dominant software platform in AEC) and Causeway Technologies, we have direct experience with the construction industry's data landscape, workflows, and digital maturity challenges.</p>
+    </div>
+    <div class="value-item">
+      <h4>Vendor-Independent Counsel</h4>
+      <p>We have no platform partnerships or reseller agreements that bias our recommendations. Every suggestion is evaluated purely on merit for your organisation, your data, and your objectives.</p>
+    </div>
+    <div class="value-item">
+      <h4>A Partner, Not a Vendor</h4>
+      <p>This proposal is designed for a 36-month relationship, not a 16-week project. We will be alongside you through implementation, course-correcting the roadmap as you learn and as the AI landscape evolves.</p>
+    </div>
+    <div class="value-item">
+      <h4>One Team, Strategy to Production</h4>
+      <p>No second procurement cycle, no knowledge transfer, no lost context. The people who assess your data landscape are the same people who build the integrations. The person who writes your strategy authors the technical specifications.</p>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>The bottom line:</strong> Large consultancies will charge 3&ndash;5x our fee and deliver a strategy written by junior staff who have never built an AI system. We will deliver a more practical, more actionable strategy authored by practitioners &mdash; and when it's time to build, we'll build it too. We'll still be here in year three, not because you're locked into a contract, but because we're delivering results.</p>
+  </div>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 15</span>
+  </div>
+</div>
+
+<!-- ==================== PAGE 16: NEXT STEPS + ASSUMPTIONS ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-logo">Nav<span>AI</span>gate</div>
+    <div class="page-header-section">12 &amp; 13 &mdash; Next Steps &amp; Assumptions</div>
+  </div>
+
+  <h1><span class="section-number">12</span> Next Steps</h1>
+  <div class="blue-bar"></div>
+
+  <div class="card-grid" style="grid-template-columns: 1fr;">
+    <div class="card card-accent">
+      <table style="margin: 0;">
+        <tbody>
+          <tr>
+            <td style="color: #3B82F6; font-weight: 700; width: 30px; border: none; padding: 8px 16px;">1</td>
+            <td style="border: none; padding: 8px 16px;"><strong>Interview Presentation</strong> &mdash; 1 April 2026: NavAIgate presents our approach and responds to Committee questions</td>
+          </tr>
+          <tr>
+            <td style="color: #3B82F6; font-weight: 700; border: none; padding: 8px 16px;">2</td>
+            <td style="border: none; padding: 8px 16px;"><strong>Selection &amp; Contracting</strong> &mdash; Committee selects preferred partner and finalises engagement agreement</td>
+          </tr>
+          <tr>
+            <td style="color: #3B82F6; font-weight: 700; border: none; padding: 8px 16px;">3</td>
+            <td style="border: none; padding: 8px 16px;"><strong>Kick-off</strong> &mdash; Project initiation, stakeholder mapping, and interview scheduling within one week of contract execution</td>
+          </tr>
+          <tr>
+            <td style="color: #3B82F6; font-weight: 700; border: none; padding: 8px 16px;">4</td>
+            <td style="border: none; padding: 8px 16px;"><strong>Strategy Delivery</strong> &mdash; AI Strategy Blueprint, executive presentation, and implementation playbook delivered within 16 weeks of kick-off</td>
+          </tr>
+          <tr>
+            <td style="color: #3B82F6; font-weight: 700; border: none; padding: 8px 16px;">5</td>
+            <td style="border: none; padding: 8px 16px;"><strong>Ongoing Partnership</strong> &mdash; Quarterly strategy reviews and implementation support commence following Blueprint delivery</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h1 style="margin-top: 36px;"><span class="section-number">13</span> Assumptions, Risks &amp; Dependencies</h1>
+  <div class="blue-bar"></div>
+
+  <h3>Assumptions</h3>
+  <ul>
+    <li>Kajima U.S.A. will provide reasonable access to key stakeholders (executives, department heads, project managers) for interviews and workshops, with scheduling support from a designated liaison</li>
+    <li>Relevant documentation (process descriptions, system inventories, organisational charts) will be made available in a timely manner</li>
+    <li>A primary point of contact from the AI Acceleration Committee will be designated to coordinate scheduling and access</li>
+    <li>Workshops can be conducted on-site (Charlotte, NC or Atlanta, GA) or virtually, with a preference for at least 3 on-site sessions for key workshops and the final presentation</li>
+    <li>The engagement can commence within 2 weeks of contract execution</li>
+    <li>Executive interviews will be scheduled at 3&ndash;4 per week to allow proper preparation and documentation between sessions</li>
+  </ul>
+
+  <h3>Risks &amp; Mitigations</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Risk</th>
+        <th>Impact</th>
+        <th>Mitigation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Stakeholder availability delays</td>
+        <td>Timeline extension</td>
+        <td>Early scheduling, flexible formats (virtual/in-person), buffer weeks built into each phase</td>
+      </tr>
+      <tr>
+        <td>Data access restrictions</td>
+        <td>Limited assessment depth</td>
+        <td>Early data request list, NDA/security clearance as needed, work with available data and note gaps</td>
+      </tr>
+      <tr>
+        <td>Scope expansion during discovery</td>
+        <td>Budget/timeline pressure</td>
+        <td>Clear scope boundaries, change request process, checkpoint reviews to manage expectations</td>
+      </tr>
+      <tr>
+        <td>Multi-entity alignment</td>
+        <td>Conflicting priorities</td>
+        <td>Individual entity interviews before joint workshops, Committee as arbitration body</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Dependencies</h3>
+  <ul>
+    <li>Timely execution of consulting agreement and NDA</li>
+    <li>Designation of Committee liaison within first week</li>
+    <li>Access to relevant IT/systems personnel for data landscape assessment</li>
+  </ul>
+
+  <div class="page-footer">
+    <span>NavAIgate &mdash; AI Strategy Proposal for Kajima U.S.A.</span>
+    <span>Page 16</span>
+  </div>
+</div>
+
+<!-- ==================== CLOSING PAGE ==================== -->
+<div class="page cover">
+  <div class="cover-logo" style="margin-bottom: 20px;">Nav<span>AI</span>gate</div>
+  <div class="cover-tagline" style="margin-bottom: 50px;">AI Strategy &amp; Implementation</div>
+
+  <div class="cover-divider"></div>
+
+  <div class="cover-title" style="font-size: 18pt; margin-bottom: 30px;">Thank you for the opportunity.<br>We look forward to the conversation on 1 April.</div>
+
+  <div class="cover-meta" style="line-height: 2.2;">
+    <strong>Daniel Wright</strong><br>
+    Founder &amp; Managing Director<br>
+    <br>
+    <strong>Email:</strong> dw@navaigate.dev<br>
+    <strong>Web:</strong> navaigate.dev<br>
+  </div>
+
+  <div class="cover-confidential">Confidential &mdash; Prepared solely for Kajima U.S.A. AI Acceleration Committee</div>
+</div>
+
+</body>
+</html>

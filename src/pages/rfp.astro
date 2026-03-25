@@ -1,0 +1,279 @@
+---
+export const prerender = false;
+
+const COOKIE_NAME = 'navaigate_rfp_access';
+const DEFAULT_PASSWORD = 'kajima2026';
+const routePath = '/rfp';
+const rfpPassword = import.meta.env.RFP_PAGE_PASSWORD ?? DEFAULT_PASSWORD;
+const requestUrl = new URL(Astro.request.url);
+
+if (requestUrl.searchParams.get('logout') === '1') {
+  Astro.cookies.delete(COOKIE_NAME, { path: routePath });
+  return Astro.redirect(routePath);
+}
+
+let authError = '';
+
+if (Astro.request.method === 'POST') {
+  const formData = await Astro.request.formData();
+  const submittedPassword = String(formData.get('password') ?? '').trim();
+
+  if (submittedPassword === rfpPassword) {
+    Astro.cookies.set(COOKIE_NAME, 'granted', {
+      path: '/',
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: import.meta.env.PROD,
+      maxAge: 60 * 60 * 24,
+    });
+
+    return Astro.redirect(routePath);
+  }
+
+  authError = 'Incorrect password. Please try again.';
+}
+
+const hasAccess = Astro.cookies.get(COOKIE_NAME)?.value === 'granted';
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NavAIgate — AI Strategy Proposal</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0F172A;
+      color: #CBD5E1;
+      min-height: 100vh;
+    }
+
+    /* Login Page */
+    .login-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .login-logo {
+      font-size: 36pt;
+      font-weight: 700;
+      color: #F8FAFC;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+
+    .login-logo span {
+      color: #3B82F6;
+    }
+
+    .login-tagline {
+      font-size: 11pt;
+      color: #64748B;
+      margin-bottom: 40px;
+      font-weight: 300;
+    }
+
+    .login-card {
+      background: #1E293B;
+      border-radius: 12px;
+      padding: 40px;
+      width: 100%;
+      max-width: 420px;
+      border: 1px solid #334155;
+    }
+
+    .login-card h2 {
+      font-size: 16pt;
+      font-weight: 600;
+      color: #F8FAFC;
+      margin-bottom: 8px;
+    }
+
+    .login-card p {
+      font-size: 10pt;
+      color: #64748B;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .login-card label {
+      display: block;
+      font-size: 9pt;
+      color: #94A3B8;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+
+    .login-card input[type="password"] {
+      width: 100%;
+      padding: 12px 16px;
+      background: #0F172A;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #F8FAFC;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11pt;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 20px;
+    }
+
+    .login-card input[type="password"]:focus {
+      border-color: #3B82F6;
+    }
+
+    .login-card button {
+      width: 100%;
+      padding: 12px;
+      background: #3B82F6;
+      color: #F8FAFC;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 11pt;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .login-card button:hover {
+      background: #2563EB;
+    }
+
+    .login-error {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #FCA5A5;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: 9.5pt;
+      margin-bottom: 20px;
+    }
+
+    .login-footer {
+      margin-top: 24px;
+      font-size: 8pt;
+      color: #475569;
+      text-align: center;
+    }
+
+    /* Proposal View */
+    .proposal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: #1E293B;
+      border-bottom: 1px solid #334155;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+    }
+
+    .proposal-header-logo {
+      font-size: 14pt;
+      font-weight: 700;
+      color: #F8FAFC;
+    }
+
+    .proposal-header-logo span {
+      color: #3B82F6;
+    }
+
+    .proposal-header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .proposal-header-badge {
+      font-size: 8pt;
+      color: #3B82F6;
+      border: 1px solid #3B82F6;
+      padding: 4px 12px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+
+    .proposal-header a {
+      font-size: 9pt;
+      color: #64748B;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .proposal-header a:hover {
+      color: #F8FAFC;
+    }
+
+    .proposal-frame {
+      width: 100%;
+      height: calc(100vh - 52px);
+      margin-top: 52px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  {!hasAccess ? (
+    <div class="login-container">
+      <div class="login-logo">Nav<span>AI</span>gate</div>
+      <div class="login-tagline">Confidential Document Access</div>
+
+      <div class="login-card">
+        <h2>Proposal Access</h2>
+        <p>This document is confidential and password-protected. Please enter the access code provided to you.</p>
+
+        {authError && <div class="login-error">{authError}</div>}
+
+        <form method="POST">
+          <label for="password">Access Code</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter access code"
+            required
+            autofocus
+          />
+          <button type="submit">View Proposal</button>
+        </form>
+
+        <div class="login-footer">
+          Confidential &mdash; NavAIgate Ltd.
+        </div>
+      </div>
+    </div>
+  ) : (
+    <>
+      <div class="proposal-header">
+        <div class="proposal-header-logo">Nav<span>AI</span>gate</div>
+        <div class="proposal-header-actions">
+          <div class="proposal-header-badge">Confidential</div>
+          <a href="/rfp?logout=1">Sign Out</a>
+        </div>
+      </div>
+      <iframe class="proposal-frame" src="/api/rfp-content" title="AI Strategy Proposal"></iframe>
+    </>
+  )}
+</body>
+</html>
